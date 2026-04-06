@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Polymarket — Prediction Market">
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">Prediction Market</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Polymarket</h1>
+    <p class="text-xl text-zinc-400 max-w-3xl">
+      買嘅唔係asset，係outcome。每個event變成一個binary contract，market price直接反映market implied probability。Real money skin in the game，唔係survey、唔係analyst opinion。
+    </p>
+  </section>
+
+  <!-- Key stats -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$9.7B</p>
+        <p class="text-sm text-zinc-500 mt-1">30-day volume</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$425M</p>
+        <p class="text-sm text-zinc-500 mt-1">Single-day record</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$600M</p>
+        <p class="text-sm text-zinc-500 mt-1">ICE (NYSE parent) 投資</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">535+</p>
+        <p class="text-sm text-zinc-500 mt-1">Active AI markets</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">點樣運作？</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <p class="text-cyan-400 text-sm font-medium mb-3">1. Binary Contract</p>
+        <h3 class="text-lg font-bold text-white mb-3">買outcome，唔係asset</h3>
+        <p class="text-sm text-zinc-400">
+          每個market係一個yes/no contract。例如 "Fed will cut rates in June" — 你買 YES at $0.65，即market implied probability 65%。答啱得$1，答錯得$0。
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <p class="text-cyan-400 text-sm font-medium mb-3">2. Price = Probability</p>
+        <h3 class="text-lg font-bold text-white mb-3">Market price = 群眾智慧</h3>
+        <p class="text-sm text-zinc-400">
+          Contract price直接反映market implied probability。因為有real money skin in the game，比survey同analyst opinion更準確。2024 US election就完勝所有sell-side polls。
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <p class="text-cyan-400 text-sm font-medium mb-3">3. Hybrid Architecture</p>
+        <h3 class="text-lg font-bold text-white mb-3">Off-chain matching，On-chain settlement</h3>
+        <p class="text-sm text-zinc-400">
+          Order matching喺centralized server（速度快），但settlement同funds喺Polygon USDC onchain（non-custodial，你自己hold個錢）。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Markets -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">有啲乜市場？</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">Macro / Policy</h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="text-white font-medium">Fed rate decisions</span> — 幾月cut、幾多basis points，price比CME FedWatch更快更新</p>
+          <p><span class="text-white font-medium">Trump executive orders</span> — tariff、crypto regulation、immigration，每個topic都有market</p>
+          <p><span class="text-white font-medium">Geopolitics</span> — election outcomes、conflict resolution、diplomatic deals</p>
+        </div>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">Sports / Culture / AI</h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="text-white font-medium">Sports</span> — $120M/day volume，NBA、NFL、soccer全部有</p>
+          <p><span class="text-white font-medium">Culture</span> — Oscars、Grammy、celebrity events</p>
+          <p><span class="text-white font-medium">AI</span> — 535+ active markets：AI model rankings、benchmark results、company valuations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key insights -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">Finance人要知</h2>
+    <div class="space-y-4">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">2024 US Election — 完勝 Sell-Side Polls</h3>
+        <p class="text-sm text-zinc-400">
+          Polymarket嘅market price consistently比所有主流polling更接近最終結果。Real money skin in the game嘅price discovery，比收survey同aggregating analyst opinion更準。呢個係prediction market最強嘅validation。
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">ICE (NYSE Parent) 投資 $600M</h3>
+        <p class="text-sm text-zinc-400">
+          NYSE嘅parent company直接入股Polymarket。呢個signal好清楚 — 傳統exchange都認為prediction market有future，information market同stock market一樣有價值。
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">HK Status</h3>
+        <p class="text-sm text-zinc-400">
+          香港冇ban Polymarket（Singapore就ban咗）。作為information discovery工具，HK finance professionals可以用嚟做research reference — 睇market implied probability比讀十份analyst report更快、更準。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-2">想了解其他 onchain product？</h3>
+        <p class="text-sm text-zinc-400">Hyperliquid做perps + pre-IPO stock trading，AMM做permissionless market making。</p>
+      </div>
+      <div class="flex gap-4">
+        <a href="/products/hyperliquid" class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors whitespace-nowrap">Hyperliquid</a>
+        <a href="/products/amm" class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Onchain AMM</a>
+      </div>
+    </div>
+  </section>
+</Layout>

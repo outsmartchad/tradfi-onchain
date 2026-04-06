@@ -1,0 +1,164 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Onchain AMM — Permissionless Markets">
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">Permissionless Markets</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Onchain AMM</h1>
+    <p class="text-xl text-zinc-400 max-w-3xl">
+      傳統market要exchange license、listing approval、market maker agreement。Onchain：create一個liquidity pool = market exists。Permissionless financial markets，24/7。
+    </p>
+  </section>
+
+  <!-- Key stats -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$1-2B</p>
+        <p class="text-sm text-zinc-500 mt-1">Uniswap daily volume</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">24/7</p>
+        <p class="text-sm text-zinc-500 mt-1">No trading hours</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">x*y=k</p>
+        <p class="text-sm text-zinc-500 mt-1">Constant product formula</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">1000s</p>
+        <p class="text-sm text-zinc-500 mt-1">New tokens daily</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-4">點樣運作？</h2>
+    <p class="text-zinc-400 mb-8">Smart contract自動quote，constant product formula (x*y=k) — 買得多price就升，唔需要market maker。</p>
+
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <h3 class="text-lg font-bold text-white mb-4">Constant Product Formula</h3>
+      <div class="space-y-4 text-sm text-zinc-400">
+        <p>Pool入面有兩隻token（例如ETH + USDC），數量嘅乘積保持constant：<span class="text-cyan-400 font-mono">x * y = k</span></p>
+        <p>你買Token A，pool入面Token A減少、Token B增加 → Token A price自動升。</p>
+        <p>唔需要orderbook，唔需要market maker掛單，smart contract自動根據supply/demand quote price。</p>
+        <p class="text-zinc-500">主要venue：<span class="text-white">Uniswap</span>（Ethereum，$1-2B daily），<span class="text-white">Raydium</span> / <span class="text-white">Meteora</span>（Solana）。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three things you can do -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">三件你可以做嘅嘢</h2>
+
+    <!-- Trading -->
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 mb-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">1</span>
+        <h3 class="text-lg font-bold text-white">Trading — Onchain Swap</h3>
+      </div>
+      <div class="space-y-3 text-sm text-zinc-400">
+        <p>任何token pair都可以swap，<span class="text-white font-medium">no listing requirement</span>。只要有人create咗個pool，就trade到。</p>
+        <p>Settlement instant（幾秒內），assets stay in your wallet — <span class="text-white font-medium">non-custodial</span>，唔經exchange。</p>
+        <p>Aggregators（Jupiter、1inch）自動幫你搵最好price，跨多個pool routing。</p>
+      </div>
+    </div>
+
+    <!-- LP -->
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 mb-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">2</span>
+        <h3 class="text-lg font-bold text-white">LP (Liquidity Provision) — 做Market Maker</h3>
+      </div>
+      <div class="space-y-3 text-sm text-zinc-400">
+        <p>Deposit兩隻token入pool，earn每筆swap嘅trading fee。</p>
+        <p class="text-white font-medium">Finance語言：long兩隻asset + short vol。</p>
+        <p><span class="text-white font-medium">Impermanent loss</span> = short vol嘅P&L。當其中一隻token price大幅move，你嘅position value低過simply hold兩隻token。</p>
+        <div class="mt-4 grid md:grid-cols-2 gap-4">
+          <div class="bg-zinc-800/30 rounded-lg p-4">
+            <p class="text-white text-sm font-medium mb-2">Stable Pairs</p>
+            <p class="text-xs text-zinc-500">Low fee (0.01-0.05%)，steady return，minimal IL。USDC/USDT之類。</p>
+          </div>
+          <div class="bg-zinc-800/30 rounded-lg p-4">
+            <p class="text-white text-sm font-medium mb-2">New Coins</p>
+            <p class="text-xs text-zinc-500">High fee (50-99%)，high risk。Trading volume大但token可能歸零。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Launchpad -->
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">3</span>
+        <h3 class="text-lg font-bold text-white">Launchpad — Permissionless IPO</h3>
+      </div>
+      <div class="space-y-3 text-sm text-zinc-400">
+        <p><span class="text-white font-medium">PumpFun</span>、<span class="text-white font-medium">Raydium LaunchLab</span> — 任何人幾秒之內launch一隻token。</p>
+        <p>Bonding curve pricing：early buyer price低，越多人買price越高。到一定market cap自動migrate去AMM pool — 變成fully tradeable market。</p>
+        <p class="text-white font-medium">本質上係permissionless IPO — no underwriter，no prospectus，no lock-up period。</p>
+        <p>每日launch幾千隻。99%係junk，但有人喺入面搵到gems。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TradFi comparison -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">同TradFi比較</h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-zinc-800/50">
+            <th class="text-left p-4 text-zinc-500 font-medium"></th>
+            <th class="text-left p-4 text-zinc-500 font-medium">Traditional Market</th>
+            <th class="text-left p-4 text-cyan-400 font-medium">Onchain AMM</th>
+          </tr>
+        </thead>
+        <tbody class="text-zinc-400">
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">Listing</td>
+            <td class="p-4">Exchange approval + regulatory filing</td>
+            <td class="p-4">Create pool = listed</td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">Market Making</td>
+            <td class="p-4">Designated MM agreement</td>
+            <td class="p-4">Anyone deposit liquidity</td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">Trading Hours</td>
+            <td class="p-4">9:30am - 4:00pm + holidays</td>
+            <td class="p-4">24/7/365</td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">Settlement</td>
+            <td class="p-4">T+1 / T+2</td>
+            <td class="p-4">Instant (seconds)</td>
+          </tr>
+          <tr>
+            <td class="p-4 text-white font-medium">Custody</td>
+            <td class="p-4">Broker/custodian holds</td>
+            <td class="p-4">Self-custody (your wallet)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-2">想了解其他 onchain product？</h3>
+        <p class="text-sm text-zinc-400">Polymarket做prediction markets，Hyperliquid做perps + pre-IPO。</p>
+      </div>
+      <div class="flex gap-4">
+        <a href="/products/polymarket" class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors whitespace-nowrap">Polymarket</a>
+        <a href="/products/hyperliquid" class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Hyperliquid</a>
+      </div>
+    </div>
+  </section>
+</Layout>

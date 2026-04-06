@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="HK監管 — Regulation">
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">Hong Kong Regulation</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">HK 監管現況</h1>
+    <p class="text-xl text-zinc-400 max-w-3xl">
+      香港正在定位為亞洲regulated crypto hub，比Singapore更開放嘅retail access，比大陸更清晰嘅legal framework。
+    </p>
+  </section>
+
+  <!-- Overview stats -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">12</p>
+        <p class="text-sm text-zinc-500 mt-1">Licensed VATPs<br/>(as of Feb 2026)</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">2</p>
+        <p class="text-sm text-zinc-500 mt-1">Retail-approved<br/>(HashKey, OSL)</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">7</p>
+        <p class="text-sm text-zinc-500 mt-1">Banks pursuing<br/>tokenized deposits</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">3,380+</p>
+        <p class="text-sm text-zinc-500 mt-1">HK family offices</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VATP Licensing -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">VATP Licensing (SFC)</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">制度概況</h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p>SFC (Securities and Futures Commission) 負責Virtual Asset Trading Platform licensing。</p>
+          <p>截至2026年2月，<span class="text-white font-medium">12間平台獲牌</span>。首批係2023年8月獲牌嘅HashKey同OSL。</p>
+          <p>Licensed platform需要遵守AML/KYC、custody、insurance、cybersecurity等要求。</p>
+        </div>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">Retail Access</h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p>Retail投資者只可以喺licensed platform上買 <span class="text-white font-medium">BTC同ETH</span>。</p>
+          <p>其他tokens暫時只open俾professional investors (PI)。</p>
+          <p>相比Singapore（全面ban retail crypto trading），HK明顯更開放。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Staking -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">Staking</h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <p class="text-cyan-400 text-sm font-medium mb-2">Status</p>
+          <p class="text-white font-bold text-lg mb-2">Allowed</p>
+          <p class="text-sm text-zinc-400">SFC 2025年4月正式批准licensed VATPs提供staking服務。</p>
+        </div>
+        <div>
+          <p class="text-cyan-400 text-sm font-medium mb-2">Key Requirement</p>
+          <p class="text-white font-bold text-lg mb-2">Full Custody Control</p>
+          <p class="text-sm text-zinc-400">Platform必須retain full custody control over staked assets。唔可以delegate去第三方validator without maintaining control。</p>
+        </div>
+        <div>
+          <p class="text-cyan-400 text-sm font-medium mb-2">Implication</p>
+          <p class="text-white font-bold text-lg mb-2">Yield Products</p>
+          <p class="text-sm text-zinc-400">Licensed platform可以向retail提供ETH staking yield — 呢個係regulated crypto yield product嘅重要一步。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stablecoin -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">Stablecoin</h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="space-y-4 text-sm text-zinc-400">
+        <p><span class="text-white font-medium">Ordinance:</span> Stablecoin ordinance 2024年5月passed。</p>
+        <p><span class="text-white font-medium">Scope:</span> 規管fiat-referenced stablecoins嘅issuance同operation。</p>
+        <p><span class="text-white font-medium">Applicants:</span> HSBC、Standard Chartered、OSL among applicants for stablecoin license。</p>
+        <p><span class="text-white font-medium">Implication:</span> 如果HSBC或StanChart issue HKD stablecoin，會係全球首批由G-SIB bank issue嘅regulated stablecoin。呢個會大幅降低institutional adoption嘅barrier。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Legislation 2026 -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">2026 新立法（Pending）</h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <p class="text-sm text-zinc-400 mb-6">除咗VATP同stablecoin，政府正在準備更多virtual asset相關立法：</p>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-zinc-800/30 rounded-lg p-4">
+          <p class="text-white text-sm font-medium mb-1">VA Dealers</p>
+          <p class="text-xs text-zinc-500">虛擬資產交易商 — OTC dealing嘅licensing framework</p>
+        </div>
+        <div class="bg-zinc-800/30 rounded-lg p-4">
+          <p class="text-white text-sm font-medium mb-1">Custodians</p>
+          <p class="text-xs text-zinc-500">虛擬資產託管人 — custody service providers嘅regulation</p>
+        </div>
+        <div class="bg-zinc-800/30 rounded-lg p-4">
+          <p class="text-white text-sm font-medium mb-1">OTC Brokers</p>
+          <p class="text-xs text-zinc-500">場外經紀 — OTC crypto brokerage嘅licensing</p>
+        </div>
+        <div class="bg-zinc-800/30 rounded-lg p-4">
+          <p class="text-white text-sm font-medium mb-1">Advisors</p>
+          <p class="text-xs text-zinc-500">虛擬資產顧問 — VA investment advisory嘅regulation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Family Office Tax -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">Family Office 稅務優惠</h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="text-white font-medium">Policy:</span> 2026年2月起，digital assets正式列入qualifying investments under family office稅務優惠制度。</p>
+          <p><span class="text-white font-medium">Effect:</span> Family offices投資digital assets可以享受profits tax exemption，同equities、bonds一樣。</p>
+          <p><span class="text-white font-medium">Scale:</span> 香港有3,380+間family offices，52%計劃配置crypto，27%喺6個月內行動。</p>
+        </div>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="text-white font-medium">Why it matters:</span> 之前digital assets唔qualify for tax concession，family offices要independently evaluate tax treatment — 法律成本高、uncertainty大。</p>
+          <p>而家政策明確，<span class="text-white font-medium">tax treatment同traditional assets一致</span>，remove咗一個major adoption barrier。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- e-HKD -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">e-HKD / CBDC</h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="space-y-4 text-sm text-zinc-400">
+        <p><span class="text-white font-medium">Phase 2:</span> 2025年10月completed。</p>
+        <p><span class="text-white font-medium">Retail CBDC:</span> 暫時擱置 — HKMA判斷短期內唔需要retail CBDC。</p>
+        <p><span class="text-white font-medium">Pivot:</span> 轉向wholesale CBDC + tokenized deposits。<span class="text-white font-medium">7間銀行</span>正在積極推進tokenized deposit projects。</p>
+        <p><span class="text-white font-medium">Implication:</span> HK唔會走中國嘅digital yuan路線（government-issued retail CBDC），而係bank-issued tokenized deposits — 更貼近現有banking infrastructure，adoption barrier更低。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key takeaway -->
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 md:p-12">
+      <h2 class="text-2xl font-bold text-white mb-6">Key Takeaway</h2>
+      <div class="space-y-4 text-sm text-zinc-400">
+        <p class="text-lg text-zinc-300">
+          香港正在定位為 <span class="text-white font-medium">亞洲regulated crypto hub</span>。
+        </p>
+        <p>比Singapore更開放（retail可以買BTC/ETH，Singapore基本ban晒retail）。比大陸更清晰（有legal framework，唔係一刀切禁止）。</p>
+        <p>VATP licensing、stablecoin ordinance、staking approval、family office tax concession — 政策方向好consistent：<span class="text-white font-medium">build regulated infrastructure，encourage institutional adoption，gradual retail access</span>。</p>
+        <p>2026年仲有VA dealers、custodians、OTC brokers、advisors嘅新立法。整個regulatory perimeter持續擴大。</p>
+      </div>
+      <div class="mt-8 flex gap-4">
+        <a href="/landscape" class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors">市場動態</a>
+        <a href="/products/polymarket" class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors">Polymarket</a>
+      </div>
+    </div>
+  </section>
+</Layout>

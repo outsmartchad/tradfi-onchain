@@ -1,0 +1,98 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'HK TradFi × Onchain — 傳統金融點樣接入鏈上市場' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | TradFi × Onchain</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="min-h-screen">
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 border-b border-zinc-800/50 bg-[#0a0a0f]/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="text-lg font-semibold tracking-tight text-white hover:opacity-100">
+        TradFi<span class="text-cyan-400">×</span>Onchain
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+        <a href="/landscape" class="hover:text-white transition-colors">市場動態</a>
+        <a href="/products/polymarket" class="hover:text-white transition-colors">Polymarket</a>
+        <a href="/products/hyperliquid" class="hover:text-white transition-colors">Hyperliquid</a>
+        <a href="/products/amm" class="hover:text-white transition-colors">Onchain AMM</a>
+        <a href="/regulation" class="hover:text-white transition-colors">監管</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-zinc-400 hover:text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-[#0a0a0f]/95 backdrop-blur-xl">
+      <div class="px-6 py-4 flex flex-col gap-4 text-sm text-zinc-400">
+        <a href="/landscape" class="hover:text-white">市場動態</a>
+        <a href="/products/polymarket" class="hover:text-white">Polymarket</a>
+        <a href="/products/hyperliquid" class="hover:text-white">Hyperliquid</a>
+        <a href="/products/amm" class="hover:text-white">Onchain AMM</a>
+        <a href="/regulation" class="hover:text-white">監管</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="pt-16">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-zinc-800/50 mt-24">
+    <div class="max-w-6xl mx-auto px-6 py-12 text-sm text-zinc-500">
+      <div class="flex flex-col md:flex-row justify-between gap-8">
+        <div>
+          <p class="text-white font-semibold mb-2">TradFi<span class="text-cyan-400">×</span>Onchain</p>
+          <p>傳統金融 × 鏈上市場</p>
+          <p class="mt-1">For HK finance professionals exploring onchain products.</p>
+        </div>
+        <div class="flex gap-12">
+          <div>
+            <p class="text-zinc-400 font-medium mb-2">Products</p>
+            <div class="flex flex-col gap-1">
+              <a href="/products/polymarket">Polymarket</a>
+              <a href="/products/hyperliquid">Hyperliquid</a>
+              <a href="/products/amm">Onchain AMM</a>
+            </div>
+          </div>
+          <div>
+            <p class="text-zinc-400 font-medium mb-2">Info</p>
+            <div class="flex flex-col gap-1">
+              <a href="/landscape">市場動態</a>
+              <a href="/regulation">HK監管</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-zinc-800/50 text-zinc-600">
+        <p>本站內容僅供參考，不構成任何投資建議。Onchain products are not regulated by the SFC.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+      document.getElementById('mobile-menu')?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

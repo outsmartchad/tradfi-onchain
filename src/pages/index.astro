@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="傳統金融 × 鏈上市場">
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-16">
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">HK TradFi × Onchain</p>
+    <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+      傳統金融正在<br/><span class="text-cyan-400">接入鏈上市場</span>
+    </h1>
+    <p class="text-xl text-zinc-400 max-w-2xl mb-12">
+      BlackRock、JP Morgan、Goldman Sachs、NYSE 已經喺度做。香港政府發咗tokenized green bond。你知唔知發生緊乜？
+    </p>
+
+    <!-- Key stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$2.9B</p>
+        <p class="text-sm text-zinc-500 mt-1">BlackRock BUIDL<br/>Tokenized Treasuries AUM</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$1.5T+</p>
+        <p class="text-sm text-zinc-500 mt-1">JP Morgan Kinexys<br/>已處理交易量</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">HK$100億</p>
+        <p class="text-sm text-zinc-500 mt-1">香港政府<br/>Tokenized Green Bond</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-3xl font-bold text-white">$600M</p>
+        <p class="text-sm text-zinc-500 mt-1">ICE (NYSE Parent)<br/>投資 Polymarket</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three products -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-2">三個你要識嘅 Onchain Product</h2>
+    <p class="text-zinc-500 mb-8">Prediction market、Perp exchange、Automated market making — 全部 permissionless、24/7。</p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <a href="/products/polymarket" class="group bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 hover:border-cyan-800/50 transition-colors">
+        <p class="text-sm text-cyan-400 font-medium mb-2">Prediction Market</p>
+        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Polymarket</h3>
+        <p class="text-zinc-400 text-sm mb-4">買嘅唔係asset，係outcome。每個event變成一個contract，price反映market implied probability。</p>
+        <p class="text-zinc-600 text-sm">30日 volume $9.7B →</p>
+      </a>
+
+      <a href="/products/hyperliquid" class="group bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 hover:border-cyan-800/50 transition-colors">
+        <p class="text-sm text-cyan-400 font-medium mb-2">Perp DEX + Pre-IPO</p>
+        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Hyperliquid</h3>
+        <p class="text-zinc-400 text-sm mb-4">Crypto perps + HIP-3 pre-IPO stock perps。SpaceX、OpenAI、Anthropic都有。</p>
+        <p class="text-zinc-600 text-sm">Daily volume $5-10B →</p>
+      </a>
+
+      <a href="/products/amm" class="group bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 hover:border-cyan-800/50 transition-colors">
+        <p class="text-sm text-cyan-400 font-medium mb-2">Permissionless Markets</p>
+        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">Onchain AMM</h3>
+        <p class="text-zinc-400 text-sm mb-4">任何人create一個liquidity pool就有market。Trading、LP、Launchpad。</p>
+        <p class="text-zinc-600 text-sm">Uniswap 日均 $1-2B →</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Who's moving -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">邊啲大行已經喺度做？</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">🌍 全球</h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="text-white font-medium">BlackRock</span> — BUIDL tokenized Treasuries fund，$2.9B AUM，9條chain</p>
+          <p><span class="text-white font-medium">JP Morgan</span> — Kinexys (前身Onyx)，$1.5T+ processed，跨鏈FX settlement</p>
+          <p><span class="text-white font-medium">Goldman Sachs</span> — GS DAP，EIB €100M bond issuance onchain</p>
+          <p><span class="text-white font-medium">Citadel Securities</span> — 投$200M入Kraken，準備做crypto market making</p>
+          <p><span class="text-white font-medium">NYSE × Securitize</span> — MOU建24/7 tokenized securities trading platform</p>
+        </div>
+      </div>
+
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">🇭🇰 香港</h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="text-white font-medium">香港政府</span> — 第3批digital green bond HK$100億，HSBC Orion結算</p>
+          <p><span class="text-white font-medium">HSBC</span> — Tokenized deposits live，Orion institutional platform</p>
+          <p><span class="text-white font-medium">Standard Chartered</span> — 首間G-SIB做spot crypto trading，HashKey banking partner</p>
+          <p><span class="text-white font-medium">Family Offices</span> — 52%計劃配置crypto，digital assets獲稅務優惠</p>
+          <p><span class="text-white font-medium">12間持牌VATP</span> — HashKey、OSL領頭，retail可買BTC/ETH</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-12 text-center">
+      <h2 class="text-2xl font-bold text-white mb-4">想了解更多？</h2>
+      <p class="text-zinc-400 mb-8">睇吓每個product嘅詳細介紹，了解HK監管現況，同埋點樣開始用。</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/landscape" class="px-6 py-3 bg-cyan-500 text-black font-medium rounded-lg hover:bg-cyan-400 transition-colors">市場動態</a>
+        <a href="/regulation" class="px-6 py-3 border border-zinc-700 text-white rounded-lg hover:border-zinc-500 transition-colors">HK監管</a>
+      </div>
+    </div>
+  </section>
+</Layout>

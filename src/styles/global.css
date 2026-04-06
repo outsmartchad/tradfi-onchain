@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+  background-color: #0a0a0f;
+  color: #e4e4e7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #22d3ee;
+  color: #0a0a0f;
+}
