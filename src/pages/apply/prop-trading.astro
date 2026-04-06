@@ -4,152 +4,91 @@ const base = '/tradfi-onchain';
 ---
 
 <Layout title="Prop Trading — Onchain Strategies">
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
       <span class="lang-en">Prop Trading</span><span class="lang-zh">自營交易</span>
     </p>
-    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-      <span class="lang-en">Onchain Trading Strategies<br/>for Prop Desks</span>
-      <span class="lang-zh">自營交易部門的<br/>鏈上交易策略</span>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+      <span class="lang-en">Onchain Trading Strategies for Prop Desks</span>
+      <span class="lang-zh">自營交易部門的鏈上交易策略</span>
     </h1>
-    <p class="text-xl text-zinc-400 max-w-3xl">
-      <span class="lang-en">24/7 perpetual futures, pre-IPO stock valuation exposure, funding rate arbitrage, and AMM liquidity provision. The onchain trading landscape offers strategy opportunities that don't exist in traditional markets.</span>
-      <span class="lang-zh">24/7永續合約、Pre-IPO股票估值敞口、資金費率套利及AMM流動性提供。鏈上交易環境提供傳統市場不存在的策略機會。</span>
-    </p>
-  </section>
 
-  <!-- Strategies -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Core Strategy Categories</span><span class="lang-zh">核心策略類別</span>
-    </h2>
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
 
-    <div class="space-y-6">
-      <!-- Pre-IPO Perps -->
-      <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">1. Pre-IPO Stock Perps (Hyperliquid HIP-3)</span>
-          <span class="lang-zh">1. Pre-IPO股票永續合約（Hyperliquid HIP-3）</span>
-        </h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">What:</span> Perpetual futures on pre-IPO company valuations — SpaceX, OpenAI, Anthropic, Cursor, Stripe. Not equity — pure valuation speculation.</span><span class="lang-zh"><span class="text-white font-medium">內容：</span>Pre-IPO公司估值的永續合約 — SpaceX、OpenAI、Anthropic、Cursor、Stripe。非股權 — 純估值投機。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Scale:</span> 35%+ of Hyperliquid's total volume. $1.43B open interest across pre-IPO markets.</span><span class="lang-zh"><span class="text-white font-medium">規模：</span>佔Hyperliquid總交易量35%+。Pre-IPO市場未平倉量$1.43B。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Leverage:</span> Up to 10x (lower than crypto perps due to lower underlying liquidity).</span><span class="lang-zh"><span class="text-white font-medium">槓桿：</span>最高10x（因底層流動性較低，比crypto perps低）。</span></p>
-          </div>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">Edge for IB/PE professionals:</span> You see deal flow, write valuations, meet management teams. Your sector knowledge is directly monetizable here.</span><span class="lang-zh"><span class="text-white font-medium">IB/PE專業人士的優勢：</span>你看到交易流、撰寫估值、見管理團隊。你的行業知識可直接在此變現。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Settlement:</span> Against latest funding round price or IPO price.</span><span class="lang-zh"><span class="text-white font-medium">結算：</span>以最新融資輪價格或IPO價格結算。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Caveat:</span> Not SFC-regulated. No deposit protection.</span><span class="lang-zh"><span class="text-white font-medium">注意：</span>不受SFC監管。無存款保障。</span></p>
-          </div>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en">In January 2026, trading volume on perpetual futures for traditional assets — stocks, commodities, indices — hit $31 billion on Hyperliquid alone, a 162% increase from $11.8 billion the previous month. Open interest across pre-IPO stock perps reached $1.43 billion. These numbers are not from a niche exchange: Hyperliquid processes $5 to $10 billion in daily volume across all markets, on par with Bybit and OKX.</span>
+        <span class="lang-zh">2026年1月，僅在Hyperliquid上，傳統資產 — 股票、商品、指數 — 的永續合約交易量就達到$310億，較上月的$118億增長162%。Pre-IPO股票永續合約的未平倉量達到$14.3億。這些數字不是來自小型交易所：Hyperliquid在所有市場的日交易量為$50至$100億，與Bybit和OKX同級。</span>
+      </p>
 
-      <!-- Funding Rate Arb -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">2. Funding Rate Arbitrage</span>
-          <span class="lang-zh">2. 資金費率套利</span>
-        </h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">Concept:</span> Perpetual futures use a funding rate to keep contract price anchored to spot. When funding is positive, longs pay shorts. When negative, shorts pay longs.</span><span class="lang-zh"><span class="text-white font-medium">概念：</span>永續合約使用資金費率使合約價格錨定現貨。當資金費率為正，多方支付空方。當為負，空方支付多方。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Strategy:</span> Go long spot, short perp (or vice versa). Capture the funding rate differential as yield while being delta-neutral on price.</span><span class="lang-zh"><span class="text-white font-medium">策略：</span>做多現貨、做空永續合約（或反之）。在價格上保持delta中性的同時，捕獲資金費率差異作為收益。</span></p>
-          </div>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">Cross-venue:</span> Funding rates vary across CEXs (Binance, OKX) and DEXs (Hyperliquid). Arbitrage across venues adds another yield layer.</span><span class="lang-zh"><span class="text-white font-medium">跨平台：</span>資金費率在CEX（Binance、OKX）和DEX（Hyperliquid）之間有差異。跨平台套利增加另一層收益。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Typical yield:</span> 5-20% APR annualized, highly variable. Requires active management and monitoring.</span><span class="lang-zh"><span class="text-white font-medium">典型收益：</span>年化5-20% APR，波動較大。需要主動管理和監控。</span></p>
-          </div>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en">For prop trading desks, onchain markets offer a set of strategy opportunities that simply don't exist in traditional markets — not as an alternative to what you already do, but as an additional set of instruments with distinct structural characteristics.</span>
+        <span class="lang-zh">對自營交易部門而言，鏈上市場提供了一組傳統市場根本不存在的策略機會 — ���是作為你已有業務的替代，而是一組具有獨特結構特徵的額外工具。</span>
+      </p>
 
-      <!-- AMM LP -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">3. AMM Liquidity Provision (Fee Capture)</span>
-          <span class="lang-zh">3. AMM流動性提供（費用捕獲）</span>
-        </h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">Concept:</span> Deposit token pairs into AMM pools and earn trading fees. Effectively becoming the market maker — without a designated market maker agreement.</span><span class="lang-zh"><span class="text-white font-medium">概念：</span>將代幣對存入AMM池並賺取交易費用。有效成為做市商 — 無需指定做市商協議。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Stable pairs:</span> USDC/USDT pools earn 0.01-0.05% per swap with minimal impermanent loss. Comparable to money market yields.</span><span class="lang-zh"><span class="text-white font-medium">穩定幣對：</span>USDC/USDT池每筆交易賺0.01-0.05%，無常損失最小。與貨幣市場收益相當。</span></p>
-          </div>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">High-fee pools:</span> New token launches can have 50-99% fee rates. High volume generates significant fees, but underlying tokens are extremely volatile.</span><span class="lang-zh"><span class="text-white font-medium">高費率池：</span>新代幣發行可有50-99%費率。高交易量產生可觀費用，但底層代幣波動極大。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Key venues:</span> Uniswap (Ethereum), Raydium/Meteora (Solana).</span><span class="lang-zh"><span class="text-white font-medium">主要平台：</span>Uniswap（Ethereum）、Raydium/Meteora（Solana）。</span></p>
-          </div>
-        </div>
-      </div>
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Pre-IPO Stock Perps</span><span class="lang-zh">Pre-IPO股票永續合約</span>
+      </h2>
 
-      <!-- Cross-Protocol Arb -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">4. Cross-Protocol Arbitrage</span>
-          <span class="lang-zh">4. 跨協議套利</span>
-        </h3>
-        <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="lang-en">Price discrepancies between DEXs and between DEXs and CEXs create persistent arbitrage opportunities. Aggregators like Jupiter route through dozens of pools — but there are always inefficiencies to capture.</span><span class="lang-zh">DEX之間及DEX和CEX之間的價格差異創造持續的套利機會。Jupiter等聚合器通過數十個池路由 — 但總有可捕獲的低效。</span></p>
-          <p><span class="lang-en">MEV (Maximal Extractable Value) strategies are highly competitive and require low-latency infrastructure. The top firms (Jump, Wintermute, DRW Cumberland) deploy dedicated infrastructure for sub-second execution.</span><span class="lang-zh">MEV（最大可提取價值）策略競爭激烈，需要低延遲基礎設施。頂級公司（Jump、Wintermute、DRW Cumberland）部署專用基礎設施實現亞秒級執行。</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en">Hyperliquid's HIP-3 protocol, launched in October 2025, enables permissionless deployment of perpetual futures markets. Platforms built on HIP-3 — like Ventuals — offer perp exposure to private company valuations: SpaceX, OpenAI, Anthropic, Cursor, Stripe. These are not equity instruments; they are pure valuation speculation contracts that settle against the latest funding round price or IPO price.</span>
+        <span class="lang-zh">Hyperliquid的HIP-3協議於2025年10月推出，允許無需許可地部署永續合約���場。基於HIP-3構建的平台 — 如Ventuals — 提供對���營公司估值的永續��約敞口：SpaceX、OpenAI、Anthropic、Cursor、Stripe。這些不是股權工具；它們是純估值投機合約，以最新融資輪價格或IPO價格結算。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Leverage is up to 10x — lower than crypto perps due to lower underlying liquidity. But the volume tells the story: pre-IPO perps now represent over 35% of all Hyperliquid trading volume. This is not a niche product.</span>
+        <span class="lang-zh">槓桿最高10x — 因底層流動性較低，比crypto永續合約低。但交易量說明了一切：Pre-IPO永續合約現佔Hyperliquid總交易量的35%以上。這不是小眾產品。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The edge for finance professionals is obvious. If you're in investment banking, private equity, or venture capital, you see deal flow, write valuations, and meet management teams. Your sector knowledge and valuation insight is directly monetizable here — you're trading against retail participants who don't have your information advantage. The caveat is equally obvious: this is not regulated by the SFC, and there is no deposit protection.</span>
+        <span class="lang-zh">金融專業人士的優勢顯而易見。如果你在投資銀行、私募股權或風險投資行業，你看到交易流、撰寫估值報告、見管理團隊。你的行業知識和估值洞察力可以直接在��變現 — 你在與不具備你信息優勢的散戶交易。同樣顯而易見的是：這不受SFC監管，且沒有存款保障。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Funding Rate Arbitrage</span><span class="lang-zh">資金費��套利</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Perpetual futures use a funding rate to keep the contract price anchored to spot. When funding is positive, longs pay shorts; when negative, shorts pay longs. The rate varies across exchanges — Binance pays every 8 hours, Hyperliquid every hour — creating persistent basis differentials.</span>
+        <span class="lang-zh">永續合約使用資金費��使合約價格錨定現貨。當資金費率為正時，多方支付空方；當為負時，空方支付多方。費率在各交易所之間有差異 — Binance每8小時支付一次，Hyperliquid每小時一次 — 造成持續的基差差異。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The classic strategy: go long spot, short perp (or vice versa), capturing the funding rate differential as yield while maintaining delta-neutral price exposure. A November 2025 research paper analyzing 35.7 million observations across 749 symbols and 26 exchanges found that symbols with an average spread of 20 basis points or more yielded a theoretical 219% APY. The reality is more tempered: only about 40% of top opportunities generated positive returns after transaction costs and spread reversals. But for desks with the infrastructure to monitor and execute across venues, the opportunity set is substantial.</span>
+        <span class="lang-zh">經典策略：做多現貨、做空永續合約（或反之）��在維��價格delta中���的同時捕獲資金費率差異作為收益。2025年11月一篇分析了26個交易所、749個交���對、3,570萬個觀測值的研究論文發現，平均價差20個基點以上的交易對理論年化收益率為219%。現實更為溫和：在交易成本和價差回歸���，僅約40%的頂級機會產生正回報。但對於擁有跨平台監控和執行基礎設施的部門，機會集是可觀的。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">AMM Liquidity Provision</span><span class="lang-zh">AMM流動性提供</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Providing liquidity to an automated market maker is, in finance terms, being long two assets and short volatility. You deposit token pairs into a pool, earn trading fees from every swap, and accept impermanent loss — the cost of the implicit short vol position — when prices diverge.</span>
+        <span class="lang-zh">向自動化做市商提供流動性，用金融語言來說，就是做多兩種資���加做空波動率。你將代幣對存入池中，從每筆交易中賺取費用，並在價格偏離時承受無常損失 — 即隱含做空波動率倉位的成本。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Stablecoin pairs (USDC/USDT) offer 0.01 to 0.05% per swap with minimal impermanent loss — comparable to money market yields. New token launches can carry fee rates of 50 to 99%, generating significant short-term returns when volume is high, though the underlying tokens are extremely volatile and frequently go to zero. A 2025 MEXC Research study found that 54.7% of Uniswap V3 LPs in volatile pairs lost money, and only 37.2% of non-stablecoin positions ended in profit. Concentrated liquidity positions — where LPs pick a specific price band — can massively increase fee capture within that range, but require active management.</span>
+        <span class="lang-zh">穩定幣對（USDC/USDT）每筆交易提供0.01至0.05%的費用，無常損失最小 — 與貨幣市場收益相當。新代幣發行��有50至99%的費率，在交易量高時產��可觀的短期回報，但底層代幣波動極大且經常歸零。2025年MEXC Research研究發現，Uniswap V3波動對中54.7%的LP虧損，僅37.2%的非穩定幣倉位盈利。集中流動性倉位 — LP選擇特定價格區間 — 可大幅增��該區間內的費用捕獲，但需要主動管理。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Who Is Already Here</span><span class="lang-zh">誰已在此</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The firms trading onchain are not startups. Jump Trading — one of the largest high-frequency trading firms in traditional markets — has over $300 million in on-chain holdings on Ethereum alone and has built custom MEV and arbitrage infrastructure across all major blockchains. Wintermute handles $5 billion or more in daily trading volume, provides liquidity across 50-plus exchanges, and generated 11% of Robinhood's transaction-based revenue in early 2025. Cumberland, the crypto arm of DRW Holdings (a 30-year-old prop trading firm), serves Goldman Sachs, Bloomberg, and major hedge funds. Citadel Securities — the world's largest equities market maker — has invested $200 million in Kraken and is expanding into crypto market making.</span>
+        <span class="lang-zh">在鏈上交易的公司不是初創企業。Jump Trading — 傳統市場最大的高頻交易公司之一 — 僅在Ethereum上就持有超過$3億的鏈上資產，並在所有主要區塊鏈上建立了定制的MEV和套利基礎設施。Wintermute日交易量超$50億，在50多個交易所提供流動性，並在2025年初貢獻了Robinhood 11%的交易相關收入。Cumberland是DRW Holdings（一家有30年���史的自營交易公司）的加密部門，服務Goldman Sachs、Bloomberg和主要對沖基金。Citadel Securities — 全球最大的股票做市商 — 已投資$2億於Kraken並正在擴展至加密做市。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The infrastructure requirements are non-trivial: low-latency RPC/gRPC nodes for blockchain state access, SWQoS (Stake-Weighted Quality of Service) on Solana or Flashbots on Ethereum for priority transaction landing, real-time monitoring of pool states and funding rates, and risk management frameworks that account for smart contract risk, impermanent loss, and liquidation cascades. But for desks willing to invest in the tooling, the strategy space is wide open ��� and the competition, while intensifying, is still orders of magnitude less dense than traditional markets.</span>
+        <span class="lang-zh">基礎設施需求不容小覷：用於區塊鏈狀態訪問的低延遲RPC/gRPC節點、Solana上的SWQoS（質押加權服務質量）或Ethereum上的Flashbots用於優先交易落地、實時監控池狀態和資金費率，以及考慮智能合約風險、無常損失和清算級聯的風險管理框架。但對於願意投資工具的部門，策略空間是完全開放的 — 而競爭雖在加劇，密度仍比傳統市場低幾個數量級。</span>
+      </p>
     </div>
-  </section>
 
-  <!-- Who Is Trading -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Who Is Already Trading Onchain</span>
-      <span class="lang-zh">誰已在鏈上交易</span>
-    </h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">Jump Trading</h3>
-        <p class="text-sm text-zinc-400">
-          <span class="lang-en">Major crypto market maker and infrastructure investor. Built custom MEV and arbitrage infrastructure across all major chains.</span>
-          <span class="lang-zh">主要的加密做市商和基礎設施投資者。在所有主要區塊鏈上建立定制MEV和套利基礎設施。</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">Wintermute</h3>
-        <p class="text-sm text-zinc-400">
-          <span class="lang-en">Algorithmic market maker providing liquidity across 50+ exchanges. Handles $5B+ daily volume. Active in both CeFi and DeFi.</span>
-          <span class="lang-zh">算法做市商，在50+交易所提供流動性。日處理量超$5B。活躍於CeFi和DeFi。</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">Citadel Securities</h3>
-        <p class="text-sm text-zinc-400">
-          <span class="lang-en">World's largest equities market maker, now investing $200M in Kraken and expanding into crypto. When Citadel enters, liquidity depth deepens significantly.</span>
-          <span class="lang-zh">全球最大股票做市商，現投資$200M於Kraken並擴展至加密領域。當Citadel入場，流動性深度將顯著增加。</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Infrastructure Needed -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Infrastructure Requirements</span>
-      <span class="lang-zh">基礎設施需求</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="grid md:grid-cols-2 gap-6 text-sm text-zinc-400">
-        <div class="space-y-3">
-          <p><span class="text-white font-medium"><span class="lang-en">RPC/gRPC nodes</span><span class="lang-zh">RPC/gRPC節點</span></span> — <span class="lang-en">Low-latency access to blockchain state. Dedicated nodes for serious trading.</span><span class="lang-zh">低延遲的區塊鏈狀態訪問。嚴肅交易需要專用節點。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Execution infrastructure</span><span class="lang-zh">執行基礎設施</span></span> — <span class="lang-en">SWQoS (Stake-Weighted Quality of Service) on Solana, Flashbots on Ethereum for priority transaction landing.</span><span class="lang-zh">Solana上的SWQoS（質押加權服務質量）、Ethereum上的Flashbots用於優先交易落地。</span></p>
-        </div>
-        <div class="space-y-3">
-          <p><span class="text-white font-medium"><span class="lang-en">Monitoring</span><span class="lang-zh">監控</span></span> — <span class="lang-en">Real-time tracking of pool state, funding rates, and cross-exchange prices. Milliseconds matter.</span><span class="lang-zh">實時跟蹤池狀態、資金費率和跨交易所價格。毫秒級別至關重要。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Risk management</span><span class="lang-zh">風險管理</span></span> — <span class="lang-en">Smart contract audit verification, position sizing, impermanent loss modeling, liquidation monitoring.</span><span class="lang-zh">智能合約審計驗證、倉位大小、無常損失建模、清算監控。</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="max-w-6xl mx-auto px-6 pb-24">
-    <div class="bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- CTA -->
+    <div class="mt-16 bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
         <h3 class="text-lg font-bold text-white mb-2">
           <span class="lang-en">Setting up an onchain trading desk?</span>
@@ -165,6 +104,7 @@ const base = '/tradfi-onchain';
         WhatsApp
       </a>
     </div>
+
     <div class="mt-6 flex justify-between">
       <a href={`${base}/apply/family-offices`} class="text-sm text-zinc-500 hover:text-white transition-colors">
         <span class="lang-en">← Family Offices</span><span class="lang-zh">← 家族辦公室</span>
@@ -173,5 +113,5 @@ const base = '/tradfi-onchain';
         <span class="lang-en">Compliance & Risk →</span><span class="lang-zh">合規與風險 →</span>
       </a>
     </div>
-  </section>
+  </article>
 </Layout>

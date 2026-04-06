@@ -4,287 +4,111 @@ const base = '/tradfi-onchain';
 ---
 
 <Layout title="Compliance & Risk — SFC Framework Guide">
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
       <span class="lang-en">Compliance & Risk</span><span class="lang-zh">合規與風險</span>
     </p>
-    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-      <span class="lang-en">SFC Framework Guide<br/>for Virtual Assets</span>
-      <span class="lang-zh">虛擬資產<br/>SFC框架指南</span>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+      <span class="lang-en">SFC Framework Guide for Virtual Assets</span>
+      <span class="lang-zh">虛擬資產SFC框架指南</span>
     </h1>
-    <p class="text-xl text-zinc-400 max-w-3xl">
-      <span class="lang-en">Hong Kong has built the most comprehensive virtual asset regulatory framework in Asia. 12 licensed VATPs, staking approval, stablecoin ordinance, and upcoming legislation for dealers, custodians, and advisors. Here's the complete picture for compliance teams.</span>
-      <span class="lang-zh">香港已建立亞洲最全面的虛擬資產監管框架。12間持牌VATP、質押批准、穩定幣條例，以及即將推出的交易商、託管人和顧問立法。以下是合規團隊的完整概覽。</span>
-    </p>
-  </section>
 
-  <!-- Regulatory Stack -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">The Regulatory Stack</span><span class="lang-zh">監管框架體系</span>
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6 text-center">
-        <p class="text-cyan-400 text-xs font-medium mb-2">
-          <span class="lang-en">Live</span><span class="lang-zh">已生效</span>
-        </p>
-        <p class="text-white font-bold">VATP</p>
-        <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">12 licensed platforms</span><span class="lang-zh">12間持牌平台</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6 text-center">
-        <p class="text-cyan-400 text-xs font-medium mb-2">
-          <span class="lang-en">Live</span><span class="lang-zh">已生效</span>
-        </p>
-        <p class="text-white font-bold">Stablecoin</p>
-        <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">Ordinance May 2025</span><span class="lang-zh">條例2025年5月</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6 text-center">
-        <p class="text-cyan-400 text-xs font-medium mb-2">
-          <span class="lang-en">Live</span><span class="lang-zh">已生效</span>
-        </p>
-        <p class="text-white font-bold">Staking</p>
-        <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">SFC approved Apr 2025</span><span class="lang-zh">SFC批准2025年4月</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6 text-center">
-        <p class="text-yellow-400 text-xs font-medium mb-2">
-          <span class="lang-en">Pending 2026</span><span class="lang-zh">2026年待定</span>
-        </p>
-        <p class="text-white font-bold">
-          <span class="lang-en">Dealers+</span><span class="lang-zh">交易商+</span>
-        </p>
-        <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">4 new categories</span><span class="lang-zh">4個新類別</span>
-        </p>
-      </div>
-    </div>
-  </section>
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
 
-  <!-- VATP Deep Dive -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">VATP Licensing — Detailed Requirements</span>
-      <span class="lang-zh">VATP牌照 — 詳細要求</span>
-    </h2>
-    <div class="space-y-6">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">Licensed Platforms (as of Feb 2026)</span>
-          <span class="lang-zh">持牌平台（截至2026年2月）</span>
-        </h3>
-        <div class="grid md:grid-cols-2 gap-4 text-sm text-zinc-400">
-          <div class="space-y-2">
-            <p><span class="text-white font-medium">HashKey Exchange</span> — <span class="lang-en">Retail + PI, first mover</span><span class="lang-zh">零售 + 專業投資者，先驅</span></p>
-            <p><span class="text-white font-medium">OSL Digital Securities</span> — <span class="lang-en">Retail + PI, institutional focus</span><span class="lang-zh">零售 + 專業投資者，機構為主</span></p>
-            <p><span class="text-white font-medium">HKVAX</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">HKbitEX</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">Accumulus</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">DFX Labs</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-          </div>
-          <div class="space-y-2">
-            <p><span class="text-white font-medium">Bullish</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">Cloud Account</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">Crypto.com</span> — <span class="lang-en">PI only (pending retail)</span><span class="lang-zh">僅專業投資者（待批零售）</span></p>
-            <p><span class="text-white font-medium">Ex.io</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">Matrixport HK</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-            <p><span class="text-white font-medium">Thunder Terminal</span> — <span class="lang-en">PI only</span><span class="lang-zh">僅專業投資者</span></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-          <h3 class="text-lg font-bold text-white mb-4">
-            <span class="lang-en">AML/KYC Requirements</span><span class="lang-zh">反洗錢/KYC要求</span>
-          </h3>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en">Full CDD (Customer Due Diligence) on all clients. Enhanced due diligence for PEPs and high-risk clients.</span><span class="lang-zh">對所有客戶進行完整CDD（客戶盡職調查）。對PEP及高風險客戶進行加強盡職調查。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Travel Rule:</span> Compliant with FATF Travel Rule — originator and beneficiary information must accompany virtual asset transfers above HK$8,000.</span><span class="lang-zh"><span class="text-white font-medium">旅行規則：</span>符合FATF旅行規則 — 超過HK$8,000的虛擬資產轉移必須附帶匯款人和收款人信息。</span></p>
-            <p><span class="lang-en">Suspicious transaction reporting to JFIU (Joint Financial Intelligence Unit).</span><span class="lang-zh">向JFIU（聯合財富情報組）報告可疑交易。</span></p>
-          </div>
-        </div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-          <h3 class="text-lg font-bold text-white mb-4">
-            <span class="lang-en">Custody & Insurance</span><span class="lang-zh">託管與保險</span>
-          </h3>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="lang-en"><span class="text-white font-medium">Cold storage:</span> 98%+ of client assets must be held in cold wallets.</span><span class="lang-zh"><span class="text-white font-medium">冷存儲：</span>98%+客戶資產必須存放在冷錢包中。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Insurance:</span> Must maintain insurance coverage for virtual assets held in custody.</span><span class="lang-zh"><span class="text-white font-medium">保險：</span>必須為託管的虛擬資產維持保險覆蓋。</span></p>
-            <p><span class="lang-en"><span class="text-white font-medium">Segregation:</span> Client assets must be segregated from platform proprietary assets.</span><span class="lang-zh"><span class="text-white font-medium">隔離：</span>客戶資產必須與平台自有資產分隔。</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stablecoin Ordinance -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Stablecoin Ordinance (May 2025)</span>
-      <span class="lang-zh">穩定幣條例（2025年5月）</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="grid md:grid-cols-2 gap-6 text-sm text-zinc-400">
-        <div class="space-y-3">
-          <p><span class="text-white font-medium"><span class="lang-en">Scope:</span><span class="lang-zh">範圍：</span></span> <span class="lang-en">Regulates issuance and operation of fiat-referenced stablecoins in HK or marketed to HK persons.</span><span class="lang-zh">規管在香港發行或向香港人士推銷的法幣掛鈎穩定幣的發行和運營。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Reserve:</span><span class="lang-zh">儲備：</span></span> <span class="lang-en">1:1 reserve requirement with high-quality liquid assets. Reserve composition must be disclosed.</span><span class="lang-zh">1:1儲備要求，需高質量流動資產。儲備構成必須披露。</span></p>
-        </div>
-        <div class="space-y-3">
-          <p><span class="text-white font-medium"><span class="lang-en">Applicants:</span><span class="lang-zh">申請人：</span></span> <span class="lang-en">HSBC, Standard Chartered, and OSL are among applicants for stablecoin issuer licenses.</span><span class="lang-zh">HSBC、渣打及OSL為穩定幣發行牌照申請人之一。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Impact:</span><span class="lang-zh">影響：</span></span> <span class="lang-en">If G-SIB banks issue HKD stablecoins, it would be globally significant — dramatically reducing institutional adoption barriers.</span><span class="lang-zh">若G-SIB銀行發行HKD穩定幣，將具全球意義 — 大幅降低機構採用門檻。</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Staking Guidelines -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">SFC Staking Guidelines (April 2025)</span>
-      <span class="lang-zh">SFC質押指引（2025年4月）</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="grid md:grid-cols-3 gap-6 text-sm text-zinc-400">
-        <div>
-          <p class="text-white font-medium mb-2">
-            <span class="lang-en">Full custody control</span><span class="lang-zh">完整託管控制</span>
-          </p>
-          <p><span class="lang-en">Platform must retain full control over staked assets. Cannot delegate to third-party validators without maintaining operational control.</span><span class="lang-zh">平台必須保留對質押資產的完整控制。不可在未維持運營控制的情況下委託第三方驗證者。</span></p>
-        </div>
-        <div>
-          <p class="text-white font-medium mb-2">
-            <span class="lang-en">Risk disclosure</span><span class="lang-zh">風險披露</span>
-          </p>
-          <p><span class="lang-en">Clear disclosure of staking risks including slashing, lockup periods, and validator selection criteria to clients.</span><span class="lang-zh">向客戶清楚披露質押風險，包括罰沒、鎖定期及驗證者選擇標準。</span></p>
-        </div>
-        <div>
-          <p class="text-white font-medium mb-2">
-            <span class="lang-en">Eligible assets</span><span class="lang-zh">合資格資產</span>
-          </p>
-          <p><span class="lang-en">Currently ETH is the primary staking asset available through licensed VATPs. Additional assets may be approved over time.</span><span class="lang-zh">目前ETH是通過持牌VATP提供的主要質押資產。更多資產可能逐步獲批。</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Upcoming 2026 Legislation -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Upcoming 2026 Legislation</span><span class="lang-zh">2026年即將推出的立法</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <p class="text-sm text-zinc-400 mb-6">
-        <span class="lang-en">The government is preparing legislation for four new categories of virtual asset service providers:</span>
-        <span class="lang-zh">政府正在為四個新類別的虛擬資產服務提供商準備立法：</span>
+      <p>
+        <span class="lang-en">Hong Kong has built the most comprehensive virtual asset regulatory framework in Asia. As of early 2026, the regulatory stack includes 12 licensed virtual asset trading platforms, a stablecoin ordinance effective since August 2025, SFC-approved staking guidelines, and pending legislation for four additional categories of service providers. For compliance teams at financial institutions, this is no longer a "watch and wait" environment — it's an active regulatory landscape that requires understanding.</span>
+        <span class="lang-zh">香港已建立亞洲最全面的虛擬資產監管框架。截至2026年初，監管體系包括12間持牌虛擬資產交易平台、自2025年8月起生效的穩定幣條例、SFC批准的質押指引，以及四個額外服務提供商類別的待定立法。對金融機構的合規團隊而言，這不再是「觀望」的環境 — 而是一個需要理解的活躍監管格局。</span>
       </p>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-zinc-800/30 rounded-lg p-6">
-          <h3 class="text-white font-bold mb-2">
-            <span class="lang-en">VA Dealers</span><span class="lang-zh">虛擬資產交易商</span>
-          </h3>
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">Licensing framework for OTC (over-the-counter) virtual asset dealing. Will regulate firms that buy/sell VA as principal or agent outside of licensed VATPs.</span>
-            <span class="lang-zh">場外虛擬資產交易的牌照框架。將規管在持牌VATP以外以本人或代理人身份買賣虛擬資產的公司。</span>
-          </p>
-        </div>
-        <div class="bg-zinc-800/30 rounded-lg p-6">
-          <h3 class="text-white font-bold mb-2">
-            <span class="lang-en">VA Custodians</span><span class="lang-zh">虛擬資產託管人</span>
-          </h3>
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">Regulation for dedicated custody service providers. Critical for institutional adoption — banks and funds need regulated third-party custody.</span>
-            <span class="lang-zh">專門託管服務提供商的監管。對機構採用至關重要 — 銀行和基金需要受監管的第三方託管。</span>
-          </p>
-        </div>
-        <div class="bg-zinc-800/30 rounded-lg p-6">
-          <h3 class="text-white font-bold mb-2">
-            <span class="lang-en">OTC Brokers</span><span class="lang-zh">場外經紀</span>
-          </h3>
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">Licensing for crypto brokerage services. Will bring OTC crypto markets under regulatory oversight.</span>
-            <span class="lang-zh">加密經紀服務的牌照。將使場外加密市場納入監管。</span>
-          </p>
-        </div>
-        <div class="bg-zinc-800/30 rounded-lg p-6">
-          <h3 class="text-white font-bold mb-2">
-            <span class="lang-en">VA Advisors</span><span class="lang-zh">虛擬資產顧問</span>
-          </h3>
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">Regulation of virtual asset investment advisory. Similar to existing SFC Type 4 (advising on securities) license framework.</span>
-            <span class="lang-zh">虛擬資產投資顧問的監管。類似現有SFC第4類（就證券提供意見）牌照框架。</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Risk Framework -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Risk Assessment Framework for DeFi Products</span>
-      <span class="lang-zh">DeFi產品風險評估框架</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl overflow-hidden">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-zinc-800/50">
-            <th class="text-left p-4 text-zinc-500 font-medium">
-              <span class="lang-en">Product</span><span class="lang-zh">產品</span>
-            </th>
-            <th class="text-left p-4 text-zinc-500 font-medium">
-              <span class="lang-en">SFC Status</span><span class="lang-zh">SFC狀態</span>
-            </th>
-            <th class="text-left p-4 text-zinc-500 font-medium">
-              <span class="lang-en">Key Risks</span><span class="lang-zh">主要風險</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="text-zinc-400">
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium">
-              <span class="lang-en">Licensed VATP (BTC/ETH)</span><span class="lang-zh">持牌VATP（BTC/ETH）</span>
-            </td>
-            <td class="p-4"><span class="text-green-400"><span class="lang-en">Regulated</span><span class="lang-zh">受監管</span></span></td>
-            <td class="p-4"><span class="lang-en">Market risk, custody risk (mitigated)</span><span class="lang-zh">市場風險、託管風險（已緩解）</span></td>
-          </tr>
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium">
-              <span class="lang-en">ETH Staking (via VATP)</span><span class="lang-zh">ETH質押（經VATP）</span>
-            </td>
-            <td class="p-4"><span class="text-green-400"><span class="lang-en">Regulated</span><span class="lang-zh">受監管</span></span></td>
-            <td class="p-4"><span class="lang-en">Slashing risk, lockup, market risk</span><span class="lang-zh">罰沒風險、鎖定期、市場風險</span></td>
-          </tr>
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium">Polymarket</td>
-            <td class="p-4"><span class="text-yellow-400"><span class="lang-en">Unregulated</span><span class="lang-zh">未受監管</span></span></td>
-            <td class="p-4"><span class="lang-en">Smart contract, resolution, regulatory</span><span class="lang-zh">智能合約、結算、監管風險</span></td>
-          </tr>
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium">Hyperliquid</td>
-            <td class="p-4"><span class="text-yellow-400"><span class="lang-en">Unregulated</span><span class="lang-zh">未受監管</span></span></td>
-            <td class="p-4"><span class="lang-en">Leverage, oracle, counterparty, regulatory</span><span class="lang-zh">槓桿、預言機、對手方、監管風險</span></td>
-          </tr>
-          <tr>
-            <td class="p-4 text-white font-medium">
-              <span class="lang-en">AMM LP</span><span class="lang-zh">AMM流動性提供</span>
-            </td>
-            <td class="p-4"><span class="text-yellow-400"><span class="lang-en">Unregulated</span><span class="lang-zh">未受監管</span></span></td>
-            <td class="p-4"><span class="lang-en">IL, smart contract, rug pull, regulatory</span><span class="lang-zh">無常損失、智能合約、項目跑路、監管風險</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">VATP Licensing: The Foundation</span><span class="lang-zh">VATP牌照：基礎</span>
+      </h2>
 
-  <!-- Bottom CTA -->
-  <section class="max-w-6xl mx-auto px-6 pb-24">
-    <div class="bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <p>
+        <span class="lang-en">The Securities and Futures Commission oversees Virtual Asset Trading Platform licensing under the Anti-Money Laundering and Counter-Terrorist Financing Ordinance (AMLO). As of February 2026, twelve platforms hold licenses: HashKey Exchange and OSL Digital Securities were the first, licensed in August 2023, and remain the only two approved for retail trading (limited to BTC and ETH). The remaining ten — including HKVAX, HKbitEX, Bullish, Crypto.com, and Matrixport HK — serve professional investors only. Victory Fintech (VDX), a subsidiary of Tiger Brokers, received the most recent approval in February 2026.</span>
+        <span class="lang-zh">證券及期貨事務監察委員會根據《打擊洗錢及恐怖分子資金籌集條例》（AMLO）監管虛擬資產交易平台牌照。截至2026年2月，12間平台持有牌照：HashKey Exchange和OSL Digital Securities是首批，於2023年8月獲牌，仍是僅有的兩間獲准進行零售交易的平台（限於BTC和ETH）。其餘十間 — 包括HKVAX、HKbitEX、Bullish、Crypto.com和Matrixport HK — 僅服務專業投資者。Victory Fintech（VDX），Tiger Brokers的子公司，於2026年2月獲得最近的批准。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The licensing requirements are substantial. Platforms must hold 98% or more of client assets in cold wallets, maintain insurance coverage for custodied virtual assets, and segregate client assets from proprietary holdings. Full customer due diligence is mandatory, with enhanced due diligence for politically exposed persons and high-risk clients. Suspicious transactions must be reported to the Joint Financial Intelligence Unit.</span>
+        <span class="lang-zh">牌照要求相當嚴格。平台必須將98%以上的客戶資產存放在冷錢包中，為託管的虛擬資產維持保險覆蓋，並將客戶資產與自有持倉分隔。強制進行全面客戶盡職調查，對政治敏感人物和高風險客戶進行加強盡職調查。可疑交易必須向聯合財富情報組報告。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The Travel Rule is in effect: virtual asset transfers above HK$8,000 must include originator and beneficiary information, consistent with FATF requirements. This applies both when a VATP acts as the ordering institution and when it acts as the beneficiary.</span>
+        <span class="lang-zh">旅行規則已生效：超過HK$8,000的虛擬資產轉移必須包含匯款人和收款人信息，符合FATF要求。這適用於VATP作為匯出機構和作為收款機構的情況。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Stablecoin Ordinance</span><span class="lang-zh">穩定幣條例</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The Stablecoins Ordinance was passed on May 21, 2025 and took effect on August 1, 2025. Regulated by the HKMA, it requires licensing for the issuance of fiat-referenced stablecoins in Hong Kong or HKD-pegged stablecoins anywhere in the world.</span>
+        <span class="lang-zh">穩定幣條例於2025年5月21日通過，2025年8月1日生效。由HKMA監管，要求在香港發行法幣掛鈎穩定幣或在全球任何地方發行港幣掛鈎穩定幣須持有牌照。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Key provisions: issuers must maintain 100% reserve backing at all times (the HKMA expects overcollateralization), with reserves held in high-quality, highly liquid assets segregated from the issuer's own assets. Holders have an absolute right to redemption at par, processed within one business day. Capital requirements include HK$25 million in paid-up share capital, HK$3 million in liquid capital, and sufficient excess liquid capital to cover 12 months of operating expenses.</span>
+        <span class="lang-zh">關鍵條款：發行人必須始終維持100%儲備支持（HKMA期望超額抵押），儲備以高質量、高流動性資產持有，與發行人自有資產分隔。持有人有絕對的平價贖回權，在一個工作日內處理。資本要求包括HK$2,500萬實繳股本、HK$300萬流動資金，以及足夠的超額流動資金覆蓋12個月運營費用。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">HSBC, Standard Chartered, and OSL are among the applicants for stablecoin issuer licenses. If a G-SIB bank issues an HKD stablecoin under this framework, it would be globally significant — the first regulated stablecoin issued by a systemically important bank, dramatically reducing institutional adoption barriers for onchain settlement.</span>
+        <span class="lang-zh">HSBC、渣打和OSL是穩定幣發行牌照的申請人之一。如果G-SIB銀行在此框架下發行HKD穩定幣，將具全球意義 — 這將是系統重要性銀行發行的首個受監管穩定幣，大幅降低機構採用鏈上結算的障礙。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Staking Guidelines</span><span class="lang-zh">質押指引</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">On April 7, 2025, the HKMA and SFC jointly issued guidance permitting licensed VATPs to offer staking services. The definition is specific: locking client virtual assets to participate in blockchain proof-of-stake validation, with returns distributed for participation. The key requirements are that staked assets must be held in segregated accounts at a licensed VATP or authorized financial institution, existing client asset protection rules must be complied with, and clear risk disclosures — covering slashing risk, lockup periods, and validator selection criteria — must be provided to clients. Currently, ETH is the primary staking asset available through licensed platforms.</span>
+        <span class="lang-zh">2025年4月7日，HKMA和SFC聯合發布指引，允許持牌VATP提供質押服務。定義是明確的：鎖定客戶虛擬資產以參與區塊鏈權益證明驗證，參與回報分配給客戶。關鍵要求是質押資產必須存放在持牌VATP或授權金融機構的隔離賬戶中，必須遵守現有客戶資產保護規則，且必須向客戶提供清晰的風險披露 — 涵蓋罰沒風險、鎖定期和驗證者選擇標準。目前，ETH是通過持牌平台提供的主要質押資產。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">2026 Legislation: Four New Categories</span><span class="lang-zh">2026年立法：四個新類別</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The government is preparing legislation for four additional categories of virtual asset service providers, all expected to sit under AMLO. Banks will not be exempt — those offering VA dealing or custody must register with the SFC.</span>
+        <span class="lang-zh">政府正在為四個額外的虛擬資產服務提供商類別準備立法，全部預計歸入AMLO。銀行不會獲豁免 — 提供VA交易或託管的銀行必須向SFC註冊。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">VA Dealers</span> will require licensing for OTC virtual asset dealing — firms that buy or sell virtual assets as principal or agent outside of licensed VATPs. This brings the large and currently unregulated OTC market under supervisory oversight. <span class="text-white font-medium">VA Custodians</span> will face strict requirements for private key management, asset segregation, cold storage and multi-signature controls, cybersecurity audits, and insurance. This is critical for institutional adoption: banks and funds need regulated third-party custody options.</span>
+        <span class="lang-zh"><span class="text-white font-medium">VA交易商</span>將需要場外虛擬資產交易的牌照 — 在持牌VATP以外以本人或代理人身份買賣虛擬資產的公司。這將目前不受監管的大型OTC市場納入監管。<span class="text-white font-medium">VA託管人</span>將面臨私鑰管理、資產隔離、冷存儲和多重簽名控制、網絡安全審計及保險的嚴格要求。這對機構採用至關重要：銀行和基金需要受監管的第三方託管選擇。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">OTC Brokers</span> — crypto brokerage services — will be brought under the same regulatory umbrella. <span class="text-white font-medium">VA Advisors</span> — investment advisory services for virtual assets — will likely follow a framework similar to the existing SFC Type 4 (advising on securities) license. The SFC's consultation on extending oversight to VA advisers and managers closed in January 2026.</span>
+        <span class="lang-zh"><span class="text-white font-medium">場外經紀</span> — 加密經紀服務 — 將納入同一監管框架。<span class="text-white font-medium">VA顧問</span> — 虛擬資產投資顧問服務 — 可能遵循類似現有SFC第4類（就證券提供意見）牌照的框架。SFC對擴大VA顧問和管理人監管的諮詢於2026年1月結束。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Risk Assessment: Regulated vs. Unregulated Products</span>
+        <span class="lang-zh">風險評估：受監管 vs. 未受監管產品</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">For compliance teams evaluating onchain products, the regulatory status creates a clear dividing line. BTC and ETH trading through licensed VATPs, and ETH staking through licensed platforms, are regulated activities with established supervisory frameworks. The risks are familiar: market volatility, custody risk (mitigated by SFC requirements), and — for staking — slashing and lockup risk.</span>
+        <span class="lang-zh">對於評估鏈上產品的合規團隊，監管狀態創造了明確的分界線。通過持牌VATP交易BTC和ETH，以及通過持牌平台進行ETH質押，是有既定監管框架的受監管活動。風險是熟悉的：市場波動、託管風險（由SFC要求緩解），以及 — 對質押而言 — 罰沒和鎖定風險。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Everything else — Polymarket, Hyperliquid, DeFi lending, AMM liquidity provision — is unregulated. These products carry smart contract risk, oracle manipulation risk, counterparty risk, and regulatory risk. There is no deposit protection, no recourse mechanism, and no supervisory oversight. The risk profiles vary significantly: Polymarket settles on Polygon USDC with a hybrid architecture; Hyperliquid runs its own L1 chain with a 21-validator set controlled by the team; AMM pools expose participants to impermanent loss and rug pull risk from permissionless token listings.</span>
+        <span class="lang-zh">其他一切 — Polymarket、Hyperliquid、DeFi借貸、AMM流動性提供 — 都是未受監管的。這些產品帶有智能合約風險、預言機操縱風險、對手方風險和監管風險。沒有存款保障、沒有追索機制、沒有監管監督。風險概況差異顯著：Polymarket在Polygon USDC上結算，採用混合架構；Hyperliquid運行自己的L1鏈，由團隊控制的21個驗證者集合；AMM池使參與者面臨無常損失和無需許可代幣上市帶來的項目跑路風險。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The compliance question is not whether these products exist — they do, and your colleagues may already be using them personally. The question is how your institution classifies them for purposes of personal trading policies, client advisory, and — increasingly — product evaluation. With the SFC's regulatory perimeter expanding through the 2026 legislation, the boundary between regulated and unregulated will continue to shift. Compliance teams that understand the landscape now will be better positioned to advise when the next category of products moves inside the perimeter.</span>
+        <span class="lang-zh">合規問題不在於這些產品是否存在 — 它們存在，你的同事可能已在個人使用。問題在於你的機構如何為個人交易政策、客戶顧問，以及 — 越來越多地 — 產品評估目的對它們進行分類。隨著SFC通過2026年立法擴大監管範圍，受監管與未受監管之間的界限將持續變化。現在理解這一格局的合規團隊，在下一類產品進入監管範圍時將處於更有利的位置。</span>
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
         <h3 class="text-lg font-bold text-white mb-2">
           <span class="lang-en">Need help with compliance assessment?</span>
@@ -300,10 +124,11 @@ const base = '/tradfi-onchain';
         WhatsApp
       </a>
     </div>
+
     <div class="mt-6">
       <a href={`${base}/apply/prop-trading`} class="text-sm text-zinc-500 hover:text-white transition-colors">
         <span class="lang-en">← Prop Trading</span><span class="lang-zh">← 自營交易</span>
       </a>
     </div>
-  </section>
+  </article>
 </Layout>

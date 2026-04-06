@@ -4,157 +4,102 @@ const base = '/tradfi-onchain';
 ---
 
 <Layout title="Investment Banking — Tokenized Issuance">
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <!-- Hero -->
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
       <span class="lang-en">Investment Banking</span><span class="lang-zh">投資銀行</span>
     </p>
-    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
-      <span class="lang-en">How ECM/DCM Teams Are Exploring<br/>Tokenized Issuance</span>
-      <span class="lang-zh">ECM/DCM團隊如何<br/>探索代幣化發行</span>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
+      <span class="lang-en">How ECM/DCM Teams Are Exploring Tokenized Issuance</span>
+      <span class="lang-zh">ECM/DCM團隊如何探索代幣化發行</span>
     </h1>
-    <p class="text-xl text-zinc-400 max-w-3xl">
-      <span class="lang-en">Goldman Sachs, HSBC, and the European Investment Bank have already executed tokenized bond issuances. The NYSE is partnering with Securitize for 24/7 tokenized securities trading. This is not a pilot — it's primary market infrastructure being rebuilt onchain.</span>
-      <span class="lang-zh">Goldman Sachs、HSBC同歐洲投資銀行已經完成代幣化債券發行。NYSE正同Securitize合作建立24/7代幣化證券交易。呢個唔係pilot — 係primary market infrastructure喺chain上重建。</span>
-    </p>
-  </section>
 
-  <!-- The Shift -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">The Shift: Primary Issuance Moving Onchain</span>
-      <span class="lang-zh">轉變：一級發行遷移上鏈</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="space-y-4 text-sm text-zinc-400">
-        <p>
-          <span class="lang-en">Traditional bond issuance requires coordination between issuer, underwriter, custodian, clearing house, and registrar — a process that typically takes 5-14 days from pricing to settlement. Tokenized issuance collapses this into a single onchain transaction with instant settlement, programmable compliance, and 24/7 secondary market access.</span>
-          <span class="lang-zh">傳統債券發行需要發行人、承銷商、託管人、結算所同登記機構之間的協調 — 從定價到結算通常需要5-14天。代幣化發行將此壓縮為單個鏈上交易，實現即時結算、可編程合規同24/7二級市場准入。</span>
-        </p>
-        <p>
-          <span class="lang-en">The cost savings are significant. McKinsey estimates that tokenized bond issuance can reduce operational costs by 30-50% through elimination of intermediary reconciliation, automated coupon payments, and instant cross-border settlement.</span>
-          <span class="lang-zh">成本節省顯著。麥肯錫估計，代幣化債券發行可通過消除中介對賬、自動化票息支付及即時跨境結算，降低運營成本30-50%。</span>
-        </p>
-      </div>
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <p>
+        <span class="lang-en">In April 2021, the European Investment Bank issued a EUR 100 million digital bond on the Ethereum public blockchain — jointly led by Goldman Sachs, Santander, and Societe Generale. Settlement was handled in central bank digital currency via Banque de France. It was the first time a supranational institution had used a public blockchain for primary issuance.</span>
+        <span class="lang-zh">2021年4月，歐洲投資銀行在Ethereum公共區塊鏈上發行了EUR 1億數字債券 — 由Goldman Sachs、Santander和Societe Generale聯合牽頭。結算通過法國央行的央行數字貨幣完成。這是超國家機構首次使用公共區塊鏈進行一級發行。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Five years later, this is no longer experimental. Goldman Sachs has built GS DAP — a full Digital Asset Platform on the Canton blockchain — and plans to spin it out as an independent, industry-owned entity by mid-2026, with Tradeweb Markets as its first strategic partner. HSBC's Orion platform has settled the Hong Kong Government's tokenized green bond program, which has now reached a cumulative HK$10 billion across three issuances — making it the largest sovereign digital bond program in the world. JP Morgan's Kinexys (formerly Onyx) has processed over $1.5 trillion in tokenized transactions, handling $2 billion or more in daily intraday repo volume.</span>
+        <span class="lang-zh">五年後，這已不再是實驗。Goldman Sachs建立了GS DAP — 一個基於Canton區塊鏈的完整數字資產平台 — 並計劃於2026年中將其分拆為獨立的、由行業擁有的實體，Tradeweb Markets是其第一個戰略合作夥伴。HSBC的Orion平台結算了香港政府的代幣化綠色債券計劃，三次發行累計已達HK$100億 — 使其成為全球最大的主權數字債券計劃。JP Morgan的Kinexys（前身為Onyx）已處理超過$1.5萬億的代幣化交易，日均處理$20億以上的日內回購量。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The question for investment banking teams in Hong Kong is not whether this transition will happen — it's how quickly it will reshape their workflow.</span>
+        <span class="lang-zh">對於香港的投資銀行團隊而言，問題不在於這個轉型是否會發生 — 而在於它將多快重塑他們的工作流程。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">What Changes for DCM</span><span class="lang-zh">DCM的變化</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Traditional bond issuance requires coordination between issuer, underwriter, custodian, clearing house, and registrar — a process that typically takes 5 to 14 days from pricing to settlement. Tokenized issuance collapses this into a single onchain transaction. Settlement is instant. Coupon payments are automated via smart contracts. The secondary market is accessible 24/7.</span>
+        <span class="lang-zh">傳統債券發行需要發行人、承銷商、託管人、結算所及登記機構之間的協調 — 從定價到結算通常需要5至14天。代幣化發行將此壓縮為單個鏈上交易。結算即時完成。票息支付通過智能合約自動化。二級市場24/7可訪問。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The cost savings are meaningful. McKinsey estimates that tokenized bond issuance can reduce operational costs by 30 to 50 percent through the elimination of intermediary reconciliation, automated coupon payments, and instant cross-border settlement. UBS has already issued a CHF 375 million digital bond on the SIX Digital Exchange with instant settlement. OCBC became the first Singapore bank to tokenize corporate bonds for treasury management in January 2025.</span>
+        <span class="lang-zh">成本節省意義重大。麥肯錫估計，代幣化債券發行可通過消除中介對賬、自動化票息支付及即時跨境結算，降低運營成本30至50%。UBS已在SIX Digital Exchange上發行了CHF 3.75億數字債券，實現即時結算。OCBC於2025年1月成為首家將企業債券代幣化用於資金管理的新加坡銀行。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">For DCM teams, the advisory opportunity is substantial: helping issuers evaluate tokenized versus traditional issuance, structuring hybrid transactions with tokenized tranches alongside conventional ones, and navigating the emerging regulatory landscape for digital securities.</span>
+        <span class="lang-zh">對DCM團隊而言，顧問機會重大：幫助發行人評估代幣化與傳統發行的取捨、構建包含代幣化tranche和傳統tranche的混合交易，以及在新興的數字證券監管環境中導航。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">What Changes for ECM</span><span class="lang-zh">ECM的變化</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">On March 24, 2026, the New York Stock Exchange signed a memorandum of understanding with Securitize — the leading tokenization platform that also partners with BlackRock on BUIDL — to develop a 24/7 tokenized securities trading platform. Securitize will serve as the first digital transfer agent eligible to mint blockchain-native securities for corporate and ETF issuers on the upcoming NYSE Digital Trading Platform.</span>
+        <span class="lang-zh">2026年3月24日，紐約證券交易所與Securitize — 領先的代幣化平台，同時也是BlackRock BUIDL的合作夥伴 — 簽署了諒解備忘錄，共同開發24/7代幣化證券交易平台。Securitize將成為首個有資格在即將推出的NYSE Digital Trading Platform上為企業及ETF發行人鑄造區塊鏈原生證券的數字轉讓代理。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The platform targets instant on-chain settlement, fractional shares via dollar-denominated orders, and stablecoin-based funding. It requires SEC and FINRA approval, with a launch target of late 2026. But the direction is clear: the line between an IPO and a token launch is beginning to blur.</span>
+        <span class="lang-zh">該平台的目標是即時鏈上結算、通過美元計價訂單實現碎片化股份，以及基於穩定幣的資金結算。它需要SEC和FINRA的批准，目標於2026年末推出。但方向是明確的：IPO與代幣發行之間的界限正在開始模糊。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Fractional ownership unlocks smaller ticket sizes. Global investors can participate without local brokerage accounts. And 24/7 trading means Asian investors no longer need to wait for US market hours to access the secondary market.</span>
+        <span class="lang-zh">碎片化所有權解鎖了更小的投資額度。全球投資者無需本地券商賬戶即可參與。而24/7交易意味著亞洲投資者不再需要等待美國市場時段才能進入二級市場。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Structured Products Go Programmable</span><span class="lang-zh">結構化產品走向可編程</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Smart contracts can automate coupon calculations, waterfall distributions, and compliance checks — the kind of operational overhead that currently requires entire back-office teams. DBS Singapore is already issuing tokenized structured notes on Ethereum. More significantly, composability means that structured products can be built on top of tokenized treasuries: BlackRock's BUIDL ($2.4 billion AUM, available on nine blockchains) is already accepted as trading collateral by Binance and is being integrated across DeFi lending protocols.</span>
+        <span class="lang-zh">智能合約可自動化票息計算、瀑布式分配及合規檢查 — 這類目前需要整個後台團隊的運營開銷。DBS Singapore已在Ethereum上發行代幣化結構性票據。更重要的是，可組合性意味著結構化產品可以建立在代幣化美債之上：BlackRock的BUIDL（$24億AUM，在9條區塊鏈上可用）已被Binance接受作為交易抵押品，並正在整合到各DeFi借貸協議中。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">McKinsey forecasts $4 to $5 trillion in digital securities issuance by 2030. The infrastructure is being built now by the exact institutions that investment bankers already work with — Goldman, HSBC, JP Morgan, NYSE. The technology layer is not the disruptor here; the workflow transformation is.</span>
+        <span class="lang-zh">麥肯錫預測到2030年數字證券發行將達$4至$5萬億。基礎設施正由投資銀行家已經合作的機構建設 — Goldman、HSBC、JP Morgan、NYSE。技術層面並非顛覆者；工作流程的轉型才是。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">The Hong Kong Position</span><span class="lang-zh">香港的定位</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Hong Kong is not waiting on the sidelines. The government's tokenized green bond program — settled via HSBC Orion, with the third issuance reaching HK$10 billion in November 2025 — is one of the most ambitious sovereign digital bond initiatives globally. The regulatory stack is maturing: 12 licensed virtual asset trading platforms, a stablecoin ordinance effective since August 2025, and upcoming legislation for VA dealers, custodians, and advisors in 2026.</span>
+        <span class="lang-zh">香港並未袖手旁觀。港府的代幣化綠色債券計劃 — 通過HSBC Orion結算，第三次發行於2025年11月達到HK$100億 — 是全球最具雄心的主權數字債券倡議之一。監管體系日趨成熟：12間持牌虛擬資產交易平台、2025年8月起生效的穩定幣條例，以及2026年即將推出的VA交易商、託管人和顧問立法。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">For IB teams based in Hong Kong, the question is no longer "will tokenized issuance happen?" It's "how do we position our desk for the transition — and which clients will need us to guide them through it first?"</span>
+        <span class="lang-zh">對於駐香港的IB團隊，問題不再是「代幣化發行會否發生？」而是「我們如何為轉型做好準備 — 以及哪些客戶需要我們率先引導他們完成這個過程？」</span>
+      </p>
     </div>
-  </section>
 
-  <!-- Live Deals -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Live Deals: Who Is Doing This</span>
-      <span class="lang-zh">實際案例：誰在做</span>
-    </h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">Goldman Sachs GS DAP</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">DCM</span>
-        </div>
-        <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Platform:</span><span class="lang-zh">平台：</span></span> <span class="lang-en">GS DAP (Digital Asset Platform) — private blockchain built for institutional bond issuance.</span><span class="lang-zh">GS DAP (Digital Asset Platform) — 專為機構債券發行而建的私有鏈。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Key deal:</span><span class="lang-zh">重要交易：</span></span> <span class="lang-en">European Investment Bank (EIB) EUR 100M digital bond — the first major supranational tokenized issuance.</span><span class="lang-zh">歐洲投資銀行（EIB）EUR 100M digital bond — 首個大型超國家機構代幣化發行。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Roadmap:</span><span class="lang-zh">路線圖：</span></span> <span class="lang-en">Plans to spin out GS DAP as an independent entity by mid-2026, signaling this is a permanent business line, not an experiment.</span><span class="lang-zh">計劃於2026年中將GS DAP分拆為獨立實體，表明這是永久業務線，而非實驗。</span></p>
-        </div>
-      </div>
-
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">HSBC Orion</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">DCM</span>
-        </div>
-        <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Platform:</span><span class="lang-zh">平台：</span></span> <span class="lang-en">Orion — institutional-grade tokenization platform for bond issuance and settlement.</span><span class="lang-zh">Orion — 機構級代幣化平台，用於債券發行和結算。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Key deal:</span><span class="lang-zh">重要交易：</span></span> <span class="lang-en">Hong Kong Government tokenized green bond — 3rd issuance, cumulative HK$10B. Settled entirely through Orion.</span><span class="lang-zh">香港政府代幣化綠色債券 — 第3次發行，累計HK$100億。全部通過Orion結算。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Scale:</span><span class="lang-zh">規模：</span></span> <span class="lang-en">Also handling tokenized deposits globally. Orion is not a side project — it's becoming core infrastructure.</span><span class="lang-zh">同時處理全球代幣化存款。Orion不是副項目 — 正成為核心基礎設施。</span></p>
-        </div>
-      </div>
-
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">NYSE × Securitize</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">ECM</span>
-        </div>
-        <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">MOU:</span> <span class="lang-en">NYSE signed a memorandum of understanding with Securitize, the leading tokenization platform (which also partners with BlackRock BUIDL).</span><span class="lang-zh">NYSE同Securitize（領先代幣化平台，亦係BlackRock BUIDL嘅合作夥伴）簽署諒解備忘錄。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Goal:</span><span class="lang-zh">目標：</span></span> <span class="lang-en">Build a 24/7 tokenized securities trading platform. This would extend NYSE's reach beyond traditional trading hours.</span><span class="lang-zh">建立24/7代幣化證券交易平台。這將把NYSE的覆蓋範圍延伸至傳統交易時段之外。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Implication:</span><span class="lang-zh">影響：</span></span> <span class="lang-en">ECM teams should watch this closely — the primary listing paradigm may shift within 3-5 years.</span><span class="lang-zh">ECM團隊應密切關注 — 一級上市範式可能在3-5年內改變。</span></p>
-        </div>
-      </div>
-
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">JP Morgan Kinexys</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">Settlement</span>
-        </div>
-        <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Scale:</span><span class="lang-zh">規模：</span></span> <span class="lang-en">$1.5T+ total transactions processed. $2B+ daily intraday repo volume.</span><span class="lang-zh">已處理交易總額超$1.5T。日均回購量超$2B。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Use cases:</span><span class="lang-zh">應用場景：</span></span> <span class="lang-en">Onchain FX settlement, intraday repo, cross-border payments — the plumbing that makes capital markets work.</span><span class="lang-zh">鏈上外匯結算、日內回購、跨境支付 — 令資本市場運作的管道。</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Signal:</span><span class="lang-zh">信號：</span></span> <span class="lang-en">When the world's largest bank processes $1.5T+ through blockchain, it's no longer experimental.</span><span class="lang-zh">當全球最大銀行通過區塊鏈處理超$1.5T，這已不再是實驗。</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What Changes for IB -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">What Changes for Investment Banking Teams</span>
-      <span class="lang-zh">投資銀行團隊的變化</span>
-    </h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <p class="text-cyan-400 font-medium mb-3">DCM</p>
-        <h3 class="text-lg font-bold text-white mb-3">
-          <span class="lang-en">Bond Issuance</span><span class="lang-zh">債券發行</span>
-        </h3>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="lang-en">Tokenized bonds settle instantly instead of T+2. Coupon payments are automated via smart contracts. Investors can access the secondary market 24/7.</span><span class="lang-zh">代幣化債券即時結算，取代T+2。票息支付通過智能合約自動化。投資者可24/7進入二級市場。</span></p>
-          <p><span class="lang-en">Advisory opportunity: help issuers evaluate tokenized vs traditional issuance. Structuring tokenized tranches alongside traditional ones.</span><span class="lang-zh">顧問機會：幫助發行人評估代幣化與傳統發行。在傳統發行旁邊構建代幣化tranche。</span></p>
-        </div>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <p class="text-cyan-400 font-medium mb-3">ECM</p>
-        <h3 class="text-lg font-bold text-white mb-3">
-          <span class="lang-en">Securities Trading</span><span class="lang-zh">證券交易</span>
-        </h3>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="lang-en">NYSE × Securitize MOU points toward 24/7 tokenized equity trading. This may eventually blur the line between IPO and token launch.</span><span class="lang-zh">NYSE × Securitize MOU指向24/7代幣化股權交易。這最終可能模糊IPO和代幣發行之間的界限。</span></p>
-          <p><span class="lang-en">Fractional ownership unlocks smaller ticket sizes. Global investors can participate without local brokerage accounts.</span><span class="lang-zh">碎片化所有權解鎖更小的投資額度。全球投資者無需本地券商賬戶即可參與。</span></p>
-        </div>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <p class="text-cyan-400 font-medium mb-3">
-          <span class="lang-en">Structured Products</span><span class="lang-zh">結構化產品</span>
-        </p>
-        <h3 class="text-lg font-bold text-white mb-3">
-          <span class="lang-en">Programmable Finance</span><span class="lang-zh">可編程金融</span>
-        </h3>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="lang-en">Smart contracts can automate coupon calculations, waterfall distributions, and compliance checks. DBS Singapore is already issuing tokenized structured notes on Ethereum.</span><span class="lang-zh">智能合約可自動化票息計算、瀑布式分配及合規檢查。DBS Singapore已在Ethereum上發行代幣化結構性票據。</span></p>
-          <p><span class="lang-en">Composability means structured products can be built on top of tokenized treasuries (BlackRock BUIDL as collateral).</span><span class="lang-zh">可組合性意味著結構化產品可建立在代幣化美債之上（BlackRock BUIDL作抵押品）。</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HK Context -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Hong Kong Context</span><span class="lang-zh">香港背景</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="space-y-4 text-sm text-zinc-400">
-        <p><span class="lang-en">Hong Kong is actively embracing tokenized issuance at the government level. The HK Government's tokenized green bond program (cumulative HK$10B, settled via HSBC Orion) is one of the largest sovereign tokenized bond programs globally.</span><span class="lang-zh">香港正在政府層面積極擁抱代幣化發行。港府代幣化綠色債券計劃（累計HK$100億，經HSBC Orion結算）是全球最大的主權代幣化債券計劃之一。</span></p>
-        <p><span class="lang-en">With 12 licensed VATPs, a stablecoin ordinance in place, and upcoming VA dealer/custodian licensing, HK is building the full regulatory stack for tokenized capital markets.</span><span class="lang-zh">擁有12間持牌VATP、穩定幣條例已實施、以及即將推出的VA交易商/託管人牌照，香港正在構建代幣化資本市場的完整監管框架。</span></p>
-        <p><span class="lang-en">For IB teams in Hong Kong: the question is no longer "will tokenized issuance happen?" but "how do we position our team for the transition?"</span><span class="lang-zh">對於香港的IB團隊：問題不再是「代幣化發行會否發生？」而是「我們如何為轉型做好準備？」</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="max-w-6xl mx-auto px-6 pb-24">
-    <div class="bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- CTA -->
+    <div class="mt-16 bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
         <h3 class="text-lg font-bold text-white mb-2">
           <span class="lang-en">Want to discuss how this applies to your team?</span>
@@ -170,10 +115,11 @@ const base = '/tradfi-onchain';
         WhatsApp
       </a>
     </div>
-    <div class="mt-6 flex gap-4">
+
+    <div class="mt-6">
       <a href={`${base}/apply/asset-management`} class="text-sm text-zinc-500 hover:text-white transition-colors">
         <span class="lang-en">Next: Asset Management →</span><span class="lang-zh">下一篇：資產管理 →</span>
       </a>
     </div>
-  </section>
+  </article>
 </Layout>
