@@ -4,329 +4,83 @@ const base = '/tradfi-onchain';
 ---
 
 <Layout title="Market Landscape — Global + HK">
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
       <span class="lang-en">Market Landscape</span><span class="lang-zh">市場動態</span>
     </p>
-    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
       <span class="lang-en">Market Landscape</span><span class="lang-zh">市場動態</span>
     </h1>
-    <p class="text-xl text-zinc-400 max-w-3xl">
-      <span class="lang-en">The world's largest financial institutions are building onchain infrastructure. Hong Kong's government and regulators are actively pushing forward. Here is the latest landscape.</span>
-      <span class="lang-zh">全球最大嘅金融機構已經喺度建onchain infrastructure。香港政府同金融監管機構都積極推進。呢度係最新嘅landscape。</span>
-    </p>
-  </section>
 
-  <!-- Global Section -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-2">
-      <span class="lang-en">Global — Major Institutional Moves</span><span class="lang-zh">全球 — 大行動態</span>
-    </h2>
-    <p class="text-zinc-500 mb-8">
-      <span class="lang-en">BlackRock, JP Morgan, Goldman Sachs, NYSE, Citadel, Jane Street — all in.</span>
-      <span class="lang-zh">BlackRock、JP Morgan、Goldman Sachs、NYSE、Citadel、Jane Street — 全部已經入場。</span>
-    </p>
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- BlackRock -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">BlackRock BUIDL</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Asset Management</span><span class="lang-zh">資產管理</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">Tokenized US Treasuries fund — real T-bills onchain.</span>
-          <span class="lang-zh">Tokenized US Treasuries fund — 真正嘅T-bills onchain。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">AUM:</span> $2.4B</p>
-          <p><span class="text-white font-medium">Chains:</span> <span class="lang-en">9 (Ethereum, Solana, Avalanche, etc.)</span><span class="lang-zh">9條（Ethereum、Solana、Avalanche等）</span></p>
-          <p><span class="text-white font-medium">Notable:</span> <span class="lang-en">Binance accepts BUIDL as collateral — a strong institutional adoption signal for onchain funds</span><span class="lang-zh">Binance接受BUIDL做collateral — onchain fund嘅institutional adoption signal</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en">The world's largest financial institutions are not researching blockchain — they are deploying it. BlackRock, JP Morgan, Goldman Sachs, the New York Stock Exchange, Citadel Securities, and Jane Street have all committed significant capital and infrastructure to onchain markets. In Hong Kong, the government, banks, and family offices are moving in the same direction. Here is the current landscape.</span>
+        <span class="lang-zh">全球最大嘅金融機構唔係喺度研究blockchain — 佢哋喺度部署。BlackRock、JP Morgan、Goldman Sachs、紐約證券交易所、Citadel Securities同Jane Street全部都投入咗大量資金同基礎設施到鏈上市場。在香港，政府、銀行同家族辦公室都朝同一個方向前進。以下係目前嘅格局。</span>
+      </p>
 
-      <!-- JP Morgan -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">JP Morgan Kinexys</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Settlement</span><span class="lang-zh">結算</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">Formerly Onyx — blockchain-based payment and settlement platform.</span>
-          <span class="lang-zh">前身 Onyx — blockchain-based payment同settlement platform。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Daily volume:</span><span class="lang-zh">日交易量：</span></span> $2B+ intraday repo</p>
-          <p><span class="text-white font-medium"><span class="lang-en">Total processed:</span><span class="lang-zh">已處理總額：</span></span> $1.5T+</p>
-          <p><span class="text-white font-medium"><span class="lang-en">Use case:</span><span class="lang-zh">應用場景：</span></span> <span class="lang-en">Onchain FX settlement, intraday repo, cross-border payments</span><span class="lang-zh">Onchain FX settlement、intraday repo、cross-border payments</span></p>
-        </div>
-      </div>
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Global: The Major Institutional Moves</span>
+        <span class="lang-zh">全球：大行動態</span>
+      </h2>
 
-      <!-- Goldman Sachs -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">Goldman Sachs GS DAP</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Capital Markets</span><span class="lang-zh">資本市場</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">Digital Asset Platform — private blockchain for bond issuance.</span>
-          <span class="lang-zh">Digital Asset Platform — private blockchain for bond issuance。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Notable deal:</span><span class="lang-zh">重要交易：</span></span> <span class="lang-en">EIB (European Investment Bank) EUR 100M digital bond</span><span class="lang-zh">EIB（歐洲投資銀行）EUR100M digital bond</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Roadmap:</span><span class="lang-zh">路線圖：</span></span> <span class="lang-en">Plans to spin out as independent entity by mid-2026</span><span class="lang-zh">計劃mid-2026 spin out做獨立entity</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Implication:</span><span class="lang-zh">影響：</span></span> <span class="lang-en">Investment banks using blockchain for primary issuance — beyond experiments</span><span class="lang-zh">投行開始用blockchain做primary issuance，唔止係experiment</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">BlackRock</span> has built BUIDL, a tokenized US Treasuries fund with $2.4 billion in assets under management, available on nine blockchains. Binance accepts BUIDL as trading collateral — a signal that onchain funds are gaining institutional acceptance not just as investment products, but as financial infrastructure.</span>
+        <span class="lang-zh"><span class="text-white font-medium">BlackRock</span>建立咗BUIDL，一隻管理資產$24億嘅代幣化美債基金，在9條區塊鏈上可用。Binance接受BUIDL作為交易抵押品 — 信號表明鏈上基金唔單止作為投資產品，更作為金融基礎設施獲得機構認可。</span>
+      </p>
 
-      <!-- Citadel -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">Citadel Securities</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Market Making</span><span class="lang-zh">做市</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">The world's largest equities market maker, now expanding into crypto.</span>
-          <span class="lang-zh">全球最大equities market maker，開始做crypto。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Investment:</span><span class="lang-zh">投資：</span></span> $200M into Kraken</p>
-          <p><span class="text-white font-medium"><span class="lang-en">Strategy:</span><span class="lang-zh">策略：</span></span> <span class="lang-en">Expanding into crypto market-making</span><span class="lang-zh">擴展至crypto market-making</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Signal:</span><span class="lang-zh">信號：</span></span> <span class="lang-en">When Citadel enters crypto MM, liquidity depth will deepen significantly</span><span class="lang-zh">當Citadel入場做crypto MM，liquidity depth會大幅提升</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">JP Morgan's Kinexys</span> (formerly Onyx) has processed over $1.5 trillion in tokenized transactions, handling $2 billion or more in daily intraday repo volume. This is onchain FX settlement, intraday repo, and cross-border payments — the plumbing that makes capital markets work, rebuilt on blockchain.</span>
+        <span class="lang-zh"><span class="text-white font-medium">JP Morgan嘅Kinexys</span>（前身Onyx）已處理超過$1.5萬億嘅代幣化交易，日均處理$20億以上嘅日內回購量。呢個係鏈上外匯結算、日內回購同跨境支付 — 令資本市場運作嘅管道，在區塊鏈上重建。</span>
+      </p>
 
-      <!-- NYSE -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">NYSE x Securitize</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Exchange</span><span class="lang-zh">交易所</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">NYSE signed MOU with tokenization platform Securitize.</span>
-          <span class="lang-zh">NYSE同tokenization平台Securitize簽MOU。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Goal:</span><span class="lang-zh">目標：</span></span> <span class="lang-en">24/7 tokenized securities trading platform</span><span class="lang-zh">24/7代幣化證券交易平台</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Implication:</span><span class="lang-zh">影響：</span></span> <span class="lang-en">Traditional stock exchanges embracing tokenized trading</span><span class="lang-zh">傳統stock exchange都開始embrace tokenized trading</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Goldman Sachs</span> built GS DAP, a Digital Asset Platform for institutional bond issuance. Its landmark deal: the European Investment Bank's EUR 100 million digital bond on the Ethereum blockchain. Goldman plans to spin GS DAP out as an independent, industry-owned entity by mid-2026 — with Tradeweb Markets as its first strategic partner. This is not an experiment; it's becoming a permanent business line.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Goldman Sachs</span>建立咗GS DAP，一個用於機構債券發行嘅數字資產平台。其標誌性交易：歐洲投資銀行在Ethereum區塊鏈上發行EUR 1億數字債券。Goldman計劃於2026年中將GS DAP分拆為獨立嘅、由行業擁有嘅實體 — Tradeweb Markets係其第一個戰略合作夥伴。呢個唔係實驗；正在成為永久業務線。</span>
+      </p>
 
-      <!-- Jane Street -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">Jane Street</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Trading</span><span class="lang-zh">交易</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">One of the world's largest proprietary trading firms.</span>
-          <span class="lang-zh">全球最大proprietary trading firm之一。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">History:</span><span class="lang-zh">歷史：</span></span> <span class="lang-en">Trading crypto since 2017</span><span class="lang-zh">2017年開始trading crypto</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Recent:</span><span class="lang-zh">近期：</span></span> <span class="lang-en">Co-led Kraken's $800M funding round</span><span class="lang-zh">Co-led Kraken嘅$800M融資</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Signal:</span><span class="lang-zh">信號：</span></span> <span class="lang-en">Quantitative trading giants deeply invested in crypto infrastructure</span><span class="lang-zh">量化交易巨頭深度佈局crypto infrastructure</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Citadel Securities</span>, the world's largest equities market maker, invested $200 million in Kraken and is expanding into crypto market-making. When Citadel enters, liquidity depth deepens significantly. <span class="text-white font-medium">Jane Street</span>, one of the world's largest proprietary trading firms, has been trading crypto since 2017 and co-led Kraken's $800 million funding round. <span class="text-white font-medium">ICE</span>, the Intercontinental Exchange and parent company of NYSE, invested $600 million directly into Polymarket — signaling that exchange infrastructure operators see prediction markets as next-generation information markets.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Citadel Securities</span>，全球最大嘅股票做市商，投資$2億入Kraken並擴展至crypto做市。當Citadel入場，流動性深度會大幅提升。<span class="text-white font-medium">Jane Street</span>，全球最大proprietary trading firm之一，自2017年開始交易crypto並co-led Kraken嘅$8億融資。<span class="text-white font-medium">ICE</span>，Intercontinental Exchange，NYSE嘅母公司，直接投資$6億入Polymarket — 信號表明交易所基礎設施運營商認為預測市場係下一代信息市場。</span>
+      </p>
 
-      <!-- DBS -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">DBS Singapore</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Banking</span><span class="lang-zh">銀行</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">Southeast Asia's largest bank, actively advancing digital assets.</span>
-          <span class="lang-zh">東南亞最大銀行，積極推進digital assets。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Products:</span><span class="lang-zh">產品：</span></span> <span class="lang-en">Tokenized structured notes on Ethereum</span><span class="lang-zh">Ethereum上嘅代幣化結構性票據</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Trading:</span><span class="lang-zh">交易：</span></span> <span class="lang-en">$1B+ crypto options traded H1 2025</span><span class="lang-zh">2025年上半年交易超$1B crypto期權</span></p>
-          <p><span class="text-white font-medium"><span class="lang-en">Signal:</span><span class="lang-zh">信號：</span></span> <span class="lang-en">Asian banking leader with live crypto trading desk</span><span class="lang-zh">亞洲銀行leader已經有live crypto trading desk</span></p>
-        </div>
-      </div>
+      <p>
+        <span class="lang-en">In Asia, <span class="text-white font-medium">DBS Singapore</span> — Southeast Asia's largest bank — is issuing tokenized structured notes on Ethereum and traded over $1 billion in crypto options in the first half of 2025. The largest Asian bank now has a live crypto trading desk. <span class="text-white font-medium">NYSE signed a memorandum of understanding with Securitize</span> in March 2026 to develop a 24/7 tokenized securities trading platform — the first time a traditional stock exchange has committed to blockchain-native securities infrastructure.</span>
+        <span class="lang-zh">在亞洲，<span class="text-white font-medium">DBS Singapore</span> — 東南亞最大嘅銀行 — 正在Ethereum上發行代幣化結構性票據，並在2025年上半年交易超過$10億加密期權。最大嘅亞洲銀行現在擁有live crypto trading desk。<span class="text-white font-medium">NYSE於2026年3月同Securitize簽署諒解備忘錄</span>，共同開發24/7代幣化證券交易平台 — 這是傳統股票交易所首次承諾建設區塊鏈原生證券基礎設施。</span>
+      </p>
 
-      <!-- ICE -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="text-lg font-bold text-white">ICE (NYSE Parent)</h3>
-          <span class="text-xs text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full">
-            <span class="lang-en">Infrastructure</span><span class="lang-zh">基礎設施</span>
-          </span>
-        </div>
-        <p class="text-sm text-zinc-400 mb-4">
-          <span class="lang-en">Intercontinental Exchange — parent company of NYSE and ICE Futures.</span>
-          <span class="lang-zh">Intercontinental Exchange — NYSE、ICE Futures嘅parent company。</span>
-        </p>
-        <div class="space-y-2 text-sm text-zinc-400">
-          <p><span class="text-white font-medium"><span class="lang-en">Investment:</span><span class="lang-zh">投資：</span></span> $600M into Polymarket</p>
-          <p><span class="text-white font-medium"><span class="lang-en">Signal:</span><span class="lang-zh">信號：</span></span> <span class="lang-en">Exchange infrastructure giant sees prediction markets as next-generation information markets</span><span class="lang-zh">Exchange infrastructure巨頭認為prediction market = next generation information market</span></p>
-        </div>
-      </div>
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Hong Kong: Asia's Regulated Crypto Hub</span>
+        <span class="lang-zh">香港：亞洲受監管加密中心</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The Hong Kong government is not just permitting onchain activity — it's actively participating. The government's tokenized green bond program, settled via HSBC Orion, has reached a cumulative HK$10 billion across three issuances, making it one of the largest sovereign digital bond programs globally. Twelve virtual asset trading platforms are now licensed by the SFC, with HashKey and OSL approved to serve retail investors. Staking was greenlit in April 2025. Digital assets were added to the family office tax concession regime in February 2026.</span>
+        <span class="lang-zh">香港政府唔單止允許鏈上活動 — 更主動參與。港府嘅代幣化綠色債券計劃，經HSBC Orion結算，三次發行累計達HK$100億，使其成為全球最大嘅主權數字債券計劃之一。SFC現已向12間虛擬資產交易平台發牌，HashKey同OSL獲准服務零售投資者。質押於2025年4月獲批。數字資產於2026年2月加入家族辦公室稅務優惠制度。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The banking sector is keeping pace. <span class="text-white font-medium">HSBC</span> has tokenized deposits live and expanding globally, with Orion serving as the institutional tokenization platform for government bond settlement. HSBC is also among applicants for a Hong Kong stablecoin license. <span class="text-white font-medium">Standard Chartered</span> became the first globally systemically important bank to offer spot crypto trading, and serves as HashKey's banking partner. Both are pursuing stablecoin issuer licenses — if a G-SIB bank issues an HKD stablecoin, it would be globally significant.</span>
+        <span class="lang-zh">銀行業亦緊跟步伐。<span class="text-white font-medium">HSBC</span>嘅代幣化存款已上線並在全球擴展，Orion作為政府債券結算嘅機構代幣化平台。HSBC亦係香港穩定幣牌照嘅申請人之一。<span class="text-white font-medium">渣打</span>成為首間提供現貨加密交易嘅全球系統重要性銀行，並擔任HashKey嘅銀行合作夥伴。兩者都在申請穩定幣發行牌照 — 如果G-SIB銀行發行HKD穩定幣，將具全球意義。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The family office sector tells its own story. Hong Kong now has over 3,380 single-family offices — a 25% increase over two years. According to the HKIMR survey, 28% plan to increase their digital asset allocations over the next three years, while only 1% plan to decrease — the widest increase-to-decrease gap of any asset class surveyed. The February 2026 tax concession, which treats digital asset profits the same as equities and bonds for qualifying family offices, removed the last major institutional barrier.</span>
+        <span class="lang-zh">家族辦公室sector有自己嘅故事。香港現有超過3,380間單一家族辦公室 — 兩年增長25%。根據HKIMR調查，28%計劃在未來三年增加數字資產配置，僅1%計劃減少 — 呢個係調查中所有資產類別裡增減差距最大嘅。2026年2月嘅稅務優惠，將合資格家族辦公室嘅數字資產利潤與股票和債券同等對待，消除咗最後一個主要機構障礙。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Key Timeline</span><span class="lang-zh">重要時間線</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">August 2023:</span> HashKey and OSL become Hong Kong's first licensed VATPs. <span class="text-white font-medium">May 2025:</span> Stablecoin ordinance passed, effective August 2025. <span class="text-white font-medium">April 2025:</span> SFC greenlights staking for licensed VATPs. <span class="text-white font-medium">October 2025:</span> e-HKD Phase 2 completed; HKMA shelves retail CBDC, pivots to wholesale CBDC and tokenized deposits. <span class="text-white font-medium">February 2026:</span> 12 VATPs now licensed; family office digital asset tax concession takes effect. <span class="text-white font-medium">March 2026:</span> NYSE × Securitize MOU signed for 24/7 tokenized securities trading.</span>
+        <span class="lang-zh"><span class="text-white font-medium">2023年8月：</span>HashKey同OSL成為香港首批持牌VATP。<span class="text-white font-medium">2025年5月：</span>穩定幣條例通過，8月生效。<span class="text-white font-medium">2025年4月：</span>SFC批准持牌VATP提供質押服務。<span class="text-white font-medium">2025年10月：</span>e-HKD第2階段完成；HKMA擱置零售CBDC，轉向批發CBDC和代幣化存款。<span class="text-white font-medium">2026年2月：</span>12間VATP獲牌；家族辦公室數字資產稅務優惠生效。<span class="text-white font-medium">2026年3月：</span>NYSE × Securitize簽署24/7代幣化證券交易MOU。</span>
+      </p>
     </div>
-  </section>
 
-  <!-- HK Section -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-2">
-      <span class="lang-en">Hong Kong — Asia's Regulated Crypto Hub</span>
-      <span class="lang-zh">香港 — 亞洲Regulated Crypto Hub</span>
-    </h2>
-    <p class="text-zinc-500 mb-8">
-      <span class="lang-en">Government, banks, and family offices are all moving.</span>
-      <span class="lang-zh">政府、銀行、家族辦公室全部都喺度move。</span>
-    </p>
-
-    <div class="space-y-6">
-      <!-- Govt -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">Hong Kong Government</span><span class="lang-zh">香港政府</span>
-        </h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="text-white font-medium"><span class="lang-en">Tokenized Green Bond:</span><span class="lang-zh">代幣化綠色債券：</span></span> <span class="lang-en">3rd issuance, cumulative HK$10B, settled via HSBC Orion</span><span class="lang-zh">第3次發行，累計HK$100億，HSBC Orion平台結算</span></p>
-            <p><span class="text-white font-medium">VATP Licensing:</span> <span class="lang-en">12 platforms licensed (HashKey & OSL can serve retail)</span><span class="lang-zh">12間平台已獲牌照（HashKey、OSL可做retail）</span></p>
-            <p><span class="text-white font-medium">SFC Staking:</span> <span class="lang-en">Greenlit staking in April 2025</span><span class="lang-zh">2025年4月greenlit staking</span></p>
-          </div>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="text-white font-medium">e-HKD:</span> <span class="lang-en">Pilot completed. Retail CBDC shelved, pivoting to wholesale + tokenized deposits</span><span class="lang-zh">Pilot completed，暫時唔搞retail CBDC，pivot去wholesale + tokenized deposits</span></p>
-            <p><span class="text-white font-medium"><span class="lang-en">Family Office Tax:</span><span class="lang-zh">家族辦公室稅務：</span></span> <span class="lang-en">Digital assets added to qualifying investments tax concession (Feb 2026)</span><span class="lang-zh">Digital assets列入qualifying investments稅務優惠（2026年2月）</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Banks -->
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-          <h3 class="text-lg font-bold text-white mb-4">HSBC</h3>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="text-white font-medium"><span class="lang-en">Tokenized deposits:</span><span class="lang-zh">代幣化存款：</span></span> <span class="lang-en">Live, expanding globally</span><span class="lang-zh">已上線，全球擴展中</span></p>
-            <p><span class="text-white font-medium">Orion:</span> <span class="lang-en">Institutional tokenization platform, used for government green bond settlement</span><span class="lang-zh">Institutional tokenization platform，用於政府green bond結算</span></p>
-            <p><span class="text-white font-medium">Stablecoin:</span> <span class="lang-en">Among applicants for HK stablecoin license</span><span class="lang-zh">香港穩定幣牌照申請人之一</span></p>
-          </div>
-        </div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-          <h3 class="text-lg font-bold text-white mb-4">Standard Chartered</h3>
-          <div class="space-y-3 text-sm text-zinc-400">
-            <p><span class="text-white font-medium">First G-SIB:</span> <span class="lang-en">First global systemically important bank to offer spot crypto trading</span><span class="lang-zh">首間全球系統重要性銀行做spot crypto trading</span></p>
-            <p><span class="text-white font-medium">Partnership:</span> <span class="lang-en">HashKey banking partner</span><span class="lang-zh">HashKey銀行合作夥伴</span></p>
-            <p><span class="text-white font-medium">Stablecoin:</span> <span class="lang-en">HK stablecoin license applicant</span><span class="lang-zh">香港穩定幣牌照申請人</span></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Family Offices -->
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">
-          <span class="lang-en">Family Offices</span><span class="lang-zh">家族辦公室</span>
-        </h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div class="bg-zinc-800/30 rounded-lg p-4 text-center">
-            <p class="text-2xl font-bold text-white">3,380+</p>
-            <p class="text-xs text-zinc-500 mt-1">
-              <span class="lang-en">HK family offices</span><span class="lang-zh">香港家族辦公室</span>
-            </p>
-          </div>
-          <div class="bg-zinc-800/30 rounded-lg p-4 text-center">
-            <p class="text-2xl font-bold text-white">28%</p>
-            <p class="text-xs text-zinc-500 mt-1">
-              <span class="lang-en">Plan crypto allocation</span><span class="lang-zh">計劃配置crypto</span>
-            </p>
-          </div>
-          <div class="bg-zinc-800/30 rounded-lg p-4 text-center">
-            <p class="text-2xl font-bold text-white">1%</p>
-            <p class="text-xs text-zinc-500 mt-1">
-              <span class="lang-en">Plan to decrease</span><span class="lang-zh">計劃減少</span>
-            </p>
-          </div>
-          <div class="bg-zinc-800/30 rounded-lg p-4 text-center">
-            <p class="text-2xl font-bold text-cyan-400">Tax</p>
-            <p class="text-xs text-zinc-500 mt-1">
-              <span class="lang-en">Digital asset concessions</span><span class="lang-zh">Digital asset稅務優惠</span>
-            </p>
-          </div>
-        </div>
-        <p class="text-sm text-zinc-400">
-          <span class="lang-en">Hong Kong has <span class="text-white font-medium">3,380+ family offices</span>. 28% plan to increase crypto allocation, only 1% plan to decrease — the widest gap of any asset class. From February 2026, digital assets qualify for tax concessions under the family office tax regime — a policy-level push for adoption.</span>
-          <span class="lang-zh">香港有 <span class="text-white font-medium">3,380+間family offices</span>，28%計劃增加crypto配置，僅1%計劃減少。2026年2月起digital assets列入qualifying investments享稅務優惠 — 呢個係政策層面嘅push。</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Key Timeline</span><span class="lang-zh">重要時間線</span>
-    </h2>
-    <div class="space-y-4">
-      <div class="flex gap-4 items-start">
-        <div class="text-sm text-cyan-400 font-medium w-24 shrink-0">Aug 2023</div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-4 flex-1">
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">HashKey, OSL become first licensed VATPs</span>
-            <span class="lang-zh">HashKey、OSL成為首批licensed VATPs</span>
-          </p>
-        </div>
-      </div>
-      <div class="flex gap-4 items-start">
-        <div class="text-sm text-cyan-400 font-medium w-24 shrink-0">May 2025</div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-4 flex-1">
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">Stablecoin ordinance passed</span>
-            <span class="lang-zh">穩定幣條例通過</span>
-          </p>
-        </div>
-      </div>
-      <div class="flex gap-4 items-start">
-        <div class="text-sm text-cyan-400 font-medium w-24 shrink-0">Oct 2025</div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-4 flex-1">
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">e-HKD Phase 2 completed</span>
-            <span class="lang-zh">e-HKD第2階段完成</span>
-          </p>
-        </div>
-      </div>
-      <div class="flex gap-4 items-start">
-        <div class="text-sm text-cyan-400 font-medium w-24 shrink-0">Apr 2025</div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-4 flex-1">
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">SFC greenlit staking for licensed VATPs</span>
-            <span class="lang-zh">SFC批准持牌VATP提供staking服務</span>
-          </p>
-        </div>
-      </div>
-      <div class="flex gap-4 items-start">
-        <div class="text-sm text-cyan-400 font-medium w-24 shrink-0">Feb 2026</div>
-        <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-4 flex-1">
-          <p class="text-sm text-zinc-400">
-            <span class="lang-en">12 VATPs licensed, family office digital asset tax concession effective</span>
-            <span class="lang-zh">12間VATP獲牌、Family office digital asset稅務優惠生效</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="max-w-6xl mx-auto px-6 pb-24">
-    <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- CTA -->
+    <div class="mt-16 bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
         <h3 class="text-lg font-bold text-white mb-2">
           <span class="lang-en">Learn about HK regulation details</span>
@@ -341,5 +95,5 @@ const base = '/tradfi-onchain';
         <span class="lang-en">HK Regulation</span><span class="lang-zh">HK監管</span>
       </a>
     </div>
-  </section>
+  </article>
 </Layout>

@@ -4,288 +4,85 @@ const base = '/tradfi-onchain';
 ---
 
 <Layout title="Onchain AMM — Permissionless Markets">
-  <!-- Hero -->
-  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
       <span class="lang-en">Permissionless Markets</span><span class="lang-zh">無需許可的市場</span>
     </p>
-    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">
       <span class="lang-en">Onchain AMM</span><span class="lang-zh">鏈上自動化做市商</span>
     </h1>
-    <p class="text-xl text-zinc-400 max-w-3xl">
-      <span class="lang-en">Traditional markets require exchange licenses, listing approvals, and market maker agreements. Onchain: create a liquidity pool and the market exists. Permissionless financial markets, 24/7.</span>
-      <span class="lang-zh">傳統market要exchange license、listing approval、market maker agreement。Onchain：create一個liquidity pool = market exists。Permissionless financial markets，24/7。</span>
-    </p>
-  </section>
 
-  <!-- Key Metrics -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Key Metrics</span><span class="lang-zh">核心數據</span>
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-3xl font-bold text-white">$1-2B</p>
-        <p class="text-sm text-zinc-500 mt-1">
-          <span class="lang-en">Uniswap daily volume</span><span class="lang-zh">Uniswap日交易量</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-3xl font-bold text-white">24/7</p>
-        <p class="text-sm text-zinc-500 mt-1">
-          <span class="lang-en">No trading hours</span><span class="lang-zh">無交易時限</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-3xl font-bold text-white">x*y=k</p>
-        <p class="text-sm text-zinc-500 mt-1">
-          <span class="lang-en">Constant product formula</span><span class="lang-zh">恆定乘積公式</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-3xl font-bold text-white">1000s</p>
-        <p class="text-sm text-zinc-500 mt-1">
-          <span class="lang-en">New tokens daily</span><span class="lang-zh">每日新代幣</span>
-        </p>
-      </div>
-    </div>
-  </section>
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
 
-  <!-- What Is It -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-4">
-      <span class="lang-en">How It Works</span><span class="lang-zh">點樣運作？</span>
-    </h2>
-    <p class="text-zinc-400 mb-8">
-      <span class="lang-en">Smart contracts automatically quote prices using the constant product formula (x*y=k) — the more you buy, the higher the price goes. No market maker needed.</span>
-      <span class="lang-zh">Smart contract自動quote，constant product formula (x*y=k) — 買得多price就升，唔需要market maker。</span>
-    </p>
+      <p>
+        <span class="lang-en">In traditional markets, listing a new security requires exchange approval, regulatory filing, and a designated market maker agreement. Onchain, you create a liquidity pool and the market exists. No application, no approval, no trading hours. Uniswap, the largest decentralized exchange on Ethereum, processes $1 to $2 billion in daily volume. Raydium and Meteora handle comparable volume on Solana. Thousands of new tokens are listed every day — permissionless financial markets, operating 24/7.</span>
+        <span class="lang-zh">在傳統市場，上市一隻新證券需要交易所審批、監管備案同指定做市商協議。在鏈上，你建立一個liquidity pool，市場就存在。無需申請，無需審批，無交易時段。Uniswap，Ethereum上最大嘅去中心化交易所，日交易量$10至$20億。Raydium同Meteora在Solana上處理相當嘅交易量。每日有數千隻新代幣上市 — 無需許可嘅金融市場，24/7運作。</span>
+      </p>
 
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <h3 class="text-lg font-bold text-white mb-4">
-        <span class="lang-en">Constant Product Formula</span><span class="lang-zh">恆定乘積公式</span>
-      </h3>
-      <div class="space-y-4 text-sm text-zinc-400">
-        <p><span class="lang-en">A pool contains two tokens (e.g., ETH + USDC). Their quantities maintain a constant product: <span class="text-cyan-400 font-mono">x * y = k</span></span><span class="lang-zh">Pool入面有兩隻token（例如ETH + USDC），數量嘅乘積保持constant：<span class="text-cyan-400 font-mono">x * y = k</span></span></p>
-        <p><span class="lang-en">When you buy Token A, the pool's Token A supply decreases while Token B increases — Token A's price rises automatically.</span><span class="lang-zh">你買Token A，pool入面Token A減少、Token B增加 → Token A price自動升。</span></p>
-        <p><span class="lang-en">No orderbook needed, no market maker placing orders. The smart contract automatically quotes prices based on supply and demand.</span><span class="lang-zh">唔需要orderbook，唔需要market maker掛單，smart contract自動根據supply/demand quote price。</span></p>
-        <p class="text-zinc-500"><span class="lang-en">Major venues: <span class="text-white">Uniswap</span> (Ethereum, $1–2B daily), <span class="text-white">Raydium</span> / <span class="text-white">Meteora</span> (Solana).</span><span class="lang-zh">主要venue：<span class="text-white">Uniswap</span>（Ethereum，$1-2B daily），<span class="text-white">Raydium</span> / <span class="text-white">Meteora</span>（Solana）。</span></p>
-      </div>
-    </div>
-  </section>
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">How It Works: The Constant Product Formula</span>
+        <span class="lang-zh">運作原理：恆定乘積公式</span>
+      </h2>
 
-  <!-- Three things you can do -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Three Things You Can Do</span><span class="lang-zh">三件你可以做嘅嘢</span>
-    </h2>
+      <p>
+        <span class="lang-en">An automated market maker replaces the traditional orderbook with a mathematical formula. A pool contains two tokens — say ETH and USDC — and their quantities maintain a constant product: <span class="text-cyan-400 font-mono">x × y = k</span>. When you buy Token A, the pool's supply of Token A decreases while Token B increases, and Token A's price rises automatically. No orderbook, no market maker placing orders — a smart contract quotes prices based on supply and demand.</span>
+        <span class="lang-zh">自動化做市商用數學公式取代傳統訂單簿。一個池包含兩隻代幣 — 例如ETH同USDC — 它們嘅數量維持恆定乘積：<span class="text-cyan-400 font-mono">x × y = k</span>。當你買Token A，池中Token A供應減少而Token B增加，Token A價格自動上升。無需訂單簿，無需做市商掛單 — 智能合約根據供需自動報價。</span>
+      </p>
 
-    <!-- Trading -->
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 mb-6">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">1</span>
-        <h3 class="text-lg font-bold text-white">
-          <span class="lang-en">Trading — Onchain Swap</span><span class="lang-zh">交易 — 鏈上兌換</span>
-        </h3>
-      </div>
-      <div class="space-y-3 text-sm text-zinc-400">
-        <p><span class="lang-en">Any token pair can be swapped, <span class="text-white font-medium">no listing requirement</span>. If someone has created a pool, it's tradeable.</span><span class="lang-zh">任何token pair都可以swap，<span class="text-white font-medium">no listing requirement</span>。只要有人create咗個pool，就trade到。</span></p>
-        <p><span class="lang-en">Settlement is instant (seconds), and assets stay in your wallet — <span class="text-white font-medium">non-custodial</span>, no exchange intermediary.</span><span class="lang-zh">Settlement instant（幾秒內），assets stay in your wallet — <span class="text-white font-medium">non-custodial</span>，唔經exchange。</span></p>
-        <p><span class="lang-en">Aggregators (Jupiter, 1inch) automatically find the best price, routing across multiple pools.</span><span class="lang-zh">Aggregators（Jupiter、1inch）自動幫你搵最好price，跨多個pool routing。</span></p>
-      </div>
+      <p>
+        <span class="lang-en">Aggregators like Jupiter (Solana) and 1inch (Ethereum) automatically route trades across dozens of pools to find the best price. Settlement is instant — seconds, not T+1 or T+2. Assets stay in your wallet throughout. Non-custodial, no exchange intermediary.</span>
+        <span class="lang-zh">聚合器如Jupiter（Solana）和1inch（Ethereum）自動將交易路由至數十個池以搵到最佳價格。結算即時 — 秒級，唔係T+1或T+2。資產全程留喺你嘅錢包。Non-custodial，無交易所中介。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Three Things You Can Do</span><span class="lang-zh">三件你可以做嘅嘢</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">1. Trade — onchain swap.</span> Any token pair can be swapped as long as someone has created a pool. No listing requirement. This is the basic use case: buy and sell tokens with instant settlement and self-custody.</span>
+        <span class="lang-zh"><span class="text-white font-medium">1. 交易 — 鏈上兌換。</span>只要有人建立咗池，任何代幣對都可以兌換。無上市要求。呢個係基本用例：以即時結算和自託管方式買賣代幣。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">2. Provide liquidity — be the market maker.</span> Deposit two tokens into a pool and earn trading fees from every swap. In finance terms, this is going long two assets and short volatility. The P&L of the short vol position is called impermanent loss: when one token's price moves significantly relative to the other, your position is worth less than simply holding both tokens. Stablecoin pairs (USDC/USDT) offer low fees of 0.01 to 0.05% per swap with minimal impermanent loss — comparable to money market yields. New token launches can carry fee rates of 50 to 99%, generating significant short-term returns, but the underlying tokens are extremely volatile and frequently go to zero.</span>
+        <span class="lang-zh"><span class="text-white font-medium">2. 提供流動性 — 做做市商。</span>將兩隻代幣存入池中，從每筆交易賺取費用。用金融語言講，呢個係做多兩種資產加做空波動率。做空波動率倉位嘅盈虧叫做無常損失：當一隻代幣嘅價格相對另一隻大幅變動，你嘅倉位價值低過單純持有兩隻代幣。穩定幣對（USDC/USDT）每筆交易提供0.01至0.05%嘅低費率，無常損失最小 — 與貨幣市場收益相當。新代幣發行可有50至99%嘅費率，產生可觀嘅短期回報，但底層代幣波動極大且經常歸零。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">3. Launch a token — permissionless IPO.</span> Platforms like PumpFun and Raydium LaunchLab allow anyone to launch a token in seconds. Bonding curve pricing means early buyers get lower prices, and more buyers push the price up. At a certain market cap, the token automatically migrates to an AMM pool and becomes a fully tradeable market. Essentially a permissionless IPO — no underwriter, no prospectus, no lock-up period. Thousands launch daily. 99% are junk, but the infrastructure itself is a fundamental financial primitive: permissionless capital formation.</span>
+        <span class="lang-zh"><span class="text-white font-medium">3. 發行代幣 — 無需許可的IPO。</span>PumpFun和Raydium LaunchLab等平台允許任何人幾秒內發行一隻代幣。Bonding curve定價意味著早期買家獲得較低價格，更多買家推高價格。到一定市值，代幣自動遷移到AMM池成為完全可交易嘅市場。本質上係permissionless IPO — 無承銷商、無招股書、無鎖定期。每日發行數千隻。99%係垃圾，但基礎設施本身係一個基本金融原語：無需許可嘅資本形成。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">TradFi Comparison</span><span class="lang-zh">同傳統金融比較</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Where traditional markets require exchange approval and regulatory filing to list, onchain you just create a pool. Where traditional market making requires a designated MM agreement, onchain anyone can deposit liquidity. Trading hours go from 9:30am–4:00pm plus holidays to 24/7/365. Settlement goes from T+1 or T+2 to instant (seconds). Custody goes from broker/custodian to self-custody in your own wallet. Every structural friction in traditional markets — listing delays, settlement windows, custody transfers, trading hour limitations — is eliminated.</span>
+        <span class="lang-zh">傳統市場需要交易所審批和監管備案才能上市，鏈上只需建立一個池。傳統做市需要指定做市商協議，鏈上任何人都可以存入流動性。交易時間從9:30am–4:00pm加假期變成24/7/365。結算從T+1或T+2變成即時（秒級）。託管從經紀商/託管人變成你自己錢包嘅自託管。傳統市場嘅每一個結構性摩擦 — 上市延遲、結算窗口、託管轉移、交易時段限制 — 都被消除。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Impermanent loss is the fundamental cost of providing liquidity — price divergence between pooled tokens causes loss relative to simply holding. Smart contract bugs can lead to fund loss; only use audited protocols. Permissionless listing means anyone can create a token, and 99% of new tokens are worthless — rug pulls are common. None of this is regulated by the SFC, and there is no investor protection.</span>
+        <span class="lang-zh">無常損失係提供流動性嘅基本成本 — 池中代幣價格偏離導致相對於單純持有嘅損失。智能合約漏洞可導致資金損失；只使用經審計嘅協議。無需許可嘅上市意味著任何人可以建立代幣，99%嘅新代幣毫無價值 — 跑路司空見慣。呢啲都唔受SFC監管，且無投資者保障。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Getting Started</span><span class="lang-zh">如何開始</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Get a wallet — Phantom for Solana or MetaMask for Ethereum. Fund it with SOL or ETH from a licensed VATP like HashKey or OSL. Use an aggregator — Jupiter on Solana, 1inch on Ethereum — for the best prices across all pools. Start with stablecoin pairs if you want to try LP with lower risk.</span>
+        <span class="lang-zh">取得錢包 — Solana用Phantom，Ethereum用MetaMask。從持牌VATP如HashKey或OSL充值SOL或ETH。使用聚合器 — Solana用Jupiter，Ethereum用1inch — 跨所有池獲取最佳價格。如果想以較低風險嘗試LP，從穩定幣對開始。</span>
+      </p>
     </div>
 
-    <!-- LP -->
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8 mb-6">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">2</span>
-        <h3 class="text-lg font-bold text-white">
-          <span class="lang-en">LP (Liquidity Provision) — Be the Market Maker</span><span class="lang-zh">LP（提供流動性）— 做Market Maker</span>
-        </h3>
-      </div>
-      <div class="space-y-3 text-sm text-zinc-400">
-        <p><span class="lang-en">Deposit two tokens into a pool and earn trading fees from every swap.</span><span class="lang-zh">Deposit兩隻token入pool，earn每筆swap嘅trading fee。</span></p>
-        <p class="text-white font-medium"><span class="lang-en">In finance terms: long two assets + short volatility.</span><span class="lang-zh">Finance語言：long兩隻asset + short vol。</span></p>
-        <p><span class="lang-en"><span class="text-white font-medium">Impermanent loss</span> = the P&L of being short volatility. When one token's price moves significantly, your position is worth less than simply holding both tokens.</span><span class="lang-zh"><span class="text-white font-medium">Impermanent loss</span> = short vol嘅P&L。當其中一隻token price大幅move，你嘅position value低過simply hold兩隻token。</span></p>
-        <div class="mt-4 grid md:grid-cols-2 gap-4">
-          <div class="bg-zinc-800/30 rounded-lg p-4">
-            <p class="text-white text-sm font-medium mb-2">
-              <span class="lang-en">Stable Pairs</span><span class="lang-zh">穩定幣對</span>
-            </p>
-            <p class="text-xs text-zinc-500">
-              <span class="lang-en">Low fee (0.01–0.05%), steady return, minimal IL. E.g., USDC/USDT.</span>
-              <span class="lang-zh">Low fee (0.01-0.05%)，steady return，minimal IL。USDC/USDT之類。</span>
-            </p>
-          </div>
-          <div class="bg-zinc-800/30 rounded-lg p-4">
-            <p class="text-white text-sm font-medium mb-2">
-              <span class="lang-en">New Coins</span><span class="lang-zh">新幣</span>
-            </p>
-            <p class="text-xs text-zinc-500">
-              <span class="lang-en">High fee (50–99%), high risk. High trading volume but tokens may go to zero.</span>
-              <span class="lang-zh">High fee (50-99%)，high risk。Trading volume大但token可能歸零。</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Launchpad -->
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 text-sm font-bold">3</span>
-        <h3 class="text-lg font-bold text-white">
-          <span class="lang-en">Launchpad — Permissionless IPO</span><span class="lang-zh">發射台 — 無需許可的IPO</span>
-        </h3>
-      </div>
-      <div class="space-y-3 text-sm text-zinc-400">
-        <p><span class="lang-en"><span class="text-white font-medium">PumpFun</span> and <span class="text-white font-medium">Raydium LaunchLab</span> — anyone can launch a token in seconds.</span><span class="lang-zh"><span class="text-white font-medium">PumpFun</span>、<span class="text-white font-medium">Raydium LaunchLab</span> — 任何人幾秒之內launch一隻token。</span></p>
-        <p><span class="lang-en">Bonding curve pricing: early buyers get lower prices, more buyers push the price up. At a certain market cap, it auto-migrates to an AMM pool — becoming a fully tradeable market.</span><span class="lang-zh">Bonding curve pricing：early buyer price低，越多人買price越高。到一定market cap自動migrate去AMM pool — 變成fully tradeable market。</span></p>
-        <p class="text-white font-medium"><span class="lang-en">Essentially a permissionless IPO — no underwriter, no prospectus, no lock-up period.</span><span class="lang-zh">本質上係permissionless IPO — no underwriter，no prospectus，no lock-up period。</span></p>
-        <p><span class="lang-en">Thousands launch daily. 99% are junk, but some find gems.</span><span class="lang-zh">每日launch幾千隻。99%係junk，但有人喺入面搵到gems。</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TradFi Comparison -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">TradFi Comparison</span><span class="lang-zh">同傳統金融比較</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl overflow-hidden">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="border-b border-zinc-800/50">
-            <th class="text-left p-4 text-zinc-500 font-medium"></th>
-            <th class="text-left p-4 text-zinc-500 font-medium">
-              <span class="lang-en">Traditional Market</span><span class="lang-zh">傳統市場</span>
-            </th>
-            <th class="text-left p-4 text-cyan-400 font-medium">
-              <span class="lang-en">Onchain AMM</span><span class="lang-zh">鏈上AMM</span>
-            </th>
-          </tr>
-        </thead>
-        <tbody class="text-zinc-400">
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium"><span class="lang-en">Listing</span><span class="lang-zh">上市</span></td>
-            <td class="p-4"><span class="lang-en">Exchange approval + regulatory filing</span><span class="lang-zh">交易所審批 + 監管備案</span></td>
-            <td class="p-4"><span class="lang-en">Create pool = listed</span><span class="lang-zh">建立資金池 = 上市</span></td>
-          </tr>
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium"><span class="lang-en">Market Making</span><span class="lang-zh">做市</span></td>
-            <td class="p-4"><span class="lang-en">Designated MM agreement</span><span class="lang-zh">指定做市商協議</span></td>
-            <td class="p-4"><span class="lang-en">Anyone can deposit liquidity</span><span class="lang-zh">任何人可提供流動性</span></td>
-          </tr>
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium"><span class="lang-en">Trading Hours</span><span class="lang-zh">交易時間</span></td>
-            <td class="p-4"><span class="lang-en">9:30am – 4:00pm + holidays</span><span class="lang-zh">9:30am – 4:00pm + 假期</span></td>
-            <td class="p-4">24/7/365</td>
-          </tr>
-          <tr class="border-b border-zinc-800/30">
-            <td class="p-4 text-white font-medium"><span class="lang-en">Settlement</span><span class="lang-zh">結算</span></td>
-            <td class="p-4">T+1 / T+2</td>
-            <td class="p-4"><span class="lang-en">Instant (seconds)</span><span class="lang-zh">即時（秒級）</span></td>
-          </tr>
-          <tr>
-            <td class="p-4 text-white font-medium"><span class="lang-en">Custody</span><span class="lang-zh">託管</span></td>
-            <td class="p-4"><span class="lang-en">Broker/custodian holds</span><span class="lang-zh">經紀商/託管人持有</span></td>
-            <td class="p-4"><span class="lang-en">Self-custody (your wallet)</span><span class="lang-zh">自託管（你自己的錢包）</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Business Use Cases -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Business Use Cases</span><span class="lang-zh">商業應用場景</span>
-    </h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">
-          <span class="lang-en">Yield Generation</span><span class="lang-zh">收益生成</span>
-        </h3>
-        <p class="text-sm text-zinc-400">
-          <span class="lang-en">Provide liquidity to earn trading fees. Stable pair LP (USDC/USDT) offers predictable, low-risk returns comparable to money market yields. Higher-risk pools can generate significantly higher returns for those with appropriate risk tolerance.</span>
-          <span class="lang-zh">提供流動性以賺取交易費用。穩定幣對LP（USDC/USDT）提供可預測、低風險的回報，類似貨幣市場收益。高風險池可為風險承受能力適當的投資者帶來顯著更高的回報。</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">
-          <span class="lang-en">Token Launch & Distribution</span><span class="lang-zh">代幣發行與分發</span>
-        </h3>
-        <p class="text-sm text-zinc-400">
-          <span class="lang-en">Launch a token and create instant market access. No exchange listing fees, no underwriter needed. Used by projects from experimental tokens to tokenized real-world assets. The permissionless nature makes this a powerful alternative to traditional capital formation.</span>
-          <span class="lang-zh">發行代幣並建立即時市場准入。無需交易所上市費用，無需承銷商。從實驗性代幣到代幣化實體資產的項目都在使用。其無需許可的特性令其成為傳統資本形成的有力替代方案。</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Risks -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
-    </h2>
-    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <div class="space-y-3 text-sm text-zinc-400">
-        <p><span class="text-white font-medium"><span class="lang-en">Impermanent loss</span><span class="lang-zh">無常損失</span></span> — <span class="lang-en">Price divergence between pooled tokens causes loss relative to holding. The fundamental cost of LP.</span><span class="lang-zh">池中代幣價格偏離導致相對於持有的損失。LP嘅基本成本。</span></p>
-        <p><span class="text-white font-medium"><span class="lang-en">Smart contract risk</span><span class="lang-zh">智能合約風險</span></span> — <span class="lang-en">Code bugs can lead to fund loss. Only use audited protocols.</span><span class="lang-zh">代碼漏洞可導致資金損失。只使用經審計的協議。</span></p>
-        <p><span class="text-white font-medium"><span class="lang-en">Rug pulls</span><span class="lang-zh">項目跑路</span></span> — <span class="lang-en">Permissionless means anyone can list — 99% of new tokens are worthless.</span><span class="lang-zh">無需許可意味著任何人可以上市 — 99%新代幣毫無價值。</span></p>
-        <p><span class="text-white font-medium"><span class="lang-en">Regulatory</span><span class="lang-zh">監管</span></span> — <span class="lang-en">Not regulated by the SFC. No investor protection.</span><span class="lang-zh">唔受SFC監管。無投資者保障。</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Getting Started -->
-  <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">
-      <span class="lang-en">Getting Started</span><span class="lang-zh">如何開始</span>
-    </h2>
-    <div class="grid md:grid-cols-4 gap-4">
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-cyan-400 font-bold text-lg mb-2">1</p>
-        <p class="text-white text-sm font-medium mb-1">
-          <span class="lang-en">Get a wallet</span><span class="lang-zh">建立錢包</span>
-        </p>
-        <p class="text-xs text-zinc-500">
-          <span class="lang-en">Phantom (Solana) or MetaMask (Ethereum)</span><span class="lang-zh">Phantom（Solana）或MetaMask（Ethereum）</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-cyan-400 font-bold text-lg mb-2">2</p>
-        <p class="text-white text-sm font-medium mb-1">
-          <span class="lang-en">Fund with SOL or ETH</span><span class="lang-zh">充值SOL或ETH</span>
-        </p>
-        <p class="text-xs text-zinc-500">
-          <span class="lang-en">Buy from a licensed VATP (HashKey, OSL)</span><span class="lang-zh">從持牌VATP購買（HashKey、OSL）</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-cyan-400 font-bold text-lg mb-2">3</p>
-        <p class="text-white text-sm font-medium mb-1">
-          <span class="lang-en">Use an aggregator</span><span class="lang-zh">使用聚合器</span>
-        </p>
-        <p class="text-xs text-zinc-500">
-          <span class="lang-en">Jupiter (Solana) or 1inch (Ethereum) for best prices</span><span class="lang-zh">Jupiter（Solana）或1inch（Ethereum）獲取最佳價格</span>
-        </p>
-      </div>
-      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
-        <p class="text-cyan-400 font-bold text-lg mb-2">4</p>
-        <p class="text-white text-sm font-medium mb-1">
-          <span class="lang-en">Swap or provide LP</span><span class="lang-zh">兌換或提供流動性</span>
-        </p>
-        <p class="text-xs text-zinc-500">
-          <span class="lang-en">Start with stablecoin pairs for lower risk</span><span class="lang-zh">從穩定幣對開始以降低風險</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="max-w-6xl mx-auto px-6 pb-24">
-    <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- CTA -->
+    <div class="mt-16 bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
         <h3 class="text-lg font-bold text-white mb-2">
           <span class="lang-en">Explore other onchain products</span><span class="lang-zh">了解其他鏈上產品</span>
@@ -300,5 +97,5 @@ const base = '/tradfi-onchain';
         <a href={`${base}/products/hyperliquid`} class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Hyperliquid</a>
       </div>
     </div>
-  </section>
+  </article>
 </Layout>
