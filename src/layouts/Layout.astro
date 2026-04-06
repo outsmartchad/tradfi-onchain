@@ -32,11 +32,14 @@ const base = '/tradfi-onchain';
         <a href={`${base}/products/amm`} class="hover:text-white transition-colors">Onchain AMM</a>
         <a href={`${base}/regulation`} class="hover:text-white transition-colors">HK Regulation</a>
       </div>
-      <button id="mobile-menu-btn" class="md:hidden text-zinc-400 hover:text-white">
+      <div class="flex items-center gap-4">
+        <button id="lang-toggle" class="text-sm text-zinc-400 hover:text-white border border-zinc-700 rounded px-2 py-1 cursor-pointer">中</button>
+        <button id="mobile-menu-btn" class="md:hidden text-zinc-400 hover:text-white">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
+      </div>
     </div>
     <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-[#0a0a0f]/95 backdrop-blur-xl">
       <div class="px-6 py-4 flex flex-col gap-4 text-sm text-zinc-400">
@@ -95,9 +98,39 @@ const base = '/tradfi-onchain';
   </footer>
 
   <script>
+    // Mobile menu
     document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
       document.getElementById('mobile-menu')?.classList.toggle('hidden');
     });
+
+    // i18n: ?lang=hk-zh switches to Chinese
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get('lang') || 'en';
+      if (lang === 'hk-zh') {
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = '');
+        document.documentElement.lang = 'zh-HK';
+      }
+      // Preserve lang param on all internal links
+      document.querySelectorAll('a[href*="/tradfi-onchain/"]').forEach(a => {
+        const href = a.getAttribute('href');
+        if (href && !href.includes('?lang=') && lang === 'hk-zh') {
+          a.setAttribute('href', href + (href.includes('?') ? '&' : '?') + 'lang=hk-zh');
+        }
+      });
+      // Toggle button
+      const toggle = document.getElementById('lang-toggle');
+      if (toggle) {
+        toggle.textContent = lang === 'hk-zh' ? 'EN' : '中';
+        toggle.addEventListener('click', () => {
+          const url = new URL(window.location.href);
+          if (lang === 'hk-zh') { url.searchParams.delete('lang'); }
+          else { url.searchParams.set('lang', 'hk-zh'); }
+          window.location.href = url.toString();
+        });
+      }
+    })();
   </script>
 </body>
 </html>
