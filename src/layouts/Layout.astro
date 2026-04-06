@@ -109,7 +109,7 @@ const base = '/tradfi-onchain';
       const lang = params.get('lang') || 'en';
       if (lang === 'hk-zh') {
         document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = '');
+        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'inline');
         document.documentElement.lang = 'zh-HK';
       }
       // Preserve lang param on all internal links
