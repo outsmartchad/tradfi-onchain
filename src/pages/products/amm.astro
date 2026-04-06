@@ -26,12 +26,12 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">An automated market maker replaces the traditional orderbook with a mathematical formula. A pool contains two tokens — say ETH and USDC — and their quantities maintain a constant product: <span class="text-cyan-400 font-mono">x × y = k</span>. When you buy Token A, the pool's supply of Token A decreases while Token B increases, and Token A's price rises automatically. No orderbook, no market maker placing orders — a smart contract quotes prices based on supply and demand.</span>
-        <span class="lang-zh">自動化做市商用數學公式取代傳統訂單簿。一個池包含兩隻代幣 — 例如ETH同USDC — 它們嘅數量維持恆定乘積：<span class="text-cyan-400 font-mono">x × y = k</span>。當你買Token A，池中Token A供應減少而Token B增加，Token A價格自動上升。無需訂單簿，無需做市商掛單 — 智能合約根據供需自動報價。</span>
+        <span class="lang-zh">AMM用數學公式取代傳統orderbook。一個池入面有兩隻代幣 — 例如ETH同USDC — 佢哋嘅數量維持恆定乘積：<span class="text-cyan-400 font-mono">x × y = k</span>。你買Token A，池入面Token A供應就減少、Token B增加，Token A嘅price自動升。唔使orderbook，唔使做市商掛單 — smart contract根據供需自動報價。</span>
       </p>
 
       <p>
         <span class="lang-en">Aggregators like Jupiter (Solana) and 1inch (Ethereum) automatically route trades across dozens of pools to find the best price. Settlement is instant — seconds, not T+1 or T+2. Assets stay in your wallet throughout. Non-custodial, no exchange intermediary.</span>
-        <span class="lang-zh">聚合器如Jupiter（Solana）和1inch（Ethereum）自動將交易路由至數十個池以搵到最佳價格。結算即時 — 秒級，唔係T+1或T+2。資產全程留喺你嘅錢包。Non-custodial，無交易所中介。</span>
+        <span class="lang-zh">聚合器好似Jupiter（Solana）同1inch（Ethereum）會自動幫你搵幾十個池入面最好嘅price。結算即時 — 秒級，唔係T+1或T+2。資產全程留喺你錢包。Non-custodial，唔經交易所。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
@@ -40,7 +40,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en"><span class="text-white font-medium">1. Trade — onchain swap.</span> Any token pair can be swapped as long as someone has created a pool. No listing requirement. This is the basic use case: buy and sell tokens with instant settlement and self-custody.</span>
-        <span class="lang-zh"><span class="text-white font-medium">1. 交易 — 鏈上兌換。</span>只要有人建立咗池，任何代幣對都可以兌換。無上市要求。呢個係基本用例：以即時結算和自託管方式買賣代幣。</span>
+        <span class="lang-zh"><span class="text-white font-medium">1. 交易 — 鏈上swap。</span>只要有人建立咗池，任何代幣對都可以swap。唔使上市審批。呢個係最基本嘅用法：即時結算、自己hold住個錢包嚟買賣代幣。</span>
       </p>
 
       <p>
@@ -50,7 +50,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en"><span class="text-white font-medium">3. Launch a token — permissionless IPO.</span> Platforms like PumpFun and Raydium LaunchLab allow anyone to launch a token in seconds. Bonding curve pricing means early buyers get lower prices, and more buyers push the price up. At a certain market cap, the token automatically migrates to an AMM pool and becomes a fully tradeable market. Essentially a permissionless IPO — no underwriter, no prospectus, no lock-up period. Thousands launch daily. 99% are junk, but the infrastructure itself is a fundamental financial primitive: permissionless capital formation.</span>
-        <span class="lang-zh"><span class="text-white font-medium">3. 發行代幣 — 無需許可的IPO。</span>PumpFun和Raydium LaunchLab等平台允許任何人幾秒內發行一隻代幣。Bonding curve定價意味著早期買家獲得較低價格，更多買家推高價格。到一定市值，代幣自動遷移到AMM池成為完全可交易嘅市場。本質上係permissionless IPO — 無承銷商、無招股書、無鎖定期。每日發行數千隻。99%係垃圾，但基礎設施本身係一個基本金融原語：無需許可嘅資本形成。</span>
+        <span class="lang-zh"><span class="text-white font-medium">3. 發行代幣 — 無需許可嘅IPO。</span>PumpFun同Raydium LaunchLab等平台俾任何人幾秒之內launch一隻代幣。Bonding curve定價：早期買家price低，越多人買price越高。到一定market cap，代幣自動migrate去AMM池變成fully tradeable嘅market。本質上就係permissionless IPO — 冇underwriter、冇招股書、冇鎖定期。每日launch幾千隻。99%係垃圾，但呢個基礎設施本身係一個基本金融原語：唔使批准嘅資本形成。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
@@ -59,7 +59,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Where traditional markets require exchange approval and regulatory filing to list, onchain you just create a pool. Where traditional market making requires a designated MM agreement, onchain anyone can deposit liquidity. Trading hours go from 9:30am–4:00pm plus holidays to 24/7/365. Settlement goes from T+1 or T+2 to instant (seconds). Custody goes from broker/custodian to self-custody in your own wallet. Every structural friction in traditional markets — listing delays, settlement windows, custody transfers, trading hour limitations — is eliminated.</span>
-        <span class="lang-zh">傳統市場需要交易所審批和監管備案才能上市，鏈上只需建立一個池。傳統做市需要指定做市商協議，鏈上任何人都可以存入流動性。交易時間從9:30am–4:00pm加假期變成24/7/365。結算從T+1或T+2變成即時（秒級）。託管從經紀商/託管人變成你自己錢包嘅自託管。傳統市場嘅每一個結構性摩擦 — 上市延遲、結算窗口、託管轉移、交易時段限制 — 都被消除。</span>
+        <span class="lang-zh">傳統市場要交易所審批同監管備案先可以上市，鏈上只需建一個池。傳統做市要指定做市商協議，鏈上任何人都可以存入流動性。交易時間從9:30am–4:00pm加假期變成24/7/365。結算從T+1或T+2變成即時（秒級）。託管從經紀商揸住變成你自己錢包嘅self-custody。傳統市場每一個結構性摩擦 — 上市延遲、結算窗口、託管轉移、交易時段限制 — 全部冇咗。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
@@ -68,7 +68,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Impermanent loss is the fundamental cost of providing liquidity — price divergence between pooled tokens causes loss relative to simply holding. Smart contract bugs can lead to fund loss; only use audited protocols. Permissionless listing means anyone can create a token, and 99% of new tokens are worthless — rug pulls are common. None of this is regulated by the SFC, and there is no investor protection.</span>
-        <span class="lang-zh">無常損失係提供流動性嘅基本成本 — 池中代幣價格偏離導致相對於單純持有嘅損失。智能合約漏洞可導致資金損失；只使用經審計嘅協議。無需許可嘅上市意味著任何人可以建立代幣，99%嘅新代幣毫無價值 — 跑路司空見慣。呢啲都唔受SFC監管，且無投資者保障。</span>
+        <span class="lang-zh">無常損失係做LP嘅基本成本 — 池入面代幣price偏離就會令你蝕過淨hold。智能合約有bug可以令你蝕晒；只用經審計嘅協議。無需許可上市意味著任何人都可以建代幣，99%新代幣毫無價值 — rug pull成日發生。呢啲全部唔受SFC監管，冇投資者保障。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
@@ -77,7 +77,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Get a wallet — Phantom for Solana or MetaMask for Ethereum. Fund it with SOL or ETH from a licensed VATP like HashKey or OSL. Use an aggregator — Jupiter on Solana, 1inch on Ethereum — for the best prices across all pools. Start with stablecoin pairs if you want to try LP with lower risk.</span>
-        <span class="lang-zh">取得錢包 — Solana用Phantom，Ethereum用MetaMask。從持牌VATP如HashKey或OSL充值SOL或ETH。使用聚合器 — Solana用Jupiter，Ethereum用1inch — 跨所有池獲取最佳價格。如果想以較低風險嘗試LP，從穩定幣對開始。</span>
+        <span class="lang-zh">攞個錢包 — Solana用Phantom，Ethereum用MetaMask。從持牌VATP好似HashKey或OSL買SOL或ETH。用聚合器 — Solana用Jupiter，Ethereum用1inch — 跨所有池幫你搵最好price。如果想低風險試吓LP，從穩定幣對開始。</span>
       </p>
     </div>
 
