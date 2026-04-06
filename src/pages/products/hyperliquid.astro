@@ -1,121 +1,246 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
 ---
 
 <Layout title="Hyperliquid — Perp DEX + Pre-IPO">
   <!-- Hero -->
   <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
-    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">Perp DEX + Pre-IPO Stock Perps</p>
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
+      <span class="lang-en">Perp DEX + Pre-IPO Stock Perps</span><span class="lang-zh">永續合約DEX + Pre-IPO股票合約</span>
+    </p>
     <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Hyperliquid</h1>
     <p class="text-xl text-zinc-400 max-w-3xl">
-      Crypto perpetual futures，up to 50x leverage，no KYC，no trading hours。Daily volume $5-10B，comparable to Bybit/OKX。仲有pre-IPO stock perps — SpaceX、OpenAI、Anthropic都trade到。
+      <span class="lang-en">Crypto perpetual futures with up to 50x leverage, no KYC, no trading hours. Daily volume $5–10B, comparable to Bybit/OKX. Plus pre-IPO stock perps — trade SpaceX, OpenAI, and Anthropic valuations.</span>
+      <span class="lang-zh">Crypto perpetual futures，up to 50x leverage，no KYC，no trading hours。Daily volume $5-10B，comparable to Bybit/OKX。仲有pre-IPO stock perps — SpaceX、OpenAI、Anthropic都trade到。</span>
     </p>
   </section>
 
-  <!-- Key stats -->
+  <!-- Key Metrics -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Key Metrics</span><span class="lang-zh">核心數據</span>
+    </h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">$5-10B</p>
-        <p class="text-sm text-zinc-500 mt-1">Daily volume</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">Daily volume</span><span class="lang-zh">日交易量</span>
+        </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">50x</p>
-        <p class="text-sm text-zinc-500 mt-1">Max leverage</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">Max leverage</span><span class="lang-zh">最高槓桿</span>
+        </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">$1.43B</p>
-        <p class="text-sm text-zinc-500 mt-1">Pre-IPO OI</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">Pre-IPO open interest</span><span class="lang-zh">Pre-IPO未平倉量</span>
+        </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">~200K</p>
-        <p class="text-sm text-zinc-500 mt-1">Orders/sec capacity</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">Orders/sec capacity</span><span class="lang-zh">每秒訂單處理量</span>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- What it is -->
+  <!-- What Is It -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">乜嘢嚟？</h2>
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">What Is It</span><span class="lang-zh">乜嘢嚟？</span>
+    </h2>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">Crypto Perpetual Futures</h3>
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">Crypto Perpetual Futures</span><span class="lang-zh">加密貨幣永續合約</span>
+        </h3>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p>Perpetual futures = 永續合約，冇expiry date，用funding rate keep price anchored to spot。</p>
-          <p>Up to <span class="text-white font-medium">50x leverage</span>，BTC/ETH/SOL同幾百個altcoins都有。</p>
-          <p><span class="text-white font-medium">No KYC</span>，deposit USDC就trade到。<span class="text-white font-medium">No trading hours</span> — 24/7/365。</p>
-          <p>Daily volume $5-10B，同Bybit、OKX一個級別。</p>
+          <p><span class="lang-en">Perpetual futures have no expiry date. A funding rate mechanism keeps the contract price anchored to spot.</span><span class="lang-zh">Perpetual futures = 永續合約，冇expiry date，用funding rate keep price anchored to spot。</span></p>
+          <p><span class="lang-en">Up to <span class="text-white font-medium">50x leverage</span> on BTC, ETH, SOL, and hundreds of altcoins.</span><span class="lang-zh">Up to <span class="text-white font-medium">50x leverage</span>，BTC/ETH/SOL同幾百個altcoins都有。</span></p>
+          <p><span class="lang-en"><span class="text-white font-medium">No KYC</span> — deposit USDC and start trading. <span class="text-white font-medium">No trading hours</span> — 24/7/365.</span><span class="lang-zh"><span class="text-white font-medium">No KYC</span>，deposit USDC就trade到。<span class="text-white font-medium">No trading hours</span> — 24/7/365。</span></p>
+          <p><span class="lang-en">Daily volume of $5–10B, on par with Bybit and OKX.</span><span class="lang-zh">Daily volume $5-10B，同Bybit、OKX一個級別。</span></p>
         </div>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">Own L1 Chain</h3>
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">Own L1 Chain</span><span class="lang-zh">自建L1區塊鏈</span>
+        </h3>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p>唔係build喺Ethereum/Solana上面，係自己條chain。</p>
-          <p><span class="text-white font-medium">HyperBFT consensus</span> — 自研共識機制。</p>
-          <p><span class="text-white font-medium">HyperCore</span> — onchain orderbook engine，~200K orders/sec capacity。</p>
-          <p>所有order matching同settlement都喺chain上面做，但UX feel得好似centralized exchange。</p>
+          <p><span class="lang-en">Not built on Ethereum or Solana — Hyperliquid runs its own chain.</span><span class="lang-zh">唔係build喺Ethereum/Solana上面，係自己條chain。</span></p>
+          <p><span class="lang-en"><span class="text-white font-medium">HyperBFT consensus</span> — proprietary consensus mechanism.</span><span class="lang-zh"><span class="text-white font-medium">HyperBFT consensus</span> — 自研共識機制。</span></p>
+          <p><span class="lang-en"><span class="text-white font-medium">HyperCore</span> — onchain orderbook engine, ~200K orders/sec capacity.</span><span class="lang-zh"><span class="text-white font-medium">HyperCore</span> — onchain orderbook engine，~200K orders/sec capacity。</span></p>
+          <p><span class="lang-en">All order matching and settlement happens onchain, but the UX feels like a centralized exchange.</span><span class="lang-zh">所有order matching同settlement都喺chain上面做，但UX feel得好似centralized exchange。</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pre-IPO — the hook -->
+  <!-- HIP-3 Pre-IPO -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
     <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 md:p-12">
       <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">HIP-3 Pre-IPO Stock Perps</p>
-      <h2 class="text-2xl font-bold text-white mb-6">你幫佢哋做deal、寫valuation、見management，但買唔到一股。</h2>
+      <h2 class="text-2xl font-bold text-white mb-6">
+        <span class="lang-en">You help them close deals, write valuations, meet management — but can't buy a single share.</span>
+        <span class="lang-zh">你幫佢哋做deal、寫valuation、見management，但買唔到一股。</span>
+      </h2>
       <p class="text-lg text-zinc-400 mb-8">
-        而家有個market俾你express你嘅view。
+        <span class="lang-en">Now there's a market where you can express your view.</span>
+        <span class="lang-zh">而家有個market俾你express你嘅view。</span>
       </p>
       <div class="grid md:grid-cols-2 gap-6">
         <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">What:</span> Pre-IPO stock perpetual futures — 唔係真股票，係pure valuation speculation contract。</p>
-          <p><span class="text-white font-medium">Underlyings:</span> SpaceX、OpenAI、Anthropic、Cursor、Stripe等等。</p>
-          <p><span class="text-white font-medium">Leverage:</span> Up to 3x（比crypto perps低好多，因為underlying流動性低）。</p>
+          <p><span class="text-white font-medium">What:</span> <span class="lang-en">Pre-IPO stock perpetual futures — not real equity, but pure valuation speculation contracts.</span><span class="lang-zh">Pre-IPO stock perpetual futures — 唔係真股票，係pure valuation speculation contract。</span></p>
+          <p><span class="text-white font-medium">Underlyings:</span> SpaceX, OpenAI, Anthropic, Cursor, Stripe</p>
+          <p><span class="text-white font-medium">Leverage:</span> <span class="lang-en">Up to 3x (much lower than crypto perps due to lower underlying liquidity).</span><span class="lang-zh">Up to 3x（比crypto perps低好多，因為underlying流動性低）。</span></p>
         </div>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">Volume:</span> 35%+ of total platform volume，唔係niche product。</p>
-          <p><span class="text-white font-medium">OI:</span> $1.43B open interest across pre-IPO markets。</p>
-          <p><span class="text-white font-medium">Settlement:</span> 以最新估值/funding round price settle，或者IPO price。</p>
+          <p><span class="text-white font-medium">Volume:</span> <span class="lang-en">35%+ of total platform volume — not a niche product.</span><span class="lang-zh">35%+ of total platform volume，唔係niche product。</span></p>
+          <p><span class="text-white font-medium">OI:</span> <span class="lang-en">$1.43B open interest across pre-IPO markets.</span><span class="lang-zh">$1.43B open interest across pre-IPO markets。</span></p>
+          <p><span class="text-white font-medium">Settlement:</span> <span class="lang-en">Settles against the latest valuation/funding round price, or IPO price.</span><span class="lang-zh">以最新估值/funding round price settle，或者IPO price。</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Transparency / Risks -->
+  <!-- TradFi Comparison -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">風險同透明度</h2>
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">TradFi Comparison</span><span class="lang-zh">同傳統金融比較</span>
+    </h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-zinc-800/50">
+            <th class="text-left p-4 text-zinc-500 font-medium"></th>
+            <th class="text-left p-4 text-zinc-500 font-medium">
+              <span class="lang-en">Traditional Futures</span><span class="lang-zh">傳統期貨</span>
+            </th>
+            <th class="text-left p-4 text-cyan-400 font-medium">Hyperliquid</th>
+          </tr>
+        </thead>
+        <tbody class="text-zinc-400">
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium"><span class="lang-en">Expiry</span><span class="lang-zh">到期日</span></td>
+            <td class="p-4"><span class="lang-en">Quarterly / monthly</span><span class="lang-zh">季度/月度</span></td>
+            <td class="p-4"><span class="lang-en">Perpetual (no expiry)</span><span class="lang-zh">永續（無到期日）</span></td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium"><span class="lang-en">Trading hours</span><span class="lang-zh">交易時間</span></td>
+            <td class="p-4"><span class="lang-en">Exchange hours + maintenance</span><span class="lang-zh">交易所時段 + 維護</span></td>
+            <td class="p-4">24/7/365</td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">KYC</td>
+            <td class="p-4"><span class="lang-en">Required</span><span class="lang-zh">需要</span></td>
+            <td class="p-4"><span class="lang-en">Not required</span><span class="lang-zh">不需要</span></td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium"><span class="lang-en">Pre-IPO access</span><span class="lang-zh">Pre-IPO准入</span></td>
+            <td class="p-4"><span class="lang-en">Accredited / secondary market</span><span class="lang-zh">合資格投資者/二級市場</span></td>
+            <td class="p-4"><span class="lang-en">Anyone with USDC</span><span class="lang-zh">持有USDC即可</span></td>
+          </tr>
+          <tr>
+            <td class="p-4 text-white font-medium"><span class="lang-en">Settlement</span><span class="lang-zh">結算</span></td>
+            <td class="p-4"><span class="lang-en">Clearinghouse</span><span class="lang-zh">結算所</span></td>
+            <td class="p-4"><span class="lang-en">Onchain (self-custody)</span><span class="lang-zh">鏈上（自託管）</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Risks -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Risks & Transparency</span><span class="lang-zh">風險同透明度</span>
+    </h2>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">Decentralization問號</h3>
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">Decentralization Questions</span><span class="lang-zh">去中心化問號</span>
+        </h3>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">Validator set:</span> 得21個，team控制majority。</p>
-          <p><span class="text-white font-medium">Bridge:</span> 由4個team address控制，唔係multisig。</p>
-          <p><span class="text-white font-medium">JELLY incident (March 2025):</span> 有trader manipulate JELLY token price，team直接override oracle price強制liquidate。</p>
-          <p><span class="text-white font-medium">Arthur Hayes 評論:</span> "stop pretending Hyperliquid is decentralized"</p>
+          <p><span class="text-white font-medium">Validator set:</span> <span class="lang-en">Only 21 validators, team controls majority.</span><span class="lang-zh">得21個，team控制majority。</span></p>
+          <p><span class="text-white font-medium">Bridge:</span> <span class="lang-en">Controlled by 4 team addresses, not multisig.</span><span class="lang-zh">由4個team address控制，唔係multisig。</span></p>
+          <p><span class="text-white font-medium">JELLY incident (March 2025):</span> <span class="lang-en">A trader manipulated JELLY token price; the team overrode oracle pricing and force-liquidated positions.</span><span class="lang-zh">有trader manipulate JELLY token price，team直接override oracle price強制liquidate。</span></p>
+          <p><span class="text-white font-medium">Arthur Hayes:</span> "stop pretending Hyperliquid is decentralized"</p>
         </div>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">風險因素</h3>
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">Risk Factors</span><span class="lang-zh">風險因素</span>
+        </h3>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">Smart contract exploit</span> — bridge或matching engine嘅code有bug就可以被exploit</p>
-          <p><span class="text-white font-medium">Oracle manipulation</span> — JELLY事件證明oracle可以被manipulate</p>
-          <p><span class="text-white font-medium">Team intervention</span> — 團隊可以unilaterally change rules</p>
-          <p><span class="text-white font-medium">監管風險</span> — 唔受SFC監管，HK traffic約佔6%</p>
-          <p><span class="text-white font-medium">No KYC = no recourse</span> — 冇deposit protection</p>
+          <p><span class="text-white font-medium"><span class="lang-en">Smart contract exploit</span><span class="lang-zh">智能合約漏洞</span></span> — <span class="lang-en">Bridge or matching engine code bugs could be exploited</span><span class="lang-zh">bridge或matching engine嘅code有bug就可以被exploit</span></p>
+          <p><span class="text-white font-medium"><span class="lang-en">Oracle manipulation</span><span class="lang-zh">預言機操縱</span></span> — <span class="lang-en">The JELLY incident proved oracles can be manipulated</span><span class="lang-zh">JELLY事件證明oracle可以被manipulate</span></p>
+          <p><span class="text-white font-medium"><span class="lang-en">Team intervention</span><span class="lang-zh">團隊干預</span></span> — <span class="lang-en">The team can unilaterally change rules</span><span class="lang-zh">團隊可以unilaterally change rules</span></p>
+          <p><span class="text-white font-medium"><span class="lang-en">Regulatory risk</span><span class="lang-zh">監管風險</span></span> — <span class="lang-en">Not regulated by the SFC; HK traffic ~6%</span><span class="lang-zh">唔受SFC監管，HK traffic約佔6%</span></p>
+          <p><span class="text-white font-medium"><span class="lang-en">No KYC = no recourse</span><span class="lang-zh">無KYC = 無追索權</span></span> — <span class="lang-en">No deposit protection</span><span class="lang-zh">冇deposit protection</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HK context -->
+  <!-- HK Context -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
     <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-      <h3 class="text-lg font-bold text-white mb-4">HK Context</h3>
+      <h3 class="text-lg font-bold text-white mb-4">
+        <span class="lang-en">Hong Kong Context</span><span class="lang-zh">香港背景</span>
+      </h3>
       <div class="space-y-3 text-sm text-zinc-400">
-        <p>HK traffic佔Hyperliquid大約 <span class="text-white font-medium">6%</span>。唔係primary market但有significant user base。</p>
-        <p>Hyperliquid <span class="text-white font-medium">唔受SFC監管</span>，唔係licensed VATP。用戶自己bear所有counterparty risk。</p>
-        <p>For HK finance professionals：呢個platform嘅value主要喺pre-IPO stock perps。你喺工作入面accumulate嘅sector knowledge同valuation insight，可以用嚟trade。但要清楚理解呢個唔係regulated product。</p>
+        <p><span class="lang-en">HK traffic accounts for approximately <span class="text-white font-medium">6%</span> of Hyperliquid's user base. Not a primary market, but a significant presence.</span><span class="lang-zh">HK traffic佔Hyperliquid大約 <span class="text-white font-medium">6%</span>。唔係primary market但有significant user base。</span></p>
+        <p><span class="lang-en">Hyperliquid is <span class="text-white font-medium">not regulated by the SFC</span> and is not a licensed VATP. Users bear all counterparty risk.</span><span class="lang-zh">Hyperliquid <span class="text-white font-medium">唔受SFC監管</span>，唔係licensed VATP。用戶自己bear所有counterparty risk。</span></p>
+        <p><span class="lang-en">For HK finance professionals: the platform's primary value is in pre-IPO stock perps. The sector knowledge and valuation insights you accumulate through your work can be applied here. But understand clearly — this is not a regulated product.</span><span class="lang-zh">For HK finance professionals：呢個platform嘅value主要喺pre-IPO stock perps。你喺工作入面accumulate嘅sector knowledge同valuation insight，可以用嚟trade。但要清楚理解呢個唔係regulated product。</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Getting Started</span><span class="lang-zh">如何開始</span>
+    </h2>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">1</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Connect wallet</span><span class="lang-zh">連接錢包</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Any EVM wallet — MetaMask, Rabby, etc.</span><span class="lang-zh">任何EVM錢包 — MetaMask、Rabby等</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">2</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Bridge USDC</span><span class="lang-zh">跨鏈USDC</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Bridge from Arbitrum to Hyperliquid L1</span><span class="lang-zh">從Arbitrum跨鏈到Hyperliquid L1</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">3</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Choose market</span><span class="lang-zh">選擇市場</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Crypto perps or pre-IPO stock perps</span><span class="lang-zh">Crypto永續合約或Pre-IPO股票合約</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">4</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Set leverage & trade</span><span class="lang-zh">設定槓桿及交易</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Start with low leverage — 2-3x max recommended</span><span class="lang-zh">建議低槓桿開始 — 最高2-3x</span>
+        </p>
       </div>
     </div>
   </section>
@@ -124,12 +249,17 @@ import Layout from '../../layouts/Layout.astro';
   <section class="max-w-6xl mx-auto px-6 pb-24">
     <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <h3 class="text-lg font-bold text-white mb-2">想了解其他 onchain product？</h3>
-        <p class="text-sm text-zinc-400">Polymarket做prediction markets，AMM做permissionless liquidity。</p>
+        <h3 class="text-lg font-bold text-white mb-2">
+          <span class="lang-en">Explore other onchain products</span><span class="lang-zh">了解其他鏈上產品</span>
+        </h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">Polymarket for prediction markets. AMM for permissionless liquidity.</span>
+          <span class="lang-zh">Polymarket做prediction markets，AMM做permissionless liquidity。</span>
+        </p>
       </div>
       <div class="flex gap-4">
-        <a href="/tradfi-onchain/products/polymarket" class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors whitespace-nowrap">Polymarket</a>
-        <a href="/tradfi-onchain/products/amm" class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Onchain AMM</a>
+        <a href={`${base}/products/polymarket`} class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors whitespace-nowrap">Polymarket</a>
+        <a href={`${base}/products/amm`} class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Onchain AMM</a>
       </div>
     </div>
   </section>

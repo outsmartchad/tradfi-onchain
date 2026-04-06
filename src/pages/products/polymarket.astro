@@ -1,62 +1,107 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
 ---
 
 <Layout title="Polymarket — Prediction Market">
   <!-- Hero -->
   <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
-    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">Prediction Market</p>
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
+      <span class="lang-en">Prediction Market</span><span class="lang-zh">預測市場</span>
+    </p>
     <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Polymarket</h1>
     <p class="text-xl text-zinc-400 max-w-3xl">
-      買嘅唔係asset，係outcome。每個event變成一個binary contract，market price直接反映market implied probability。Real money skin in the game，唔係survey、唔係analyst opinion。
+      <span class="lang-en">You're not buying an asset — you're buying an outcome. Every event becomes a binary contract, and the market price directly reflects the market-implied probability. Real money, skin in the game — not surveys, not analyst opinions.</span>
+      <span class="lang-zh">買嘅唔係asset，係outcome。每個event變成一個binary contract，market price直接反映market implied probability。Real money skin in the game，唔係survey、唔係analyst opinion。</span>
     </p>
   </section>
 
-  <!-- Key stats -->
+  <!-- Key Metrics -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Key Metrics</span><span class="lang-zh">核心數據</span>
+    </h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">$9.7B</p>
-        <p class="text-sm text-zinc-500 mt-1">30-day volume</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">30-day volume</span><span class="lang-zh">30日交易量</span>
+        </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">$425M</p>
-        <p class="text-sm text-zinc-500 mt-1">Single-day record</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">Single-day record</span><span class="lang-zh">單日最高交易量</span>
+        </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">$600M</p>
-        <p class="text-sm text-zinc-500 mt-1">ICE (NYSE parent) 投資</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">ICE (NYSE parent) investment</span><span class="lang-zh">ICE（NYSE母公司）投資</span>
+        </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
         <p class="text-3xl font-bold text-white">535+</p>
-        <p class="text-sm text-zinc-500 mt-1">Active AI markets</p>
+        <p class="text-sm text-zinc-500 mt-1">
+          <span class="lang-en">Active AI markets</span><span class="lang-zh">活躍AI市場</span>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- How it works -->
+  <!-- What Is It -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">點樣運作？</h2>
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">What Is It</span><span class="lang-zh">乜嘢嚟？</span>
+    </h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="space-y-4 text-sm text-zinc-400">
+        <p>
+          <span class="lang-en">Polymarket is a prediction market where you trade on the outcomes of real-world events. Each event is structured as a binary contract — "Will X happen?" — priced between $0 and $1. The price represents the market-implied probability, driven by traders putting real money behind their views.</span>
+          <span class="lang-zh">Polymarket係一個預測市場，你交易嘅係現實世界事件嘅結果。每個event結構化為binary contract —「X會唔會發生？」— 價格介乎$0同$1之間。價格反映market implied probability，由真金白銀嘅交易者推動。</span>
+        </p>
+        <p>
+          <span class="lang-en">Unlike surveys or analyst opinions, prediction markets aggregate information through financial incentives. If you believe the market is wrong, you have a direct way to profit from your conviction. This mechanism has consistently outperformed traditional polling — Polymarket's 2024 US election pricing was closer to the final outcome than any major poll.</span>
+          <span class="lang-zh">唔同於survey或analyst opinion，預測市場通過經濟激勵來匯集信息。如果你認為市場定價錯誤，你可以直接從你嘅判斷中獲利。呢個機制持續跑贏傳統民調 — Polymarket 2024年美國大選嘅定價比所有主流民調更接近最終結果。</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">How It Works</span><span class="lang-zh">點樣運作？</span>
+    </h2>
     <div class="grid md:grid-cols-3 gap-6">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
         <p class="text-cyan-400 text-sm font-medium mb-3">1. Binary Contract</p>
-        <h3 class="text-lg font-bold text-white mb-3">買outcome，唔係asset</h3>
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">Buy outcomes, not assets</span><span class="lang-zh">買outcome，唔係asset</span>
+        </h3>
         <p class="text-sm text-zinc-400">
-          每個market係一個yes/no contract。例如 "Fed will cut rates in June" — 你買 YES at $0.65，即market implied probability 65%。答啱得$1，答錯得$0。
+          <span class="lang-en">Each market is a yes/no contract. For example, "Fed will cut rates in June" — you buy YES at $0.65, meaning the market-implied probability is 65%. Correct outcome pays $1, incorrect pays $0.</span>
+          <span class="lang-zh">每個market係一個yes/no contract。例如「Fed will cut rates in June」— 你買 YES at $0.65，即market implied probability 65%。答啱得$1，答錯得$0。</span>
         </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
         <p class="text-cyan-400 text-sm font-medium mb-3">2. Price = Probability</p>
-        <h3 class="text-lg font-bold text-white mb-3">Market price = 群眾智慧</h3>
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">Market price = collective intelligence</span><span class="lang-zh">Market price = 群眾智慧</span>
+        </h3>
         <p class="text-sm text-zinc-400">
-          Contract price直接反映market implied probability。因為有real money skin in the game，比survey同analyst opinion更準確。2024 US election就完勝所有sell-side polls。
+          <span class="lang-en">Contract prices directly reflect market-implied probability. Because there is real money at stake, these prices are more accurate than surveys or analyst opinions. The 2024 US election result validated this — Polymarket outperformed all major sell-side polls.</span>
+          <span class="lang-zh">Contract price直接反映market implied probability。因為有real money skin in the game，比survey同analyst opinion更準確。2024 US election就完勝所有sell-side polls。</span>
         </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
         <p class="text-cyan-400 text-sm font-medium mb-3">3. Hybrid Architecture</p>
-        <h3 class="text-lg font-bold text-white mb-3">Off-chain matching，On-chain settlement</h3>
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">Off-chain matching, on-chain settlement</span><span class="lang-zh">Off-chain matching，On-chain settlement</span>
+        </h3>
         <p class="text-sm text-zinc-400">
-          Order matching喺centralized server（速度快），但settlement同funds喺Polygon USDC onchain（non-custodial，你自己hold個錢）。
+          <span class="lang-en">Order matching happens on centralized servers (for speed), but settlement and funds are held onchain via Polygon USDC (non-custodial — you hold your own funds).</span>
+          <span class="lang-zh">Order matching喺centralized server（速度快），但settlement同funds喺Polygon USDC onchain（non-custodial，你自己hold個錢）。</span>
         </p>
       </div>
     </div>
@@ -64,47 +109,203 @@ import Layout from '../../layouts/Layout.astro';
 
   <!-- Markets -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">有啲乜市場？</h2>
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Available Markets</span><span class="lang-zh">有啲乜市場？</span>
+    </h2>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">Macro / Policy</h3>
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">Macro / Policy</span><span class="lang-zh">宏觀 / 政策</span>
+        </h3>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">Fed rate decisions</span> — 幾月cut、幾多basis points，price比CME FedWatch更快更新</p>
-          <p><span class="text-white font-medium">Trump executive orders</span> — tariff、crypto regulation、immigration，每個topic都有market</p>
-          <p><span class="text-white font-medium">Geopolitics</span> — election outcomes、conflict resolution、diplomatic deals</p>
+          <p><span class="text-white font-medium">Fed rate decisions</span> — <span class="lang-en">Cut timing and magnitude, updated faster than CME FedWatch</span><span class="lang-zh">幾月cut、幾多basis points，price比CME FedWatch更快更新</span></p>
+          <p><span class="text-white font-medium">Trump executive orders</span> — <span class="lang-en">Tariffs, crypto regulation, immigration — every topic has a market</span><span class="lang-zh">tariff、crypto regulation、immigration，每個topic都有market</span></p>
+          <p><span class="text-white font-medium">Geopolitics</span> — <span class="lang-en">Election outcomes, conflict resolution, diplomatic deals</span><span class="lang-zh">選舉結果、衝突解決、外交協議</span></p>
         </div>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-4">Sports / Culture / AI</h3>
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">Sports / Culture / AI</span><span class="lang-zh">體育 / 文化 / AI</span>
+        </h3>
         <div class="space-y-3 text-sm text-zinc-400">
-          <p><span class="text-white font-medium">Sports</span> — $120M/day volume，NBA、NFL、soccer全部有</p>
-          <p><span class="text-white font-medium">Culture</span> — Oscars、Grammy、celebrity events</p>
-          <p><span class="text-white font-medium">AI</span> — 535+ active markets：AI model rankings、benchmark results、company valuations</p>
+          <p><span class="text-white font-medium">Sports</span> — <span class="lang-en">$120M/day volume — NBA, NFL, soccer all covered</span><span class="lang-zh">$120M/day volume，NBA、NFL、soccer全部有</span></p>
+          <p><span class="text-white font-medium">Culture</span> — <span class="lang-en">Oscars, Grammy Awards, celebrity events</span><span class="lang-zh">奧斯卡、Grammy、名人事件</span></p>
+          <p><span class="text-white font-medium">AI</span> — <span class="lang-en">535+ active markets: AI model rankings, benchmark results, company valuations</span><span class="lang-zh">535+ active markets：AI model rankings、benchmark results、company valuations</span></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Key insights -->
+  <!-- TradFi Comparison -->
   <section class="max-w-6xl mx-auto px-6 pb-16">
-    <h2 class="text-2xl font-bold text-white mb-8">Finance人要知</h2>
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">TradFi Comparison</span><span class="lang-zh">同傳統金融比較</span>
+    </h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl overflow-hidden">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-zinc-800/50">
+            <th class="text-left p-4 text-zinc-500 font-medium"></th>
+            <th class="text-left p-4 text-zinc-500 font-medium">
+              <span class="lang-en">Traditional</span><span class="lang-zh">傳統</span>
+            </th>
+            <th class="text-left p-4 text-cyan-400 font-medium">Polymarket</th>
+          </tr>
+        </thead>
+        <tbody class="text-zinc-400">
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">
+              <span class="lang-en">Information source</span><span class="lang-zh">信息來源</span>
+            </td>
+            <td class="p-4"><span class="lang-en">Analyst reports, surveys</span><span class="lang-zh">分析師報告、調查</span></td>
+            <td class="p-4"><span class="lang-en">Market-priced probabilities</span><span class="lang-zh">市場定價概率</span></td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">
+              <span class="lang-en">Incentive</span><span class="lang-zh">激勵機制</span>
+            </td>
+            <td class="p-4"><span class="lang-en">Reputation</span><span class="lang-zh">聲譽</span></td>
+            <td class="p-4"><span class="lang-en">Real money P&L</span><span class="lang-zh">真金白銀盈虧</span></td>
+          </tr>
+          <tr class="border-b border-zinc-800/30">
+            <td class="p-4 text-white font-medium">
+              <span class="lang-en">Settlement</span><span class="lang-zh">結算</span>
+            </td>
+            <td class="p-4"><span class="lang-en">Broker/custodian</span><span class="lang-zh">經紀商/託管人</span></td>
+            <td class="p-4"><span class="lang-en">Onchain (Polygon USDC)</span><span class="lang-zh">鏈上（Polygon USDC）</span></td>
+          </tr>
+          <tr>
+            <td class="p-4 text-white font-medium">
+              <span class="lang-en">Access</span><span class="lang-zh">准入</span>
+            </td>
+            <td class="p-4"><span class="lang-en">Accredited investors</span><span class="lang-zh">合資格投資者</span></td>
+            <td class="p-4"><span class="lang-en">Anyone with USDC</span><span class="lang-zh">持有USDC即可</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Business Use Cases -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Business Use Cases</span><span class="lang-zh">商業應用場景</span>
+    </h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">Research & Intelligence</span><span class="lang-zh">研究與情報</span>
+        </h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">Use prediction market prices as a real-time probability feed for macro events. Market-implied probabilities for Fed rate decisions, geopolitical outcomes, and policy changes update faster and more accurately than traditional research reports.</span>
+          <span class="lang-zh">用預測市場價格作為宏觀事件嘅實時概率feed。Fed利率決定、地緣政治結果同政策變動嘅market implied probabilities比傳統研究報告更新更快、更準確。</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">Hedging & Risk Management</span><span class="lang-zh">對沖與風險管理</span>
+        </h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">Hedge portfolio exposure to specific events. If your book is long rates, buy "Fed holds rates" contracts. Binary payoff structure makes risk/reward simple to calculate — maximum loss is the contract price paid.</span>
+          <span class="lang-zh">對沖投資組合對特定事件嘅風險敞口。如果你嘅倉位做多利率，可以買「Fed維持利率」合約。Binary payoff結構令風險/回報計算簡單 — 最大損失就係合約買入價。</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Insights -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">What Finance Professionals Should Know</span><span class="lang-zh">Finance人要知</span>
+    </h2>
     <div class="space-y-4">
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">2024 US Election — 完勝 Sell-Side Polls</h3>
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">2024 US Election — Outperformed All Sell-Side Polls</span>
+          <span class="lang-zh">2024 US Election — 完勝 Sell-Side Polls</span>
+        </h3>
         <p class="text-sm text-zinc-400">
-          Polymarket嘅market price consistently比所有主流polling更接近最終結果。Real money skin in the game嘅price discovery，比收survey同aggregating analyst opinion更準。呢個係prediction market最強嘅validation。
+          <span class="lang-en">Polymarket's pricing consistently outperformed every major poll in predicting the final result. Real money price discovery, driven by skin in the game, proved more accurate than aggregated surveys and analyst opinions. This is the strongest validation of prediction markets to date.</span>
+          <span class="lang-zh">Polymarket嘅market price consistently比所有主流polling更接近最終結果。Real money skin in the game嘅price discovery，比收survey同aggregating analyst opinion更準。呢個係prediction market最強嘅validation。</span>
         </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">ICE (NYSE Parent) 投資 $600M</h3>
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">ICE (NYSE Parent) Invested $600M</span>
+          <span class="lang-zh">ICE（NYSE母公司）投資 $600M</span>
+        </h3>
         <p class="text-sm text-zinc-400">
-          NYSE嘅parent company直接入股Polymarket。呢個signal好清楚 — 傳統exchange都認為prediction market有future，information market同stock market一樣有價值。
+          <span class="lang-en">The NYSE's parent company made a direct investment in Polymarket. The signal is clear — traditional exchanges see prediction markets as a next-generation information market with real value alongside stock markets.</span>
+          <span class="lang-zh">NYSE嘅parent company直接入股Polymarket。呢個signal好清楚 — 傳統exchange都認為prediction market有future，information market同stock market一樣有價值。</span>
         </p>
       </div>
       <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
-        <h3 class="text-lg font-bold text-white mb-3">HK Status</h3>
+        <h3 class="text-lg font-bold text-white mb-3">
+          <span class="lang-en">Hong Kong Status</span><span class="lang-zh">香港狀況</span>
+        </h3>
         <p class="text-sm text-zinc-400">
-          香港冇ban Polymarket（Singapore就ban咗）。作為information discovery工具，HK finance professionals可以用嚟做research reference — 睇market implied probability比讀十份analyst report更快、更準。
+          <span class="lang-en">Hong Kong has not banned Polymarket (unlike Singapore). As an information discovery tool, HK finance professionals can use it as a research reference — checking market-implied probabilities is faster and more accurate than reading ten analyst reports.</span>
+          <span class="lang-zh">香港冇ban Polymarket（Singapore就ban咗）。作為information discovery工具，HK finance professionals可以用嚟做research reference — 睇market implied probability比讀十份analyst report更快、更準。</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Risks -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+    </h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="space-y-3 text-sm text-zinc-400">
+        <p><span class="text-white font-medium"><span class="lang-en">Regulatory</span><span class="lang-zh">監管</span></span> — <span class="lang-en">Not regulated by the SFC. No deposit protection or investor recourse.</span><span class="lang-zh">唔受SFC監管。冇存款保障或投資者追索權。</span></p>
+        <p><span class="text-white font-medium"><span class="lang-en">Resolution risk</span><span class="lang-zh">結算風險</span></span> — <span class="lang-en">Disputes over event outcomes can lead to delayed or contested resolution.</span><span class="lang-zh">事件結果嘅爭議可能導致延遲或有爭議嘅結算。</span></p>
+        <p><span class="text-white font-medium"><span class="lang-en">Liquidity</span><span class="lang-zh">流動性</span></span> — <span class="lang-en">Niche markets may have thin orderbooks, resulting in slippage on larger positions.</span><span class="lang-zh">冷門市場可能orderbook較薄，大額倉位會有滑點。</span></p>
+        <p><span class="text-white font-medium"><span class="lang-en">Smart contract risk</span><span class="lang-zh">智能合約風險</span></span> — <span class="lang-en">Settlement happens onchain — code bugs could affect funds.</span><span class="lang-zh">結算喺鏈上進行 — 代碼漏洞可能影響資金。</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Getting Started</span><span class="lang-zh">如何開始</span>
+    </h2>
+    <div class="grid md:grid-cols-4 gap-4">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">1</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Create wallet</span><span class="lang-zh">建立錢包</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">MetaMask or any EVM wallet on Polygon network</span><span class="lang-zh">MetaMask或任何Polygon網絡EVM錢包</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">2</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Fund with USDC</span><span class="lang-zh">充值USDC</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Bridge USDC to Polygon or deposit directly</span><span class="lang-zh">將USDC跨鏈到Polygon或直接充值</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">3</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Browse markets</span><span class="lang-zh">瀏覽市場</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Start with macro/policy markets you understand well</span><span class="lang-zh">從你熟悉嘅宏觀/政策市場開始</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-6">
+        <p class="text-cyan-400 font-bold text-lg mb-2">4</p>
+        <p class="text-white text-sm font-medium mb-1">
+          <span class="lang-en">Place a trade</span><span class="lang-zh">下單交易</span>
+        </p>
+        <p class="text-xs text-zinc-500">
+          <span class="lang-en">Buy YES or NO shares — max loss = price paid</span><span class="lang-zh">買YES或NO份額 — 最大損失 = 買入價</span>
         </p>
       </div>
     </div>
@@ -114,12 +315,17 @@ import Layout from '../../layouts/Layout.astro';
   <section class="max-w-6xl mx-auto px-6 pb-24">
     <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <h3 class="text-lg font-bold text-white mb-2">想了解其他 onchain product？</h3>
-        <p class="text-sm text-zinc-400">Hyperliquid做perps + pre-IPO stock trading，AMM做permissionless market making。</p>
+        <h3 class="text-lg font-bold text-white mb-2">
+          <span class="lang-en">Explore other onchain products</span><span class="lang-zh">了解其他鏈上產品</span>
+        </h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">Hyperliquid for perps + pre-IPO stock trading. AMM for permissionless market making.</span>
+          <span class="lang-zh">Hyperliquid做perps + pre-IPO stock trading，AMM做permissionless market making。</span>
+        </p>
       </div>
       <div class="flex gap-4">
-        <a href="/tradfi-onchain/products/hyperliquid" class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors whitespace-nowrap">Hyperliquid</a>
-        <a href="/tradfi-onchain/products/amm" class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Onchain AMM</a>
+        <a href={`${base}/products/hyperliquid`} class="px-5 py-2.5 bg-cyan-500 text-black text-sm font-medium rounded-lg hover:bg-cyan-400 transition-colors whitespace-nowrap">Hyperliquid</a>
+        <a href={`${base}/products/amm`} class="px-5 py-2.5 border border-zinc-700 text-white text-sm rounded-lg hover:border-zinc-500 transition-colors whitespace-nowrap">Onchain AMM</a>
       </div>
     </div>
   </section>

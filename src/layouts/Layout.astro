@@ -103,13 +103,12 @@ const base = '/tradfi-onchain';
       document.getElementById('mobile-menu')?.classList.toggle('hidden');
     });
 
-    // i18n: ?lang=hk-zh switches to Chinese
+    // i18n: ?lang=hk-zh switches to Chinese via data-lang attribute on <html>
     (function() {
       const params = new URLSearchParams(window.location.search);
       const lang = params.get('lang') || 'en';
       if (lang === 'hk-zh') {
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.lang-zh').forEach(el => el.style.display = 'inline');
+        document.documentElement.setAttribute('data-lang', 'hk-zh');
         document.documentElement.lang = 'zh-HK';
       }
       // Preserve lang param on all internal links

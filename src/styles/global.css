@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-.lang-zh { display: none; }
+/* Default: Chinese hidden, English shown. JS toggles via data-lang on <html> */
+html:not([data-lang="hk-zh"]) .lang-zh { display: none !important; }
+html[data-lang="hk-zh"] .lang-en { display: none !important; }
 
 body {
   background-color: #0a0a0f;

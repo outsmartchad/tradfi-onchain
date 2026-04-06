@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Prop Trading — Onchain Strategies">
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-6 pt-24 pb-12">
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
+      <span class="lang-en">Prop Trading</span><span class="lang-zh">自營交易</span>
+    </p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Onchain Trading Strategies<br/>for Prop Desks</span>
+      <span class="lang-zh">自營交易部門的<br/>鏈上交易策略</span>
+    </h1>
+    <p class="text-xl text-zinc-400 max-w-3xl">
+      <span class="lang-en">24/7 perpetual futures, pre-IPO stock valuation exposure, funding rate arbitrage, and AMM liquidity provision. The onchain trading landscape offers strategy opportunities that don't exist in traditional markets.</span>
+      <span class="lang-zh">24/7永續合約、Pre-IPO股票估值敞口、資金費率套利及AMM流動性提供。鏈上交易環境提供傳統市場不存在的策略機會。</span>
+    </p>
+  </section>
+
+  <!-- Strategies -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Core Strategy Categories</span><span class="lang-zh">核心策略類別</span>
+    </h2>
+
+    <div class="space-y-6">
+      <!-- Pre-IPO Perps -->
+      <div class="bg-gradient-to-r from-cyan-950/30 to-zinc-900/50 border border-cyan-900/30 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">1. Pre-IPO Stock Perps (Hyperliquid HIP-3)</span>
+          <span class="lang-zh">1. Pre-IPO股票永續合約（Hyperliquid HIP-3）</span>
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-3 text-sm text-zinc-400">
+            <p><span class="lang-en"><span class="text-white font-medium">What:</span> Perpetual futures on pre-IPO company valuations — SpaceX, OpenAI, Anthropic, Cursor, Stripe. Not equity — pure valuation speculation.</span><span class="lang-zh"><span class="text-white font-medium">內容：</span>Pre-IPO公司估值的永續合約 — SpaceX、OpenAI、Anthropic、Cursor、Stripe。非股權 — 純估值投機。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Scale:</span> 35%+ of Hyperliquid's total volume. $1.43B open interest across pre-IPO markets.</span><span class="lang-zh"><span class="text-white font-medium">規模：</span>佔Hyperliquid總交易量35%+。Pre-IPO市場未平倉量$1.43B。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Leverage:</span> Up to 3x (lower than crypto perps due to lower underlying liquidity).</span><span class="lang-zh"><span class="text-white font-medium">槓桿：</span>最高3x（因底層流動性較低，比crypto perps低）。</span></p>
+          </div>
+          <div class="space-y-3 text-sm text-zinc-400">
+            <p><span class="lang-en"><span class="text-white font-medium">Edge for IB/PE professionals:</span> You see deal flow, write valuations, meet management teams. Your sector knowledge is directly monetizable here.</span><span class="lang-zh"><span class="text-white font-medium">IB/PE專業人士的優勢：</span>你看到交易流、撰寫估值、見管理團隊。你的行業知識可直接在此變現。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Settlement:</span> Against latest funding round price or IPO price.</span><span class="lang-zh"><span class="text-white font-medium">結算：</span>以最新融資輪價格或IPO價格結算。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Caveat:</span> Not SFC-regulated. No deposit protection.</span><span class="lang-zh"><span class="text-white font-medium">注意：</span>不受SFC監管。無存款保障。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funding Rate Arb -->
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">2. Funding Rate Arbitrage</span>
+          <span class="lang-zh">2. 資金費率套利</span>
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-3 text-sm text-zinc-400">
+            <p><span class="lang-en"><span class="text-white font-medium">Concept:</span> Perpetual futures use a funding rate to keep contract price anchored to spot. When funding is positive, longs pay shorts. When negative, shorts pay longs.</span><span class="lang-zh"><span class="text-white font-medium">概念：</span>永續合約使用資金費率使合約價格錨定現貨。當資金費率為正，多方支付空方。當為負，空方支付多方。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Strategy:</span> Go long spot, short perp (or vice versa). Capture the funding rate differential as yield while being delta-neutral on price.</span><span class="lang-zh"><span class="text-white font-medium">策略：</span>做多現貨、做空永續合約（或反之）。在價格上保持delta中性的同時，捕獲資金費率差異作為收益。</span></p>
+          </div>
+          <div class="space-y-3 text-sm text-zinc-400">
+            <p><span class="lang-en"><span class="text-white font-medium">Cross-venue:</span> Funding rates vary across CEXs (Binance, OKX) and DEXs (Hyperliquid). Arbitrage across venues adds another yield layer.</span><span class="lang-zh"><span class="text-white font-medium">跨平台：</span>資金費率在CEX（Binance、OKX）和DEX（Hyperliquid）之間有差異。跨平台套利增加另一層收益。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Typical yield:</span> 5-20% APR annualized, highly variable. Requires active management and monitoring.</span><span class="lang-zh"><span class="text-white font-medium">典型收益：</span>年化5-20% APR，波動較大。需要主動管理和監控。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AMM LP -->
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">3. AMM Liquidity Provision (Fee Capture)</span>
+          <span class="lang-zh">3. AMM流動性提供（費用捕獲）</span>
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-3 text-sm text-zinc-400">
+            <p><span class="lang-en"><span class="text-white font-medium">Concept:</span> Deposit token pairs into AMM pools and earn trading fees. Effectively becoming the market maker — without a designated market maker agreement.</span><span class="lang-zh"><span class="text-white font-medium">概念：</span>將代幣對存入AMM池並賺取交易費用。有效成為做市商 — 無需指定做市商協議。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Stable pairs:</span> USDC/USDT pools earn 0.01-0.05% per swap with minimal impermanent loss. Comparable to money market yields.</span><span class="lang-zh"><span class="text-white font-medium">穩定幣對：</span>USDC/USDT池每筆交易賺0.01-0.05%，無常損失最小。與貨幣市場收益相當。</span></p>
+          </div>
+          <div class="space-y-3 text-sm text-zinc-400">
+            <p><span class="lang-en"><span class="text-white font-medium">High-fee pools:</span> New token launches can have 50-99% fee rates. High volume generates significant fees, but underlying tokens are extremely volatile.</span><span class="lang-zh"><span class="text-white font-medium">高費率池：</span>新代幣發行可有50-99%費率。高交易量產生可觀費用，但底層代幣波動極大。</span></p>
+            <p><span class="lang-en"><span class="text-white font-medium">Key venues:</span> Uniswap (Ethereum), Raydium/Meteora (Solana).</span><span class="lang-zh"><span class="text-white font-medium">主要平台：</span>Uniswap（Ethereum）、Raydium/Meteora（Solana）。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cross-Protocol Arb -->
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-4">
+          <span class="lang-en">4. Cross-Protocol Arbitrage</span>
+          <span class="lang-zh">4. 跨協議套利</span>
+        </h3>
+        <div class="space-y-3 text-sm text-zinc-400">
+          <p><span class="lang-en">Price discrepancies between DEXs and between DEXs and CEXs create persistent arbitrage opportunities. Aggregators like Jupiter route through dozens of pools — but there are always inefficiencies to capture.</span><span class="lang-zh">DEX之間及DEX和CEX之間的價格差異創造持續的套利機會。Jupiter等聚合器通過數十個池路由 — 但總有可捕獲的低效。</span></p>
+          <p><span class="lang-en">MEV (Maximal Extractable Value) strategies are highly competitive and require low-latency infrastructure. The top firms (Jump, Wintermute, DRW Cumberland) deploy dedicated infrastructure for sub-second execution.</span><span class="lang-zh">MEV（最大可提取價值）策略競爭激烈，需要低延遲基礎設施。頂級公司（Jump、Wintermute、DRW Cumberland）部署專用基礎設施實現亞秒級執行。</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who Is Trading -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Who Is Already Trading Onchain</span>
+      <span class="lang-zh">誰已在鏈上交易</span>
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">Jump Trading</h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">Major crypto market maker and infrastructure investor. Built custom MEV and arbitrage infrastructure across all major chains.</span>
+          <span class="lang-zh">主要的加密做市商和基礎設施投資者。在所有主要區塊鏈上建立定制MEV和套利基礎設施。</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">Wintermute</h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">Algorithmic market maker providing liquidity across 50+ exchanges. Handles $5B+ daily volume. Active in both CeFi and DeFi.</span>
+          <span class="lang-zh">算法做市商，在50+交易所提供流動性。日處理量超$5B。活躍於CeFi和DeFi。</span>
+        </p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+        <h3 class="text-lg font-bold text-white mb-3">Citadel Securities</h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">World's largest equities market maker, now investing $200M in Kraken and expanding into crypto. When Citadel enters, liquidity depth deepens significantly.</span>
+          <span class="lang-zh">全球最大股票做市商，現投資$200M於Kraken並擴展至加密領域。當Citadel入場，流動性深度將顯著增加。</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infrastructure Needed -->
+  <section class="max-w-6xl mx-auto px-6 pb-16">
+    <h2 class="text-2xl font-bold text-white mb-8">
+      <span class="lang-en">Infrastructure Requirements</span>
+      <span class="lang-zh">基礎設施需求</span>
+    </h2>
+    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-xl p-8">
+      <div class="grid md:grid-cols-2 gap-6 text-sm text-zinc-400">
+        <div class="space-y-3">
+          <p><span class="text-white font-medium"><span class="lang-en">RPC/gRPC nodes</span><span class="lang-zh">RPC/gRPC節點</span></span> — <span class="lang-en">Low-latency access to blockchain state. Dedicated nodes for serious trading.</span><span class="lang-zh">低延遲的區塊鏈狀態訪問。嚴肅交易需要專用節點。</span></p>
+          <p><span class="text-white font-medium"><span class="lang-en">Execution infrastructure</span><span class="lang-zh">執行基礎設施</span></span> — <span class="lang-en">SWQoS (Stake-Weighted Quality of Service) on Solana, Flashbots on Ethereum for priority transaction landing.</span><span class="lang-zh">Solana上的SWQoS（質押加權服務質量）、Ethereum上的Flashbots用於優先交易落地。</span></p>
+        </div>
+        <div class="space-y-3">
+          <p><span class="text-white font-medium"><span class="lang-en">Monitoring</span><span class="lang-zh">監控</span></span> — <span class="lang-en">Real-time tracking of pool state, funding rates, and cross-exchange prices. Milliseconds matter.</span><span class="lang-zh">實時跟蹤池狀態、資金費率和跨交易所價格。毫秒級別至關重要。</span></p>
+          <p><span class="text-white font-medium"><span class="lang-en">Risk management</span><span class="lang-zh">風險管理</span></span> — <span class="lang-en">Smart contract audit verification, position sizing, impermanent loss modeling, liquidation monitoring.</span><span class="lang-zh">智能合約審計驗證、倉位大小、無常損失建模、清算監控。</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="bg-gradient-to-r from-green-950/30 to-zinc-900/50 border border-green-900/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-lg font-bold text-white mb-2">
+          <span class="lang-en">Setting up an onchain trading desk?</span>
+          <span class="lang-zh">建立鏈上交易部門？</span>
+        </h3>
+        <p class="text-sm text-zinc-400">
+          <span class="lang-en">We can discuss infrastructure, strategy, and execution requirements.</span>
+          <span class="lang-zh">我們可以討論基礎設施、策略及執行需求。</span>
+        </p>
+      </div>
+      <a href="https://wa.me/85256171671" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white text-sm font-medium rounded-lg hover:bg-green-400 transition-colors whitespace-nowrap">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <div class="mt-6 flex justify-between">
+      <a href={`${base}/apply/family-offices`} class="text-sm text-zinc-500 hover:text-white transition-colors">
+        <span class="lang-en">← Family Offices</span><span class="lang-zh">← 家族辦公室</span>
+      </a>
+      <a href={`${base}/apply/compliance`} class="text-sm text-zinc-500 hover:text-white transition-colors">
+        <span class="lang-en">Compliance & Risk →</span><span class="lang-zh">合規與風險 →</span>
+      </a>
+    </div>
+  </section>
+</Layout>
