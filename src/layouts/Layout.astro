@@ -25,12 +25,58 @@ const base = '/tradfi-onchain';
       <a href={`${base}/`} class="text-lg font-semibold tracking-tight text-white hover:opacity-100">
         TradFi<span class="text-cyan-400">×</span>Onchain
       </a>
-      <div class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-        <a href={`${base}/landscape`} class="hover:text-white transition-colors">Market Landscape</a>
-        <a href={`${base}/products/polymarket`} class="hover:text-white transition-colors">Polymarket</a>
-        <a href={`${base}/products/hyperliquid`} class="hover:text-white transition-colors">Hyperliquid</a>
-        <a href={`${base}/products/amm`} class="hover:text-white transition-colors">Onchain AMM</a>
-        <a href={`${base}/regulation`} class="hover:text-white transition-colors">HK Regulation</a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-zinc-400">
+        <a href={`${base}/landscape`} class="hover:text-white transition-colors">
+          <span class="lang-en">Landscape</span><span class="lang-zh">市場動態</span>
+        </a>
+
+        <!-- Products dropdown -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors flex items-center gap-1">
+            <span class="lang-en">Products</span><span class="lang-zh">產品</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block">
+            <div class="bg-[#0a0a0f] border border-zinc-800 rounded-lg py-2 min-w-[180px] shadow-xl">
+              <a href={`${base}/products/polymarket`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">Polymarket</a>
+              <a href={`${base}/products/hyperliquid`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">Hyperliquid</a>
+              <a href={`${base}/products/amm`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">
+                <span class="lang-en">Onchain AMM</span><span class="lang-zh">鏈上AMM</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- By Role dropdown -->
+        <div class="relative group">
+          <button class="hover:text-white transition-colors flex items-center gap-1">
+            <span class="lang-en">By Role</span><span class="lang-zh">按角色</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block">
+            <div class="bg-[#0a0a0f] border border-zinc-800 rounded-lg py-2 min-w-[220px] shadow-xl">
+              <a href={`${base}/apply/investment-banking`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">
+                <span class="lang-en">Investment Banking</span><span class="lang-zh">投資銀行</span>
+              </a>
+              <a href={`${base}/apply/asset-management`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">
+                <span class="lang-en">Asset Management</span><span class="lang-zh">資產管理</span>
+              </a>
+              <a href={`${base}/apply/family-offices`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">
+                <span class="lang-en">Family Offices</span><span class="lang-zh">家族辦公室</span>
+              </a>
+              <a href={`${base}/apply/prop-trading`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">
+                <span class="lang-en">Prop Trading</span><span class="lang-zh">自營交易</span>
+              </a>
+              <a href={`${base}/apply/compliance`} class="block px-4 py-2 text-sm hover:bg-zinc-900 hover:text-white">
+                <span class="lang-en">Compliance &amp; Risk</span><span class="lang-zh">合規與風險</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href={`${base}/regulation`} class="hover:text-white transition-colors">
+          <span class="lang-en">HK Regulation</span><span class="lang-zh">HK監管</span>
+        </a>
       </div>
       <div class="flex items-center gap-4">
         <button id="lang-toggle" class="text-sm text-zinc-400 hover:text-white border border-zinc-700 rounded px-2 py-1 cursor-pointer">中</button>
@@ -41,13 +87,43 @@ const base = '/tradfi-onchain';
       </button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-[#0a0a0f]/95 backdrop-blur-xl">
-      <div class="px-6 py-4 flex flex-col gap-4 text-sm text-zinc-400">
-        <a href={`${base}/landscape`} class="hover:text-white">Market Landscape</a>
-        <a href={`${base}/products/polymarket`} class="hover:text-white">Polymarket</a>
-        <a href={`${base}/products/hyperliquid`} class="hover:text-white">Hyperliquid</a>
-        <a href={`${base}/products/amm`} class="hover:text-white">Onchain AMM</a>
-        <a href={`${base}/regulation`} class="hover:text-white">HK Regulation</a>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-800/50 bg-[#0a0a0f]/95 backdrop-blur-xl max-h-[80vh] overflow-y-auto">
+      <div class="px-6 py-4 flex flex-col gap-1 text-sm text-zinc-400">
+        <a href={`${base}/landscape`} class="py-2 hover:text-white">
+          <span class="lang-en">Market Landscape</span><span class="lang-zh">市場動態</span>
+        </a>
+
+        <p class="text-[11px] text-zinc-600 uppercase tracking-wider mt-3 mb-1">
+          <span class="lang-en">Products</span><span class="lang-zh">產品</span>
+        </p>
+        <a href={`${base}/products/polymarket`} class="py-2 pl-3 hover:text-white">Polymarket</a>
+        <a href={`${base}/products/hyperliquid`} class="py-2 pl-3 hover:text-white">Hyperliquid</a>
+        <a href={`${base}/products/amm`} class="py-2 pl-3 hover:text-white">
+          <span class="lang-en">Onchain AMM</span><span class="lang-zh">鏈上AMM</span>
+        </a>
+
+        <p class="text-[11px] text-zinc-600 uppercase tracking-wider mt-3 mb-1">
+          <span class="lang-en">By Role</span><span class="lang-zh">按角色</span>
+        </p>
+        <a href={`${base}/apply/investment-banking`} class="py-2 pl-3 hover:text-white">
+          <span class="lang-en">Investment Banking</span><span class="lang-zh">投資銀行</span>
+        </a>
+        <a href={`${base}/apply/asset-management`} class="py-2 pl-3 hover:text-white">
+          <span class="lang-en">Asset Management</span><span class="lang-zh">資產管理</span>
+        </a>
+        <a href={`${base}/apply/family-offices`} class="py-2 pl-3 hover:text-white">
+          <span class="lang-en">Family Offices</span><span class="lang-zh">家族辦公室</span>
+        </a>
+        <a href={`${base}/apply/prop-trading`} class="py-2 pl-3 hover:text-white">
+          <span class="lang-en">Prop Trading</span><span class="lang-zh">自營交易</span>
+        </a>
+        <a href={`${base}/apply/compliance`} class="py-2 pl-3 hover:text-white">
+          <span class="lang-en">Compliance &amp; Risk</span><span class="lang-zh">合規與風險</span>
+        </a>
+
+        <a href={`${base}/regulation`} class="py-2 mt-3 hover:text-white">
+          <span class="lang-en">HK Regulation</span><span class="lang-zh">HK監管</span>
+        </a>
       </div>
     </div>
   </nav>
@@ -73,13 +149,23 @@ const base = '/tradfi-onchain';
             +852 5617 1671
           </a>
         </div>
-        <div class="flex gap-12">
+        <div class="flex gap-10 flex-wrap">
           <div>
             <p class="text-zinc-400 font-medium mb-2"><span class="lang-en">Products</span><span class="lang-zh">產品</span></p>
             <div class="flex flex-col gap-1">
               <a href={`${base}/products/polymarket`}>Polymarket</a>
               <a href={`${base}/products/hyperliquid`}>Hyperliquid</a>
-              <a href={`${base}/products/amm`}>Onchain AMM</a>
+              <a href={`${base}/products/amm`}><span class="lang-en">Onchain AMM</span><span class="lang-zh">鏈上AMM</span></a>
+            </div>
+          </div>
+          <div>
+            <p class="text-zinc-400 font-medium mb-2"><span class="lang-en">By Role</span><span class="lang-zh">按角色</span></p>
+            <div class="flex flex-col gap-1">
+              <a href={`${base}/apply/investment-banking`}><span class="lang-en">Investment Banking</span><span class="lang-zh">投資銀行</span></a>
+              <a href={`${base}/apply/asset-management`}><span class="lang-en">Asset Management</span><span class="lang-zh">資產管理</span></a>
+              <a href={`${base}/apply/family-offices`}><span class="lang-en">Family Offices</span><span class="lang-zh">家族辦公室</span></a>
+              <a href={`${base}/apply/prop-trading`}><span class="lang-en">Prop Trading</span><span class="lang-zh">自營交易</span></a>
+              <a href={`${base}/apply/compliance`}><span class="lang-en">Compliance &amp; Risk</span><span class="lang-zh">合規與風險</span></a>
             </div>
           </div>
           <div>
