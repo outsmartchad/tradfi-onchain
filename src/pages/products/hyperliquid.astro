@@ -3,10 +3,10 @@ import Layout from '../../layouts/Layout.astro';
 const base = '/tradfi-onchain';
 ---
 
-<Layout title="Hyperliquid — Perp DEX + Pre-IPO">
+<Layout title="Hyperliquid — Perp DEX + Pre-IPO + Commodities">
   <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
-      <span class="lang-en">Perp DEX + Pre-IPO Stock Perps</span><span class="lang-zh">永續合約DEX + Pre-IPO股票合約</span>
+      <span class="lang-en">Perp DEX + Pre-IPO + Commodities</span><span class="lang-zh">永續合約DEX + Pre-IPO + 商品期貨</span>
     </p>
     <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-8">Hyperliquid</h1>
 
@@ -18,8 +18,8 @@ const base = '/tradfi-onchain';
       </p>
 
       <p>
-        <span class="lang-en">But the product that should capture the attention of Hong Kong finance professionals is not the crypto perps — it's the pre-IPO stock perpetual futures.</span>
-        <span class="lang-zh">但真正應該引起香港金融從業者注意嘅產品唔係crypto perps — 係pre-IPO股票永續合約。</span>
+        <span class="lang-en">But the products that should capture the attention of Hong Kong finance professionals aren't the crypto perps — they're the pre-IPO stock perpetuals and the commodity perpetuals. Both run on HIP-3 (builder-deployed markets), and both give you something traditional exchanges can't: 24/7 access to assets that normally close on weekends.</span>
+        <span class="lang-zh">但真正應該引起香港金融從業者注意嘅唔係crypto perps — 而係Pre-IPO股票永續合約同商品永續合約。兩者都運行喺HIP-3（builder-deployed markets）之上，俾你傳統交易所做唔到嘅事：24/7交易平時週末休市嘅資產。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
@@ -39,6 +39,45 @@ const base = '/tradfi-onchain';
       <p>
         <span class="lang-en">The numbers are significant. Pre-IPO perps represent over 35% of all Hyperliquid trading volume — not a niche product. Open interest across pre-IPO markets hit $1.43 billion. Leverage is up to 10x, lower than crypto perps because the underlying liquidity is thinner. Trading volume on traditional asset perps surged 162% from $11.8 billion in December 2025 to $31.0 billion in January 2026, reaching $40.6 billion in cumulative volume by early February.</span>
         <span class="lang-zh">數字係顯著嘅。Pre-IPO永續合約佔Hyperliquid總交易量超過35% — 唔係小眾產品。Pre-IPO市場未平倉量達到$14.3億。槓桿最高10x，比crypto perps低因為底層流動性較薄。傳統資產永續合約交易量從2025年12月嘅$118億激增162%至2026年1月嘅$310億，到2月初累計交易量達$406億。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Commodity Perps: 24/7 Oil, Gold, Silver</span><span class="lang-zh">商品永續合約：24/7石油、黃金、白銀</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The commodity perp market on Hyperliquid is the quiet blockbuster of 2026. In March 2026, a weekend strike on Iranian oil infrastructure sent traders looking for a way to trade crude while NYMEX was closed. Hyperliquid had one. Over the following weeks, total open interest on HIP-3 real-world-asset contracts hit <span class="text-white font-medium">$2.3 billion</span>, and oil plus silver volumes on Hyperliquid surpassed XRP and SOL.</span>
+        <span class="lang-zh">商品永續合約係Hyperliquid 2026年嘅隱藏爆品。2026年3月，伊朗石油設施遇襲嘅週末，NYMEX休市，交易者四圍搵路交易原油 — Hyperliquid有。之後幾個禮拜，HIP-3現實資產合約嘅總未平倉量達到<span class="text-white font-medium">$23億</span>，Hyperliquid上嘅原油同白銀交易量超越咗XRP同SOL。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">What's listed (all HIP-3 builder-deployed, primarily by TradeXYZ):</span>
+        <span class="lang-zh">已上線嘅商品（全部係HIP-3 builder-deployed，主要由TradeXYZ部署）：</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Energy:</span> WTI Crude Oil (CL) — OI around $561M, was $1.5B at peak. Brent Oil (BRENTOIL) — OI around $576M. Natural Gas. A composite USOIL index.</span>
+        <span class="lang-zh"><span class="text-white font-medium">能源：</span>WTI原油（CL） — 未平倉量約$5.61億，峰值曾達$15億。布倫特原油（BRENTOIL） — 未平倉量約$5.76億。天然氣。仲有一個複合型USOIL指數。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Metals:</span> Gold (XAU) and Silver (XAG) — these two lead all HIP-3 RWA contracts by open interest, ahead of crude oil. Silver hit roughly $1 billion in daily volume at peak. This is a real market with real depth, not a toy.</span>
+        <span class="lang-zh"><span class="text-white font-medium">金屬：</span>黃金（XAU）同白銀（XAG） — 呢兩個喺HIP-3現實資產合約入面按未平倉量排名第一同第二，超越原油。白銀單日交易量峰值約$10億。呢個係有真實深度嘅市場，唔係玩具。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Agriculture:</span> Corn and Wheat perpetuals have launched, though volume is thinner than energy and metals.</span>
+        <span class="lang-zh"><span class="text-white font-medium">農產品：</span>粟米同小麥永續合約已上線，但交易量比能源同金屬細。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Because these are HIP-3 markets, leverage, margin ratios, oracle source, and OI caps are set by the deployer (typically TradeXYZ, which recently enabled cross-margin across silver, gold, and S&P 500). That's a different governance model from HL's native crypto perps — but it's also why these markets exist at all. No centralized exchange wants to build a 24/7 oil market. A permissionless deployer on Hyperliquid doesn't need permission to try.</span>
+        <span class="lang-zh">因為係HIP-3市場，槓桿、保證金比例、預言機來源同未平倉量上限全部由deployer決定（通常係TradeXYZ，最近佢哋喺白銀、黃金、S&P 500之間開通咗cross-margin）。呢個governance model同HL原生crypto perps唔同 — 但呢個都係點解呢啲市場存在嘅原因。冇任何中心化交易所會想搞24/7原油市場。喺Hyperliquid嘅permissionless deployer唔需要審批就可以試。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">For a Hong Kong commodities desk, the immediate value is weekend / holiday gap coverage. If geopolitics moves on a Saturday — Middle East strike, OPEC announcement, typhoon closing a major port — the desk that can actually transact captures the gap before Monday's open. That's a real TradFi edge that didn't exist 12 months ago.</span>
+        <span class="lang-zh">對香港商品交易部門嚟講，即時價值係週末/假期嘅gap coverage。如果週六有地緣政治事件 — 中東局勢、OPEC聲明、颱風封主要港口 — 可以真正交易嘅desk會喺週一開市之前捕獲個gap。呢個係12個月前根本唔存在嘅TradFi edge。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
@@ -69,8 +108,13 @@ const base = '/tradfi-onchain';
       </h2>
 
       <p>
-        <span class="lang-en">For Hong Kong finance professionals, the platform's primary value is in the pre-IPO stock perps. The sector knowledge and valuation insights you accumulate through your work — deal flow, management meetings, industry analysis — can be directly applied here. You're trading against a participant base that largely lacks your information advantage. But understand clearly: this is not a regulated product, there is no investor protection, and the team has demonstrated willingness to intervene in markets unilaterally. Size your positions accordingly.</span>
-        <span class="lang-zh">對香港金融從業者而言，平台嘅主要價值在於pre-IPO股票永續合約。你通過工作累積嘅行業知識和估值洞察 — deal flow、管理層會面、行業分析 — 可以直接應用於此。你在與大部分缺乏你信息優勢嘅參與者交易。但要清楚理解：呢個唔係受監管產品，冇投資者保障，而且團隊已展示過單方面干預市場嘅意願。相應調整你嘅倉位規模。</span>
+        <span class="lang-en">For Hong Kong finance professionals, the platform's two primary value propositions are (1) pre-IPO stock perps, where the sector knowledge and valuation insights you accumulate through your work — deal flow, management meetings, industry analysis — can be directly applied, and (2) 24/7 commodity perps for weekend and holiday gap coverage on oil, gold, silver, and natural gas. Both markets are populated by participants who largely lack the research infrastructure your TradFi desk already has.</span>
+        <span class="lang-zh">對香港金融從業者而言，平台嘅兩個主要價值在於：（1）pre-IPO股票永續合約，你通過工作累積嘅行業知識和估值洞察 — deal flow、管理層會面、行業分析 — 可以直接應用；（2）24/7商品永續合約，覆蓋週末同假期嘅原油、黃金、白銀同天然氣gap。兩個市場嘅參與者都大部分缺乏你TradFi desk已經具備嘅研究基礎設施。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">But understand clearly: these are not regulated products, there is no investor protection, and the team has demonstrated willingness to intervene in markets unilaterally (the JELLY incident above). HIP-3 deployers control leverage, margin rules, and oracle sources for their markets — you're trusting the deployer, not just Hyperliquid core. Size positions accordingly.</span>
+        <span class="lang-zh">但要清楚理解：呢啲唔係受監管產品，冇投資者保障，而且團隊已展示過單方面干預市場嘅意願（上面JELLY事件）。HIP-3 deployers控制自己市場嘅槓桿、保證金規則同預言機來源 — 你唔單止信Hyperliquid core，仲要信deployer。相應調整你嘅倉位規模。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
