@@ -45,6 +45,30 @@ const base = '/tradfi-onchain';
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Commodity Perps — The Weekend Gap Trade</span><span class="lang-zh">商品永續合約 — 週末Gap交易</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The second HIP-3 category that matters for prop desks is commodities. As of April 2026, Hyperliquid lists perpetuals on WTI crude oil (CL), Brent oil, natural gas, gold (XAU), silver (XAG), corn, and wheat — all 24/7, all onchain, all deployed by builders like TradeXYZ. Total HIP-3 real-world-asset open interest crossed $2.3 billion. Silver alone hit roughly $1 billion in daily volume at peak. Oil plus silver volumes on Hyperliquid have surpassed XRP and SOL.</span>
+        <span class="lang-zh">對自營交易部門而言，第二個重要的HIP-3類別係商品。截至2026年4月，Hyperliquid上線咗WTI原油（CL）、布倫特原油、天然氣、黃金（XAU）、白銀（XAG）、粟米同小麥嘅永續合約 — 全部24/7、全部鏈上、全部由TradeXYZ等builder部署。HIP-3現實資產總未平倉量突破$23億。單係白銀，峰值日交易量就達到約$10億。Hyperliquid上嘅原油加白銀交易量已超越XRP同SOL。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The specific edge for prop desks is the weekend / holiday gap trade. CME closes Friday 5pm ET and reopens Sunday 6pm ET — a 49-hour window where geopolitics, OPEC announcements, typhoons closing major ports, and Middle East strikes can move crude oil by 5-10% with no way to hedge or take a position. In March 2026, a weekend strike on Iranian oil infrastructure sent traders flooding to Hyperliquid because it was the only venue actually open for crude. The desks that had Hyperliquid connectivity captured the Monday open gap before anyone on CME could react.</span>
+        <span class="lang-zh">自營交易部門嘅特定edge係週末/假期gap交易。CME週五下午5點（美東）收市，週日下午6點先重開 — 中間有49小時嘅窗口，地緣政治、OPEC聲明、颱風封主要港口、中東襲擊等事件可以令原油波動5-10%，而你無辦法對沖或建倉。2026年3月，一次週末襲擊伊朗石油基建嘅事件令交易者湧入Hyperliquid，因為呢個係唯一仲開住嘅原油交易場所。有Hyperliquid接入嘅desk喺CME任何人反應之前就捕獲咗週一開市嘅gap。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Concrete strategies: (1) weekend event hedging — if your book is long physical crude or energy equities and a geopolitical event breaks Saturday, you can hedge Sunday morning before Monday open; (2) volatility extraction — when CME reopens and prints a massive opening gap, HL often leads and mean-reverts, creating a short-volatility trade window; (3) cross-venue arbitrage — once CME and HL are both trading, basis differentials between the two venues can be significant, and since HL is 24/7 you can maintain the arb continuously.</span>
+        <span class="lang-zh">具體策略：（1）週末事件對沖 — 如果你嘅倉位係做多實物原油或能源股票，而週六發生地緣政治事件，你可以喺週一開市之前對沖；（2）波動率提取 — 當CME重開並出現大幅開盤gap，HL通常領先並均值回歸，創造做空波動率嘅交易窗口；（3）跨場所套利 — 當CME同HL同時交易，兩個場所之間嘅基差可能好顯著，而因為HL係24/7，你可以持續維持套利。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Caveats matter here. These are HIP-3 builder-deployed markets, not native Hyperliquid core listings, which means the deployer (typically TradeXYZ) sets leverage, margin ratios, oracle source, and OI caps. You are trusting the deployer, not just Hyperliquid core. The oracles feeding these markets matter — if the oracle lags spot during a weekend event, your fill price will reflect the lag. Do the diligence on which oracle source each market uses before deploying real capital.</span>
+        <span class="lang-zh">需要留意嘅地方：呢啲係HIP-3 builder-deployed市場，唔係Hyperliquid原生核心市場，即係deployer（通常係TradeXYZ）決定槓桿、保證金比例、預言機來源同未平倉量上限。你信嘅唔止係Hyperliquid core，仲有deployer。餵呢啲市場嘅預言機好重要 — 如果預言機喺週末事件期間落後現貨，你嘅成交價會反映個落差。投入真金白銀之前，先做好各市場預言機來源嘅盡職調查。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Funding Rate Arbitrage</span><span class="lang-zh">資金費率套利</span>
       </h2>
 
