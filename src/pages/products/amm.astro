@@ -167,6 +167,12 @@ const base = '/tradfi-onchain';
         <span class="lang-zh"><span class="text-white">關鍵數字：</span>自2024年起PumpFun上launch咗超過1000萬隻token。大約1-2%撐過第一個禮拜。平台產生可觀嘅fee收入 — launch機制本身就係產品。2026年推出creator fees（幣creator費用），令deployer可以從佢哋嘅token交易中賺錢。</span>
       </p>
 
+      <div class="flex flex-wrap gap-4 mt-4">
+        <a href={`${base}/products/amm/pumpfun`} class="text-cyan-400 hover:text-cyan-300 text-sm">PumpFun deep dive →</a>
+        <a href={`${base}/products/amm/pumpswap`} class="text-cyan-400 hover:text-cyan-300 text-sm">PumpSwap deep dive →</a>
+        <a href={`${base}/products/amm/raydium-launchlab`} class="text-cyan-400 hover:text-cyan-300 text-sm">LaunchLab deep dive →</a>
+      </div>
+
       <h3 class="text-lg font-bold text-white mt-10 mb-4">
         <span class="lang-en">Meteora DAMM (Dynamic AMM) — Fee-Optimized Pools</span><span class="lang-zh">Meteora DAMM（Dynamic AMM）— 費率優化池</span>
       </h3>
@@ -187,6 +193,11 @@ const base = '/tradfi-onchain';
         <span class="lang-zh">DAMM v2係Solana DeFi入面大部分LP fee-capture策略嘅運作地。當一隻新memecoin launch並產生高交易量，LP爭住開高fee嘅DAMM v2 pool嚟捕捉aggregator路由嘅交易費用。</span>
       </p>
 
+      <div class="flex flex-wrap gap-4 mt-4">
+        <a href={`${base}/products/amm/meteora-damm`} class="text-cyan-400 hover:text-cyan-300 text-sm">DAMM v2 deep dive →</a>
+        <a href={`${base}/products/amm/meteora-dbc`} class="text-cyan-400 hover:text-cyan-300 text-sm">Meteora DBC deep dive →</a>
+      </div>
+
       <h3 class="text-lg font-bold text-white mt-10 mb-4">
         <span class="lang-en">CLMM — Concentrated Liquidity (Raydium, Orca)</span><span class="lang-zh">CLMM — 集中流動性（Raydium、Orca）</span>
       </h3>
@@ -206,6 +217,11 @@ const base = '/tradfi-onchain';
         <span class="lang-zh">Orca仲推出咗<span class="text-white">自適應費率pool</span> — 費率根據市場條件自動調整，類似Uniswap v4 hooks可以做嘅嘢，但原生built into protocol。</span>
       </p>
 
+      <div class="flex flex-wrap gap-4 mt-4">
+        <a href={`${base}/products/amm/raydium-cpmm`} class="text-cyan-400 hover:text-cyan-300 text-sm">Raydium CPMM deep dive →</a>
+        <a href={`${base}/products/amm/raydium-clmm`} class="text-cyan-400 hover:text-cyan-300 text-sm">Raydium CLMM deep dive →</a>
+      </div>
+
       <h3 class="text-lg font-bold text-white mt-10 mb-4">
         <span class="lang-en">Meteora DLMM — Discretized Liquidity (Bin-Based)</span><span class="lang-zh">Meteora DLMM — 離散化流動性（基於Bin）</span>
       </h3>
@@ -224,6 +240,10 @@ const base = '/tradfi-onchain';
         <span class="lang-en">DLMM is particularly popular for volatile token pairs where LPs want precise control over their exposure at each price level. The bin-based system also makes it easier to implement strategies like one-sided liquidity (providing only sell-side at higher prices).</span>
         <span class="lang-zh">DLMM特別受歡迎嘅場景係波動大嘅token pair，LP想精確控制每個價格水平嘅exposure。Bin-based系統仲令實現策略變得更容易，好似單邊流動性（只喺更高價格提供賣盤）。</span>
       </p>
+
+      <div class="mt-4">
+        <a href={`${base}/products/amm/meteora-dlmm`} class="text-cyan-400 hover:text-cyan-300 text-sm">Meteora DLMM deep dive →</a>
+      </div>
 
       <!-- ============================================ -->
       <!-- Comparison Table -->
