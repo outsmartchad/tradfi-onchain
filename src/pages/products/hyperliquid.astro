@@ -3,15 +3,15 @@ import Layout from '../../layouts/Layout.astro';
 const base = '/tradfi-onchain';
 ---
 
-<Layout title="Hyperliquid — Perp DEX + Pre-IPO + Commodities">
+<Layout title="Hyperliquid — The Full Stack Onchain Exchange">
   <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
     <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4">
-      <span class="lang-en">Perp DEX + Pre-IPO + Commodities</span><span class="lang-zh">永續合約DEX + Pre-IPO + 商品期貨</span>
+      <span class="lang-en">Perps + Stocks + Commodities + Prediction Markets</span><span class="lang-zh">永續合約 + 股票 + 商品 + 預測市場</span>
     </p>
     <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Hyperliquid</h1>
     <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
-      <span class="lang-en">A crypto perp DEX matching Bybit and OKX in volume — but the real story is HIP-3, which opened the door to 24/7 pre-IPO stock perps and commodity perps that trade while NYMEX and NYSE are closed.</span>
-      <span class="lang-zh">一間交易量媲美Bybit同OKX嘅crypto永續合約DEX — 但真正重點係HIP-3，開啟咗24/7 pre-IPO股票永續同商品永續，喺NYMEX同NYSE休市時照樣交易。</span>
+      <span class="lang-en">A crypto perp DEX matching Bybit and OKX in volume — running entirely on its own L1 blockchain. But the real story is what's being built on top: 24/7 stock perps, commodity perps, and soon prediction markets. Four protocol upgrades (HIPs) have turned it from a trading venue into a permissionless financial infrastructure platform.</span>
+      <span class="lang-zh">一間交易量媲美Bybit同OKX嘅crypto永續合約DEX — 完全運行喺自己嘅L1區塊鏈上。但真正嘅故事係喺上面build緊嘅嘢：24/7股票永續合約、商品永續合約、同即將嚟嘅預測市場。四個protocol upgrade（HIPs）將佢由一間交易所變成一個permissionless金融基礎設施平台。</span>
     </p>
 
     <!-- Stats grid -->
@@ -25,19 +25,19 @@ const base = '/tradfi-onchain';
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
         <p class="text-2xl font-bold text-white">$1.43B</p>
         <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">Pre-IPO OI</span><span class="lang-zh">Pre-IPO未平倉</span>
+          <span class="lang-en">HIP-3 OI (ATH)</span><span class="lang-zh">HIP-3未平倉（歷史高位）</span>
         </p>
       </div>
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
-        <p class="text-2xl font-bold text-white">$2.3B</p>
+        <p class="text-2xl font-bold text-white">44K</p>
         <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">HIP-3 RWA OI</span><span class="lang-zh">HIP-3實物資產</span>
+          <span class="lang-en">Daily active users</span><span class="lang-zh">日活用戶</span>
         </p>
       </div>
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
-        <p class="text-2xl font-bold text-white">50x</p>
+        <p class="text-2xl font-bold text-white">4 HIPs</p>
         <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">Max leverage</span><span class="lang-zh">最高槓桿</span>
+          <span class="lang-en">Protocol upgrades</span><span class="lang-zh">協議升級</span>
         </p>
       </div>
     </div>
@@ -45,117 +45,334 @@ const base = '/tradfi-onchain';
     <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
 
       <p>
-        <span class="lang-en">Hyperliquid is a crypto perpetual futures exchange doing $5 to $10 billion in daily volume — on par with Bybit and OKX — but running entirely on its own Layer 1 blockchain. Up to 50x leverage, no KYC, no trading hours, 24/7/365. Its onchain orderbook engine, HyperCore, processes roughly 200,000 orders per second. The user experience feels like a centralized exchange, but all order matching and settlement happens onchain.</span>
-        <span class="lang-zh">Hyperliquid係一間crypto永續合約交易所，日交易量$50至$100億 — 同Bybit、OKX同級 — 但完全運行喺自己嘅Layer 1區塊鏈上。最高50倍槓桿，無KYC，無交易時間限制，24/7/365。其鏈上訂單簿引擎HyperCore每秒處理約200,000個訂單。用戶體驗感覺似centralized exchange，但所有order matching同settlement都喺鏈上進行。</span>
+        <span class="lang-en">Hyperliquid runs its own L1 chain with a proprietary consensus mechanism called HyperBFT. It is not built on Ethereum or Solana. The chain is purpose-built for trading: all order matching and settlement happens onchain, with sub-second finality. Its onchain orderbook engine, HyperCore, processes roughly 200,000 orders per second. To deposit, you bridge USDC from Arbitrum to the Hyperliquid L1.</span>
+        <span class="lang-zh">Hyperliquid運行自己嘅L1鏈，使用自研嘅HyperBFT共識機制。唔係建立喺Ethereum或Solana之上。呢條鏈係為交易而專門設計：所有order matching同settlement都喺鏈上進行，具有亞秒級finality。鏈上訂單簿引擎HyperCore每秒處理約200,000個訂單。要充值，你需要從Arbitrum將USDC跨鏈到Hyperliquid L1。</span>
       </p>
 
       <p>
-        <span class="lang-en">But the products that should capture the attention of Hong Kong finance professionals aren't the crypto perps — they're the pre-IPO stock perpetuals and the commodity perpetuals. Both run on HIP-3 (builder-deployed markets), and both give you something traditional exchanges can't: 24/7 access to assets that normally close on weekends.</span>
-        <span class="lang-zh">但真正應該引起香港金融從業者注意嘅唔係crypto perps — 而係Pre-IPO股票永續合約同商品永續合約。兩者都運行喺HIP-3（builder-deployed markets）之上，俾你傳統交易所做唔到嘅事：24/7交易平時週末休市嘅資產。</span>
+        <span class="lang-en">What makes Hyperliquid different from other DEXs is its approach to growth: instead of building everything in-house, it created a protocol-level framework that lets anyone build financial products on top of its infrastructure. Each upgrade (HIP) opens a new product category — from token launches to automated market making to permissionless derivatives to prediction markets.</span>
+        <span class="lang-zh">Hyperliquid同其他DEX最大嘅分別係佢嘅增長策略：唔係自己build所有嘢，而係喺protocol層面建立framework，俾任何人喺佢嘅基礎設施上面build金融產品。每次升級（HIP）開啟一個新產品類別 — 由token launch到自動做市到permissionless衍生品到預測市場。</span>
       </p>
 
+      <!-- ============================================ -->
+      <!-- HIP-1 -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-2">
+        HIP-1 <span class="text-zinc-500 text-lg font-normal ml-2">
+          <span class="lang-en">Native Token Standard</span><span class="lang-zh">原生代幣標準</span>
+        </span>
+      </h2>
+      <p class="text-cyan-400 text-sm mb-6">
+        <span class="lang-en">The foundation — how tokens are created and traded on Hyperliquid</span>
+        <span class="lang-zh">基礎 — 代幣喺Hyperliquid上點樣創建同交易</span>
+      </p>
+
+      <p>
+        <span class="lang-en">HIP-1 is Hyperliquid's native token standard — think of it as their version of Ethereum's ERC-20 or Solana's SPL Token. Every token deployed on Hyperliquid automatically gets a native order book quoted in USDC. Not an AMM pool. A real order book.</span>
+        <span class="lang-zh">HIP-1係Hyperliquid嘅原生代幣標準 — 可以理解為佢哋版本嘅Ethereum ERC-20或Solana SPL Token。每個喺Hyperliquid上deploy嘅token自動獲得一個以USDC計價嘅native order book。唔係AMM pool，係真正嘅order book。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The catch: deploying a token requires winning a 31-hour Dutch auction. The gas price starts high (typically 500 HYPE, ~$12,500) and decreases linearly. This is intentional — it filters out low-effort launches and makes every listing a meaningful economic commitment. Token names are limited to 6 characters.</span>
+        <span class="lang-zh">但有門檻：deploy一個token需要贏得一個31小時嘅Dutch auction。Gas價格由高開始（通常500 HYPE，~$12,500）然後線性遞減。呢個係刻意設計 — 過濾低質素嘅launch，令每個listing都係一個有意義嘅經濟承諾。Token名稱限制6個字元。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Fee distribution is deployer-friendly: 100% of non-USDC trading fees go to the token deployer by default. Unclaimed base token fees are burned. This creates a direct incentive for deployers to build real markets around their tokens.</span>
+        <span class="lang-zh">Fee分配對deployer友好：默認100% non-USDC trading fee歸token deployer。未被領取嘅base token fee直接burn。呢個為deployer創建咗直接嘅激勵去圍繞佢哋嘅token建立真正嘅市場。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- HIP-2 -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-2">
+        HIP-2 <span class="text-zinc-500 text-lg font-normal ml-2">
+          <span class="lang-en">Hyperliquidity</span><span class="lang-zh">超流動性</span>
+        </span>
+      </h2>
+      <p class="text-cyan-400 text-sm mb-6">
+        <span class="lang-en">Automated order book market making — solving the cold-start problem</span>
+        <span class="lang-zh">自動化訂單簿做市 — 解決冷啟動問題</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Every new token faces the same problem: no one wants to be the first buyer, and no one wants to provide liquidity to an empty book. HIP-2 solves this at the protocol level. It's an automated market-making strategy built directly into HyperCore's block transition logic — not a separate service, not a bot, but part of the consensus mechanism itself.</span>
+        <span class="lang-zh">每個新token都面對同一個問題：冇人想做第一個買家，冇人想為一本空簿提供流動性。HIP-2喺protocol層面解決呢個問題。佢係一個直接built into HyperCore block transition logic嘅自動做市策略 — 唔係獨立服務，唔係bot，而係共識機制本身嘅一部分。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The system places orders across a price range where each level is 0.3% apart, updating every block (minimum 3 seconds). When one side fills, it automatically converts to orders on the other side. Zero maintenance required. Deployers seed initial USDC for bid-side liquidity.</span>
+        <span class="lang-zh">系統喺一個價格範圍內放置orders，每個level相隔0.3%，每個block（最少3秒）更新一次。當一邊成交，自動轉換為另一邊嘅orders。完全唔需要維護。Deployer seed初始USDC作為bid-side流動性。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">This is fundamentally different from Uniswap-style AMMs. HIP-2 operates on a native order book, meaning sophisticated traders can place limit orders alongside the automated liquidity. It's the best of both worlds: protocol-guaranteed baseline liquidity plus organic order book depth.</span>
+        <span class="lang-zh">呢個同Uniswap式AMM根本唔同。HIP-2運行喺native order book上，即係sophisticated traders可以喺automated liquidity旁邊放limit orders。兩全其美：protocol保證嘅baseline liquidity加上organic order book深度。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- HIP-3 -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-2">
+        HIP-3 <span class="text-zinc-500 text-lg font-normal ml-2">
+          <span class="lang-en">Builder-Deployed Perpetuals</span><span class="lang-zh">Builder部署嘅永續合約</span>
+        </span>
+      </h2>
+      <p class="text-cyan-400 text-sm mb-6">
+        <span class="lang-en">Anyone can launch a perp exchange — stocks, commodities, anything with a price feed</span>
+        <span class="lang-zh">任何人都可以開永續合約交易所 — 股票、商品、任何有價格feed嘅資產</span>
+      </p>
+
+      <p>
+        <span class="lang-en">HIP-3, launched October 2025, is where Hyperliquid becomes genuinely interesting for traditional finance. Anyone who stakes 500,000 HYPE (~$25M) can deploy their own perpetual futures exchange on HyperCore. Their own order books, their own oracle feeds, their own margin parameters — but all running on Hyperliquid's consensus layer with CEX-level execution.</span>
+        <span class="lang-zh">HIP-3於2025年10月推出，係Hyperliquid對傳統金融真正開始有意義嘅地方。任何人stake 500,000 HYPE（~$25M）就可以喺HyperCore上deploy自己嘅永續合約交易所。自己嘅order books、自己嘅oracle feeds、自己嘅margin參數 — 但全部運行喺Hyperliquid嘅共識層上，具有CEX級別嘅execution。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">What's Live Now</span><span class="lang-zh">而家有咩</span>
+      </h3>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Stock Perps (24/7):</span> TradeXYZ, the dominant HIP-3 deployer controlling over 90% of HIP-3 open interest, lists 28 equity tickers including TSLA, AAPL, NVDA, AMZN, META, MSFT, GOOGL, COIN, PLTR, and more. These trade 24/7 — weekends, holidays, pre-market, after-hours. MetaMask has integrated these directly, giving 30M+ wallet users access to stock perps without a brokerage account.</span>
+        <span class="lang-zh"><span class="text-white font-medium">股票永續合約（24/7）：</span>TradeXYZ，主導嘅HIP-3 deployer，控制超過90%嘅HIP-3未平倉量，列出28隻股票ticker包括TSLA、AAPL、NVDA、AMZN、META、MSFT、GOOGL、COIN、PLTR等。全部24/7交易 — 週末、假期、開市前、收市後。MetaMask已直接整合，令30M+錢包用戶唔需要證券賬戶就可以交易stock perps。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">S&P 500 Perp:</span> S&P Dow Jones Indices officially licensed their brand for the first onchain S&P 500 perpetual contract on Hyperliquid. This is not an unofficial synthetic — it's an officially licensed product.</span>
+        <span class="lang-zh"><span class="text-white font-medium">S&P 500永續合約：</span>S&P Dow Jones Indices正式授權佢哋嘅品牌用於Hyperliquid上第一個鏈上S&P 500永續合約。呢個唔係unofficial synthetic — 係officially licensed嘅產品。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Commodity Perps:</span> WTI Crude Oil, Brent Oil, Natural Gas, Gold (XAU), Silver (XAG), Corn, Wheat — all 24/7. In March 2026, a weekend strike on Iranian oil infrastructure sent traders to Hyperliquid because NYMEX was closed. HIP-3 real-world-asset OI hit $2.3B. Silver hit $1B daily volume at peak.</span>
+        <span class="lang-zh"><span class="text-white font-medium">商品永續合約：</span>WTI原油、布倫特原油、天然氣、黃金（XAU）、白銀（XAG）、粟米、小麥 — 全部24/7。2026年3月，週末伊朗石油設施遇襲，NYMEX休市，trader走去Hyperliquid交易。HIP-3現實資產OI達$23億。白銀單日交易量峰值$10億。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Pre-IPO Perps:</span> SpaceX, OpenAI, Anthropic, Cursor, Stripe — valuation speculation contracts settling against latest funding round or IPO price.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Pre-IPO永續合約：</span>SpaceX、OpenAI、Anthropic、Cursor、Stripe — 估值投機合約，以最新融資輪或IPO價格結算。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">How HIP-3 Works Technically</span><span class="lang-zh">HIP-3技術細節</span>
+      </h3>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Staking:</span> 500,000 HYPE bond (~$25M), maintained for 30 days after all markets halted. First 3 markets deploy free; additional markets require Dutch auction.</span>
+        <span class="lang-zh"><span class="text-white font-medium">質押：</span>500,000 HYPE保證金（~$25M），所有市場停止後保持30日。前3個市場免費deploy；額外市場需要Dutch auction。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Oracle:</span> Deployer-controlled. Mark price clamped to max 1% move per update, minimum 2.5-second intervals. External reference prices required — validators trigger slashing review if prices move >50% from day start.</span>
+        <span class="lang-zh"><span class="text-white font-medium">預言機：</span>Deployer控制。Mark price每次更新最多移動1%，最少2.5秒間隔。需要external reference prices — 如果價格從當日開始移動超過50%，validators會觸發slashing審查。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Margin:</span> Currently isolated margin only. Cross-margin planned but requires: sufficient liquidity, reliable external oracle, manipulation resistance. Cross-margin enablement is irreversible per asset.</span>
+        <span class="lang-zh"><span class="text-white font-medium">保證金：</span>目前只有isolated margin。Cross-margin計劃中，需要：足夠流動性、可靠external oracle、抗操縱性。每個資產嘅cross-margin啟用係不可逆嘅。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Fees:</span> Deployer receives 50% of trading fees. Base rate: 3 bps maker / 9 bps taker (2x native Hyperliquid rates). 97% of protocol's share goes to HYPE buybacks.</span>
+        <span class="lang-zh"><span class="text-white font-medium">費用：</span>Deployer收取50% trading fees。基本費率：3 bps maker / 9 bps taker（Hyperliquid原生費率嘅2x）。Protocol嘅份額97%用於HYPE回購。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Slashing:</span> Up to 100% for invalid state transitions or prolonged downtime. Up to 50% for brief downtime. Up to 20% for performance issues. Slashed HYPE is burned, not redistributed.</span>
+        <span class="lang-zh"><span class="text-white font-medium">罰沒：</span>無效狀態轉換或長時間停機最高100%。短暫停機最高50%。性能問題最高20%。被罰沒嘅HYPE直接burn，唔會重新分配。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">No HLP backstop:</span> Hyperliquid's own liquidity pool (HLP) does NOT market-make HIP-3 markets. Deployers must attract their own market makers. HIP-3 markets also do NOT appear on the main Hyperliquid interface — deployers build their own frontend.</span>
+        <span class="lang-zh"><span class="text-white font-medium">冇HLP支持：</span>Hyperliquid自己嘅liquidity pool（HLP）唔會為HIP-3市場做市。Deployers必須自己吸引market makers。HIP-3市場亦唔會顯示喺Hyperliquid主介面 — deployers要build自己嘅前端。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- HIP-4 -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-2">
+        HIP-4 <span class="text-zinc-500 text-lg font-normal ml-2">
+          <span class="lang-en">Outcome Trading (Prediction Markets)</span><span class="lang-zh">結果交易（預測市場）</span>
+        </span>
+      </h2>
+      <p class="text-cyan-400 text-sm mb-6">
+        <span class="lang-en">Testnet live — binary contracts for real-world events, co-authored with Kalshi</span>
+        <span class="lang-zh">Testnet已上線 — 真實世界事件嘅二元合約，與Kalshi共同設計</span>
+      </p>
+
+      <p>
+        <span class="lang-en">HIP-4 brings prediction markets to Hyperliquid. Announced February 2, 2026 and currently live on testnet, it introduces fully collateralized binary contracts that settle at 0 or 1 based on whether a real-world event occurs. The price represents the market's implied probability.</span>
+        <span class="lang-zh">HIP-4將預測市場帶到Hyperliquid。2026年2月2日公佈，目前喺testnet上運行，引入fully collateralized binary contracts，根據真實世界事件是否發生而settle at 0 or 1。價格代表市場嘅implied probability。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">How It Works</span><span class="lang-zh">點樣運作</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Buy YES at 0.40 → event occurs, you profit 0.60. Event doesn't occur, you lose 0.40. No leverage, no liquidation risk. Maximum loss is always your initial stake. All settlement in USDH, Hyperliquid's native stablecoin. Contracts trade between 0.001 and 0.999 on a real order book — not an AMM.</span>
+        <span class="lang-zh">買YES at 0.40 → 事件發生，你賺0.60。事件唔發生，你蝕0.40。冇leverage，冇liquidation risk。最大損失永遠係你嘅初始投入。所有settlement用USDH，Hyperliquid嘅native stablecoin。合約喺0.001到0.999之間喺真正嘅order book上交易 — 唔係AMM。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Market Lifecycle</span><span class="lang-zh">市場生命週期</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Four phases: (1) <span class="text-white">Deployment</span> — builder defines the event, resolution timestamp, oracle source. (2) <span class="text-white">Opening Auction</span> (~15 minutes) — orders accumulate without execution, engine calculates a clearing price that maximizes matched volume. (3) <span class="text-white">Continuous Trading</span> — standard price-time priority order book. (4) <span class="text-white">Settlement</span> — oracle posts the outcome (0 or 1), trading halts, all positions auto-settle. Market slots can be recycled for new events.</span>
+        <span class="lang-zh">四個階段：（1）<span class="text-white">部署</span> — builder定義事件、結算時間、oracle來源。（2）<span class="text-white">Opening Auction</span>（~15分鐘）— orders累積唔即時執行，引擎計算最大化matched volume嘅clearing price。（3）<span class="text-white">連續交易</span> — 標準price-time priority order book。（4）<span class="text-white">結算</span> — oracle發布結果（0或1），交易停止，所有positions自動settle。Market slots可以recycle用於新事件。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">The Kalshi Connection</span><span class="lang-zh">Kalshi合作</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Kalshi's head of crypto co-authored the HIP-4 proposal. Kalshi is a CFTC-regulated prediction market platform in the US. In March 2026, they announced an official partnership to launch on-chain prediction markets together. This means Hyperliquid's prediction markets have regulatory expertise built into the design from day one — a significant differentiator from purely crypto-native approaches.</span>
+        <span class="lang-zh">Kalshi嘅head of crypto直接co-author咗HIP-4 proposal。Kalshi係美國一間CFTC監管嘅預測市場平台。2026年3月，佢哋宣佈正式合作喺鏈上推出預測市場。呢個意味住Hyperliquid嘅預測市場從第一日就有regulatory expertise built into the design — 同純crypto-native嘅approach相比係一個顯著嘅differentiator。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Composability — The Killer Feature</span><span class="lang-zh">可組合性 — 殺手級功能</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">This is where HIP-4 becomes structurally different from Polymarket or Kalshi. On Hyperliquid, prediction market contracts are planned to live in the same trading account as your perps and spot positions — shared collateral, automatic risk offsetting, no cross-platform fund transfers.</span>
+        <span class="lang-zh">呢個係HIP-4同Polymarket或Kalshi結構性唔同嘅地方。喺Hyperliquid上，prediction market contracts計劃同你嘅perps同spot positions喺同一個trading account入面 — 共用collateral，自動risk offsetting，唔需要跨平台搬錢。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Example: You think NVDA earnings will beat consensus. You can simultaneously (1) buy a "NVDA beats earnings" YES contract, (2) long NVDA perp, and (3) short QQQ perp as a hedge — all in the same account, collateral shared, risk calculated automatically. Today this requires Polymarket + Hyperliquid + another perp DEX, three platforms, three sets of capital.</span>
+        <span class="lang-zh">例子：你覺得NVDA業績會beat consensus。你可以同時（1）買「NVDA beats earnings」YES contract，（2）long NVDA perp，（3）short QQQ perp做hedge — 全部喺同一個account，collateral共享，risk自動計算。今日做呢個需要Polymarket + Hyperliquid + 另一個perp DEX，三個平台，三筆資金。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Timeline & Status</span><span class="lang-zh">時間線同狀態</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">HIP-4 is currently on testnet. Official docs have not published a complete HIP-4 specification yet. Mainnet launch date has not been confirmed — the team has said "when technical work is complete." The rollout will be two-phase: curated official markets first, then permissionless builder deployment. Note: specific deployment requirements (e.g. staking amounts) are reported by third-party sources and not yet confirmed in official Hyperliquid documentation.</span>
+        <span class="lang-zh">HIP-4目前喺testnet上。官方docs仲未發布完整嘅HIP-4 specification。Mainnet launch日期未確認 — 團隊只講「technical work完成之後」。推出分兩階段：先出curated official markets，之後先開放permissionless builder deployment。注意：具體部署要求（如staking金額）係第三方來源報導，官方Hyperliquid文檔仲未確認。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Competitive Comparison -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
-        <span class="lang-en">Pre-IPO Stock Perps: HIP-3</span><span class="lang-zh">Pre-IPO股票永續合約：HIP-3</span>
+        <span class="lang-en">How Hyperliquid Compares</span><span class="lang-zh">Hyperliquid同競品比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">Hyperliquid</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">dYdX</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Polymarket</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Kalshi</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Order book</span><span class="lang-zh">訂單簿</span></td>
+              <td class="py-3 px-2 text-white">Native CLOB</td>
+              <td class="py-3 px-2">CLOB</td>
+              <td class="py-3 px-2">AMM</td>
+              <td class="py-3 px-2">Centralized</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Stock perps</span><span class="lang-zh">股票永續</span></td>
+              <td class="py-3 px-2 text-white">28 tickers, $26M+ vol</td>
+              <td class="py-3 px-2">TSLA: $4K vol</td>
+              <td class="py-3 px-2">—</td>
+              <td class="py-3 px-2">—</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Prediction markets</span><span class="lang-zh">預測市場</span></td>
+              <td class="py-3 px-2 text-white">HIP-4 (testnet)</td>
+              <td class="py-3 px-2">—</td>
+              <td class="py-3 px-2">Live, $9.7B/30d</td>
+              <td class="py-3 px-2">Live, CFTC</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Composability</span><span class="lang-zh">可組合性</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Perps + spot + prediction (planned)</span><span class="lang-zh">永續 + 現貨 + 預測（計劃中）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Perps only</span><span class="lang-zh">只有永續</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Prediction only</span><span class="lang-zh">只有預測</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Prediction only</span><span class="lang-zh">只有預測</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Permissionless listing</span><span class="lang-zh">無需許可上幣</span></td>
+              <td class="py-3 px-2 text-white">✓ (500K HYPE)</td>
+              <td class="py-3 px-2">✓</td>
+              <td class="py-3 px-2">—</td>
+              <td class="py-3 px-2">—</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Regulation</span><span class="lang-zh">監管</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None</span><span class="lang-zh">無</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None</span><span class="lang-zh">無</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Offshore</span><span class="lang-zh">離岸</span></td>
+              <td class="py-3 px-2">CFTC</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-6">
+        <span class="lang-en">dYdX launched permissionless perps in 2024 but failed to get traction — their Tesla xStock does $4K daily volume versus Hyperliquid's $26M+. The difference is distribution: Hyperliquid has 44,000 daily active users, $200M+ daily spot volume, and MetaMask integration reaching 30M+ wallets.</span>
+        <span class="lang-zh">dYdX喺2024年推出permissionless perps但冇traction — 佢哋嘅Tesla xStock日交易量$4K，Hyperliquid係$26M+。差別喺distribution：Hyperliquid有44,000日活用戶、$200M+日現貨交易量、同MetaMask整合覆蓋30M+錢包。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- HK Context -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Why This Matters for Hong Kong</span><span class="lang-zh">點解對香港有意義</span>
       </h2>
 
       <p>
-        <span class="lang-en">You help them close deals, write valuations, meet management — but you can't buy a single share. Now there's a market where you can express your view.</span>
-        <span class="lang-zh">你幫佢哋做deal、寫valuation、見management — 但買唔到一股。而家有個market俾你express你嘅view。</span>
+        <span class="lang-en"><span class="text-white font-medium">Prop Trading Desks:</span> 24/7 commodity perps provide weekend and holiday gap coverage. When geopolitics moves on a Saturday — Middle East strike, OPEC announcement, typhoon closing a major port — the desk that can actually transact captures the gap before Monday's open.</span>
+        <span class="lang-zh"><span class="text-white font-medium">自營交易部門：</span>24/7商品永續合約提供週末同假期嘅gap coverage。當週六發生地緣政治事件 — 中東局勢、OPEC聲明、颱風封主要港口 — 能夠實際交易嘅desk會喺週一開市前捕獲個gap。</span>
       </p>
 
       <p>
-        <span class="lang-en">Hyperliquid's HIP-3 protocol, launched in October 2025, enables permissionless deployment of perpetual futures markets. Platforms built on top of it offer perp exposure to pre-IPO company valuations: SpaceX, OpenAI, Anthropic, Cursor, Stripe, and more. These are not equity instruments — they are pure valuation speculation contracts that settle against the latest funding round price or IPO price.</span>
-        <span class="lang-zh">Hyperliquid嘅HIP-3協議於2025年10月推出，允許無需許可地部署永續合約市場。基於其構建嘅平台提供對pre-IPO公司估值嘅永續合約敞口：SpaceX、OpenAI、Anthropic、Cursor、Stripe等。呢啲唔係股權工具 — 係純估值投機合約，以最新融資輪價格或IPO價格結算。</span>
+        <span class="lang-en"><span class="text-white font-medium">Investment Bankers:</span> Pre-IPO stock perps let you express views on companies you know intimately from deal work — SpaceX, OpenAI, Stripe — without needing secondary share access.</span>
+        <span class="lang-zh"><span class="text-white font-medium">投資銀行家：</span>Pre-IPO stock perps令你可以對從deal work中深入了解嘅公司表達觀點 — SpaceX、OpenAI、Stripe — 唔需要secondary share access。</span>
       </p>
 
       <p>
-        <span class="lang-en">The numbers are significant. Pre-IPO perps represent over 35% of all Hyperliquid trading volume — not a niche product. Open interest across pre-IPO markets hit $1.43 billion. Leverage is up to 10x, lower than crypto perps because the underlying liquidity is thinner. Trading volume on traditional asset perps surged 162% from $11.8 billion in December 2025 to $31.0 billion in January 2026, reaching $40.6 billion in cumulative volume by early February.</span>
-        <span class="lang-zh">數字係顯著嘅。Pre-IPO永續合約佔Hyperliquid總交易量超過35% — 唔係小眾產品。Pre-IPO市場未平倉量達到$14.3億。槓桿最高10x，比crypto perps低因為底層流動性較薄。傳統資產永續合約交易量從2025年12月嘅$118億激增162%至2026年1月嘅$310億，到2月初累計交易量達$406億。</span>
+        <span class="lang-en"><span class="text-white font-medium">Family Offices:</span> Once HIP-4 launches, a single Hyperliquid account could handle macro hedging (commodity perps), equity exposure (stock perps), and event-driven strategies (prediction markets) — all with shared collateral. No prime broker required.</span>
+        <span class="lang-zh"><span class="text-white font-medium">家族辦公室：</span>一旦HIP-4上線，一個Hyperliquid account可以處理宏觀對沖（commodity perps）、股票敞口（stock perps）、同事件驅動策略（prediction markets）— 全部共用collateral。唔需要prime broker。</span>
       </p>
 
-      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
-        <span class="lang-en">Commodity Perps: 24/7 Oil, Gold, Silver</span><span class="lang-zh">商品永續合約：24/7石油、黃金、白銀</span>
-      </h2>
-
-      <p>
-        <span class="lang-en">The commodity perp market on Hyperliquid is the quiet blockbuster of 2026. In March 2026, a weekend strike on Iranian oil infrastructure sent traders looking for a way to trade crude while NYMEX was closed. Hyperliquid had one. Over the following weeks, total open interest on HIP-3 real-world-asset contracts hit <span class="text-white font-medium">$2.3 billion</span>, and oil plus silver volumes on Hyperliquid surpassed XRP and SOL.</span>
-        <span class="lang-zh">商品永續合約係Hyperliquid 2026年嘅隱藏爆品。2026年3月，伊朗石油設施遇襲嘅週末，NYMEX休市，交易者四圍搵路交易原油 — Hyperliquid有。之後幾個禮拜，HIP-3現實資產合約嘅總未平倉量達到<span class="text-white font-medium">$23億</span>，Hyperliquid上嘅原油同白銀交易量超越咗XRP同SOL。</span>
-      </p>
-
-      <p>
-        <span class="lang-en">What's listed (all HIP-3 builder-deployed, primarily by TradeXYZ):</span>
-        <span class="lang-zh">已上線嘅商品（全部係HIP-3 builder-deployed，主要由TradeXYZ部署）：</span>
-      </p>
-
-      <p>
-        <span class="lang-en"><span class="text-white font-medium">Energy:</span> WTI Crude Oil (CL) — OI around $561M, was $1.5B at peak. Brent Oil (BRENTOIL) — OI around $576M. Natural Gas. A composite USOIL index.</span>
-        <span class="lang-zh"><span class="text-white font-medium">能源：</span>WTI原油（CL） — 未平倉量約$5.61億，峰值曾達$15億。布倫特原油（BRENTOIL） — 未平倉量約$5.76億。天然氣。仲有一個複合型USOIL指數。</span>
-      </p>
-
-      <p>
-        <span class="lang-en"><span class="text-white font-medium">Metals:</span> Gold (XAU) and Silver (XAG) — these two lead all HIP-3 RWA contracts by open interest, ahead of crude oil. Silver hit roughly $1 billion in daily volume at peak. This is a real market with real depth, not a toy.</span>
-        <span class="lang-zh"><span class="text-white font-medium">金屬：</span>黃金（XAU）同白銀（XAG） — 呢兩個喺HIP-3現實資產合約入面按未平倉量排名第一同第二，超越原油。白銀單日交易量峰值約$10億。呢個係有真實深度嘅市場，唔係玩具。</span>
-      </p>
-
-      <p>
-        <span class="lang-en"><span class="text-white font-medium">Agriculture:</span> Corn and Wheat perpetuals have launched, though volume is thinner than energy and metals.</span>
-        <span class="lang-zh"><span class="text-white font-medium">農產品：</span>粟米同小麥永續合約已上線，但交易量比能源同金屬細。</span>
-      </p>
-
-      <p>
-        <span class="lang-en">Because these are HIP-3 markets, leverage, margin ratios, oracle source, and OI caps are set by the deployer (typically TradeXYZ, which recently enabled cross-margin across silver, gold, and S&P 500). That's a different governance model from HL's native crypto perps — but it's also why these markets exist at all. No centralized exchange wants to build a 24/7 oil market. A permissionless deployer on Hyperliquid doesn't need permission to try.</span>
-        <span class="lang-zh">因為係HIP-3市場，槓桿、保證金比例、預言機來源同未平倉量上限全部由deployer決定（通常係TradeXYZ，最近佢哋喺白銀、黃金、S&P 500之間開通咗cross-margin）。呢個governance model同HL原生crypto perps唔同 — 但呢個都係點解呢啲市場存在嘅原因。冇任何中心化交易所會想搞24/7原油市場。喺Hyperliquid嘅permissionless deployer唔需要審批就可以試。</span>
-      </p>
-
-      <p>
-        <span class="lang-en">For a Hong Kong commodities desk, the immediate value is weekend / holiday gap coverage. If geopolitics moves on a Saturday — Middle East strike, OPEC announcement, typhoon closing a major port — the desk that can actually transact captures the gap before Monday's open. That's a real TradFi edge that didn't exist 12 months ago.</span>
-        <span class="lang-zh">對香港商品交易部門嚟講，即時價值係週末/假期嘅gap coverage。如果週六有地緣政治事件 — 中東局勢、OPEC聲明、颱風封主要港口 — 可以真正交易嘅desk會喺週一開市之前捕獲個gap。呢個係12個月前根本唔存在嘅TradFi edge。</span>
-      </p>
-
-      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
-        <span class="lang-en">The Infrastructure</span><span class="lang-zh">基礎設施</span>
-      </h2>
-
-      <p>
-        <span class="lang-en">Hyperliquid runs its own L1 chain with a proprietary consensus mechanism called HyperBFT. It is not built on Ethereum or Solana. The chain is purpose-built for trading: all order matching and settlement happens onchain, with sub-second finality. To deposit, you bridge USDC from Arbitrum to the Hyperliquid L1.</span>
-        <span class="lang-zh">Hyperliquid運行自己嘅L1鏈，使用自研嘅HyperBFT共識機制。唔係建立喺Ethereum或Solana之上。呢條鏈係為交易而專門設計：所有order matching同settlement都喺鏈上進行，具有亞秒級finality。要充值，你需要從Arbitrum將USDC跨鏈到Hyperliquid L1。</span>
-      </p>
-
+      <!-- ============================================ -->
+      <!-- Risks -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Risks and Transparency</span><span class="lang-zh">風險同透明度</span>
       </h2>
 
       <p>
-        <span class="lang-en">The decentralization claims deserve scrutiny. The validator set is only 21, with the team controlling the majority. The bridge is controlled by 4 team addresses — not a multisig in any meaningful sense. In March 2025, a trader manipulated the JELLY token price; the team responded by overriding the oracle price and force-liquidating positions. Arthur Hayes commented: "stop pretending Hyperliquid is decentralized."</span>
-        <span class="lang-zh">去中心化嘅聲稱值得審視。驗證者集合只有21個，團隊控制大多數。Bridge由4個團隊地址控制 — 在任何有意義嘅層面都唔係multisig。2025年3月，一個trader操縱JELLY代幣價格；團隊嘅回應係override oracle定價並強制清算倉位。Arthur Hayes評論：「唔好再扮Hyperliquid係去中心化。」</span>
+        <span class="lang-en">The decentralization claims deserve scrutiny. The validator set is only 21, with the team controlling the majority. The bridge is controlled by 4 team addresses. In March 2025, a trader manipulated the JELLY token price; the team responded by overriding the oracle and force-liquidating positions. Arthur Hayes commented: "stop pretending Hyperliquid is decentralized."</span>
+        <span class="lang-zh">去中心化嘅聲稱值得審視。驗證者集合只有21個，團隊控制大多數。Bridge由4個團隊地址控制。2025年3月，一個trader操縱JELLY代幣價格；團隊override oracle定價並強制清算倉位。Arthur Hayes評論：「唔好再扮Hyperliquid係去中心化。」</span>
       </p>
 
       <p>
-        <span class="lang-en">The risk factors are real: smart contract exploits on the bridge or matching engine, oracle manipulation (proven possible by the JELLY incident), unilateral team intervention in market rules, and no regulatory oversight — Hyperliquid is not an SFC-licensed VATP. Hong Kong traffic accounts for approximately 6% of the platform's user base. There is no KYC, which means no deposit protection and no recourse.</span>
-        <span class="lang-zh">風險因素係真實嘅：bridge或matching engine嘅智能合約漏洞、預言機操縱（JELLY事件已證明可能）、團隊單方面干預市場規則，以及無監管監督 — Hyperliquid唔係SFC持牌VATP。香港流量約佔平台用戶群嘅6%。無KYC，即無存款保障且無追索權。</span>
+        <span class="lang-en">Risk factors: smart contract exploits on bridge or matching engine, oracle manipulation (proven by JELLY incident), unilateral team intervention, no regulatory oversight (not an SFC-licensed VATP), no KYC, no deposit protection, no recourse. HIP-3 deployers control oracles and margin rules for their markets — you trust the deployer, not just Hyperliquid core. Size positions accordingly.</span>
+        <span class="lang-zh">風險因素：bridge或matching engine嘅智能合約漏洞、預言機操縱（JELLY事件已證明）、團隊單方面干預、無監管監督（唔係SFC持牌VATP）、無KYC、無存款保障、無追索權。HIP-3 deployers控制自己市場嘅oracle同margin rules — 你唔單止信Hyperliquid core，仲要信deployer。相應調整倉位規模。</span>
       </p>
 
-      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
-        <span class="lang-en">Hong Kong Context</span><span class="lang-zh">香港背景</span>
-      </h2>
-
-      <p>
-        <span class="lang-en">For Hong Kong finance professionals, the platform's two primary value propositions are (1) pre-IPO stock perps, where the sector knowledge and valuation insights you accumulate through your work — deal flow, management meetings, industry analysis — can be directly applied, and (2) 24/7 commodity perps for weekend and holiday gap coverage on oil, gold, silver, and natural gas. Both markets are populated by participants who largely lack the research infrastructure your TradFi desk already has.</span>
-        <span class="lang-zh">對香港金融從業者而言，平台嘅兩個主要價值在於：（1）pre-IPO股票永續合約，你通過工作累積嘅行業知識和估值洞察 — deal flow、管理層會面、行業分析 — 可以直接應用；（2）24/7商品永續合約，覆蓋週末同假期嘅原油、黃金、白銀同天然氣gap。兩個市場嘅參與者都大部分缺乏你TradFi desk已經具備嘅研究基礎設施。</span>
-      </p>
-
-      <p>
-        <span class="lang-en">But understand clearly: these are not regulated products, there is no investor protection, and the team has demonstrated willingness to intervene in markets unilaterally (the JELLY incident above). HIP-3 deployers control leverage, margin rules, and oracle sources for their markets — you're trusting the deployer, not just Hyperliquid core. Size positions accordingly.</span>
-        <span class="lang-zh">但要清楚理解：呢啲唔係受監管產品，冇投資者保障，而且團隊已展示過單方面干預市場嘅意願（上面JELLY事件）。HIP-3 deployers控制自己市場嘅槓桿、保證金規則同預言機來源 — 你唔單止信Hyperliquid core，仲要信deployer。相應調整你嘅倉位規模。</span>
-      </p>
-
+      <!-- ============================================ -->
+      <!-- Getting Started -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Getting Started</span><span class="lang-zh">如何開始</span>
       </h2>
 
       <p>
-        <span class="lang-en">Connect any EVM wallet (MetaMask, Rabby), bridge USDC from Arbitrum to the Hyperliquid L1, choose between crypto perps and pre-IPO stock perps, and set your leverage. Start with low leverage — 2 to 3x maximum is recommended for anyone new to the platform.</span>
-        <span class="lang-zh">連接任何EVM錢包（MetaMask、Rabby），從Arbitrum跨鏈USDC到Hyperliquid L1，選擇crypto永續合約或pre-IPO股票永續合約，設定槓桿。建議低槓桿開始 — 對平台新手而言，最高2至3x。</span>
+        <span class="lang-en">Connect any EVM wallet (MetaMask, Rabby), bridge USDC from Arbitrum to the Hyperliquid L1. Crypto perps and spot trade on <a href="https://app.hyperliquid.xyz" class="text-cyan-400 hover:underline" target="_blank">app.hyperliquid.xyz</a>. Stock and commodity perps trade on <a href="https://app.trade.xyz" class="text-cyan-400 hover:underline" target="_blank">app.trade.xyz</a> (same wallet, same balance). Start with low leverage — 2 to 3x maximum for anyone new to the platform.</span>
+        <span class="lang-zh">連接任何EVM錢包（MetaMask、Rabby），從Arbitrum跨鏈USDC到Hyperliquid L1。Crypto perps同spot喺<a href="https://app.hyperliquid.xyz" class="text-cyan-400 hover:underline" target="_blank">app.hyperliquid.xyz</a>交易。股票同商品永續合約喺<a href="https://app.trade.xyz" class="text-cyan-400 hover:underline" target="_blank">app.trade.xyz</a>交易（同一個錢包、同一個餘額）。建議低槓桿開始 — 新手最高2至3x。</span>
       </p>
     </div>
 
