@@ -1,0 +1,248 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Raydium CPMM — Constant Product Market Maker">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Standard AMM</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Raydium CPMM</span><span class="lang-zh">Raydium CPMM</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Raydium's workhorse AMM — a standard constant product (x×y=k) pool where LaunchLab tokens graduate to. Supports configurable fee tiers via AMM configs, delayed-open pools (openTime), and both SPL and Token-2022 tokens. The most liquid post-graduation destination on Solana.</span>
+      <span class="lang-zh">Raydium嘅主力AMM — 一個標準恆定乘積（x×y=k）池，LaunchLab嘅token畢業後去嘅地方。支援通過AMM config配置費率、延遲開放池（openTime），同時支援SPL同Token-2022 token。Solana上最具流動性嘅畢業後目的地。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">AMM Type</span><span class="lang-zh">AMM類型</span></p>
+        <p class="text-2xl font-bold text-white mt-1">x×y=k</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Fee Tiers</span><span class="lang-zh">費率等級</span></p>
+        <p class="text-2xl font-bold text-white mt-1"><span class="lang-en">Multiple</span><span class="lang-zh">多種</span></p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Token Standards</span><span class="lang-zh">代幣標準</span></p>
+        <p class="text-2xl font-bold text-white mt-1">SPL + T22</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Aggregator</span><span class="lang-zh">聚合器</span></p>
+        <p class="text-2xl font-bold text-white mt-1">Jupiter</p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How CPMM Works</span><span class="lang-zh">CPMM點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Raydium CPMM uses the <span class="text-white font-medium">constant product formula</span> — the same x×y=k math pioneered by Uniswap. When a trader swaps token A for token B, the product of both reserves must remain constant (minus fees). The price adjusts automatically based on the reserve ratio.</span>
+        <span class="lang-zh">Raydium CPMM用<span class="text-white font-medium">恆定乘積公式</span> — 同Uniswap開創嘅 x×y=k 數學一樣。當交易者用token A換token B時，兩邊reserve嘅乘積必須保持不變（扣除費用後）。價格根據reserve比率自動調整。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Unlike Raydium's legacy AMM v4 (which used on-chain order books from Serum/OpenBook), CPMM is a <span class="text-white">pure AMM</span> with no order book dependency. This makes it simpler, cheaper in CU, and easier to integrate.</span>
+        <span class="lang-zh">唔似Raydium舊版AMM v4（用Serum/OpenBook嘅鏈上order book），CPMM係一個<span class="text-white">純AMM</span>，冇order book依賴。呢個令佢更簡單、CU消耗更低、更容易整合。</span>
+      </p>
+
+      <!-- AMM Configs -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">AMM Configs & Fee Tiers</span><span class="lang-zh">AMM配置同費率等級</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Each CPMM pool references an <span class="text-white">AMM config account</span> that defines its fee parameters. Multiple pre-defined configs exist on-chain, and pool creators choose which one to use at pool creation time. Key parameters:</span>
+        <span class="lang-zh">每個CPMM池引用一個<span class="text-white">AMM config帳戶</span>嚟定義費用參數。鏈上有多個預定義嘅config，池創建者喺創建時選擇用邊個。關鍵參數：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">trade_fee_rate</span> — fee charged on each swap (basis points). Common tiers: 0.01%, 0.25%, 1%, 4%</span><span class="lang-zh"><span class="text-white">trade_fee_rate</span> — 每筆swap收取嘅費用（基點）。常見等級：0.01%、0.25%、1%、4%</span></li>
+        <li><span class="lang-en"><span class="text-white">protocol_fee_rate</span> — share of trade fees sent to Raydium treasury</span><span class="lang-zh"><span class="text-white">protocol_fee_rate</span> — 交易費中發送到Raydium金庫嘅份額</span></li>
+        <li><span class="lang-en"><span class="text-white">fund_fee_rate</span> — additional protocol fund allocation</span><span class="lang-zh"><span class="text-white">fund_fee_rate</span> — 額外嘅協議基金分配</span></li>
+        <li><span class="lang-en"><span class="text-white">create_pool_fee</span> — one-time fee to create a pool with this config</span><span class="lang-zh"><span class="text-white">create_pool_fee</span> — 用呢個config創建池嘅一次性費用</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">This config system is what makes CPMM flexible — the same pool logic supports everything from ultra-low-fee stablecoin pairs to high-fee memecoin pools.</span>
+        <span class="lang-zh">呢個config系統令CPMM靈活 — 同一套池邏輯支援由超低費率穩定幣對到高費率memecoin池嘅所有嘢。</span>
+      </p>
+
+      <!-- Delayed-Open Pools -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Delayed-Open Pools (openTime)</span><span class="lang-zh">延遲開放池（openTime）</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">CPMM pools have an <span class="text-white">openTime</span> field — a Unix timestamp before which the pool rejects all swaps. This allows creators to:</span>
+        <span class="lang-zh">CPMM池有一個<span class="text-white">openTime</span>字段 — 一個Unix時間戳，喺呢個時間之前池會拒絕所有swap。呢個允許creator：</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Create the pool</span> and deposit liquidity</span><span class="lang-zh"><span class="text-white">創建池</span>並存入流動性</span></li>
+        <li><span class="lang-en"><span class="text-white">Announce the launch time</span> — everyone sees the pool exists but can't trade yet</span><span class="lang-zh"><span class="text-white">宣布開放時間</span> — 所有人都睇到池存在但未能交易</span></li>
+        <li><span class="lang-en"><span class="text-white">Trading opens at openTime</span> — fair launch with no sniper advantage from pool creation</span><span class="lang-zh"><span class="text-white">喺openTime開放交易</span> — 公平launch，冇人因為池創建而有搶跑優勢</span></li>
+      </ol>
+
+      <p>
+        <span class="lang-en">For snipers and LP bots, detecting <code>openTime != 0</code> on a newly created pool is a key signal — it means you can prepare your buy transaction in advance and submit it exactly at the open timestamp.</span>
+        <span class="lang-zh">對搶跑者同LP bot嚟講，檢測到新創建池嘅 <code>openTime != 0</code> 係一個關鍵信號 — 意味住你可以提前準備好買入交易，喺開放時間戳精確提交。</span>
+      </p>
+
+      <!-- LaunchLab Graduation -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">LaunchLab Graduation Destination</span><span class="lang-zh">LaunchLab畢業目的地</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">When a Raydium LaunchLab bonding curve fills, it <span class="text-white">automatically creates a CPMM pool</span> with the accumulated reserves. This is the <code>migrate_to_cp_swap</code> instruction — the LaunchLab program CPI-calls the CPMM program to create a new pool.</span>
+        <span class="lang-zh">當Raydium LaunchLab bonding curve填滿時，佢會<span class="text-white">自動創建CPMM池</span>並帶上累積嘅reserves。呢個係 <code>migrate_to_cp_swap</code> 指令 — LaunchLab程序CPI調用CPMM程序嚟創建新池。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">This gives graduated tokens immediate access to the full Raydium ecosystem: Jupiter routing, aggregator integrations, and existing CPMM LP infrastructure. Contrast this with PumpSwap, where graduated tokens land on a newer AMM with less aggregator coverage.</span>
+        <span class="lang-zh">呢個令畢業嘅token即刻進入完整嘅Raydium生態系統：Jupiter路由、聚合器整合同現有CPMM LP基礎設施。對比PumpSwap，畢業嘅token落地喺一個較新、聚合器覆蓋較少嘅AMM上。</span>
+      </p>
+
+      <!-- Technical -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Technical: Pool Account Structure</span><span class="lang-zh">技術細節：池帳戶結構</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">amm_config</td>
+              <td class="py-3 px-2"><span class="lang-en">Reference to AMM config (fee tiers)</span><span class="lang-zh">引用AMM config（費率等級）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">token_0_vault / token_1_vault</td>
+              <td class="py-3 px-2"><span class="lang-en">ATAs holding pool reserves</span><span class="lang-zh">持有池reserves嘅ATA</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">token_0_mint / token_1_mint</td>
+              <td class="py-3 px-2"><span class="lang-en">Token pair mints</span><span class="lang-zh">Token對嘅mint</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">lp_mint</td>
+              <td class="py-3 px-2"><span class="lang-en">LP token mint (issued to LPs)</span><span class="lang-zh">LP token mint（發給LP）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">open_time</td>
+              <td class="py-3 px-2"><span class="lang-en">Unix timestamp — 0 = open now, >0 = delayed</span><span class="lang-zh">Unix時間戳 — 0 = 即時開放，>0 = 延遲</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">lp_supply</td>
+              <td class="py-3 px-2"><span class="lang-en">Total LP tokens outstanding</span><span class="lang-zh">已發行LP token總量</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CPMM vs Others -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">CPMM vs Other Raydium Programs</span><span class="lang-zh">CPMM同其他Raydium程序比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">CPMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">CLMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">AMM v4</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Model</span><span class="lang-zh">模型</span></td>
+              <td class="py-3 px-2 text-white">x×y=k</td>
+              <td class="py-3 px-2"><span class="lang-en">Concentrated</span><span class="lang-zh">集中</span></td>
+              <td class="py-3 px-2">x×y=k + OpenBook</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Fee config</span><span class="lang-zh">費用配置</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">AMM config accounts</span><span class="lang-zh">AMM config帳戶</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Per-pool tick spacing</span><span class="lang-zh">每池tick間距</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed 0.25%</span><span class="lang-zh">固定0.25%</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Order book</span><span class="lang-zh">Order book</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">None</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Serum/OpenBook</span><span class="lang-zh">Serum/OpenBook</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Token-2022</span><span class="lang-zh">Token-2022</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes</span><span class="lang-zh">支援</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes</span><span class="lang-zh">支援</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">唔支援</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Status</span><span class="lang-zh">狀態</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Primary (new pools)</span><span class="lang-zh">主要（新池）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Active (pro LPs)</span><span class="lang-zh">活躍（專業LP）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Legacy</span><span class="lang-zh">舊版</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Impermanent loss</span> — standard IL from x×y=k. Full-range LPs lose when price moves significantly in either direction</span><span class="lang-zh"><span class="text-white">無常損失</span> — x×y=k嘅標準IL。全範圍LP喺價格任何方向大幅波動時都會蝕</span></li>
+        <li><span class="lang-en"><span class="text-white">Config immutability</span> — pool fee rate is locked at creation. Can't adjust if market conditions change</span><span class="lang-zh"><span class="text-white">配置不可變</span> — 池費率喺創建時鎖定。市場條件變化時唔能調整</span></li>
+        <li><span class="lang-en"><span class="text-white">Capital inefficiency</span> — x×y=k spreads liquidity across the entire price range, most of which is never used. CLMM or DLMM are more efficient for active LPs</span><span class="lang-zh"><span class="text-white">資本效率低</span> — x×y=k將流動性分散到整個價格範圍，大部分永遠唔會用到。CLMM或DLMM對活躍LP更高效</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Predecessor</span><span class="lang-zh">前身</span></td>
+              <td class="py-3 px-2 text-white">AMM v4 (<span class="font-mono text-xs">675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8</span>)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/raydium-launchlab`} class="text-zinc-500 hover:text-white transition-colors text-sm">← Raydium LaunchLab</a>
+      <a href={`${base}/products/amm/raydium-clmm`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">Raydium CLMM →</a>
+    </div>
+  </article>
+</Layout>

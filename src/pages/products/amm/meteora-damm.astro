@@ -1,0 +1,415 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Meteora DAMM v2 — Dynamic AMM with Time-Decaying Fees">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Dynamic AMM</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Meteora DAMM v2</span><span class="lang-zh">Meteora DAMM v2</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Meteora's flagship AMM — a constant product pool with time-decaying fees. Start at 99% fee on launch, decay to a normal rate over time. Designed for the LP fee-capture strategy: create a high-fee pool on a newly launched token and earn massive fees while aggregators haven't updated their routes. The only AMM on Solana with 5 different fee schedule modes.</span>
+      <span class="lang-zh">Meteora嘅旗艦AMM — 一個帶有時間衰減費率嘅恆定乘積池。Launch時以99%費率開始，隨時間衰減到正常費率。專為LP費用捕獲策略設計：喺新launch嘅token上創建高費率池，喺聚合器未更新路由時賺取大量費用。Solana上唯一有5種唔同費率模式嘅AMM。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Max Fee</span><span class="lang-zh">最高費率</span></p>
+        <p class="text-2xl font-bold text-white mt-1">99%</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Fee Modes</span><span class="lang-zh">費率模式</span></p>
+        <p class="text-2xl font-bold text-white mt-1">5</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Fee Denominator</span><span class="lang-zh">費率分母</span></p>
+        <p class="text-2xl font-bold text-white mt-1">1e9</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Protocol Fee</span><span class="lang-zh">協議費</span></p>
+        <p class="text-2xl font-bold text-white mt-1">20%</p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- Fee Schedule Modes -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">5 Fee Schedule Modes</span><span class="lang-zh">5種費率模式</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DAMM v2's killer feature: the <span class="text-white font-medium">BaseFeeMode</span> enum. Each pool chooses one of 5 fee schedule modes at creation time. The fee is <span class="text-white">dynamic</span> — it changes over time or based on trade behavior.</span>
+        <span class="lang-zh">DAMM v2嘅殺手鐧：<span class="text-white font-medium">BaseFeeMode</span>枚舉。每個池喺創建時選擇5種費率模式之一。費率係<span class="text-white">動態嘅</span> — 隨時間或交易行為變化。</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Mode</span><span class="lang-zh">模式</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Value</span><span class="lang-zh">值</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Behavior</span><span class="lang-zh">行為</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Use Case</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Linear</td>
+              <td class="py-3 px-2">0</td>
+              <td class="py-3 px-2"><span class="lang-en">Fee decays linearly over time</span><span class="lang-zh">費率隨時間線性衰減</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Most common. 99% → 10% over ~1.5 hrs</span><span class="lang-zh">最常見。99% → 10%，約1.5小時</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Exponential</td>
+              <td class="py-3 px-2">1</td>
+              <td class="py-3 px-2"><span class="lang-en">Fee decays exponentially over time</span><span class="lang-zh">費率隨時間指數衰減</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fast initial drop, long tail</span><span class="lang-zh">初期快速下降，長尾</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Rate Limiter</td>
+              <td class="py-3 px-2">2</td>
+              <td class="py-3 px-2"><span class="lang-en">Fee scales with <span class="text-white">trade size</span> (anti-bot)</span><span class="lang-zh">費率隨<span class="text-white">交易大小</span>縮放（反機器人）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Anti-sniper. Only B→A direction</span><span class="lang-zh">防搶跑。只適用B→A方向</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">MarketCap Linear</td>
+              <td class="py-3 px-2">3</td>
+              <td class="py-3 px-2"><span class="lang-en">Fee decays with <span class="text-white">price movement</span></span><span class="lang-zh">費率隨<span class="text-white">價格變動</span>衰減</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fee drops as mcap grows</span><span class="lang-zh">市值增長時費率下降</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">MarketCap Exponential</td>
+              <td class="py-3 px-2">4</td>
+              <td class="py-3 px-2"><span class="lang-en">Exponential version of mcap scheduler</span><span class="lang-zh">市值調度器嘅指數版本</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Aggressive decay with mcap</span><span class="lang-zh">隨市值積極衰減</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">On top of any base mode, a <span class="text-white">dynamic fee component</span> can be enabled (DLMM-style volatility accumulator). This adds an extra fee layer that increases during high-volatility periods.</span>
+        <span class="lang-zh">喺任何基礎模式之上，可以啟用<span class="text-white">動態費用組件</span>（DLMM風格嘅波動率累加器）。呢個喺高波動期間增加額外嘅費用層。</span>
+      </p>
+
+      <!-- Fee Math -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Math — How Fees Split</span><span class="lang-zh">費用數學 — 費用點樣分配</span>
+      </h2>
+
+      <div class="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4 font-mono text-sm">
+        <p class="text-zinc-500 mb-2">// Fee calculation (from fee.rs)</p>
+        <p>gross_fee &nbsp;&nbsp;&nbsp;= swap_amount × total_fee_numerator / 1,000,000,000</p>
+        <p>trading_fee &nbsp;= gross_fee × (100 − protocol_fee_percent) / 100 &nbsp;<span class="text-zinc-600">// LP earnings</span></p>
+        <p>protocol_fee = gross_fee × protocol_fee_percent / 100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600">// Meteora (default 20%)</span></p>
+        <p>referral_fee = protocol_fee × referral_fee_percent / 100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600">// if referral passed</span></p>
+        <p>partner_fee &nbsp;= (protocol_fee − referral_fee) × partner_fee_percent / 100</p>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Key numbers:</span> <code>FEE_DENOMINATOR = 1,000,000,000</code> (1e9). Pool V1 max fee = 990,000,000 (99%). Pool V0 max fee = 500,000,000 (50%). Default protocol fee = 20% of gross.</span>
+        <span class="lang-zh"><span class="text-white font-medium">關鍵數字：</span><code>FEE_DENOMINATOR = 1,000,000,000</code>（1e9）。Pool V1最高費率 = 990,000,000（99%）。Pool V0最高費率 = 500,000,000（50%）。默認協議費 = 總費用嘅20%。</span>
+      </p>
+
+      <!-- CollectFeeMode -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">CollectFeeMode — Fee Token Selection</span><span class="lang-zh">CollectFeeMode — 費用Token選擇</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Mode</span><span class="lang-zh">模式</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Value</span><span class="lang-zh">值</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">How Fees Are Collected</span><span class="lang-zh">費用收取方式</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">BothToken</td>
+              <td class="py-3 px-2">0</td>
+              <td class="py-3 px-2"><span class="lang-en">A→B swap: fee in B. B→A swap: fee in A. LP earns in both tokens</span><span class="lang-zh">A→B swap：費用以B收取。B→A swap：費用以A收取。LP兩種token都賺</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">OnlyB</td>
+              <td class="py-3 px-2">1</td>
+              <td class="py-3 px-2"><span class="lang-en">Fees <span class="text-white">always</span> in token B. B→A direction: fee from input. Simpler LP accounting</span><span class="lang-zh">費用<span class="text-white">永遠</span>以token B收取。B→A方向：從輸入中扣費。LP記賬更簡單</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white">Important constraint:</span> RateLimiter mode (mode 2) can <span class="text-white">only</span> be used with <code>CollectFeeMode::OnlyB</code>. The program enforces this in its validation logic.</span>
+        <span class="lang-zh"><span class="text-white">重要約束：</span>RateLimiter模式（模式2）<span class="text-white">只能</span>同 <code>CollectFeeMode::OnlyB</code> 一齊用。程序喺驗證邏輯中強制執行。</span>
+      </p>
+
+      <!-- Permanent Lock -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Permanent Lock Positions</span><span class="lang-zh">永久鎖定倉位</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DAMM v2 supports <span class="text-white">permanently locking</span> LP positions. Once locked, the liquidity can <span class="text-white">never be withdrawn</span> — only fees can be claimed. This is a strong signal for token credibility:</span>
+        <span class="lang-zh">DAMM v2支援<span class="text-white">永久鎖定</span>LP倉位。一旦鎖定，流動性<span class="text-white">永遠無法提取</span> — 只能領取費用。呢個係token可信度嘅強烈信號：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Rug-pull protection</span> — creator can't drain liquidity</span><span class="lang-zh"><span class="text-white">防跑路</span> — 創建者唔能抽走流動性</span></li>
+        <li><span class="lang-en"><span class="text-white">Fee-only income</span> — LPs earn fees forever from a locked position</span><span class="lang-zh"><span class="text-white">純費用收入</span> — LP從鎖定倉位永遠賺取費用</span></li>
+        <li><span class="lang-en"><span class="text-white">Snipe signal</span> — pools with permanent locks tend to attract more volume (aggregators route to them)</span><span class="lang-zh"><span class="text-white">搶跑信號</span> — 有永久鎖定嘅池傾向吸引更多交易量（聚合器路由到佢哋）</span></li>
+      </ul>
+
+      <!-- BaseFeeParameters -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Schedule Configuration</span><span class="lang-zh">費率計劃配置</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Each pool's fee schedule is defined by <code>BaseFeeParameters</code>:</span>
+        <span class="lang-zh">每個池嘅費率計劃由 <code>BaseFeeParameters</code> 定義：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Type</span><span class="lang-zh">類型</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">cliff_fee_numerator</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Starting fee (e.g., 990,000,000 = 99%)</span><span class="lang-zh">起始費率（例如990,000,000 = 99%）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">number_of_period</td>
+              <td class="py-3 px-2">u16</td>
+              <td class="py-3 px-2"><span class="lang-en">How many decay periods</span><span class="lang-zh">幾多個衰減週期</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">period_frequency</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Seconds per period</span><span class="lang-zh">每個週期嘅秒數</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">reduction_factor</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">How much to reduce each period</span><span class="lang-zh">每個週期減少幾多</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">fee_scheduler_mode</td>
+              <td class="py-3 px-2">u8</td>
+              <td class="py-3 px-2"><span class="lang-en">BaseFeeMode enum (0-4)</span><span class="lang-zh">BaseFeeMode枚舉（0-4）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Typical launch config:</span> <code>cliff_fee_numerator = 990,000,000</code> (99%), <code>number_of_period = 16</code>, <code>period_frequency = 300</code> (5 min), <code>reduction_factor = 55,000,000</code>. This gives ~99% fee at launch, decaying ~5.5% every 5 minutes, reaching ~10% after ~80 minutes.</span>
+        <span class="lang-zh"><span class="text-white font-medium">典型launch配置：</span><code>cliff_fee_numerator = 990,000,000</code>（99%）、<code>number_of_period = 16</code>、<code>period_frequency = 300</code>（5分鐘）、<code>reduction_factor = 55,000,000</code>。呢個喺launch時收~99%費率，每5分鐘衰減~5.5%，約80分鐘後到達~10%。</span>
+      </p>
+
+      <!-- EvtSwap2 -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Technical: EvtSwap2 Event Layout</span><span class="lang-zh">技術細節：EvtSwap2事件佈局</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DAMM v2 emits swap results via <span class="text-white">self-CPI inner instructions</span> (Anchor-style), not log messages. The <code>EvtSwap2</code> event contains full swap details including all fee breakdowns:</span>
+        <span class="lang-zh">DAMM v2通過<span class="text-white">自CPI內部指令</span>（Anchor風格）發射swap結果，唔係log消息。<code>EvtSwap2</code>事件包含完整嘅swap細節，包括所有費用明細：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Type</span><span class="lang-zh">類型</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">output_amount</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Tokens received by trader</span><span class="lang-zh">交易者收到嘅token</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">next_sqrt_price</td>
+              <td class="py-3 px-2">u128</td>
+              <td class="py-3 px-2"><span class="lang-en">Pool price after swap</span><span class="lang-zh">Swap後嘅池價格</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">trading_fee (lp_fee)</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">LP earnings from this swap</span><span class="lang-zh">呢筆swap嘅LP收益</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">protocol_fee</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Meteora treasury cut</span><span class="lang-zh">Meteora金庫嘅分成</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">partner_fee</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Launchpad partner fee</span><span class="lang-zh">發射台合作夥伴費用</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">referral_fee</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Referral fee (if referral account passed)</span><span class="lang-zh">推薦費（如果傳遞咗推薦帳戶）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">Key discriminators: Anchor CPI wrapper <code>e445a52e51cb9a1d</code>, EvtSwap2 event <code>bd4233a826507599</code>. Decode by stripping the 8-byte discriminator prefix from the inner instruction data.</span>
+        <span class="lang-zh">關鍵discriminator：Anchor CPI包裝器 <code>e445a52e51cb9a1d</code>，EvtSwap2事件 <code>bd4233a826507599</code>。通過去除內部指令數據嘅8字節discriminator前綴嚟解碼。</span>
+      </p>
+
+      <!-- Pool Creation -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Pool Creation Instructions</span><span class="lang-zh">池創建指令</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Instruction</span><span class="lang-zh">指令</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Discriminator</span><span class="lang-zh">判別碼</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Use Case</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">initialize_pool</td>
+              <td class="py-3 px-2 font-mono text-xs">5fb40aac54aee828</td>
+              <td class="py-3 px-2"><span class="lang-en">Basic pool creation</span><span class="lang-zh">基本池創建</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">initialize_pool_with_dynamic_config</td>
+              <td class="py-3 px-2 font-mono text-xs">955248c5fdfc440f</td>
+              <td class="py-3 px-2"><span class="lang-en">Pool + dynamic fee config</span><span class="lang-zh">池 + 動態費用配置</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">initialize_customizable_pool</td>
+              <td class="py-3 px-2 font-mono text-xs">14a1f118bdddb402</td>
+              <td class="py-3 px-2"><span class="lang-en">Fully customizable parameters</span><span class="lang-zh">完全可自定義參數</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">swap2</td>
+              <td class="py-3 px-2 font-mono text-xs">414b3f4ceb5b5b88</td>
+              <td class="py-3 px-2"><span class="lang-en">Current swap instruction (v2)</span><span class="lang-zh">當前swap指令（v2）</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">permanent_lock_position</td>
+              <td class="py-3 px-2 font-mono text-xs">a5b07d06e7abbad5</td>
+              <td class="py-3 px-2"><span class="lang-en">Lock LP permanently</span><span class="lang-zh">永久鎖定LP</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- DAMM v2 vs Others -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">DAMM v2 vs Other AMMs</span><span class="lang-zh">DAMM v2同其他AMM比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">DAMM v2</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Raydium CPMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">PumpSwap</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Max fee</span><span class="lang-zh">最高費率</span></td>
+              <td class="py-3 px-2 text-white">99%</td>
+              <td class="py-3 px-2">~4%</td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed per pool</span><span class="lang-zh">每池固定</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Dynamic fees</span><span class="lang-zh">動態費率</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">5 modes + volatility</span><span class="lang-zh">5種模式 + 波動率</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed at creation</span><span class="lang-zh">創建時固定</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed</span><span class="lang-zh">固定</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Permanent lock</span><span class="lang-zh">永久鎖定</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes</span><span class="lang-zh">有</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">LP fee capture</span><span class="lang-zh">LP費用捕獲</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Optimized for launch sniping</span><span class="lang-zh">優化用於launch搶跑</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Standard LP</span><span class="lang-zh">標準LP</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Creator-focused</span><span class="lang-zh">以Creator為中心</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">High-fee pools repel volume</span> — 99% fee means aggregators won't route there until the fee decays. If volume doesn't come during the high-fee window, LPs earn nothing</span><span class="lang-zh"><span class="text-white">高費率池排斥交易量</span> — 99%費率意味住聚合器唔會路由到嗰度，直到費率衰減。如果高費率窗口內冇交易量，LP就賺唔到嘢</span></li>
+        <li><span class="lang-en"><span class="text-white">Permanent lock is irreversible</span> — once locked, liquidity is gone forever. If the token goes to zero, the locked SOL is lost</span><span class="lang-zh"><span class="text-white">永久鎖定不可逆</span> — 一旦鎖定，流動性永遠消失。如果token歸零，鎖定嘅SOL就冇咗</span></li>
+        <li><span class="lang-en"><span class="text-white">Complex fee modes</span> — 5 fee modes with different parameters create a wide design space. Misconfigured fee schedules can result in fees that are too high for too long or decay too fast</span><span class="lang-zh"><span class="text-white">複雜費率模式</span> — 5種費率模式加唔同參數創造咗寬廣嘅設計空間。配置錯誤嘅費率計劃可能導致費率太高太耐或衰減太快</span></li>
+        <li><span class="lang-en"><span class="text-white">Competitor pools</span> — anyone can create a DAMM v2 pool for the same token with a lower fee. Aggregators will route to the cheapest pool</span><span class="lang-zh"><span class="text-white">競爭對手池</span> — 任何人都可以為同一token創建費率更低嘅DAMM v2池。聚合器會路由到最平嘅池</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Source Code</span><span class="lang-zh">源代碼</span></td>
+              <td class="py-3 px-2 text-white">github.com/MeteoraAg/damm-v2</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/raydium-clmm`} class="text-zinc-500 hover:text-white transition-colors text-sm">← Raydium CLMM</a>
+      <a href={`${base}/products/amm/meteora-dlmm`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">Meteora DLMM →</a>
+    </div>
+  </article>
+</Layout>

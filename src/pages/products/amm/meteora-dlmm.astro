@@ -1,0 +1,234 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Meteora DLMM — Discretized Liquidity Market Maker">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Concentrated Liquidity</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Meteora DLMM</span><span class="lang-zh">Meteora DLMM</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Meteora's bin-based concentrated liquidity AMM — a fundamentally different approach from Uniswap v3 style CLMMs. Instead of continuous price curves, DLMM divides the price space into discrete bins. Each bin has a fixed price — zero slippage within a bin, step-function pricing between bins. Think of it as a grid of limit orders, not a curve.</span>
+      <span class="lang-zh">Meteora基於Bin嘅集中流動性AMM — 同Uniswap v3風格嘅CLMM根本唔同嘅方法。DLMM唔係用連續價格曲線，而係將價格空間分成離散嘅bin。每個bin有固定價格 — bin內零滑點，bin之間係階梯函數定價。當佢係一堆限價單組成嘅格子，唔係曲線。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">AMM Type</span><span class="lang-zh">AMM類型</span></p>
+        <p class="text-2xl font-bold text-white mt-1">Bin-based</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Slippage in Bin</span><span class="lang-zh">Bin內滑點</span></p>
+        <p class="text-2xl font-bold text-white mt-1">Zero</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Max Fee</span><span class="lang-zh">最高費率</span></p>
+        <p class="text-2xl font-bold text-white mt-1">50%</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">LP Strategies</span><span class="lang-zh">LP策略</span></p>
+        <p class="text-2xl font-bold text-white mt-1">3+</p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- How Bins Work -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How Bins Work</span><span class="lang-zh">Bin點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The price range is divided into a series of <span class="text-white font-medium">discrete bins</span>. Each bin holds liquidity at a single price point. When a trader swaps, they consume liquidity from the <span class="text-white">active bin</span> first. If the trade is larger than the active bin's liquidity, it spills into the next bin — moving the active bin and stepping the price.</span>
+        <span class="lang-zh">價格範圍被分成一系列<span class="text-white font-medium">離散bin</span>。每個bin喺一個單一價格點持有流動性。當交易者swap時，佢哋首先消耗<span class="text-white">active bin</span>嘅流動性。如果交易大過active bin嘅流動性，就會溢出到下一個bin — 移動active bin並令價格跳步。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Key insight:</span> within a single bin, the price doesn't change. A small trade that fits entirely within the active bin has <span class="text-white">literally zero price impact</span>. This is fundamentally different from x×y=k or Uniswap v3, where every trade moves the price.</span>
+        <span class="lang-zh"><span class="text-white font-medium">關鍵洞察：</span>喺單一bin入面，價格唔會變。一筆完全fit入active bin嘅小交易有<span class="text-white">字面上零價格影響</span>。呢個同 x×y=k 或Uniswap v3根本唔同，喺嗰度每筆交易都會移動價格。</span>
+      </p>
+
+      <!-- Bin Step -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Bin Step — Price Granularity</span><span class="lang-zh">Bin Step — 價格粒度</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The <span class="text-white">bin step</span> determines the price difference between adjacent bins. It's expressed in basis points:</span>
+        <span class="lang-zh"><span class="text-white">Bin step</span>決定相鄰bin之間嘅價格差異。以基點表示：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Bin step 1</span> — 0.01% between bins. Ultra-fine granularity, good for stablecoin pairs</span><span class="lang-zh"><span class="text-white">Bin step 1</span> — bin之間0.01%。超精細粒度，適合穩定幣對</span></li>
+        <li><span class="lang-en"><span class="text-white">Bin step 25</span> — 0.25% between bins. Good for major pairs (SOL/USDC)</span><span class="lang-zh"><span class="text-white">Bin step 25</span> — bin之間0.25%。適合主要交易對（SOL/USDC）</span></li>
+        <li><span class="lang-en"><span class="text-white">Bin step 100</span> — 1% between bins. Wider gaps, fewer bins to manage, good for volatile tokens</span><span class="lang-zh"><span class="text-white">Bin step 100</span> — bin之間1%。更寬嘅間距，較少bin需要管理，適合波動性token</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">Price at bin ID <code>i</code> = <code>(1 + binStep/10000)^i</code>. Bin IDs can be negative (price < 1). The bin step is fixed at pool creation and cannot be changed.</span>
+        <span class="lang-zh">Bin ID <code>i</code> 嘅價格 = <code>(1 + binStep/10000)^i</code>。Bin ID可以係負數（價格 < 1）。Bin step喺池創建時固定，唔能更改。</span>
+      </p>
+
+      <!-- LP Strategies -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">LP Strategies</span><span class="lang-zh">LP策略</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DLMM offers built-in LP distribution strategies. When adding liquidity, LPs choose how to distribute across bins:</span>
+        <span class="lang-zh">DLMM提供內建嘅LP分配策略。添加流動性時，LP選擇點樣跨bin分配：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Strategy</span><span class="lang-zh">策略</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Distribution</span><span class="lang-zh">分佈</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Best For</span><span class="lang-zh">最適合</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Spot</td>
+              <td class="py-3 px-2"><span class="lang-en">Uniform across all bins in range</span><span class="lang-zh">均勻分佈喺範圍內所有bin</span></td>
+              <td class="py-3 px-2"><span class="lang-en">General purpose, mimics x×y=k</span><span class="lang-zh">通用，模擬 x×y=k</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Curve</td>
+              <td class="py-3 px-2"><span class="lang-en">Gaussian — concentrated around active bin</span><span class="lang-zh">高斯 — 集中喺active bin附近</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Range-bound tokens, higher fee yield near current price</span><span class="lang-zh">區間震盪token，當前價格附近更高費率收益</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">Bid-Ask</td>
+              <td class="py-3 px-2"><span class="lang-en">Inverse Gaussian — more at edges, less at center</span><span class="lang-zh">反高斯 — 邊緣多，中心少</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Volatile tokens, catch large moves</span><span class="lang-zh">波動性token，捕捉大幅波動</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Active Bin & Bin Arrays -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Active Bin & Bin Arrays</span><span class="lang-zh">Active Bin同Bin陣列</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The <span class="text-white">active bin</span> is where trading happens right now. Only liquidity in the active bin earns fees. When a trade exhausts the active bin, the next bin becomes active.</span>
+        <span class="lang-zh"><span class="text-white">Active bin</span>係交易正在發生嘅地方。只有active bin入面嘅流動性賺取費用。當一筆交易耗盡active bin時，下一個bin變成active。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Bins are stored on-chain in <span class="text-white">bin array accounts</span> — each account covers a range of bin IDs. Swaps must pass the correct bin array accounts as transaction inputs. This is a common integration pain point — missing bin arrays cause transaction failures.</span>
+        <span class="lang-zh">Bin儲存喺鏈上嘅<span class="text-white">bin array帳戶</span>入面 — 每個帳戶覆蓋一系列bin ID。Swap必須將正確嘅bin array帳戶作為交易輸入傳遞。呢個係常見嘅整合痛點 — 缺少bin array會導致交易失敗。</span>
+      </p>
+
+      <!-- Volatility Accumulator -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Dynamic Fees — Volatility Accumulator</span><span class="lang-zh">動態費用 — 波動率累加器</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DLMM can charge <span class="text-white">higher fees during volatile periods</span>. The volatility accumulator tracks how many bins the price has crossed recently. More bin crossings = higher volatility = higher fees. This protects LPs from adverse selection during sharp price moves.</span>
+        <span class="lang-zh">DLMM可以喺<span class="text-white">波動期間收取更高費用</span>。波動率累加器追蹤價格最近跨越咗幾多個bin。越多bin crossing = 越高波動率 = 越高費用。呢個保護LP免受價格劇烈波動時嘅逆向選擇。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The max base fee for DLMM pools is <span class="text-white">50%</span> (MAX_FEE_NUMERATOR = 500,000,000 / FEE_DENOMINATOR = 1,000,000,000). Compare this to DAMM v2's 99% max.</span>
+        <span class="lang-zh">DLMM池嘅最高基礎費率係<span class="text-white">50%</span>（MAX_FEE_NUMERATOR = 500,000,000 / FEE_DENOMINATOR = 1,000,000,000）。對比DAMM v2嘅99%上限。</span>
+      </p>
+
+      <!-- DLMM vs CLMM -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">DLMM vs CLMM — Two Approaches to Concentrated Liquidity</span><span class="lang-zh">DLMM同CLMM — 集中流動性嘅兩種方法</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">Meteora DLMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Raydium / Orca CLMM</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Price model</span><span class="lang-zh">價格模型</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Discrete bins (step function)</span><span class="lang-zh">離散bin（階梯函數）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Continuous curve (smooth)</span><span class="lang-zh">連續曲線（平滑）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">In-range slippage</span><span class="lang-zh">範圍內滑點</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Zero within a bin</span><span class="lang-zh">Bin內零滑點</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Continuous (always some)</span><span class="lang-zh">連續（永遠有啲）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">LP strategies</span><span class="lang-zh">LP策略</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Spot / Curve / Bid-Ask</span><span class="lang-zh">Spot / Curve / Bid-Ask</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Manual range selection</span><span class="lang-zh">手動範圍選擇</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Dynamic fees</span><span class="lang-zh">動態費用</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Volatility accumulator</span><span class="lang-zh">波動率累加器</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed per pool</span><span class="lang-zh">每池固定</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Composability</span><span class="lang-zh">可組合性</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">More complex (bin arrays)</span><span class="lang-zh">較複雜（bin array）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Standard (tick arrays)</span><span class="lang-zh">標準（tick array）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Concentrated IL</span> — same as CLMM. Tighter bin ranges amplify impermanent loss</span><span class="lang-zh"><span class="text-white">集中IL</span> — 同CLMM一樣。更窄嘅bin範圍放大無常損失</span></li>
+        <li><span class="lang-en"><span class="text-white">Bin array management</span> — LPs must ensure bin arrays exist for their range. Creating new bin arrays costs rent</span><span class="lang-zh"><span class="text-white">Bin array管理</span> — LP必須確保佢哋範圍嘅bin array存在。創建新bin array需要租金</span></li>
+        <li><span class="lang-en"><span class="text-white">Active management required</span> — out-of-range positions earn zero fees. More granular than CLMM, so requires more attention</span><span class="lang-zh"><span class="text-white">需要主動管理</span> — 出範圍嘅倉位賺零費用。比CLMM更精細，所以需要更多關注</span></li>
+        <li><span class="lang-en"><span class="text-white">Integration complexity</span> — bin arrays as accounts make DLMM harder for aggregators and bots to integrate compared to simple x×y=k pools</span><span class="lang-zh"><span class="text-white">整合複雜性</span> — bin array作為帳戶令DLMM比簡單嘅 x×y=k 池更難整合到聚合器同bot</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Inspiration</span><span class="lang-zh">靈感</span></td>
+              <td class="py-3 px-2 text-white">Trader Joe LB (Avalanche)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/meteora-damm`} class="text-zinc-500 hover:text-white transition-colors text-sm">��� Meteora DAMM v2</a>
+      <a href={`${base}/products/amm/meteora-dbc`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">Meteora DBC →</a>
+    </div>
+  </article>
+</Layout>

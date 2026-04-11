@@ -1,0 +1,232 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Raydium CLMM — Concentrated Liquidity Market Maker">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Concentrated Liquidity</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Raydium CLMM</span><span class="lang-zh">Raydium CLMM</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Solana's equivalent of Uniswap v3 — LPs concentrate liquidity in specific price ranges instead of spreading it across the full curve. Higher capital efficiency, but requires active management. Used by professional market makers and advanced LPs who want tight ranges and higher fee yield.</span>
+      <span class="lang-zh">Solana版嘅Uniswap v3 — LP將流動性集中喺特定價格範圍，而唔係分散喺成條曲線上。資本效率更高，但需要主動管理。專業做市商同高級LP用嚟設定窄範圍以獲得更高費率收益。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">AMM Type</span><span class="lang-zh">AMM類型</span></p>
+        <p class="text-2xl font-bold text-white mt-1">CLMM</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Capital Efficiency</span><span class="lang-zh">資本效率</span></p>
+        <p class="text-2xl font-bold text-white mt-1">Up to 4000×</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Position Type</span><span class="lang-zh">倉位類型</span></p>
+        <p class="text-2xl font-bold text-white mt-1">NFT</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Reward Tokens</span><span class="lang-zh">獎勵代幣</span></p>
+        <p class="text-2xl font-bold text-white mt-1"><span class="lang-en">Up to 3</span><span class="lang-zh">最多3種</span></p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- Concentrated Liquidity Explained -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">What Is Concentrated Liquidity?</span><span class="lang-zh">咩係集中流動性？</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">In a standard x×y=k pool, your liquidity is spread across every possible price from 0 to infinity. Most of it sits at prices that will never be reached — pure waste. Concentrated liquidity lets LPs choose a <span class="text-white font-medium">specific price range</span> where their liquidity is active.</span>
+        <span class="lang-zh">喺標準 x×y=k 池入面，你嘅流動性分散喺0到無限嘅所有可能價格。大部分流動性放咗喺永遠唔會到嘅價格 — 純粹浪費。集中流動性畀LP揀一個<span class="text-white font-medium">特定價格範圍</span>嚟放佢哋嘅流動性。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Example:</span> Instead of providing liquidity for SOL/USDC from $0 to $∞, you provide it only from $130 to $170. If SOL trades in that range, your capital earns fees. If it moves outside, your position earns nothing until price returns.</span>
+        <span class="lang-zh"><span class="text-white font-medium">例子：</span>唔係為SOL/USDC提供$0到$∞嘅流動性，你只提供$130到$170嘅範圍。如果SOL喺呢個範圍內交易，你嘅資金就賺取費用。如果走出範圍外，你嘅倉位就唔賺錢，直到價格返嚟。</span>
+      </p>
+
+      <!-- Tick Arrays -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Ticks, Tick Arrays & Tick Spacing</span><span class="lang-zh">Tick、Tick陣列同Tick間距</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The price space is divided into discrete <span class="text-white">ticks</span> — each tick represents a specific price point. Liquidity can only be added or removed at tick boundaries. Key concepts:</span>
+        <span class="lang-zh">價格空間被分成離散嘅<span class="text-white">tick</span> — 每個tick代表一個特定價格點。流動性只能喺tick邊界添加或移除。關鍵概念：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Concept</span><span class="lang-zh">概念</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">What It Is</span><span class="lang-zh">係咩</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Tick</td>
+              <td class="py-3 px-2"><span class="lang-en">A discrete price point. Price = 1.0001^tick. Tick 0 = price 1.0</span><span class="lang-zh">一個離散價格點。Price = 1.0001^tick。Tick 0 = 價格1.0</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Tick spacing</td>
+              <td class="py-3 px-2"><span class="lang-en">Minimum gap between usable ticks. Larger spacing = fewer positions = lower gas. Common: 1, 10, 60, 120</span><span class="lang-zh">可用tick之間嘅最小間距。越大 = 越少倉位 = 越低gas。常見：1、10、60、120</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Tick array</td>
+              <td class="py-3 px-2"><span class="lang-en">On-chain account storing a range of tick states (initialized liquidity, fee accumulators). Each covers a fixed number of ticks</span><span class="lang-zh">儲存一系列tick狀態嘅鏈上帳戶（已初始化流動性、費用累加器）。每個覆蓋固定數量嘅tick</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">Active tick</td>
+              <td class="py-3 px-2"><span class="lang-en">The tick corresponding to the current pool price. Only liquidity that spans this tick earns fees</span><span class="lang-zh">對應當前池價格嘅tick。只有跨越呢個tick嘅流動性才賺取費用</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Tick spacing determines the pool's fee tier.</span> Smaller spacing (e.g., 1) allows more granular positions but is more expensive in CU. Larger spacing (e.g., 120) is cheaper but less precise. The mapping between tick spacing and fee rate is fixed at pool creation.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Tick間距決定池嘅費率等級。</span>較小間距（例如1）允許更精細嘅倉位，但CU消耗更大。較大間距（例如120）更平但唔夠精確。Tick間距同費率嘅映射喺池創建時固定。</span>
+      </p>
+
+      <!-- Positions -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Position NFTs</span><span class="lang-zh">倉位NFT</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Each CLMM position is represented as an <span class="text-white">NFT</span> — a unique on-chain token that encodes the position's tick range, liquidity amount, and uncollected fees. This is different from CPMM where LPs receive fungible LP tokens.</span>
+        <span class="lang-zh">每個CLMM倉位都表示為一個<span class="text-white">NFT</span> — 一個獨特嘅鏈上token，編碼咗倉位嘅tick範圍、流動性數量同未領取嘅費用。呢個同CPMM唔同，CPMM嘅LP收到嘅係可互換嘅LP token。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Position data stored on-chain:</span>
+        <span class="lang-zh">儲存喺鏈上嘅倉位數據：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">tick_lower / tick_upper</span> — the price range boundaries</span><span class="lang-zh"><span class="text-white">tick_lower / tick_upper</span> — 價格範圍邊界</span></li>
+        <li><span class="lang-en"><span class="text-white">liquidity</span> — amount of liquidity concentrated in this range (u128)</span><span class="lang-zh"><span class="text-white">liquidity</span> — 集中喺呢個範圍嘅流動性數量（u128）</span></li>
+        <li><span class="lang-en"><span class="text-white">fee_growth_inside</span> — fee accumulators for calculating earned fees</span><span class="lang-zh"><span class="text-white">fee_growth_inside</span> — 用於計算已賺費用嘅費用累加器</span></li>
+        <li><span class="lang-en"><span class="text-white">token_fees_owed</span> — uncollected fees in both tokens</span><span class="lang-zh"><span class="text-white">token_fees_owed</span> — 兩種token嘅未領取費用</span></li>
+        <li><span class="lang-en"><span class="text-white">reward_infos</span> — accrued reward tokens (up to 3 types)</span><span class="lang-zh"><span class="text-white">reward_infos</span> — 已累積嘅獎勵token（最多3種）</span></li>
+      </ul>
+
+      <!-- Reward Emissions -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Reward Emissions</span><span class="lang-zh">獎勵發放</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">CLMM pools support <span class="text-white">up to 3 reward tokens</span> distributed to in-range LPs. This is used for liquidity mining programs — protocols can incentivize LPs to provide liquidity at specific price ranges by emitting their own token as rewards.</span>
+        <span class="lang-zh">CLMM池支援<span class="text-white">最多3種獎勵token</span>分配畀在範圍內嘅LP。呢個用於流動性挖礦計劃 — 協議可以通過發放自己嘅token作為獎勵，激勵LP喺特定價格範圍提供流動性。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Rewards are only earned when the active tick is within your position's range. If price moves out of your range, you stop earning both fees and rewards until it returns.</span>
+        <span class="lang-zh">只有當active tick喺你倉位嘅範圍內時先賺到獎勵。如果價格移出你嘅範圍，你會停止賺取費用同獎勵，直到佢返嚟。</span>
+      </p>
+
+      <!-- CLMM vs Others -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">CLMM vs Other Concentrated Liquidity</span><span class="lang-zh">CLMM同其他集中流動性比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">Raydium CLMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Orca Whirlpools</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Meteora DLMM</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Model</span><span class="lang-zh">模型</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Uniswap v3 style</span><span class="lang-zh">Uniswap v3風格</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Uniswap v3 style</span><span class="lang-zh">Uniswap v3風格</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Bin-based (discrete)</span><span class="lang-zh">基於Bin（離散）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Price representation</span><span class="lang-zh">價格表示</span></td>
+              <td class="py-3 px-2 text-white">sqrt(price) × 2^64</td>
+              <td class="py-3 px-2">sqrt(price) × 2^64</td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed per bin</span><span class="lang-zh">每Bin固定</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Position type</span><span class="lang-zh">倉位類型</span></td>
+              <td class="py-3 px-2 text-white">NFT</td>
+              <td class="py-3 px-2">NFT</td>
+              <td class="py-3 px-2">NFT</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Reward tokens</span><span class="lang-zh">獎勵token</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Up to 3</span><span class="lang-zh">最多3</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Up to 3</span><span class="lang-zh">最多3</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Up to 2</span><span class="lang-zh">最多2</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Slippage within position</span><span class="lang-zh">倉位內滑點</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Continuous (smooth curve)</span><span class="lang-zh">連續（平滑曲線）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Continuous</span><span class="lang-zh">連續</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Zero within bin</span><span class="lang-zh">Bin內零滑點</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Amplified impermanent loss</span> — concentrated positions magnify IL. A 10% range position has ~10× the IL of a full-range position for the same price move</span><span class="lang-zh"><span class="text-white">放大嘅無常損失</span> — 集中倉位放大IL。10%範圍嘅倉位對同樣價格波動嘅IL係全範圍倉位嘅~10倍</span></li>
+        <li><span class="lang-en"><span class="text-white">Out-of-range risk</span> — position earns nothing when price leaves the range. Requires active rebalancing</span><span class="lang-zh"><span class="text-white">出範圍風險</span> — 價格離開範圍時倉位唔賺錢。需要主動再平衡</span></li>
+        <li><span class="lang-en"><span class="text-white">Tick array complexity</span> — swaps must pass the correct tick array accounts. Missing or wrong tick arrays cause transaction failures</span><span class="lang-zh"><span class="text-white">Tick陣列複雜性</span> — swap必須傳遞正確嘅tick array帳戶。缺少或錯誤嘅tick array會導致交易失敗</span></li>
+        <li><span class="lang-en"><span class="text-white">MEV vulnerability</span> — tight-range positions are easier to sandwich because the price impact is concentrated</span><span class="lang-zh"><span class="text-white">MEV脆弱性</span> — 窄範圍倉位更容易被夾擊，因為價格影響被集中</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Equivalent</span><span class="lang-zh">等價</span></td>
+              <td class="py-3 px-2 text-white">Uniswap v3 (Ethereum)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/raydium-cpmm`} class="text-zinc-500 hover:text-white transition-colors text-sm">← Raydium CPMM</a>
+      <a href={`${base}/products/amm/meteora-damm`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">Meteora DAMM v2 →</a>
+    </div>
+  </article>
+</Layout>

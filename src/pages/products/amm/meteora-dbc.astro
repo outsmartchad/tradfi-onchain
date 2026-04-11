@@ -1,0 +1,260 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Meteora DBC — Dynamic Bonding Curve">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Token Launchpad</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Meteora DBC</span><span class="lang-zh">Meteora DBC</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Meteora's token launch platform — a dynamic bonding curve that graduates into DAMM v2 pools. Meteora's answer to PumpFun and Raydium LaunchLab, but with a key advantage: graduated tokens land on DAMM v2 with its dynamic fee schedules, giving LP creators the fee-capture tools that other AMMs lack.</span>
+      <span class="lang-zh">Meteora嘅token發射平台 — 一個動態聯合曲線，畢業後進入DAMM v2池。Meteora對PumpFun同Raydium LaunchLab嘅回應，但有一個關鍵優勢：畢業嘅token落地喺DAMM v2上，帶有動態費率計劃，畀LP創建者其他AMM冇嘅費用捕獲工具。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Graduates To</span><span class="lang-zh">畢業去</span></p>
+        <p class="text-2xl font-bold text-white mt-1">DAMM v2</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Post-Grad Fee</span><span class="lang-zh">畢業後費率</span></p>
+        <p class="text-2xl font-bold text-white mt-1"><span class="lang-en">Up to 99%</span><span class="lang-zh">最高99%</span></p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Curve Type</span><span class="lang-zh">曲線類型</span></p>
+        <p class="text-2xl font-bold text-white mt-1"><span class="lang-en">Dynamic</span><span class="lang-zh">動態</span></p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Fee Config</span><span class="lang-zh">費用配置</span></p>
+        <p class="text-2xl font-bold text-white mt-1"><span class="lang-en">Customizable</span><span class="lang-zh">可自定義</span></p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- How DBC Works -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How DBC Works</span><span class="lang-zh">DBC點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DBC follows the same two-phase pattern as PumpFun and LaunchLab: <span class="text-white font-medium">bonding curve → graduation to full AMM</span>. Tokens trade on the bonding curve during the launch phase, accumulating liquidity. When the curve reaches its migration threshold, everything moves to a DAMM v2 pool.</span>
+        <span class="lang-zh">DBC同PumpFun同LaunchLab一樣嘅兩階段模式：<span class="text-white font-medium">bonding curve → 畢業到完整AMM</span>。Token喺launch階段喺bonding curve上交易，累積流動性。當曲線到達遷移閾值時，所有嘢搬去DAMM v2池。</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Token created</span> with customizable bonding curve parameters</span><span class="lang-zh"><span class="text-white">Token創建</span>，帶有可自定義嘅bonding curve參數</span></li>
+        <li><span class="lang-en"><span class="text-white">Trading on DBC</span> — price moves along the bonding curve as reserves change</span><span class="lang-zh"><span class="text-white">喺DBC上交易</span> — 隨著reserves變化，價格沿bonding curve移動</span></li>
+        <li><span class="lang-en"><span class="text-white">Migration threshold hit</span> — reserves reach the configured target</span><span class="lang-zh"><span class="text-white">到達遷移閾值</span> — reserves到達配置嘅目標</span></li>
+        <li><span class="lang-en"><span class="text-white">DAMM v2 pool created</span> — accumulated liquidity migrates, with full fee schedule support</span><span class="lang-zh"><span class="text-white">創建DAMM v2池</span> — 累積嘅流動性遷移，支援完整費率計劃</span></li>
+      </ol>
+
+      <!-- The DAMM v2 Advantage -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">The DAMM v2 Advantage</span><span class="lang-zh">DAMM v2優勢</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The critical difference between DBC and other launchpads is <span class="text-white">where tokens go after graduation</span>:</span>
+        <span class="lang-zh">DBC同其他發射台嘅關鍵區別係<span class="text-white">token畢業後去邊</span>：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Launchpad</span><span class="lang-zh">發射台</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Graduates To</span><span class="lang-zh">畢業去</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Post-Graduation Fee Control</span><span class="lang-zh">畢業後費率控制</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">PumpFun</td>
+              <td class="py-3 px-2">PumpSwap</td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed (protocol-set)</span><span class="lang-zh">固定（協議設定）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">Raydium LaunchLab</td>
+              <td class="py-3 px-2">Raydium CPMM</td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed (AMM config)</span><span class="lang-zh">固定（AMM config）</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">Meteora DBC</td>
+              <td class="py-3 px-2 text-white">DAMM v2</td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">5 dynamic fee modes, up to 99%</span><span class="lang-zh">5種動態費率模式，最高99%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">For LP fee-capture strategies, this is massive. A token graduating from DBC to DAMM v2 can start with a <span class="text-white">99% time-decaying fee</span> — capturing nearly all trading value in the first minutes/hours post-graduation. PumpSwap and CPMM can't do this.</span>
+        <span class="lang-zh">對LP費用捕獲策略嚟講，呢個好重要。從DBC畢業到DAMM v2嘅token可以以<span class="text-white">99%時間衰減費率</span>開始 — 喺畢業後最初幾分鐘/幾個鐘捕獲幾乎所有交易價值。PumpSwap同CPMM做唔到呢個。</span>
+      </p>
+
+      <!-- DBC Pool Structure -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Pool Structure</span><span class="lang-zh">池結構</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">DBC pool accounts track bonding curve state plus migration configuration:</span>
+        <span class="lang-zh">DBC池帳戶追蹤bonding curve狀態加遷移配置：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">quote_reserve</td>
+              <td class="py-3 px-2"><span class="lang-en">SOL accumulated from purchases</span><span class="lang-zh">從購買中累積嘅SOL</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">migration_threshold</td>
+              <td class="py-3 px-2"><span class="lang-en">SOL amount that triggers graduation</span><span class="lang-zh">觸發畢業嘅SOL數量</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">base_mint / quote_mint</td>
+              <td class="py-3 px-2"><span class="lang-en">Token pair (quote typically WSOL)</span><span class="lang-zh">Token對（quote通常係WSOL）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">creator</td>
+              <td class="py-3 px-2"><span class="lang-en">Pool creator wallet</span><span class="lang-zh">池創建者錢包</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">fee_config</td>
+              <td class="py-3 px-2"><span class="lang-en">Customizable fee parameters for the bonding curve phase</span><span class="lang-zh">bonding curve階段嘅可自定義費用參數</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Migration Event -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Migration Detection</span><span class="lang-zh">遷移檢測</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The DBC program emits a <span class="text-white"><code>dbc_migration_damm_v2</code></span> event when graduation happens. This is distinct from regular buy/sell events and signals that:</span>
+        <span class="lang-zh">DBC程序喺畢業時發射一個<span class="text-white"><code>dbc_migration_damm_v2</code></span>事件。呢個同普通buy/sell事件唔同，表示：</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en">The bonding curve is now closed — no more DBC trades</span><span class="lang-zh">Bonding curve已關閉 — 冇更多DBC交易</span></li>
+        <li><span class="lang-en">A new DAMM v2 pool has been created with the migrated liquidity</span><span class="lang-zh">一個新DAMM v2池已經用遷移嘅流動性創建</span></li>
+        <li><span class="lang-en">Trading continues on the DAMM v2 pool</span><span class="lang-zh">交易繼續喺DAMM v2池上</span></li>
+      </ol>
+
+      <p>
+        <span class="lang-en">For snipers and LP bots, detecting this migration event is critical — it's the moment to create your own high-fee DAMM v2 pool for the same token if you want to compete for fee capture.</span>
+        <span class="lang-zh">對搶跑者同LP bot嚟講，檢測到呢個遷移事件係關鍵嘅 — 呢個係你要為同一token創建自己嘅高費率DAMM v2池嘅時刻，如果你想競爭費用捕獲。</span>
+      </p>
+
+      <!-- DBC vs Others -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">DBC vs Other Launchpads</span><span class="lang-zh">DBC同其他發射台比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">Meteora DBC</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">PumpFun</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">LaunchLab</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Curve type</span><span class="lang-zh">曲線類型</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Dynamic bonding curve</span><span class="lang-zh">動態聯合曲線</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Constant product</span><span class="lang-zh">恆定乘積</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed / Linear</span><span class="lang-zh">固定 / 線性</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Graduates to</span><span class="lang-zh">畢業去</span></td>
+              <td class="py-3 px-2 text-white">DAMM v2</td>
+              <td class="py-3 px-2">PumpSwap</td>
+              <td class="py-3 px-2">Raydium CPMM</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Post-grad max fee</span><span class="lang-zh">畢業後最高費率</span></td>
+              <td class="py-3 px-2 text-white">99%</td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed</span><span class="lang-zh">固定</span></td>
+              <td class="py-3 px-2">~4%</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Dynamic fees post-grad</span><span class="lang-zh">畢業後動態費率</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes (5 modes)</span><span class="lang-zh">有（5種模式）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Permanent lock</span><span class="lang-zh">永久鎖定</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes (via DAMM v2)</span><span class="lang-zh">有（透過DAMM v2）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Smaller market share</span> — DBC has far fewer launches than PumpFun. Most token creators default to PumpFun because of its brand recognition</span><span class="lang-zh"><span class="text-white">較小市場份額</span> — DBC嘅launch數量遠少於PumpFun。大多數token創建者因為品牌認知度而默認選擇PumpFun</span></li>
+        <li><span class="lang-en"><span class="text-white">Complexity barrier</span> — more parameters to configure compared to PumpFun's one-click launch. This attracts more sophisticated creators but repels casual ones</span><span class="lang-zh"><span class="text-white">複雜性門檻</span> — 相比PumpFun嘅一鍵launch，需要配置更多參數。呢個吸引更成熟嘅creator但排斥隨便玩嘅</span></li>
+        <li><span class="lang-en"><span class="text-white">Aggregator routing</span> — Jupiter and other aggregators may route DBC-graduated tokens differently than PumpSwap or CPMM tokens, affecting post-graduation volume</span><span class="lang-zh"><span class="text-white">聚合器路由</span> — Jupiter同其他聚合器可能對DBC畢業嘅token嘅路由同PumpSwap或CPMM token唔同，影響畢業後嘅交易量</span></li>
+        <li><span class="lang-en"><span class="text-white">Same survival rate</span> — like all launchpads, the vast majority of DBC tokens will go to zero</span><span class="lang-zh"><span class="text-white">同樣嘅存活率</span> — 同所有發射台一樣，絕大多數DBC token都會歸零</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">dbcij3LWUppWqq96dh6gJWwBifmcGfLSB5D4DuSMaqN</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Graduates To</span><span class="lang-zh">畢業到</span></td>
+              <td class="py-3 px-2 text-white">DAMM v2 (<span class="font-mono text-xs">cpamdpZCGKUy5JxQXB4dcpGPiikHawvSWAd6mEn1sGG</span>)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/meteora-dlmm`} class="text-zinc-500 hover:text-white transition-colors text-sm">← Meteora DLMM</a>
+      <a href={`${base}/products/amm`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">AMM Overview →</a>
+    </div>
+  </article>
+</Layout>
