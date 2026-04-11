@@ -59,6 +59,11 @@ const base = '/tradfi-onchain';
         <span class="lang-zh"><span class="text-white">冇槓桿。冇爆倉風險。</span>存幾多最多蝕幾多，就係咁簡單。所有結算用USDH（Hyperliquid自己嘅穩定幣）。</span>
       </p>
 
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Margin formula:</span> Long YES at price P requires depositing <code>quantity × P</code>. Long NO (equivalent to short YES) requires <code>quantity × (1 - P)</code>. Mark price is derived from the order book mid-price, subject to standard risk controls.</span>
+        <span class="lang-zh"><span class="text-white font-medium">保證金公式：</span>以價格P買YES需要存入 <code>quantity × P</code>。買NO（等同short YES）需要存入 <code>quantity × (1 - P)</code>。Mark price由order book mid-price衍生，受標準風險控制約束。</span>
+      </p>
+
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
         <span class="lang-en">Market Lifecycle</span><span class="lang-zh">市場生命週期</span>
       </h2>
@@ -120,6 +125,11 @@ const base = '/tradfi-onchain';
       <p>
         <span class="lang-en">Unlike standard HIP-3 perps which require continuous oracle feeds and funding rate calculations, Event Perpetuals <span class="text-white">eliminate both</span>. There is no external price feed driving the mark price during trading — the price is determined entirely by trading activity on the order book. The oracle is only used once: at settlement, to post the final binary outcome. This is a fundamentally different design from every other perp product on Hyperliquid.</span>
         <span class="lang-zh">普通HIP-3 perps需要不停餵oracle price同計funding rate。Event Perpetuals<span class="text-white">兩樣都唔使</span>。交易期間冇external price feed — 價格完全由order book上面嘅交易活動決定。Oracle得一個用途：結算時出最終結果（0或1）。同Hyperliquid上所有其他perp產品完全唔同嘅設計。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">No funding rate</span> — this matters for position holders. In standard perps, funding payments transfer between longs and shorts every 8 hours, creating a cost for holding positions. HIP-4 outcome contracts have zero funding cost. You can hold a prediction position from deployment to settlement without any carry cost beyond your initial collateral.</span>
+        <span class="lang-zh"><span class="text-white font-medium">冇funding rate</span> — 呢個對持倉者好重要。普通perps每8個鐘有funding payment喺long同short之間轉移，hold position有成本。HIP-4 outcome contracts完全冇funding cost。你可以由deployment hold到settlement，除咗最初嘅collateral之外零額外成本。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -242,8 +252,8 @@ const base = '/tradfi-onchain';
         <div class="space-y-3 text-sm">
           <p><span class="text-cyan-400">①</span> <span class="lang-en"><span class="text-white">~15 minutes</span> — orders accumulate in the book without any execution</span><span class="lang-zh"><span class="text-white">~15分鐘</span> — orders喺book入面累積，冇任何執行</span></p>
           <p><span class="text-cyan-400">②</span> <span class="lang-en">Engine calculates the <span class="text-white">single clearing price</span> that maximizes total matched volume</span><span class="lang-zh">引擎計算最大化total matched volume嘅<span class="text-white">單一clearing price</span></span></p>
-          <p><span class="text-cyan-400">③</span> <span class="lang-en">If multiple prices tie, the price with <span class="text-white">minimum imbalance</span> and closest to <span class="text-white">0.50</span> (neutral probability) wins</span><span class="lang-zh">如果多個價格平手，<span class="text-white">imbalance最小</span>且最接近<span class="text-white">0.50</span>（中性機率）嘅價格勝出</span></p>
-          <p><span class="text-cyan-400">④</span> <span class="lang-en">All matched orders fill at the <span class="text-white">same price</span> — no information advantage for early submitters</span><span class="lang-zh">所有matched orders以<span class="text-white">相同價格</span>成交 — 早提交者冇信息優勢</span></p>
+          <p><span class="text-cyan-400">③</span> <span class="lang-en">If multiple prices tie on volume, tiebreaker: first <span class="text-white">smallest leftover imbalance</span>, then <span class="text-white">closest to 0.50</span> (neutral probability)</span><span class="lang-zh">如果多個價格嘅成交量相同，tiebreaker：先揀<span class="text-white">剩餘imbalance最細</span>嘅，再揀<span class="text-white">最接近0.50</span>（中性機率）嘅</span></p>
+          <p><span class="text-cyan-400">④</span> <span class="lang-en">Orders better than p* fill first. Orders exactly at p* receive <span class="text-white">pro-rata allocation</span> by size. All trades print at uniform p*</span><span class="lang-zh">好過p*嘅orders先fill。剛好at p*嘅orders按size進行<span class="text-white">pro-rata分配</span>。全部以同一個p*成交</span></p>
           <p><span class="text-cyan-400">⑤</span> <span class="lang-en">Unfilled orders carry forward to continuous trading at their original limits</span><span class="lang-zh">未成交orders按原始限價帶入continuous trading</span></p>
         </div>
       </div>
@@ -330,7 +340,8 @@ const base = '/tradfi-onchain';
         <li><span class="lang-en"><span class="text-white">Settlement oracle risk</span> — the entire market hinges on a single oracle posting the correct binary outcome. If the oracle is compromised, delayed, or ambiguous, settlement fails. The optional challenge window mitigates this but doesn't eliminate it.</span><span class="lang-zh"><span class="text-white">結算oracle風險</span> — 整個市場取決於單一oracle發布正確嘅binary outcome。如果oracle被compromised、延遲或模糊，settlement失敗。可選嘅challenge window緩解但唔能消除呢個風險。</span></li>
         <li><span class="lang-en"><span class="text-white">Event definition ambiguity</span> — "Will BTC hit $100K?" seems clear until you ask: which exchange's price? At what timestamp exactly? Spot or perp? Poorly defined events create disputes that undermine market trust.</span><span class="lang-zh"><span class="text-white">事件定義模糊性</span> — 「BTC會唔會到$100K？」聽起嚟好清楚，直到你問：邊間交易所嘅價格？確切嘅timestamp係咩？現貨定perp？定義不清嘅events產生爭議，損害市場信任。</span></li>
         <li><span class="lang-en"><span class="text-white">Regulatory uncertainty</span> — Massachusetts issued an injunction against Kalshi over sports betting contracts (Jan 2026). CFTC's stance on broader event contracts remains unclear. The Kalshi partnership provides regulatory expertise but not immunity.</span><span class="lang-zh"><span class="text-white">監管不確定性</span> — Massachusetts就sports betting contracts對Kalshi發出禁令（2026年1月）。CFTC對更廣泛event contracts嘅立場仍不明確。Kalshi合作提供監管專業知識但唔係免疫。</span></li>
-        <li><span class="lang-en"><span class="text-white">Liquidity risk</span> — prediction markets suffer from severe liquidity concentration around popular events and near-zero liquidity for niche events. Without HLP backstop (same as HIP-3), deployers must solve this independently.</span><span class="lang-zh"><span class="text-white">流動性風險</span> — prediction markets受到嚴重嘅流動性集中影響：熱門events有流動性，niche events幾乎零流動性。冇HLP backstop（同HIP-3一樣），deployers必須獨立解決。</span></li>
+        <li><span class="lang-en"><span class="text-white">Liquidity risk</span> — prediction markets suffer from severe liquidity concentration around popular events and near-zero liquidity for niche events. Without HLP backstop (same as HIP-3), deployers must solve this independently.</span><span class="lang-zh"><span class="text-white">流動性風險</span> — prediction markets受到嚴重嘅流動���集中影響：熱門events有流動性，niche events幾乎零流動性。冇HLP backstop（同HIP-3一樣），deployers必須獨立解決。</span></li>
+        <li><span class="lang-en"><span class="text-white">Bounded payoff limits LP appetite</span> — outcome contracts have capped upside (max payout = 1). This is fundamentally less attractive for LPs compared to perpetuals which have uncapped fee revenue from continuous funding rates. Market-making in prediction markets requires different economics.</span><span class="lang-zh"><span class="text-white">有上限嘅payoff限制LP參與意欲</span> — outcome contracts嘅upside有cap（最大payout = 1）。同有uncapped fee revenue（嚟自continuous funding rates）嘅perpetuals相比，對LP嚟講吸引力根本唔同。Prediction market嘅做市需要唔同嘅economic model。</span></li>
         <li><span class="lang-en"><span class="text-white">Composability is planned, not guaranteed</span> — shared accounts between prediction markets, perps, and spot are described in third-party analysis but <span class="text-white">not yet confirmed in official Hyperliquid documentation</span>. This is the strongest selling point but also the most uncertain.</span><span class="lang-zh"><span class="text-white">Composability係計劃中而非保證</span> — prediction markets、perps同spot之間嘅shared accounts喺第三方分析中描述但<span class="text-white">仲未喺官方Hyperliquid文檔中確認</span>。呢個係最強嘅賣點但都係最不確定嘅。</span></li>
       </ul>
 
@@ -403,14 +414,25 @@ const base = '/tradfi-onchain';
           <span class="text-zinc-400 text-sm"><span class="lang-en">Kalshi partnership announced</span><span class="lang-zh">Kalshi合作宣佈</span></span>
         </div>
         <div class="flex gap-4 items-center">
-          <span class="text-yellow-400 text-sm font-mono w-24 flex-shrink-0">TBD</span>
-          <span class="text-zinc-400 text-sm"><span class="lang-en">Mainnet — "when technical work is complete"</span><span class="lang-zh">Mainnet — 「technical work完成之後」</span></span>
+          <span class="text-yellow-400 text-sm font-mono w-24 flex-shrink-0">~Jun 2026</span>
+          <span class="text-zinc-400 text-sm"><span class="lang-en">Mainnet Phase 1 — curated canonical markets (estimated, not confirmed)</span><span class="lang-zh">Mainnet第一階段 — curated canonical markets（預計，未確���）</span></span>
         </div>
         <div class="flex gap-4 items-center">
           <span class="text-zinc-500 text-sm font-mono w-24 flex-shrink-0">TBD</span>
           <span class="text-zinc-400 text-sm"><span class="lang-en">Phase 2: permissionless builder deployment</span><span class="lang-zh">第二階段：permissionless builder deployment</span></span>
         </div>
       </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Sources</span><span class="lang-zh">資料來源</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2 text-sm">
+        <li><span class="lang-en"><a href="https://www.bedlamresear.ch/posts/hip-4-event-futures/" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Original HIP-4 Proposal</a> — Bedlam Research (Sep 2025). Authors: rajiv (Framework Ventures), john (Kalshi), marc (Felix Protocol), krane (Asula Labs)</span><span class="lang-zh"><a href="https://www.bedlamresear.ch/posts/hip-4-event-futures/" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">HIP-4原始提案</a> — Bedlam Research（2025年9月）。作者：rajiv（Framework Ventures）、john（Kalshi）、marc（Felix Protocol）、krane（Asula Labs）</span></li>
+        <li><span class="lang-en"><a href="https://x.com/HyperliquidX/status/2018327360723202167" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Hyperliquid Official Announcement</a> — HyperCore outcome trading announcement (Feb 2, 2026)</span><span class="lang-zh"><a href="https://x.com/HyperliquidX/status/2018327360723202167" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Hyperliquid官方公告</a> — HyperCore outcome trading公告（2026年2月2日）</span></li>
+        <li><span class="lang-en"><a href="https://blog.quicknode.com/hip4-hyperliquid-outcome-contracts/" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">QuickNode Technical Breakdown</a> — Detailed walkthrough of HIP-4 mechanics and composability</span><span class="lang-zh"><a href="https://blog.quicknode.com/hip4-hyperliquid-outcome-contracts/" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">QuickNode技術拆解</a> — HIP-4機制同composability嘅詳細介紹</span></li>
+        <li><span class="lang-en"><a href="https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Hyperliquid Docs — HIPs</a> — Official documentation (HIP-4 spec not yet published as of April 2026)</span><span class="lang-zh"><a href="https://hyperliquid.gitbook.io/hyperliquid-docs/hyperliquid-improvement-proposals-hips" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Hyperliquid文檔 — HIPs</a> — 官方文檔（截至2026年4月HIP-4 spec仲未發布）</span></li>
+      </ul>
 
     </div>
 
