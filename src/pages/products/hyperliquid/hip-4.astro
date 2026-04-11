@@ -157,27 +157,182 @@ const base = '/tradfi-onchain';
       </div>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Deployer Economics</span><span class="lang-zh">Deployer經濟模型</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">HIP-4 follows HIP-3's deployer model but with higher requirements, reflecting the added complexity of oracle-dependent event instruments.</span>
+        <span class="lang-zh">HIP-4沿用HIP-3嘅deployer模型，但要求更高，反映oracle-dependent event instruments嘅額外複雜性。</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2 mt-4">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Parameter</span><span class="lang-zh">參數</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">HIP-3 (Perps)</span><span class="lang-zh">HIP-3（永續）</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">HIP-4 (Outcomes)</span><span class="lang-zh">HIP-4（結果）</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">HYPE stake</span><span class="lang-zh">HYPE質押</span></td>
+              <td class="py-3 px-2">500K (~$25M)</td>
+              <td class="py-3 px-2 text-white">1M (~$50M)</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Fee share</span><span class="lang-zh">費用份額</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed 50%</span><span class="lang-zh">固定50%</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Up to 50% above base</span><span class="lang-zh">基礎費用之上最多50%</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Oracle</span><span class="lang-zh">預言機</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Continuous (every 2.5s)</span><span class="lang-zh">連續（每2.5秒）</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Settlement only (once)</span><span class="lang-zh">僅結算時（一次）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Funding rate</span><span class="lang-zh">資金費率</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes (continuous)</span><span class="lang-zh">有（連續）</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">None</span><span class="lang-zh">無</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Slot recycling</span><span class="lang-zh">Slot回收</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes (via halt/resume)</span><span class="lang-zh">有（通過暫停/恢復）</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes (post-settlement)</span><span class="lang-zh">有（結算後）</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Slashing</span><span class="lang-zh">罰沒</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Up to 100%</span><span class="lang-zh">最高100%</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Up to 100% (burned)</span><span class="lang-zh">最高100%（銷毀）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">The slot recycling mechanism is critical: one 1M HYPE stake can support an <span class="text-white">unlimited number of rolling markets</span>. A deployer running weekly Fed rate prediction markets amortizes the $50M stake across dozens of events per quarter, dramatically reducing the effective cost per market.</span>
+        <span class="lang-zh">Slot recycling機制係關鍵：一次1M HYPE stake可以支持<span class="text-white">無限數量嘅rolling markets</span>。一個運行每週Fed利率預測市場嘅deployer可以將$50M stake分攤到每季數十個events，大幅降低每個市場嘅有效成本。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Margin Model: Full Collateralization</span><span class="lang-zh">保證金模型：全額抵押</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Event Perpetuals enforce strict risk controls that differ fundamentally from standard perps:</span>
+        <span class="lang-zh">Event Perpetuals執行嚴格嘅風險控制，同標準perps有根本性嘅不同：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">1x isolated margin only</span> — no leverage permitted. This is intentional: prediction markets are probability instruments, not leveraged speculation tools.</span><span class="lang-zh"><span class="text-white">僅1倍isolated margin</span> — 唔允許leverage。呢個係刻意嘅：prediction markets係概率工具，唔係槓桿投機工具。</span></li>
+        <li><span class="lang-en"><span class="text-white">Full collateralization</span> — buying YES at 0.40 requires depositing exactly 0.40 USDH. Your maximum loss is always your deposit. No margin calls, no liquidations.</span><span class="lang-zh"><span class="text-white">全額抵押</span> — 以0.40買YES需要存入恰好0.40 USDH。你嘅最大損失永遠係你嘅存款。冇margin call，冇liquidation。</span></li>
+        <li><span class="lang-en"><span class="text-white">Price bands: 0.001 to 0.999</span> — prevents prices from reaching absolute certainty (0 or 1) before settlement. Extreme conviction is capped.</span><span class="lang-zh"><span class="text-white">價格帶：0.001到0.999</span> — 防止結算前價格達到絕對確定性（0或1）。極端conviction被限制。</span></li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">The Opening Auction (SPCA) — Deep Dive</span><span class="lang-zh">開盤拍賣（SPCA）— 深入分析</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The Single-Price Clearing Auction is HIP-4's answer to the cold-start problem in prediction markets. Unlike continuous trading where early orders can be front-run or manipulated, the SPCA provides a fair price discovery mechanism:</span>
+        <span class="lang-zh">單一價格清算拍賣係HIP-4對prediction markets冷啟動問題嘅解答。唔同於early orders可以被front-run或操縱嘅continuous trading，SPCA提供公平嘅價格發現機制：</span>
+      </p>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
+        <div class="space-y-3 text-sm">
+          <p><span class="text-cyan-400">①</span> <span class="lang-en"><span class="text-white">~15 minutes</span> — orders accumulate in the book without any execution</span><span class="lang-zh"><span class="text-white">~15分鐘</span> — orders喺book入面累積，冇任何執行</span></p>
+          <p><span class="text-cyan-400">②</span> <span class="lang-en">Engine calculates the <span class="text-white">single clearing price</span> that maximizes total matched volume</span><span class="lang-zh">引擎計算最大化total matched volume嘅<span class="text-white">單一clearing price</span></span></p>
+          <p><span class="text-cyan-400">③</span> <span class="lang-en">If multiple prices tie, the price with <span class="text-white">minimum imbalance</span> and closest to <span class="text-white">0.50</span> (neutral probability) wins</span><span class="lang-zh">如果多個價格平手，<span class="text-white">imbalance最小</span>且最接近<span class="text-white">0.50</span>（中性機率）嘅價格勝出</span></p>
+          <p><span class="text-cyan-400">④</span> <span class="lang-en">All matched orders fill at the <span class="text-white">same price</span> — no information advantage for early submitters</span><span class="lang-zh">所有matched orders以<span class="text-white">相同價格</span>成交 — 早提交者冇信息優勢</span></p>
+          <p><span class="text-cyan-400">⑤</span> <span class="lang-en">Unfilled orders carry forward to continuous trading at their original limits</span><span class="lang-zh">未成交orders按原始限價帶入continuous trading</span></p>
+        </div>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">This design is borrowed from traditional equity market opens (NYSE, LSE) where batch auctions prevent manipulation during price discovery. It's a sophisticated mechanism rarely seen in DeFi — most prediction markets simply start continuous trading and hope liquidity appears.</span>
+        <span class="lang-zh">呢個設計借鑑咗傳統股票市場開盤（NYSE、LSE），batch auctions防止價格發現期間嘅操縱。呢個係DeFi中罕見嘅sophisticated機制 — 大部分prediction markets只係開始continuous trading然後希望流動性出現。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Composability — More Examples</span><span class="lang-zh">可組合性 — 更多例子</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The composability thesis extends far beyond single trades. Here are strategies that become possible only when prediction markets share an account with perps and spot:</span>
+        <span class="lang-zh">Composability嘅thesis遠超單一交易。以下係只有當prediction markets同perps同spot共用account時先成為可能嘅策略：</span>
+      </p>
+
+      <div class="space-y-4 mt-4">
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-5">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Fed Rate Macro Hedge</span><span class="lang-zh">Fed利率宏觀對沖</span></p>
+          <p class="text-zinc-400 text-xs"><span class="lang-en">Buy "Fed cuts 50bps" YES at 0.30. Simultaneously long BTC perp (rate cuts → risk-on) and short DXY perp (rate cuts → dollar weakens). If Fed doesn't cut, prediction loss is offset by DXY gain. All one account.</span><span class="lang-zh">以0.30買「Fed減息50bps」YES。同時long BTC perp（減息→risk-on）同short DXY perp（減息→美元弱）。如果Fed唔減息，prediction loss被DXY gain對沖。全部一個account。</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-5">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">IPO Event Arbitrage</span><span class="lang-zh">IPO事件套利</span></p>
+          <p class="text-zinc-400 text-xs"><span class="lang-en">Buy "Stripe IPOs before July" YES. Short Stripe pre-IPO perp (via HIP-3). If IPO happens, YES pays out; perp likely moves against you but at known loss. If IPO delayed, YES loses but perp position profits from price decline. Delta-hedged event exposure.</span><span class="lang-zh">買「Stripe七月前IPO」YES。Short Stripe pre-IPO perp（通過HIP-3）。如果IPO發生，YES pay out；perp可能虧但已知損失。如果IPO延遲，YES虧但perp position從價格下跌中獲利。Delta-hedged嘅event exposure。</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-5">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Geopolitical Tail Hedge</span><span class="lang-zh">地緣政治尾部對沖</span></p>
+          <p class="text-zinc-400 text-xs"><span class="lang-en">Long oil perp (HIP-3, via trade.xyz). Buy "Middle East escalation" YES as a cheap tail hedge. If escalation happens, oil rallies + YES pays out (double win). If not, YES contract is a small known loss while oil position runs. Classic insurance structure, single account.</span><span class="lang-zh">Long原油perp（HIP-3，via trade.xyz）。買「中東局勢升級」YES作為cheap tail hedge。如果升級發生，油價升+ YES pay out（雙贏）。如果冇，YES contract係小嘅已知損失而油position繼續。經典insurance結構，單一account。</span></p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Market Context: Why Prediction Markets Matter Now</span><span class="lang-zh">市場背景：點解prediction markets而家重要</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The prediction market sector has exploded. Polymarket processed <span class="text-white font-medium">$3.6 billion</span> in trading volume during the 2024 US election alone. ICE (the parent company of NYSE) invested <span class="text-white font-medium">$600 million</span> in Polymarket's parent company. The total addressable market for event-driven trading is massive — every earnings call, every central bank meeting, every election creates tradeable events.</span>
+        <span class="lang-zh">Prediction market行業已經爆發。Polymarket單喺2024年美國大選期間就處理咗<span class="text-white font-medium">$36億</span>交易量。ICE（NYSE嘅母公司）投資咗<span class="text-white font-medium">$6億</span>到Polymarket嘅母公司。Event-driven trading嘅total addressable market係巨大嘅 — 每次earnings call、每次央行會議、每次選舉都創建可交易嘅events。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">But existing platforms have structural limitations: Polymarket uses AMM pricing (worse execution, wider spreads), Kalshi is centralized (no on-chain composability), and neither allows cross-product strategies. HIP-4 positions Hyperliquid to capture this growth with better infrastructure — <span class="text-white">CLOB matching, on-chain settlement, and unified accounts with perps</span>.</span>
+        <span class="lang-zh">但現有平台有結構性限制：Polymarket用AMM定價（更差嘅execution、更闊嘅spreads），Kalshi係centralized（冇on-chain composability），兩者都唔允許cross-product策略。HIP-4令Hyperliquid以更好嘅infrastructure去capture呢個增長 — <span class="text-white">CLOB matching、on-chain settlement、同perps嘅unified accounts</span>。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
         <span class="lang-en">Potential Market Categories</span><span class="lang-zh">潛在市場類別</span>
       </h2>
 
       <div class="grid md:grid-cols-2 gap-4">
         <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
           <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Macro & Economics</span><span class="lang-zh">宏觀同經濟</span></p>
-          <p class="text-zinc-500 text-xs"><span class="lang-en">Fed rate decisions, CPI prints, GDP releases, unemployment data</span><span class="lang-zh">Fed利率決策、CPI數據、GDP發布、失業數據</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">Fed rate decisions, CPI prints, GDP releases, unemployment data, yield curve inversions</span><span class="lang-zh">Fed利率決策、CPI數據、GDP發布、失業數據、收益率曲線倒掛</span></p>
         </div>
         <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
           <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Earnings & Corporate</span><span class="lang-zh">業績同企業事件</span></p>
-          <p class="text-zinc-500 text-xs"><span class="lang-en">Earnings beats/misses, M&A completion, IPO pricing</span><span class="lang-zh">業績beat/miss、M&A完成、IPO定價</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">Earnings beats/misses, M&A completion, IPO pricing, CEO departures, stock splits</span><span class="lang-zh">業績beat/miss、M&A完成、IPO定價、CEO離職、股票分割</span></p>
         </div>
         <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
           <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Crypto Milestones</span><span class="lang-zh">加密里程碑</span></p>
-          <p class="text-zinc-500 text-xs"><span class="lang-en">BTC above $X by date, ETF approvals, protocol upgrades</span><span class="lang-zh">BTC喺某日前超過$X、ETF批准、protocol升級</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">BTC above $X by date, ETF approvals, protocol upgrades, token unlocks, L2 launches</span><span class="lang-zh">BTC喺某日前超過$X、ETF批准、protocol升級、token unlock、L2 launch</span></p>
         </div>
         <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
           <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Geopolitics & Elections</span><span class="lang-zh">地緣政治同選舉</span></p>
-          <p class="text-zinc-500 text-xs"><span class="lang-en">Election outcomes, policy decisions, trade agreements</span><span class="lang-zh">選舉結果、政策決定、貿易協議</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">Election outcomes, policy decisions, trade agreements, sanctions, territorial disputes</span><span class="lang-zh">選舉結果、政策決定、貿易協議、制裁、領土爭端</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Regulatory</span><span class="lang-zh">監管</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">SEC enforcement actions, stablecoin legislation, CBDC launches, banking charter approvals</span><span class="lang-zh">SEC執法行動、穩定幣立法、CBDC launch、銀行牌照審批</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Technology</span><span class="lang-zh">科技</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">AI model releases, chip export bans, product launches, patent rulings</span><span class="lang-zh">AI模型發布、芯片出口禁令、產品launch、專利裁決</span></p>
         </div>
       </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks Specific to HIP-4</span><span class="lang-zh">HIP-4特定風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-3">
+        <li><span class="lang-en"><span class="text-white">Settlement oracle risk</span> — the entire market hinges on a single oracle posting the correct binary outcome. If the oracle is compromised, delayed, or ambiguous, settlement fails. The optional challenge window mitigates this but doesn't eliminate it.</span><span class="lang-zh"><span class="text-white">結算oracle風險</span> — 整個市場取決於單一oracle發布正確嘅binary outcome。如果oracle被compromised、延遲或模糊，settlement失敗。可選嘅challenge window緩解但唔能消除呢個風險。</span></li>
+        <li><span class="lang-en"><span class="text-white">Event definition ambiguity</span> — "Will BTC hit $100K?" seems clear until you ask: which exchange's price? At what timestamp exactly? Spot or perp? Poorly defined events create disputes that undermine market trust.</span><span class="lang-zh"><span class="text-white">事件定義模糊性</span> — 「BTC會唔會到$100K？」聽起嚟好清楚，直到你問：邊間交易所嘅價格？確切嘅timestamp係咩？現貨定perp？定義不清嘅events產生爭議，損害市場信任。</span></li>
+        <li><span class="lang-en"><span class="text-white">Regulatory uncertainty</span> — Massachusetts issued an injunction against Kalshi over sports betting contracts (Jan 2026). CFTC's stance on broader event contracts remains unclear. The Kalshi partnership provides regulatory expertise but not immunity.</span><span class="lang-zh"><span class="text-white">監管不確定性</span> — Massachusetts就sports betting contracts對Kalshi發出禁令（2026年1月）。CFTC對更廣泛event contracts嘅立場仍不明確。Kalshi合作提供監管專業知識但唔係免疫。</span></li>
+        <li><span class="lang-en"><span class="text-white">Liquidity risk</span> — prediction markets suffer from severe liquidity concentration around popular events and near-zero liquidity for niche events. Without HLP backstop (same as HIP-3), deployers must solve this independently.</span><span class="lang-zh"><span class="text-white">流動性風險</span> — prediction markets受到嚴重嘅流動性集中影響：熱門events有流動性，niche events幾乎零流動性。冇HLP backstop（同HIP-3一樣），deployers必須獨立解決。</span></li>
+        <li><span class="lang-en"><span class="text-white">Composability is planned, not guaranteed</span> — shared accounts between prediction markets, perps, and spot are described in third-party analysis but <span class="text-white">not yet confirmed in official Hyperliquid documentation</span>. This is the strongest selling point but also the most uncertain.</span><span class="lang-zh"><span class="text-white">Composability係計劃中而非保證</span> — prediction markets、perps同spot之間嘅shared accounts喺第三方分析中描述但<span class="text-white">仲未喺官方Hyperliquid文檔中確認</span>。呢個係最強嘅賣點但都係最不確定嘅。</span></li>
+      </ul>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
         <span class="lang-en">HIP-4 vs Polymarket vs Kalshi</span><span class="lang-zh">HIP-4同Polymarket同Kalshi比較</span>
