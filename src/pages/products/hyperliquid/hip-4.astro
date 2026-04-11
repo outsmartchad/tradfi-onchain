@@ -31,8 +31,8 @@ const base = '/tradfi-onchain';
       </h2>
 
       <p>
-        <span class="lang-en">Binary financial instruments that settle at <span class="text-white">0</span> or <span class="text-white">1</span> based on whether a real-world event occurs. The price between 0.001 and 0.999 represents the market's implied probability. They trade on Hyperliquid's native order book (CLOB) — not an AMM.</span>
-        <span class="lang-zh">二元金融工具，根據真實世界事件是否發生而settle at <span class="text-white">0</span>或<span class="text-white">1</span>。0.001到0.999之間嘅價格代表市場嘅implied probability。喺Hyperliquid嘅native order book（CLOB）上交易 — 唔係AMM。</span>
+        <span class="lang-en">Binary financial instruments that settle at <span class="text-white">0</span> or <span class="text-white">1</span> based on whether a real-world event occurs. The price between 0.001 and 0.999 represents the market's implied probability. They trade on Hyperliquid's native order book (CLOB) — the same HyperCore matching engine used for perps and spot.</span>
+        <span class="lang-zh">二元金融工具，根據真實世界事件是否發生而settle at <span class="text-white">0</span>或<span class="text-white">1</span>。0.001到0.999之間嘅價格代表市場嘅implied probability。喺Hyperliquid嘅native order book（CLOB）上交易 — 同perps同spot用嘅HyperCore matching engine一樣。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -287,8 +287,8 @@ const base = '/tradfi-onchain';
       </p>
 
       <p>
-        <span class="lang-en">But existing platforms have structural limitations: Polymarket uses AMM pricing (worse execution, wider spreads), Kalshi is centralized (no on-chain composability), and neither allows cross-product strategies. HIP-4 positions Hyperliquid to capture this growth with better infrastructure — <span class="text-white">CLOB matching, on-chain settlement, and unified accounts with perps</span>.</span>
-        <span class="lang-zh">但現有平台有結構性限制：Polymarket用AMM定價（更差嘅execution、更闊嘅spreads），Kalshi係centralized（冇on-chain composability），兩者都唔允許cross-product策略。HIP-4令Hyperliquid以更好嘅infrastructure去capture呢個增長 — <span class="text-white">CLOB matching、on-chain settlement、同perps嘅unified accounts</span>。</span>
+        <span class="lang-en">But existing platforms have structural limitations: Polymarket runs on Polygon with its own CLOB (CTF Exchange) but is a standalone prediction platform with no composability with perps or spot. Kalshi is centralized (no on-chain composability). Neither allows cross-product strategies. HIP-4 positions Hyperliquid to capture this growth by combining prediction markets with its existing perp and spot infrastructure — <span class="text-white">same matching engine, same settlement layer, unified accounts</span>.</span>
+        <span class="lang-zh">但現有平台有結構性限制：Polymarket運行喺Polygon上，有自己嘅CLOB（CTF Exchange），但係一個獨立嘅prediction platform，同perps或spot冇composability。Kalshi係centralized（冇on-chain composability）。兩者都唔允許cross-product策略。HIP-4令Hyperliquid通過將prediction markets同現有perp同spot infrastructure結合嚟capture呢個增長 — <span class="text-white">同一個matching engine、同一個settlement layer、unified accounts</span>。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -351,9 +351,9 @@ const base = '/tradfi-onchain';
           <tbody class="text-zinc-400">
             <tr class="border-b border-zinc-800/50">
               <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Matching</span><span class="lang-zh">撮合</span></td>
-              <td class="py-3 px-2 text-white">Native CLOB</td>
-              <td class="py-3 px-2">AMM</td>
-              <td class="py-3 px-2"><span class="lang-en">Centralized</span><span class="lang-zh">中心化</span></td>
+              <td class="py-3 px-2 text-white">Native CLOB (HyperCore)</td>
+              <td class="py-3 px-2">CLOB (CTF Exchange)</td>
+              <td class="py-3 px-2"><span class="lang-en">Centralized CLOB</span><span class="lang-zh">中心化CLOB</span></td>
             </tr>
             <tr class="border-b border-zinc-800/50">
               <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Composability</span><span class="lang-zh">可組合性</span></td>
