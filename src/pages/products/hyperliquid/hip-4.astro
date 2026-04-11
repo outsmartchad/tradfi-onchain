@@ -13,14 +13,14 @@ const base = '/tradfi-onchain';
     </h1>
     <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
       <span class="lang-en">Prediction markets on a real order book, co-designed with Kalshi (CFTC-regulated). Fully collateralized binary contracts — no leverage, no liquidation risk. The killer feature: composability with perps and spot in the same account. Currently on testnet.</span>
-      <span class="lang-zh">喺真正order book上嘅預測市場，同Kalshi（CFTC監管）共同設計。全額抵押嘅二元合約 — 冇leverage、冇liquidation risk。殺手級功能：同perps同spot喺同一個account入面嘅composability。目前喺testnet上。</span>
+      <span class="lang-zh">Prediction market搬上Hyperliquid嘅真order book，由Kalshi（CFTC監管）嘅人一齊設計。買YES買NO，全額抵押，冇leverage、冇爆倉。最正嘅係：計劃同perps、spot共用同一個account同collateral。而家testnet跑緊。</span>
     </p>
 
     <!-- Status banner -->
     <div class="border border-yellow-800/50 bg-yellow-950/20 rounded-lg p-4 mb-12">
       <p class="text-yellow-400 text-sm font-medium">
         <span class="lang-en">⚠ Status: Testnet (live since Feb 2, 2026). Mainnet date not confirmed. Official docs have not published a complete HIP-4 spec yet. Some details below come from third-party analysis and the Hyperliquid team's public announcements.</span>
-        <span class="lang-zh">⚠ 狀態：Testnet（2026年2月2日起live）。Mainnet日期未確認。官方docs仲未發布完整HIP-4 spec。以下部分詳情嚟自第三方分析同Hyperliquid團隊嘅公開公告。</span>
+        <span class="lang-zh">⚠ 而家仲係Testnet（2月2號開始跑）。Mainnet幾時上未知。官方docs仲未出完整spec，以下部分資料嚟自第三方分析同HL團隊嘅公開講法。</span>
       </p>
     </div>
 
@@ -32,7 +32,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Binary financial instruments that settle at <span class="text-white">0</span> or <span class="text-white">1</span> based on whether a real-world event occurs. The price between 0.001 and 0.999 represents the market's implied probability. They trade on Hyperliquid's native order book (CLOB) — the same HyperCore matching engine used for perps and spot.</span>
-        <span class="lang-zh">二元金融工具，根據真實世界事件是否發生而settle at <span class="text-white">0</span>或<span class="text-white">1</span>。0.001到0.999之間嘅價格代表市場嘅implied probability。喺Hyperliquid嘅native order book（CLOB）上交易 — 同perps同spot用嘅HyperCore matching engine一樣。</span>
+        <span class="lang-zh">簡單講就係二元合約 — 事件發生settle at <span class="text-white">1</span>，唔發生settle at <span class="text-white">0</span>。交易價格喺0.001到0.999之間，反映市場覺得件事發生嘅機率有幾高。跑喺Hyperliquid嘅native order book（CLOB）上面，同perps同spot用同一個HyperCore引擎。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -56,7 +56,7 @@ const base = '/tradfi-onchain';
 
       <p class="mt-4">
         <span class="lang-en"><span class="text-white">No leverage. No liquidation risk.</span> Fully collateralized — you deposit exactly what you can lose. All settlement in USDH, Hyperliquid's native stablecoin.</span>
-        <span class="lang-zh"><span class="text-white">冇Leverage。冇Liquidation risk。</span>全額抵押 — 你存入嘅就係你可以蝕嘅最大金額。所有settlement用USDH，Hyperliquid嘅native stablecoin。</span>
+        <span class="lang-zh"><span class="text-white">冇槓桿。冇爆倉風險。</span>存幾多最多蝕幾多，就係咁簡單。所有結算用USDH（Hyperliquid自己嘅穩定幣）。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -100,17 +100,17 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">HIP-3 perps have a built-in safety mechanism: mark price is <span class="text-white">clamped to max 1% movement per update</span> (every 2.5 seconds minimum). For continuous assets like TSLA or gold, this prevents oracle manipulation. But for binary events, it creates a fatal flaw.</span>
-        <span class="lang-zh">HIP-3 perps有一個內建安全機制：mark price每次更新<span class="text-white">最多移動1%</span>（最少每2.5秒）。對於TSLA或黃金等連續資產，呢個防止oracle操縱。但對binary events，呢個產生致命缺陷。</span>
+        <span class="lang-zh">HIP-3 perps有個安全機制：mark price每次更新<span class="text-white">最多郁1%</span>（最快每2.5秒一次）。對TSLA或黃金呢類連續資產冇問題，防止oracle被人搞。但對binary events就出事。</span>
       </p>
 
       <p>
         <span class="lang-en"><span class="text-white font-medium">Example:</span> "Will Team X win the game?" starts trading at 0.50 (50% probability). Game ends — result is known. Price needs to move from 0.50 to 1.00. With a 1% tick cap, this requires <span class="text-white">~50 price adjustments over ~1 hour</span>. During that entire hour, anyone who knows the result can buy at below 1.00 with zero risk — guaranteed profit. This makes the market fundamentally broken for binary events.</span>
-        <span class="lang-zh"><span class="text-white font-medium">例子：</span>「Team X會唔會贏」以0.50（50%機率）開始交易。比賽結束 — 結果已知。價格需要從0.50移到1.00。喺1% tick cap下，需要<span class="text-white">~50次價格調整，歷時~1小時</span>。喺成個小時內，任何知道結果嘅人都可以喺低於1.00買入，零風險 — 保證賺錢。呢個令市場對binary events根本性地失效。</span>
+        <span class="lang-zh"><span class="text-white font-medium">例子：</span>「Team X會唔會贏？」開盤0.50（即50%機率）。比賽完咗，結果已知。價格要從0.50去到1.00。但1% tick cap下，要<span class="text-white">~50次調整、成個鐘</span>。喺呢個鐘入面，任何知道結果嘅人都可以喺低過1.00買入 — 零風險穩賺。成個市場對binary events嚟講根本壞咗。</span>
       </p>
 
       <p>
         <span class="lang-en">HIP-4 solves this with <span class="text-white">instant binary settlement</span> — price jumps directly from current level to 0 or 1 when the oracle posts the result. No tick-by-tick convergence, no arbitrage window.</span>
-        <span class="lang-zh">HIP-4用<span class="text-white">即時二元結算</span>解決 — oracle發布結果時，價格直接從當前水平跳去0或1。冇逐tick收斂，冇套利窗口。</span>
+        <span class="lang-zh">HIP-4點解決？<span class="text-white">即時跳價結算</span> — oracle一出結果，價格直接從當前位跳去0或1。冇慢慢收斂，冇套利窗口。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -119,7 +119,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Unlike standard HIP-3 perps which require continuous oracle feeds and funding rate calculations, Event Perpetuals <span class="text-white">eliminate both</span>. There is no external price feed driving the mark price during trading — the price is determined entirely by trading activity on the order book. The oracle is only used once: at settlement, to post the final binary outcome. This is a fundamentally different design from every other perp product on Hyperliquid.</span>
-        <span class="lang-zh">唔同於需要continuous oracle feeds同funding rate計算嘅標準HIP-3 perps，Event Perpetuals<span class="text-white">完全排除咗兩者</span>。交易期間冇external price feed驅動mark price — 價格完全由order book上嘅交易活動決定。Oracle只用一次：喺settlement時發布最終binary結果。呢個係同Hyperliquid上所有其他perp產品根本唔同嘅設計。</span>
+        <span class="lang-zh">普通HIP-3 perps需要不停餵oracle price同計funding rate。Event Perpetuals<span class="text-white">兩樣都唔使</span>。交易期間冇external price feed — 價格完全由order book上面嘅交易活動決定。Oracle得一個用途：結算時出最終結果（0或1）。同Hyperliquid上所有其他perp產品完全唔同嘅設計。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -128,12 +128,12 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">The HIP-4 proposal was co-authored by an unusually diverse group: <span class="text-white font-medium">Kalshi's head of crypto</span> (CFTC-regulated prediction market), <span class="text-white font-medium">Framework Ventures</span> (crypto VC), <span class="text-white font-medium">Felix Protocol</span> and <span class="text-white font-medium">Asula Labs</span> (DeFi builders). This isn't a single crypto team building in isolation — it's a cross-industry collaboration between regulated TradFi, institutional investors, and DeFi engineers. In March 2026, Kalshi and Hyperliquid announced an official partnership to launch on-chain prediction markets together.</span>
-        <span class="lang-zh">HIP-4 proposal由一個異常多元化嘅團隊共同撰寫：<span class="text-white font-medium">Kalshi嘅head of crypto</span>（CFTC監管嘅預測市場）、<span class="text-white font-medium">Framework Ventures</span>（crypto VC）、<span class="text-white font-medium">Felix Protocol</span>同<span class="text-white font-medium">Asula Labs</span>（DeFi builders）。呢個唔係一個crypto團隊閉門造車 — 係受監管嘅TradFi、機構投資者同DeFi工程師之間嘅跨界合作。2026年3月，Kalshi同Hyperliquid宣佈正式合作推出鏈上預測市場。</span>
+        <span class="lang-zh">HIP-4個proposal嘅作者陣容好唔尋常：<span class="text-white font-medium">Kalshi嘅head of crypto</span>（唯一CFTC監管嘅prediction market）、<span class="text-white font-medium">Framework Ventures</span>（crypto VC）、<span class="text-white font-medium">Felix Protocol</span>同<span class="text-white font-medium">Asula Labs</span>（DeFi builder）。唔係一班crypto人自己搞 — 係受監管嘅TradFi、機構投資者、DeFi工程師一齊合作。2026年3月，Kalshi同Hyperliquid正式宣佈合作推鏈上prediction market。</span>
       </p>
 
       <p>
         <span class="lang-en">This bridges two worlds: Kalshi's regulatory credibility and market design expertise with Hyperliquid's on-chain infrastructure and existing user base. However, regulatory risks remain — in January 2026, a Massachusetts court issued an injunction against Kalshi over sports betting contracts.</span>
-        <span class="lang-zh">呢個橋接咗兩個世界：Kalshi嘅監管公信力同市場設計專業，加上Hyperliquid嘅鏈上基礎設施同現有用戶群。但監管風險仍然存在 — 2026年1月，Massachusetts法院就sports betting contracts對Kalshi發出禁令。</span>
+        <span class="lang-zh">呢個合作接通咗兩個世界：Kalshi嘅監管經驗同市場設計功力，加上Hyperliquid嘅鏈上基建同現有用戶。不過監管風險仲喺度 — 2026年1月Massachusetts法院就sports betting contracts禁咗Kalshi。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -142,7 +142,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">This is the structural advantage no competitor can match. On Hyperliquid, prediction markets are planned to live in the <span class="text-white">same trading account</span> as perps and spot. Shared collateral, automatic risk offsetting, no cross-platform fund transfers.</span>
-        <span class="lang-zh">呢個係冇競爭者可以匹配嘅結構性優勢。喺Hyperliquid上，prediction markets計劃同perps同spot喺<span class="text-white">同一個trading account</span>入面。共用collateral，自動risk offsetting，唔需要跨平台搬錢。</span>
+        <span class="lang-zh">呢個係對手追唔到嘅結構性優勢。Hyperliquid計劃將prediction markets同perps、spot放喺<span class="text-white">同一個trading account</span>入面 — 共用collateral、自動對沖risk、唔使跨平台搬錢。</span>
       </p>
 
       <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">

@@ -13,7 +13,7 @@ const base = '/tradfi-onchain';
     </h1>
     <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
       <span class="lang-en">Protocol-level automated market making built into the consensus layer. Not a bot, not a service — part of the block transition logic itself. Every new token gets instant liquidity with zero maintenance.</span>
-      <span class="lang-zh">Protocol層面嘅自動做市，直接built into共識層。唔係bot，唔係服務 — 係block transition logic本身嘅一部分。每個新token即時獲得流動性，完全唔需要維護。</span>
+      <span class="lang-zh">喺protocol層面做自動做市，直接寫入共識層。唔係bot、唔係外掛服務 — 係出塊邏輯本身嘅一部分。新token一上線就有流動性，完全唔使理。</span>
     </p>
 
     <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
@@ -24,12 +24,12 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Every new token faces the same chicken-and-egg problem: traders won't trade without liquidity, and liquidity providers won't provide without traders. On Ethereum, you solve this by manually creating a Uniswap pool and depositing capital. On Solana, PumpFun uses a bonding curve. Both require the deployer to actively manage liquidity.</span>
-        <span class="lang-zh">每個新token都面對同一個雞同蛋嘅問題：冇流動性trader唔會交易，冇trader流動性提供者唔會提供。喺Ethereum，你通過手動創建Uniswap pool同存入資金嚟解決。喺Solana，PumpFun用bonding curve。兩者都需要deployer主動管理流動性。</span>
+        <span class="lang-zh">每個新token都面對同一個問題：冇人買就冇人肯提供流動性，冇流動性就更加冇人買。喺Ethereum你要自己開Uniswap pool入錢，喺Solana PumpFun用bonding curve。點都好，都要deployer自己搞。</span>
       </p>
 
       <p>
         <span class="lang-en">HIP-2 solves this at the protocol level. When a HIP-1 token is deployed, the Hyperliquidity strategy activates automatically as part of HyperCore's block transition logic. It's not a separate service or smart contract — it runs inside the consensus mechanism itself, with the same security guarantees as the order book.</span>
-        <span class="lang-zh">HIP-2喺protocol層面解決呢個問題。當HIP-1 token被deploy，Hyperliquidity策略作為HyperCore block transition logic嘅一部分自動啟動。佢唔係獨立服務或智能合約 — 係喺共識機制本身內運行，具有同order book相同嘅安全保障。</span>
+        <span class="lang-zh">HIP-2直接喺protocol層面解決。HIP-1 token一deploy，Hyperliquidity策略就自動啟動 — 寫死喺HyperCore嘅出塊邏輯入面。唔係獨立服務、唔係智能合約，係共識機制本身嘅一部分，同order book享有相同嘅安全性。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -152,7 +152,7 @@ const base = '/tradfi-onchain';
 
       <p class="mt-4">
         <span class="lang-en">The key insight: HIP-2 gives you Uniswap-like automated liquidity <span class="text-white">on an order book</span>. This means active market makers can place their own limit orders alongside the automated strategy, creating organic depth that compounds with the protocol-guaranteed baseline. Uniswap pools don't allow this — you're either a passive LP or nothing.</span>
-        <span class="lang-zh">關鍵洞察：HIP-2俾你Uniswap式嘅自動流動性，但係<span class="text-white">喺order book上</span>。即係active market makers可以喺automated strategy旁邊放自己嘅limit orders，創建同protocol保證嘅baseline複合嘅organic depth。Uniswap pools做唔到呢個 — 你只能做passive LP或者乜都唔做。</span>
+        <span class="lang-zh">重點係：HIP-2俾你Uniswap式嘅自動流動性，但係跑喺<span class="text-white">真正嘅order book上</span>。即係專業做市商可以喺自動策略旁邊放自己嘅limit orders，兩種流動性疊加。Uniswap做唔到 — 你要嘛做passive LP，要嘛企喺度睇。</span>
       </p>
 
     </div>

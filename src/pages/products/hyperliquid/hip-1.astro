@@ -13,7 +13,7 @@ const base = '/tradfi-onchain';
     </h1>
     <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
       <span class="lang-en">Every token on Hyperliquid gets a real order book — not an AMM pool. Launching one requires winning an auction, not clicking a button. This is anti-PumpFun by design.</span>
-      <span class="lang-zh">每個Hyperliquid上嘅token都有一個真正嘅order book — 唔係AMM pool。Launch一個token需要贏得auction，唔係㩒個掣。呢個設計係anti-PumpFun。</span>
+      <span class="lang-zh">喺Hyperliquid上面每個token都自帶真正嘅order book — 唔係AMM pool。要launch一個token，你要贏一場auction，唔係㩒個掣咁簡單。成個設計就係同PumpFun對著幹。</span>
     </p>
 
     <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
@@ -24,7 +24,7 @@ const base = '/tradfi-onchain';
 
       <p>
         <span class="lang-en">Deploying a HIP-1 token is a multi-step process with real economic cost. The deployer specifies:</span>
-        <span class="lang-zh">部署HIP-1 token係一個有真正經濟成本嘅多步驟過程。Deployer需要指定：</span>
+        <span class="lang-zh">Deploy一個HIP-1 token唔係免費嘅，要經過幾個步驟，每步都要真金白銀。Deployer要設定以下參數：</span>
       </p>
 
       <ul class="list-disc pl-6 space-y-2">
@@ -49,12 +49,12 @@ const base = '/tradfi-onchain';
       <ul class="list-disc pl-6 space-y-2">
         <li><span class="lang-en">If the previous auction <span class="text-white">failed</span>: initial price = 500 HYPE</span><span class="lang-zh">如果上一次拍賣<span class="text-white">失敗</span>：初始價格 = 500 HYPE</span></li>
         <li><span class="lang-en">If the previous auction <span class="text-white">succeeded</span>: initial price = 2x the last winning gas price</span><span class="lang-zh">如果上一次拍賣<span class="text-white">成功</span>：初始價格 = 上次中標gas價格嘅2倍</span></li>
-        <li><span class="lang-en">Gas <span class="text-white">cannot be refunded</span> if the deployment gets stuck — test on testnet first</span><span class="lang-zh">如果部署卡住，Gas<span class="text-white">唔能夠退還</span> — 先喺testnet測試</span></li>
+        <li><span class="lang-en">Gas <span class="text-white">cannot be refunded</span> if the deployment gets stuck — test on testnet first</span><span class="lang-zh">部署卡住嘅話，Gas<span class="text-white">退唔返</span> — 記得先喺testnet試</span></li>
       </ul>
 
       <p>
         <span class="lang-en">This auction mechanism is the core of HIP-1's design philosophy: <span class="text-white">high barrier to entry creates high signal</span>. Every token that makes it through the auction represents a meaningful economic commitment, unlike PumpFun where anyone can launch a token for ~$2.</span>
-        <span class="lang-zh">呢個拍賣機制係HIP-1設計理念嘅核心：<span class="text-white">高門檻創造高信號</span>。每個通過拍賣嘅token都代表有意義嘅經濟承諾，唔似PumpFun任何人用~$2就可以launch一個token。</span>
+        <span class="lang-zh">呢個拍賣機制就係HIP-1嘅核心理念：<span class="text-white">門檻高，質素先高</span>。過到拍賣嘅token，背後都係真金白銀嘅承諾，唔似PumpFun俾你用~$2就隨便開個幣。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -88,7 +88,7 @@ const base = '/tradfi-onchain';
 
       <p class="mt-4">
         <span class="lang-en">Deployers can adjust their fee share <span class="text-white">downward only</span> — once reduced, it can't be raised back. This prevents bait-and-switch dynamics.</span>
-        <span class="lang-zh">Deployers只能將fee share<span class="text-white">向下調整</span> — 一旦降低，唔能夠提高返。呢個防止bait-and-switch。</span>
+        <span class="lang-zh">Deployers只可以將fee share<span class="text-white">向下調</span> — 降咗就加唔返。防止先引你入局再加價。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
