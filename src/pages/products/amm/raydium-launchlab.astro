@@ -1,0 +1,477 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="Raydium LaunchLab — Configurable Token Launch Platform">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Token Launchpad</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Raydium LaunchLab</span><span class="lang-zh">Raydium LaunchLab</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Raydium's answer to PumpFun — a bonding curve launchpad that graduates tokens directly into Raydium CPMM pools. The key differentiator: configurable curve types (fixed price or linear) and multiple quote assets (WSOL, USDC, USDT, USD1). Launched after PumpFun broke away to PumpSwap.</span>
+      <span class="lang-zh">Raydium對PumpFun嘅回應 — 一個bonding curve發射台，直接將token畢業到Raydium CPMM池。關鍵差異化：可配置嘅曲線類型（固定價格或線性）同多種報價資產（WSOL、USDC、USDT、USD1）。喺PumpFun轉去PumpSwap之後推出。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Curve Types</span><span class="lang-zh">曲線類型</span></p>
+        <p class="text-2xl font-bold text-white mt-1">2</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Quote Assets</span><span class="lang-zh">報價資產</span></p>
+        <p class="text-2xl font-bold text-white mt-1">4</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Graduates To</span><span class="lang-zh">畢業去</span></p>
+        <p class="text-2xl font-bold text-white mt-1">CPMM</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Fee Split</span><span class="lang-zh">費用分成</span></p>
+        <p class="text-2xl font-bold text-white mt-1">3-way</p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- How LaunchLab Works -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How LaunchLab Works</span><span class="lang-zh">LaunchLab點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">LaunchLab follows the same two-phase model as PumpFun: <span class="text-white font-medium">bonding curve → graduation to full AMM</span>. But instead of a fixed constant-product curve, LaunchLab lets creators choose their curve type and quote asset.</span>
+        <span class="lang-zh">LaunchLab沿用同PumpFun一樣嘅兩階段模式：<span class="text-white font-medium">bonding curve → 畢業到完整AMM</span>。但唔係固定嘅恆定乘積曲線，LaunchLab畀creator揀曲線類型同報價資產。</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Token created</span> — creator sets name, symbol, curve type, quote mint</span><span class="lang-zh"><span class="text-white">Token創建</span> — creator設定名稱、符號、曲線類型、報價mint</span></li>
+        <li><span class="lang-en"><span class="text-white">Bonding curve phase</span> — trading happens on the LaunchLab program with virtual reserves</span><span class="lang-zh"><span class="text-white">Bonding curve階段</span> — 交易喺LaunchLab程序上進行，用虛擬reserves</span></li>
+        <li><span class="lang-en"><span class="text-white">Graduation</span> — when the curve fills, liquidity migrates to a Raydium CPMM pool</span><span class="lang-zh"><span class="text-white">畢業</span> — 曲線填滿時，流動性遷移到Raydium CPMM池</span></li>
+        <li><span class="lang-en"><span class="text-white">Full AMM trading</span> — token trades as a standard CPMM pair with full LP capabilities</span><span class="lang-zh"><span class="text-white">完整AMM交易</span> — token作為標準CPMM交易對進行交易，具備完整LP功能</span></li>
+      </ol>
+
+      <!-- Configurable Curves -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Configurable Curve Types</span><span class="lang-zh">可配置曲線類型</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">LaunchLab supports two curve types, stored in the pool's <code>migrateType</code> field:</span>
+        <span class="lang-zh">LaunchLab支援兩種曲線類型，儲存喺池嘅 <code>migrateType</code> 字段：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Curve</span><span class="lang-zh">曲線</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">migrateType</span><span class="lang-zh">migrateType</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Formula</span><span class="lang-zh">公式</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Behavior</span><span class="lang-zh">行為</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Fixed Price</span><span class="lang-zh">固定價格</span></td>
+              <td class="py-3 px-2">0</td>
+              <td class="py-3 px-2 font-mono text-xs">virtualB / virtualA</td>
+              <td class="py-3 px-2"><span class="lang-en">Constant exchange rate throughout launch</span><span class="lang-zh">整個launch期間恆定匯率</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Linear</span><span class="lang-zh">線性</span></td>
+              <td class="py-3 px-2">1</td>
+              <td class="py-3 px-2 font-mono text-xs">(virtualA × realA) / 2^64</td>
+              <td class="py-3 px-2"><span class="lang-en">Price increases as more tokens are bought</span><span class="lang-zh">買嘅人越多，價格越高</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Fixed price</span> is the simpler model — tokens sell at a constant rate, similar to a fair launch. <span class="text-white font-medium">Linear</span> provides progressive price discovery — early buyers get a better price, incentivizing early participation. Both use virtual reserves for curve math and real reserves to track actual token availability.</span>
+        <span class="lang-zh"><span class="text-white font-medium">固定價格</span>係較簡單嘅模式 — token以恆定匯率出售，類似公平發射。<span class="text-white font-medium">線性</span>提供漸進式價格發現 — 早期買家獲得更好嘅價格，激勵早期參與。兩種都用虛擬reserves做曲線計算，真實reserves追蹤實際token可用量。</span>
+      </p>
+
+      <!-- Multiple Quote Assets -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Multiple Quote Assets</span><span class="lang-zh">多種報價資產</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Unlike PumpFun (WSOL only), LaunchLab supports <span class="text-white">four quote tokens</span>:</span>
+        <span class="lang-zh">唔似PumpFun（只有WSOL），LaunchLab支援<span class="text-white">四種報價token</span>：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Quote Token</span><span class="lang-zh">報價Token</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Use Case</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">WSOL</td>
+              <td class="py-3 px-2"><span class="lang-en">Default — same as PumpFun, denominated in SOL</span><span class="lang-zh">預設 — 同PumpFun一樣，以SOL計價</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">USDC</td>
+              <td class="py-3 px-2"><span class="lang-en">Stablecoin pair — removes SOL price exposure for LPs</span><span class="lang-zh">穩定幣交易對 — 消除LP嘅SOL價格敞口</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">USDT</td>
+              <td class="py-3 px-2"><span class="lang-en">Alternative stablecoin</span><span class="lang-zh">替代穩定幣</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">USD1</td>
+              <td class="py-3 px-2"><span class="lang-en">Additional stablecoin option</span><span class="lang-zh">額外穩定幣選項</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">This is a meaningful advantage for creators who want stablecoin-denominated launches — their tokens graduate to USDC or USDT CPMM pools, which are more familiar to traders who think in dollar terms.</span>
+        <span class="lang-zh">呢個對想要穩定幣計價launch嘅creator嚟講係一個有意義嘅優勢 — 佢哋嘅token會畢業到USDC或USDT CPMM池，對以美元思維嘅交易者更加熟悉。</span>
+      </p>
+
+      <!-- Pool State -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Pool State Structure</span><span class="lang-zh">池狀態結構</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Each LaunchLab pool stores its state on-chain with these key fields:</span>
+        <span class="lang-zh">每個LaunchLab池喺鏈上儲存以下關鍵字段：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Offset</span><span class="lang-zh">偏移</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Type</span><span class="lang-zh">類型</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">mintDecimalsA/B</td>
+              <td class="py-3 px-2">18-19</td>
+              <td class="py-3 px-2">u8</td>
+              <td class="py-3 px-2"><span class="lang-en">Token decimal places</span><span class="lang-zh">Token小數位</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">migrateType</td>
+              <td class="py-3 px-2">20</td>
+              <td class="py-3 px-2">u8</td>
+              <td class="py-3 px-2"><span class="lang-en">0 = Fixed, 1 = Linear</span><span class="lang-zh">0 = 固定, 1 = 線性</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">virtualA / virtualB</td>
+              <td class="py-3 px-2">37-52</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Virtual reserves for curve math</span><span class="lang-zh">曲線計算嘅虛擬reserves</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">realA / realB</td>
+              <td class="py-3 px-2">53-68</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Actual token holdings</span><span class="lang-zh">實際token持有量</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">configId</td>
+              <td class="py-3 px-2">141</td>
+              <td class="py-3 px-2">pubkey</td>
+              <td class="py-3 px-2"><span class="lang-en">Link to global config</span><span class="lang-zh">鏈接到全局配置</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">mintA / mintB</td>
+              <td class="py-3 px-2">205-268</td>
+              <td class="py-3 px-2">pubkey</td>
+              <td class="py-3 px-2"><span class="lang-en">Base and quote token mints</span><span class="lang-zh">Base同quote token mints</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">creator</td>
+              <td class="py-3 px-2">333</td>
+              <td class="py-3 px-2">pubkey</td>
+              <td class="py-3 px-2"><span class="lang-en">Pool creator wallet</span><span class="lang-zh">池創建者錢包</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Fee Structure -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Structure</span><span class="lang-zh">費用結構</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">LaunchLab splits fees across three (optionally four) recipients:</span>
+        <span class="lang-zh">LaunchLab將費用分配到三個（可選四個）接收方：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Recipient</span><span class="lang-zh">接收方</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Source</span><span class="lang-zh">來源</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Claim Method</span><span class="lang-zh">領取方式</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Protocol (Raydium)</span><span class="lang-zh">協議（Raydium）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">% from global_config</span><span class="lang-zh">來自global_config嘅百分比</span></td>
+              <td class="py-3 px-2 font-mono text-xs">collect_fee</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Platform</span><span class="lang-zh">平台</span></td>
+              <td class="py-3 px-2"><span class="lang-en">% from platform_config</span><span class="lang-zh">來自platform_config嘅百分比</span></td>
+              <td class="py-3 px-2 font-mono text-xs">claim_platform_fee</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Creator</span><span class="lang-zh">創建者</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Remaining after protocol + platform</span><span class="lang-zh">扣除協議+平台後嘅剩餘</span></td>
+              <td class="py-3 px-2 font-mono text-xs">claim_creator_fee</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Share (optional)</span><span class="lang-zh">分享（可選）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Referral/partner cut if shareFeeReceiver set</span><span class="lang-zh">如設定shareFeeReceiver嘅推薦/合作分成</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Via swap params</span><span class="lang-zh">通過swap參數</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">The fee formula: <code>gross_fee = swap_amount × fee_numerator / FEE_DENOMINATOR</code>. Protocol and platform take their configured percentages first; the creator gets the remainder. The optional <span class="text-white">share fee</span> is a referral mechanism — third-party frontends can pass a <code>share_fee_rate</code> and <code>shareFeeReceiver</code> to earn a cut.</span>
+        <span class="lang-zh">費用公式：<code>gross_fee = swap_amount × fee_numerator / FEE_DENOMINATOR</code>。協議同平台先攞佢哋配置嘅百分比；creator攞剩餘。可選嘅<span class="text-white">share fee</span>係推薦機制 — 第三方前端可以傳 <code>share_fee_rate</code> 同 <code>shareFeeReceiver</code> 嚟賺取分成。</span>
+      </p>
+
+      <!-- Graduation to CPMM -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Graduation to Raydium CPMM</span><span class="lang-zh">畢業到Raydium CPMM</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">When the bonding curve fills its target, the <code>migrate_to_cp_swap</code> instruction fires. This:</span>
+        <span class="lang-zh">當bonding curve填滿目標時，<code>migrate_to_cp_swap</code> 指令觸發。佢會：</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Creates a Raydium CPMM pool</span> with the accumulated reserves</span><span class="lang-zh"><span class="text-white">創建Raydium CPMM池</span>，帶上累積嘅reserves</span></li>
+        <li><span class="lang-en"><span class="text-white">Transfers liquidity</span> from LaunchLab vaults to the new CPMM pool</span><span class="lang-zh"><span class="text-white">轉移流動性</span>從LaunchLab金庫到新CPMM池</span></li>
+        <li><span class="lang-en"><span class="text-white">Charges a migration fee</span> stored in the pool's <code>migrateFee</code> field</span><span class="lang-zh"><span class="text-white">收取遷移費</span>，儲存喺池嘅 <code>migrateFee</code> 字段</span></li>
+        <li><span class="lang-en"><span class="text-white">Deactivates the LaunchLab pool</span> — no more trading on the bonding curve</span><span class="lang-zh"><span class="text-white">停用LaunchLab池</span> — bonding curve上唔再交易</span></li>
+      </ol>
+
+      <p>
+        <span class="lang-en">The graduated CPMM pool is a standard Raydium pool — anyone can LP into it, it shows up on Jupiter and other aggregators, and it benefits from Raydium's existing liquidity infrastructure.</span>
+        <span class="lang-zh">畢業後嘅CPMM池係標準嘅Raydium池 — 任何人都可以做LP，會出現喺Jupiter同其他聚合器上，同時受益於Raydium現有嘅流動性基礎設施。</span>
+      </p>
+
+      <!-- Technical: Instruction Layout -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Technical: Instruction Layout</span><span class="lang-zh">技術細節：指令佈局</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Instruction</span><span class="lang-zh">指令</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Discriminator</span><span class="lang-zh">判別碼</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">buyExactIn</td>
+              <td class="py-3 px-2 font-mono text-xs">faea0d7bd59c13ec</td>
+              <td class="py-3 px-2"><span class="lang-en">Buy tokens with exact quote input</span><span class="lang-zh">用確切報價輸入買token</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">buyExactOut</td>
+              <td class="py-3 px-2 font-mono text-xs">18d37428690399938</td>
+              <td class="py-3 px-2"><span class="lang-en">Buy exact token output amount</span><span class="lang-zh">買確切token輸出量</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">initialize</td>
+              <td class="py-3 px-2 font-mono text-xs">afaf6d1f0d989bed</td>
+              <td class="py-3 px-2"><span class="lang-en">Create new LaunchLab pool</span><span class="lang-zh">創建新LaunchLab池</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">migrate_to_cp_swap</td>
+              <td class="py-3 px-2 font-mono text-xs">—</td>
+              <td class="py-3 px-2"><span class="lang-en">Graduate to Raydium CPMM</span><span class="lang-zh">畢業到Raydium CPMM</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">The <code>buyExactIn</code> swap takes 17 accounts. Key ones:</span>
+        <span class="lang-zh"><code>buyExactIn</code> swap需要17個帳戶。關鍵嘅包括：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium">#</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Account</span><span class="lang-zh">帳戶</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Role</span><span class="lang-zh">角色</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">0</td>
+              <td class="py-3 px-2 text-white">owner</td>
+              <td class="py-3 px-2"><span class="lang-en">Trader (signer)</span><span class="lang-zh">交易者（簽名者）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">1</td>
+              <td class="py-3 px-2 text-white">authority</td>
+              <td class="py-3 px-2"><span class="lang-en">Vault authority PDA</span><span class="lang-zh">金庫權限PDA</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">2-3</td>
+              <td class="py-3 px-2 text-white">global_config / platform_config</td>
+              <td class="py-3 px-2"><span class="lang-en">Protocol + platform settings</span><span class="lang-zh">協議 + 平台設定</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">4</td>
+              <td class="py-3 px-2 text-white">pool_state</td>
+              <td class="py-3 px-2"><span class="lang-en">Bonding curve state (writable)</span><span class="lang-zh">Bonding curve狀態（可寫）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">7-8</td>
+              <td class="py-3 px-2 text-white">base_vault / quote_vault</td>
+              <td class="py-3 px-2"><span class="lang-en">Pool token vaults (writable)</span><span class="lang-zh">池token金庫（可寫）</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2">15-16</td>
+              <td class="py-3 px-2 text-white">fee vaults</td>
+              <td class="py-3 px-2"><span class="lang-en">Platform + creator fee destinations</span><span class="lang-zh">平台 + 創建者費用目的地</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- LaunchLab vs PumpFun -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">LaunchLab vs PumpFun</span><span class="lang-zh">LaunchLab同PumpFun比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">LaunchLab</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">PumpFun</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Curve options</span><span class="lang-zh">曲線選項</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Fixed price + Linear</span><span class="lang-zh">固定價格 + 線性</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Constant product only</span><span class="lang-zh">只有恆定乘積</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Quote assets</span><span class="lang-zh">報價資產</span></td>
+              <td class="py-3 px-2 text-white">WSOL, USDC, USDT, USD1</td>
+              <td class="py-3 px-2"><span class="lang-en">WSOL only</span><span class="lang-zh">只有WSOL</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Graduates to</span><span class="lang-zh">畢業去</span></td>
+              <td class="py-3 px-2 text-white">Raydium CPMM</td>
+              <td class="py-3 px-2">PumpSwap</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Post-graduation ecosystem</span><span class="lang-zh">畢業後生態</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Full Raydium (CPMM, CLMM, Jupiter routing)</span><span class="lang-zh">完整Raydium（CPMM、CLMM、Jupiter路由）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">PumpSwap only</span><span class="lang-zh">只有PumpSwap</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Creator fees</span><span class="lang-zh">創建者費用</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes (configurable)</span><span class="lang-zh">有（可配置）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes (2026+)</span><span class="lang-zh">有（2026+）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Referral fees</span><span class="lang-zh">推薦費</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes (share_fee_rate)</span><span class="lang-zh">有（share_fee_rate）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Market share</span><span class="lang-zh">市場份額</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Growing — #2</span><span class="lang-zh">增長中 — 第二</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Dominant — #1</span><span class="lang-zh">主導 — 第一</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">LaunchLab's <span class="text-white">strategic advantage</span> is the post-graduation ecosystem. Tokens that graduate through LaunchLab land on Raydium CPMM — which is already integrated with Jupiter, Axiom, and most Solana aggregators. PumpSwap tokens need to build their own aggregator coverage from scratch.</span>
+        <span class="lang-zh">LaunchLab嘅<span class="text-white">戰略優勢</span>係畢業後嘅生態系統。通過LaunchLab畢業嘅token落地喺Raydium CPMM — 已經整合咗Jupiter、Axiom同大部分Solana聚合器。PumpSwap嘅token需要從零開始建立聚合器覆蓋。</span>
+      </p>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Second-mover disadvantage</span> — PumpFun has massive brand recognition and network effects. LaunchLab is playing catch-up</span><span class="lang-zh"><span class="text-white">後發劣勢</span> — PumpFun有巨大嘅品牌認知同網絡效應。LaunchLab喺追趕</span></li>
+        <li><span class="lang-en"><span class="text-white">Same survival rate problem</span> — configurable curves don't solve the fundamental issue that most tokens go to zero</span><span class="lang-zh"><span class="text-white">同樣嘅存活率問題</span> — 可配置曲線唔能解決大部分token歸零嘅根本問題</span></li>
+        <li><span class="lang-en"><span class="text-white">Complexity cost</span> — multiple curve types and quote assets make it harder for bots and aggregators to integrate efficiently</span><span class="lang-zh"><span class="text-white">複雜性成本</span> — 多種曲線類型同報價資產令bot同聚合器更難高效整合</span></li>
+        <li><span class="lang-en"><span class="text-white">Platform config centralization</span> — fee splits are controlled by the protocol and platform configs, not by creators or LPs</span><span class="lang-zh"><span class="text-white">平台配置中心化</span> — 費用分成由協議同平台配置控制，唔係由creator或LP決定</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Global Config</span><span class="lang-zh">全局配置</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">6s1xP3hpbAfFoNtUNF8mfHsjr2Bd97JxFJRWLbL6aHuX</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Graduates To</span><span class="lang-zh">畢業到</span></td>
+              <td class="py-3 px-2 text-white">Raydium CPMM (<span class="font-mono text-xs">CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C</span>)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/pumpswap`} class="text-zinc-500 hover:text-white transition-colors text-sm">← PumpSwap</a>
+      <a href={`${base}/products/amm/raydium-cpmm`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">Raydium CPMM →</a>
+    </div>
+  </article>
+</Layout>

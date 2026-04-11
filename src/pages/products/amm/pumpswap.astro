@@ -1,0 +1,401 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="PumpSwap — PumpFun's Post-Graduation AMM">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Post-Graduation AMM</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">PumpSwap</span><span class="lang-zh">PumpSwap</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">PumpFun's own AMM — where tokens go after graduating from the bonding curve. Before PumpSwap, graduated tokens migrated to Raydium. Now PumpFun keeps the liquidity (and the fees) in-house. The key innovation: creator fee passthrough — token creators earn a cut of every swap on their pool.</span>
+      <span class="lang-zh">PumpFun自己嘅AMM — token從bonding curve畢業之後去嘅地方。PumpSwap之前，畢業嘅token會遷移到Raydium。而家PumpFun將流動性（同費用）留喺自己屋企。關鍵創新：creator fee passthrough — token創建者可以從每筆swap中賺取分成。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Quote Asset</span><span class="lang-zh">報價資產</span></p>
+        <p class="text-2xl font-bold text-white mt-1">WSOL</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Fee Split</span><span class="lang-zh">費用分成</span></p>
+        <p class="text-2xl font-bold text-white mt-1">3-way</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Token Standards</span><span class="lang-zh">代幣標準</span></p>
+        <p class="text-2xl font-bold text-white mt-1">SPL + T22</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Account Layout</span><span class="lang-zh">帳戶佈局</span></p>
+        <p class="text-2xl font-bold text-white mt-1">21-24</p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- How PumpSwap Works -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How PumpSwap Works</span><span class="lang-zh">PumpSwap點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">PumpSwap is a <span class="text-white font-medium">constant product AMM</span> (x×y=k) — same fundamental math as Uniswap or Raydium CPMM. The difference is in fee distribution: every swap splits fees three ways between LPs, the protocol, and the token creator.</span>
+        <span class="lang-zh">PumpSwap係一個<span class="text-white font-medium">恆定乘積AMM</span>（x×y=k）— 同Uniswap或Raydium CPMM基本數學一樣。分別在於費用分配：每筆swap嘅費用會三方分成 — LP、協議同token創建者。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Every pool pairs a token against <span class="text-white">WSOL</span> — there's no USDC or other quote asset option. This simplifies the protocol and keeps everything denominated in SOL.</span>
+        <span class="lang-zh">每個池都係token對<span class="text-white">WSOL</span> — 冇USDC或其他報價資產選項。呢個簡化咗協議，所有嘢都以SOL計價。</span>
+      </p>
+
+      <!-- Why PumpFun Built Their Own AMM -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Why PumpFun Built Their Own AMM</span><span class="lang-zh">點解PumpFun要自己做AMM</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Before PumpSwap, graduated tokens migrated to Raydium. This meant:</span>
+        <span class="lang-zh">PumpSwap之前，畢業嘅token遷移到Raydium。呢個意味住：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Revenue leakage</span> — Raydium collected LP fees on PumpFun-originated tokens</span><span class="lang-zh"><span class="text-white">收入流失</span> — Raydium收取咗PumpFun發起嘅token嘅LP費用</span></li>
+        <li><span class="lang-en"><span class="text-white">No creator incentive</span> — token creators got nothing post-graduation</span><span class="lang-zh"><span class="text-white">冇創建者激勵</span> — token創建者畢業後乜都冇</span></li>
+        <li><span class="lang-en"><span class="text-white">Dependency risk</span> — PumpFun's entire post-graduation UX depended on Raydium staying compatible</span><span class="lang-zh"><span class="text-white">依賴風險</span> — PumpFun成個畢業後體驗都依賴Raydium保持兼容</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">PumpSwap solves all three. PumpFun now controls the full token lifecycle: creation → bonding curve → graduation → full AMM trading.</span>
+        <span class="lang-zh">PumpSwap解決咗三個問題。PumpFun而家控制成個token生命週期：創建 → bonding curve → 畢業 → 完整AMM交易。</span>
+      </p>
+
+      <!-- Fee Model -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Model — The Three-Way Split</span><span class="lang-zh">費用模式 — 三方分成</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Every swap on PumpSwap generates fees that split into three buckets:</span>
+        <span class="lang-zh">PumpSwap上每筆swap產生嘅費用分成三個桶：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Recipient</span><span class="lang-zh">接收方</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">How It Works</span><span class="lang-zh">運作方式</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Destination</span><span class="lang-zh">去向</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">LP Providers</span><span class="lang-zh">流動性提供者</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Majority share — accrues in pool reserves</span><span class="lang-zh">最大份額 — 累積喺池reserves入面</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Pool vaults</span><span class="lang-zh">池金庫</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Protocol (PumpFun)</span><span class="lang-zh">協議（PumpFun）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed protocol cut</span><span class="lang-zh">固定協議分成</span></td>
+              <td class="py-3 px-2 font-mono text-xs">62qc...fNgV</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Token Creator</span><span class="lang-zh">Token創建者</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Passthrough — accumulates in creator vault PDA</span><span class="lang-zh">直通 — 累積喺creator vault PDA</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Creator vault ATA</span><span class="lang-zh">Creator vault ATA</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">The <span class="text-white">creator fee passthrough</span> is PumpSwap's key differentiator. The creator's vault authority is a PDA derived from their wallet: <code>["coin_creator_vault_authority", creator_pubkey]</code>. Creators call <code>collect_coin_creator_fee</code> to claim accumulated WSOL fees.</span>
+        <span class="lang-zh"><span class="text-white">Creator fee passthrough</span>係PumpSwap嘅關鍵特色。Creator嘅vault authority係從佢哋錢包衍生嘅PDA：<code>["coin_creator_vault_authority", creator_pubkey]</code>。Creator調用 <code>collect_coin_creator_fee</code> 嚟領取累積嘅WSOL費用。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">This creates a powerful incentive: <span class="text-white font-medium">token creators now earn ongoing revenue from trading volume</span>, not just the initial bonding curve sale. It aligns creator incentives with long-term token success.</span>
+        <span class="lang-zh">呢個創造咗一個強大嘅激勵：<span class="text-white font-medium">token創建者而家可以從交易量中持續賺取收入</span>，唔止係最初bonding curve嘅銷售。令creator激勵同token長期成功保持一致。</span>
+      </p>
+
+      <!-- Pool Structure -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Pool Structure</span><span class="lang-zh">池結構</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Each PumpSwap pool stores:</span>
+        <span class="lang-zh">每個PumpSwap池儲存：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">base_mint / quote_mint</td>
+              <td class="py-3 px-2"><span class="lang-en">Token pair (quote is always WSOL)</span><span class="lang-zh">Token對（quote永遠係WSOL）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">base_vault / quote_vault</td>
+              <td class="py-3 px-2"><span class="lang-en">ATAs holding the pool's liquidity</span><span class="lang-zh">持有池流動性嘅ATA</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">coin_creator</td>
+              <td class="py-3 px-2"><span class="lang-en">Original token deployer — receives fee passthrough</span><span class="lang-zh">原始token部署者 — 收取費用分成</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">fee_config</td>
+              <td class="py-3 px-2"><span class="lang-en">Per-pool fee parameters (LP %, protocol %, creator %)</span><span class="lang-zh">每個池嘅費用參數（LP%、協議%、創建者%）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">Pool addresses are derived as PDAs: <code>["pool", baseMint, quoteMint, index]</code>. The <code>index</code> allows multiple pools per token pair (though typically there's only one from graduation).</span>
+        <span class="lang-zh">池地址由PDA衍生：<code>["pool", baseMint, quoteMint, index]</code>。<code>index</code>允許每個token對有多個池（雖然通常畢業後只有一個）。</span>
+      </p>
+
+      <!-- Technical: Instruction Layout -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Technical: Instruction Layout</span><span class="lang-zh">技術細節：指令佈局</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Instruction</span><span class="lang-zh">指令</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Discriminator</span><span class="lang-zh">判別碼</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Accounts</span><span class="lang-zh">帳戶數</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Data</span><span class="lang-zh">數據</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Buy</td>
+              <td class="py-3 px-2 font-mono text-xs">66063d1201daebea</td>
+              <td class="py-3 px-2">23-24</td>
+              <td class="py-3 px-2"><span class="lang-en">amount_out + max_sol_in</span><span class="lang-zh">輸出量 + 最大SOL輸入</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Buy (exact quote)</td>
+              <td class="py-3 px-2 font-mono text-xs">c62e1552b4d9e870</td>
+              <td class="py-3 px-2">23-24</td>
+              <td class="py-3 px-2"><span class="lang-en">Specify exact SOL input</span><span class="lang-zh">指定確切SOL輸入</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Sell</td>
+              <td class="py-3 px-2 font-mono text-xs">33e685a4017f83ad</td>
+              <td class="py-3 px-2">21</td>
+              <td class="py-3 px-2"><span class="lang-en">amount_in + min_sol_out</span><span class="lang-zh">輸入量 + 最小SOL輸出</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">Create Pool</td>
+              <td class="py-3 px-2 font-mono text-xs">e992d18ecf6840bc</td>
+              <td class="py-3 px-2"><span class="lang-en">Variable</span><span class="lang-zh">可變</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Migration from bonding curve</span><span class="lang-zh">從bonding curve遷移</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Account layout evolution:</span> PumpSwap has gone through multiple account layout versions. Buy transactions can have 23 or 24 accounts — the codebase handles this by checking account count at runtime and reindexing fee_config accordingly. Sell transactions use 21 accounts.</span>
+        <span class="lang-zh"><span class="text-white font-medium">帳戶佈局演變：</span>PumpSwap經歷咗多個帳戶佈局版本。買入交易可以有23或24個帳戶 — 代碼通過喺runtime檢查帳戶數量嚟重新索引fee_config。賣出交易用21個帳戶。</span>
+      </p>
+
+      <!-- Key Buy Accounts -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Key Accounts in a Buy Transaction</span><span class="lang-zh">買入交易嘅關鍵帳戶</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium">#</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Account</span><span class="lang-zh">帳戶</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Role</span><span class="lang-zh">角色</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">0</td>
+              <td class="py-3 px-2 text-white">pool</td>
+              <td class="py-3 px-2"><span class="lang-en">Pool state (writable)</span><span class="lang-zh">池狀態（可寫）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">1</td>
+              <td class="py-3 px-2 text-white">user</td>
+              <td class="py-3 px-2"><span class="lang-en">Trader wallet (signer)</span><span class="lang-zh">交易者錢包（簽名者）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">2</td>
+              <td class="py-3 px-2 text-white">global_config</td>
+              <td class="py-3 px-2"><span class="lang-en">PDA: protocol-wide settings</span><span class="lang-zh">PDA：協議級設定</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">7-8</td>
+              <td class="py-3 px-2 text-white">pool vaults</td>
+              <td class="py-3 px-2"><span class="lang-en">Base + quote token vaults (writable)</span><span class="lang-zh">Base + quote token金庫（可寫）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">9</td>
+              <td class="py-3 px-2 text-white">protocol_fee_recipient</td>
+              <td class="py-3 px-2"><span class="lang-en">PumpFun treasury</span><span class="lang-zh">PumpFun金庫</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">17</td>
+              <td class="py-3 px-2 text-white">coin_creator_vault_ata</td>
+              <td class="py-3 px-2"><span class="lang-en">Creator's WSOL fee account</span><span class="lang-zh">Creator嘅WSOL費用帳戶</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2">20</td>
+              <td class="py-3 px-2 text-white">user_volume_accumulator</td>
+              <td class="py-3 px-2"><span class="lang-en">PDA tracking per-user volume</span><span class="lang-zh">追蹤每位用戶交易量嘅PDA</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PumpSwap vs Standard AMMs -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">PumpSwap vs Standard AMMs</span><span class="lang-zh">PumpSwap同標準AMM比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">PumpSwap</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Raydium CPMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Orca Whirlpools</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">AMM type</span><span class="lang-zh">AMM類型</span></td>
+              <td class="py-3 px-2 text-white">x×y=k</td>
+              <td class="py-3 px-2">x×y=k</td>
+              <td class="py-3 px-2">CLMM</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Quote asset</span><span class="lang-zh">報價資產</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">WSOL only</span><span class="lang-zh">只有WSOL</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Any</span><span class="lang-zh">任何</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Any</span><span class="lang-zh">任何</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Creator fees</span><span class="lang-zh">創建者費用</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes — passthrough</span><span class="lang-zh">有 — 直通</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">No</span><span class="lang-zh">冇</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Volume tracking</span><span class="lang-zh">交易量追蹤</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">On-chain per-user PDAs</span><span class="lang-zh">鏈上每用戶PDA</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None</span><span class="lang-zh">冇</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None</span><span class="lang-zh">冇</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Token-2022</span><span class="lang-zh">Token-2022</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes</span><span class="lang-zh">支援</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes</span><span class="lang-zh">支援</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes</span><span class="lang-zh">支援</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Pool creation</span><span class="lang-zh">池創建</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Auto on graduation</span><span class="lang-zh">畢業時自動</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Permissionless</span><span class="lang-zh">無需許可</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Permissionless</span><span class="lang-zh">無需許可</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Volume Tracking -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">On-Chain Volume Tracking</span><span class="lang-zh">鏈上交易量追蹤</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">PumpSwap tracks trading volume on-chain via dedicated PDA accounts — something no other Solana AMM does:</span>
+        <span class="lang-zh">PumpSwap通過專用PDA帳戶喺鏈上追蹤交易量 — 其他Solana AMM都冇做嘅嘢：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Global volume accumulator</span> — <code>["global_volume_accumulator"]</code> PDA tracks total protocol volume</span><span class="lang-zh"><span class="text-white">全局交易量累加器</span> — <code>["global_volume_accumulator"]</code> PDA追蹤協議總交易量</span></li>
+        <li><span class="lang-en"><span class="text-white">User volume accumulator</span> — <code>["user_volume_accumulator", user]</code> PDA tracks per-wallet volume</span><span class="lang-zh"><span class="text-white">用戶交易量累加器</span> — <code>["user_volume_accumulator", user]</code> PDA追蹤每個錢包嘅交易量</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">This likely supports future features like volume-based fee tiers, loyalty rewards, or retroactive airdrops — all verifiable on-chain without needing off-chain indexing.</span>
+        <span class="lang-zh">呢個可能支援未來功能，例如基於交易量嘅費率等級、忠誠度獎勵或追溯空投 — 全部可以喺鏈上驗證，唔使鏈下索引。</span>
+      </p>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Single quote asset</span> — WSOL-only means all positions have SOL exposure. No stablecoin pairs</span><span class="lang-zh"><span class="text-white">單一報價資產</span> — 只有WSOL意味住所有倉位都有SOL敞口。冇穩定幣交易對</span></li>
+        <li><span class="lang-en"><span class="text-white">Liquidity fragmentation</span> — tokens that graduated pre-PumpSwap still trade on Raydium, splitting volume</span><span class="lang-zh"><span class="text-white">流動性碎片化</span> — PumpSwap之前畢業嘅token仍然喺Raydium交易，分散咗交易量</span></li>
+        <li><span class="lang-en"><span class="text-white">Centralized fee config</span> — fee parameters are set by the protocol, not by LPs or governance</span><span class="lang-zh"><span class="text-white">中心化費用配置</span> — 費用參數由協議設定，唔係LP或治理決定</span></li>
+        <li><span class="lang-en"><span class="text-white">Account layout instability</span> — multiple instruction variants (21/23/24 accounts) suggest rapid iteration, which can break integrations</span><span class="lang-zh"><span class="text-white">帳戶佈局唔穩定</span> — 多種指令變體（21/23/24帳戶）表明快速迭代，可能破壞整合</span></li>
+      </ul>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Fee Program</span><span class="lang-zh">費用程序</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Global Config</span><span class="lang-zh">全局配置</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">ADyA8hdefvWN2dbGGWFotbzWxrAvLW83WG6QCVXvJKqw</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Event Authority</span><span class="lang-zh">事件權限</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">GS4CU59F31iL7aR2Q8zVS8DRrcRnXX1yjQ66TqNVQnaR</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm/pumpfun`} class="text-zinc-500 hover:text-white transition-colors text-sm">← PumpFun</a>
+      <a href={`${base}/products/amm/raydium-launchlab`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">Raydium LaunchLab →</a>
+    </div>
+  </article>
+</Layout>

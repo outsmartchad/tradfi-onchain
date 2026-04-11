@@ -1,0 +1,402 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="PumpFun — Bonding Curve Token Launchpad">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/amm`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Onchain AMM Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">Token Launchpad</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">PumpFun — Bonding Curve</span><span class="lang-zh">PumpFun — 聯合曲線</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">The dominant token launchpad on Solana. Anyone can create a token for ~$2, trade it on a bonding curve, and watch it graduate to PumpSwap when market cap hits ~$69K. Over 10 million tokens launched — survival rate around 1-2%.</span>
+      <span class="lang-zh">Solana上最主流嘅token發射台。任何人用~$2就開到一個幣，喺bonding curve上面交易，去到~$69K market cap就自動畢業去PumpSwap。超過1,000萬個token launch過 — 存活率大約1-2%。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Tokens Launched</span><span class="lang-zh">已發射代幣</span></p>
+        <p class="text-2xl font-bold text-white mt-1">10M+</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Launch Cost</span><span class="lang-zh">發射成本</span></p>
+        <p class="text-2xl font-bold text-white mt-1">~$2</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Graduation Cap</span><span class="lang-zh">畢業門檻</span></p>
+        <p class="text-2xl font-bold text-white mt-1">~$69K</p>
+      </div>
+      <div class="bg-zinc-900/50 border border-zinc-800 rounded-lg p-4">
+        <p class="text-zinc-500 text-xs uppercase tracking-wider"><span class="lang-en">Trading Fee</span><span class="lang-zh">交易費</span></p>
+        <p class="text-2xl font-bold text-white mt-1">1%</p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <!-- How the Bonding Curve Works -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How the Bonding Curve Works</span><span class="lang-zh">聯合曲線點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">PumpFun uses a <span class="text-white font-medium">constant product formula</span> — the same x×y=k math behind Uniswap. But instead of a full liquidity pool, it runs on a virtual AMM with two reserve types:</span>
+        <span class="lang-zh">PumpFun用嘅係<span class="text-white font-medium">恆定乘積公式</span> — 同Uniswap背後嘅 x×y=k 數學一樣。但唔係一個完整嘅流動性池，而係一個虛擬AMM，有兩種reserve：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Virtual reserves</span> — used for pricing. The curve calculates <code>tokens_out = (virtualTokenReserves × netSol) / (virtualSolReserves + netSol)</code></span><span class="lang-zh"><span class="text-white">虛擬reserve</span> — 用嚟定價。曲線計算 <code>tokens_out = (virtualTokenReserves × netSol) / (virtualSolReserves + netSol)</code></span></li>
+        <li><span class="lang-en"><span class="text-white">Real reserves</span> — actual tokens available for purchase. Output is capped at <code>realTokenReserves</code> so the curve can never give out more tokens than it holds</span><span class="lang-zh"><span class="text-white">真實reserve</span> — 實際可以買到嘅token。輸出會限制喺 <code>realTokenReserves</code>，確保曲線唔會畀出多過佢擁有嘅token</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Buy formula:</span> A 1% fee is deducted from the SOL input first. Then the constant product formula determines how many tokens the buyer receives. The output is the minimum of the calculated amount and the remaining real reserves.</span>
+        <span class="lang-zh"><span class="text-white font-medium">買入公式：</span>先從SOL輸入中扣除1%手續費。然後恆定乘積公式決定買家收到幾多token。輸出取計算結果同剩餘真實reserve嘅較小值。</span>
+      </p>
+
+      <div class="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4 font-mono text-sm">
+        <p class="text-zinc-500 mb-2">// Buy (SOL → Token)</p>
+        <p>fee = solAmount / 100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600">// 1% flat fee</span></p>
+        <p>netSol = solAmount - fee</p>
+        <p>tokensOut = (virtualTokenReserves × netSol) / (virtualSolReserves + netSol)</p>
+        <p>result = min(tokensOut, realTokenReserves)</p>
+      </div>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Sell formula:</span> The reverse — tokens go in, SOL comes out. Same 1% fee, deducted from the gross SOL output.</span>
+        <span class="lang-zh"><span class="text-white font-medium">賣出公式：</span>反過嚟 — 放token入去，SOL出嚟。同樣1%手續費，從SOL總輸出中扣除。</span>
+      </p>
+
+      <div class="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4 font-mono text-sm">
+        <p class="text-zinc-500 mb-2">// Sell (Token → SOL)</p>
+        <p>grossSol = (virtualSolReserves × tokenAmount) / (virtualTokenReserves + tokenAmount)</p>
+        <p>fee = grossSol / 100</p>
+        <p>netSol = grossSol - fee</p>
+      </div>
+
+      <!-- Token Creation -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Token Creation Flow</span><span class="lang-zh">Token創建流程</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Creating a token on PumpFun is permissionless and nearly free. The creator specifies a name, symbol, and metadata URI. The protocol creates the mint, initializes the bonding curve, and opens trading — all in a single transaction.</span>
+        <span class="lang-zh">喺PumpFun開幣係無需許可嘅，幾乎免費。Creator指定名稱、符號同metadata URI。協議會創建mint、初始化bonding curve、開放交易 — 全部一個transaction搞掂。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The bonding curve account stores these fields on-chain:</span>
+        <span class="lang-zh">Bonding curve帳戶喺鏈上儲存以下字段：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Field</span><span class="lang-zh">字段</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Type</span><span class="lang-zh">類型</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">virtualTokenReserves</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Virtual token balance for pricing</span><span class="lang-zh">用於定價嘅虛擬token餘額</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">virtualSolReserves</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Virtual SOL balance for pricing</span><span class="lang-zh">用於定價嘅虛擬SOL餘額</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">realTokenReserves</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Actual tokens available to buy</span><span class="lang-zh">實際可買嘅token數量</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">realSolReserves</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">SOL accumulated from purchases</span><span class="lang-zh">從購買中累積嘅SOL</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">tokenTotalSupply</td>
+              <td class="py-3 px-2">u64</td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed total supply at creation</span><span class="lang-zh">創建時嘅固定總供應量</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">complete</td>
+              <td class="py-3 px-2">bool</td>
+              <td class="py-3 px-2"><span class="lang-en">True when graduated — no more trades</span><span class="lang-zh">畢業時為true — 唔再交易</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Graduation -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Graduation Mechanics</span><span class="lang-zh">畢業機制</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">When all <code>realTokenReserves</code> are exhausted (bought out), the bonding curve "graduates." The <code>complete</code> flag flips to true, and no further buys or sells can happen on the curve. At this point:</span>
+        <span class="lang-zh">當所有 <code>realTokenReserves</code> 被買清（買完），bonding curve就「畢業」。<code>complete</code> flag變成true，曲線上唔再有買賣。呢個時候：</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Curve locks</span> — <code>getBuyPrice()</code> and <code>getSellPrice()</code> both return 0</span><span class="lang-zh"><span class="text-white">曲線鎖定</span> — <code>getBuyPrice()</code> 同 <code>getSellPrice()</code> 都返回0</span></li>
+        <li><span class="lang-en"><span class="text-white">Liquidity migrates to PumpSwap</span> — the accumulated SOL and remaining tokens move to a full AMM pool</span><span class="lang-zh"><span class="text-white">流動性遷移到PumpSwap</span> — 累積嘅SOL同剩餘token搬去一個完整嘅AMM池</span></li>
+        <li><span class="lang-en"><span class="text-white">Trading continues on PumpSwap</span> — now as a standard constant-product AMM with real liquidity</span><span class="lang-zh"><span class="text-white">交易繼續喺PumpSwap</span> — 變成一個標準恆定乘積AMM，有真實流動性</span></li>
+      </ol>
+
+      <p>
+        <span class="lang-en">The graduation threshold is approximately <span class="text-white">$69K market cap</span> — this is when the real SOL reserves reach the migration point. Before 2025, graduated tokens migrated to Raydium. After PumpFun launched PumpSwap, all new graduations go to their own AMM.</span>
+        <span class="lang-zh">畢業門檻大約係<span class="text-white">$69K market cap</span> — 呢個係真實SOL reserve去到遷移點嘅時候。2025年之前，畢業嘅token遷移去Raydium。PumpFun推出PumpSwap之後，所有新畢業都去佢哋自己嘅AMM。</span>
+      </p>
+
+      <!-- Fee Structure -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Structure</span><span class="lang-zh">費用結構</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Fee</span><span class="lang-zh">費用</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Rate</span><span class="lang-zh">費率</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Destination</span><span class="lang-zh">去向</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2"><span class="lang-en">Trading fee</span><span class="lang-zh">交易費</span></td>
+              <td class="py-3 px-2 text-white">1%</td>
+              <td class="py-3 px-2"><span class="lang-en">PumpFun protocol (rotated across 8 fee recipients)</span><span class="lang-zh">PumpFun協議（輪轉分配到8個收費地址）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2"><span class="lang-en">Creator fee</span><span class="lang-zh">創建者費</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Variable</span><span class="lang-zh">可變</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Token creator vault (introduced 2026)</span><span class="lang-zh">Token創建者金庫（2026年引入）</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2"><span class="lang-en">Token creation</span><span class="lang-zh">創建Token</span></td>
+              <td class="py-3 px-2 text-white">~0.02 SOL</td>
+              <td class="py-3 px-2"><span class="lang-en">Rent + TX fee only</span><span class="lang-zh">只係租金 + 交易費</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">PumpFun rotates fee collection across <span class="text-white">8 different recipient addresses</span> — each transaction randomly selects one. This is likely for operational reasons (spreading RPC load or compliance).</span>
+        <span class="lang-zh">PumpFun將收費輪轉分配到<span class="text-white">8個唔同嘅接收地址</span> — 每筆交易隨機選一個。呢個可能係為咗運營原因（分散RPC負載或合規需要）。</span>
+      </p>
+
+      <!-- Technical: Instruction Layout -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Technical: Instruction Layout</span><span class="lang-zh">技術細節：指令佈局</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The program uses <span class="text-white">Anchor-style 8-byte discriminators</span> for each instruction. Buy requires 17 accounts, sell requires 15.</span>
+        <span class="lang-zh">程序使用<span class="text-white">Anchor風格嘅8字節discriminator</span>做每個指令。買入需要17個帳戶，賣出需要15個。</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Instruction</span><span class="lang-zh">指令</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Discriminator</span><span class="lang-zh">判別碼</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Accounts</span><span class="lang-zh">帳戶數</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Buy</td>
+              <td class="py-3 px-2 font-mono text-xs">66063d1201daeaea</td>
+              <td class="py-3 px-2">17</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Sell</td>
+              <td class="py-3 px-2 font-mono text-xs">33e685a4017f83ad</td>
+              <td class="py-3 px-2">15</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Create</td>
+              <td class="py-3 px-2 font-mono text-xs">181ec8280517077a</td>
+              <td class="py-3 px-2"><span class="lang-en">Variable</span><span class="lang-zh">可變</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">SetParams</td>
+              <td class="py-3 px-2 font-mono text-xs">a51f8635bdb482ff</td>
+              <td class="py-3 px-2"><span class="lang-en">Variable</span><span class="lang-zh">可變</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white">Buy instruction data</span> is 25 bytes: 8-byte discriminator + <code>amount</code> (u64, exact tokens to receive) + <code>max_sol_cost</code> (u64, slippage-adjusted SOL limit) + <code>track_volume</code> (u8, volume tracking flag).</span>
+        <span class="lang-zh"><span class="text-white">Buy指令數據</span>係25字節：8字節discriminator + <code>amount</code>（u64，要收到嘅確切token數）+ <code>max_sol_cost</code>（u64，計入滑點嘅SOL上限）+ <code>track_volume</code>（u8，交易量追蹤flag）。</span>
+      </p>
+
+      <!-- Key Accounts in Buy TX -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Key Accounts in a Buy Transaction</span><span class="lang-zh">買入交易嘅關鍵帳戶</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium">#</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Account</span><span class="lang-zh">帳戶</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Role</span><span class="lang-zh">角色</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">0</td>
+              <td class="py-3 px-2 text-white">global</td>
+              <td class="py-3 px-2"><span class="lang-en">Global config (readonly)</span><span class="lang-zh">全局配置（只讀）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">1</td>
+              <td class="py-3 px-2 text-white">fee_recipient</td>
+              <td class="py-3 px-2"><span class="lang-en">Randomly selected from 8 addresses</span><span class="lang-zh">從8個地址中隨機選取</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">3</td>
+              <td class="py-3 px-2 text-white">bonding_curve</td>
+              <td class="py-3 px-2"><span class="lang-en">Curve state (writable)</span><span class="lang-zh">曲線狀態（可寫）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">6</td>
+              <td class="py-3 px-2 text-white">user</td>
+              <td class="py-3 px-2"><span class="lang-en">Buyer wallet (signer)</span><span class="lang-zh">買家錢包（簽名者）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2">9</td>
+              <td class="py-3 px-2 text-white">creator_vault</td>
+              <td class="py-3 px-2"><span class="lang-en">Creator fee collection</span><span class="lang-zh">創建者費用收集</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2">16</td>
+              <td class="py-3 px-2 text-white">coin_fee_config</td>
+              <td class="py-3 px-2"><span class="lang-en">Per-coin fee settings (not a PDA — must scan recent TXs)</span><span class="lang-zh">每個幣嘅費用設定（唔係PDA — 要掃描最近TX）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Important gotcha:</span> Account #16 (<code>coin_fee_config</code>) is <span class="text-white">not derivable as a PDA</span>. You must scan recent transactions on the bonding curve to find it. This is a common stumbling block for anyone building their own PumpFun buy bot.</span>
+        <span class="lang-zh"><span class="text-white font-medium">重要陷阱：</span>帳戶#16（<code>coin_fee_config</code>）<span class="text-white">唔係PDA，推導唔到</span>。你要掃描bonding curve上嘅最近交易先搵到佢。呢個係任何人自己build PumpFun買入bot時常見嘅踩坑位。</span>
+      </p>
+
+      <!-- Risks -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Extreme failure rate</span> — 98%+ of tokens never graduate. Most go to zero within hours</span><span class="lang-zh"><span class="text-white">極高失敗率</span> — 超過98%嘅token永遠畢唔到業。大多數幾個鐘就歸零</span></li>
+        <li><span class="lang-en"><span class="text-white">Sniper bots</span> — bots buy in the same block as token creation, front-running organic buyers</span><span class="lang-zh"><span class="text-white">搶跑機器人</span> — bot喺token創建嘅同一個block買入，搶喺正常買家前面</span></li>
+        <li><span class="lang-en"><span class="text-white">Creator dumps</span> — creators can buy their own token early, then sell after hype builds</span><span class="lang-zh"><span class="text-white">創建者拋售</span> — 創建者可以早期買自己嘅token，等熱度起嚟再賣</span></li>
+        <li><span class="lang-en"><span class="text-white">No audits</span> — tokens are not reviewed. Metadata can be misleading or impersonating other projects</span><span class="lang-zh"><span class="text-white">冇審計</span> — token唔經審查。Metadata可以誤導或冒充其他項目</span></li>
+        <li><span class="lang-en"><span class="text-white">Post-graduation risk</span> — graduating to PumpSwap doesn't guarantee continued volume or price support</span><span class="lang-zh"><span class="text-white">畢業後風險</span> — 畢業到PumpSwap唔代表有持續成交量或價格支撐</span></li>
+      </ul>
+
+      <!-- Comparison -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">PumpFun vs Other Launchpads</span><span class="lang-zh">PumpFun同其他發射台比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">PumpFun</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Raydium LaunchLab</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Meteora DBC</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Curve type</span><span class="lang-zh">曲線類型</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Constant product</span><span class="lang-zh">恆定乘積</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Configurable (fixed / linear)</span><span class="lang-zh">可配置（固定/線性）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Dynamic bonding curve</span><span class="lang-zh">動態聯合曲線</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Graduates to</span><span class="lang-zh">畢業去</span></td>
+              <td class="py-3 px-2 text-white">PumpSwap</td>
+              <td class="py-3 px-2">Raydium CPMM</td>
+              <td class="py-3 px-2">Meteora DAMM v2</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Trading fee</span><span class="lang-zh">交易費</span></td>
+              <td class="py-3 px-2 text-white">1%</td>
+              <td class="py-3 px-2"><span class="lang-en">Configurable</span><span class="lang-zh">可配置</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Configurable</span><span class="lang-zh">可配置</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Creator fees</span><span class="lang-zh">創建者費用</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Yes (2026+)</span><span class="lang-zh">有（2026+）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes</span><span class="lang-zh">有</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Yes</span><span class="lang-zh">有</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Market share</span><span class="lang-zh">市場份額</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Dominant</span><span class="lang-zh">主導</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Growing</span><span class="lang-zh">增長中</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Niche</span><span class="lang-zh">小眾</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Program Info -->
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Program Info</span><span class="lang-zh">程序資訊</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Program ID</span><span class="lang-zh">程序ID</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Fee Program</span><span class="lang-zh">費用程序</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">pfeeUxB6jkeY1Hxd7CsFCAjcbHA9rWtchMGdZ6VojVZ</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Global Account</span><span class="lang-zh">全局帳戶</span></td>
+              <td class="py-3 px-2 text-white font-mono text-xs">4wTV1YmiEkRvAtNtsSGPtUrqRYQMe5SKy2uB4Jjaxnjf</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Framework</span><span class="lang-zh">框架</span></td>
+              <td class="py-3 px-2 text-white">Anchor</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/amm`} class="text-zinc-500 hover:text-white transition-colors text-sm">← AMM Overview</a>
+      <a href={`${base}/products/amm/pumpswap`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">PumpSwap →</a>
+    </div>
+  </article>
+</Layout>
