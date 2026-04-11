@@ -10,16 +10,16 @@ const base = '/tradfi-onchain';
     </p>
     <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">Polymarket</h1>
     <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
-      <span class="lang-en">An onchain prediction market where every real-world event becomes a binary contract. Price = market-implied probability, set by traders putting real money behind their views.</span>
-      <span class="lang-zh">一個鏈上預測市場，每個現實世界事件變成一個binary contract。價格 = market implied probability，由真金白銀嘅交易者決定。</span>
+      <span class="lang-en">The dominant onchain prediction market — a hybrid-decentralized CLOB where every real-world event becomes a binary contract settled on Polygon. Not an AMM. A real order book with maker/taker dynamics, backed by UMA's optimistic oracle for resolution. ICE (NYSE's parent) has invested ~$2 billion. Price = market-implied probability, enforced by real money.</span>
+      <span class="lang-zh">最大嘅鏈上預測市場 — 一個hybrid-decentralized CLOB，每個真實世界事件都變成喺Polygon上結算嘅binary contract。唔係AMM，係真正嘅order book，有maker/taker dynamics，用UMA嘅optimistic oracle做resolution。ICE（NYSE母公司）已投資~$20億。價格 = market-implied probability，由真金白銀enforce。</span>
     </p>
 
     <!-- Stats grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
-        <p class="text-2xl font-bold text-white">$9.7B</p>
+        <p class="text-2xl font-bold text-white">$7B</p>
         <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">30-day volume</span><span class="lang-zh">30日交易量</span>
+          <span class="lang-en">Monthly vol record (Feb 2026)</span><span class="lang-zh">月交易量紀錄（2026年2月）</span>
         </p>
       </div>
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
@@ -29,15 +29,15 @@ const base = '/tradfi-onchain';
         </p>
       </div>
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
-        <p class="text-2xl font-bold text-white">$600M</p>
+        <p class="text-2xl font-bold text-white">~$2B</p>
         <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">ICE investment</span><span class="lang-zh">ICE投資</span>
+          <span class="lang-en">ICE total investment</span><span class="lang-zh">ICE總投資</span>
         </p>
       </div>
       <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
-        <p class="text-2xl font-bold text-white">535+</p>
+        <p class="text-2xl font-bold text-white">CLOB</p>
         <p class="text-xs text-zinc-500 mt-1">
-          <span class="lang-en">Active AI markets</span><span class="lang-zh">活躍AI市場</span>
+          <span class="lang-en">Not AMM — real order book</span><span class="lang-zh">唔係AMM — 真order book</span>
         </p>
       </div>
     </div>
@@ -45,70 +45,392 @@ const base = '/tradfi-onchain';
     <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
 
       <p>
-        <span class="lang-en">Unlike surveys or analyst opinions, prediction markets aggregate information through financial incentives. If you believe the market is mispricing an outcome, you have a direct way to profit from your conviction. This mechanism has consistently outperformed traditional methods of forecasting — Polymarket's 2024 US election pricing was closer to the final result than any major poll. Real money, skin in the game, proved more accurate than aggregated surveys and analyst consensus.</span>
-        <span class="lang-zh">唔同於survey或analyst opinion，預測市場通過經濟激勵來匯集信息。如果你認為市場對某個結果定價錯誤，你可以直接從你嘅判斷中獲利。呢個機制持續跑贏傳統預測方法 — Polymarket 2024年美國大選嘅定價比所有主流民調更接近最終結果。Real money，skin in the game，比匯總調查和分析師共識更準確。</span>
+        <span class="lang-en">Unlike surveys or analyst opinions, prediction markets aggregate information through financial incentives. If you believe the market is mispricing an outcome, you have a direct way to profit from your conviction. Polymarket's 2024 US election pricing was closer to the final result than any major poll. Real money, skin in the game, proved more accurate than aggregated surveys and analyst consensus.</span>
+        <span class="lang-zh">唔同於survey或analyst opinion，預測市場通過經濟激勵嚟匯集信息。如果你認為市場對某個結果定價錯誤，你可以直接從你嘅判斷中獲利。Polymarket 2024年美國大選嘅定價比所有主流民調更接近最終結果。Real money，skin in the game，比匯總調查和分析師共識更準確。</span>
       </p>
 
+      <!-- ============================================ -->
+      <!-- How It Works -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
-        <span class="lang-en">How It Works</span><span class="lang-zh">點樣運作</span>
+        <span class="lang-en">How It Works — Binary Contracts</span><span class="lang-zh">點樣運作 — 二元合約</span>
       </h2>
 
       <p>
-        <span class="lang-en">Each market is a yes/no contract. Take "Fed will cut rates in June" — you buy YES at $0.65, meaning the market-implied probability is 65%. If the outcome is correct, the contract pays $1. If incorrect, it pays $0. Your maximum loss is the price you paid.</span>
-        <span class="lang-zh">每個market係一個yes/no contract。以「Fed will cut rates in June」為例 — 你以$0.65買YES，即market implied probability 65%。如果結果正確，合約支付$1。如果錯誤，支付$0。你嘅最大損失係你付出嘅價格。</span>
+        <span class="lang-en">Each market is a yes/no contract. Take "Fed will cut rates in June" — you buy YES at $0.65, meaning the market-implied probability is 65%. If the outcome is correct, the contract pays $1. If incorrect, it pays $0. Your maximum loss is the price you paid. No leverage, no liquidation, fully collateralized.</span>
+        <span class="lang-zh">每個market係一個yes/no contract。以「Fed will cut rates in June」為例 — 你以$0.65買YES，即market implied probability 65%。結果正確，合約付$1。錯誤，付$0。最大損失就係你付出嘅價格。冇槓桿，冇爆倉，全額抵押。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- CTF Exchange -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Architecture: The CTF Exchange (CLOB)</span><span class="lang-zh">架構：CTF Exchange（CLOB）</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Polymarket does <span class="text-white font-medium">not</span> use an AMM. It runs a <span class="text-white">Central Limit Order Book</span> (CLOB) called the CTF Exchange — a hybrid-decentralized system where order matching happens off-chain for speed, but settlement is executed non-custodially on Polygon via EIP-712 signed messages.</span>
+        <span class="lang-zh">Polymarket<span class="text-white font-medium">唔係</span>用AMM。佢跑一個叫CTF Exchange嘅<span class="text-white">Central Limit Order Book</span>（CLOB）— 一個hybrid-decentralized系統，order matching喺off-chain進行以確保速度，但settlement通過EIP-712 signed messages喺Polygon上non-custodially執行。</span>
       </p>
 
       <p>
-        <span class="lang-en">The architecture is hybrid. Order matching happens on centralized servers for speed, but settlement and funds are held onchain via Polygon USDC. This makes it non-custodial — you hold your own funds in your own wallet. The combination gives you centralized-exchange speed with onchain settlement guarantees.</span>
-        <span class="lang-zh">架構係混合式。Order matching喺centralized server上進行以確保速度，但結算同資金喺Polygon USDC鏈上持有。呢個令其成為non-custodial — 你自己喺自己錢包持有資金。呢個組合俾你centralized exchange嘅速度同鏈上結算保證。</span>
+        <span class="lang-en">The operator validates signatures, checks balances, verifies tick size compliance, matches marketable orders immediately, and submits matched trades on-chain for atomic settlement. Non-marketable orders rest on the book until filled or cancelled. <span class="text-white">You never give up custody of your funds</span> — the Exchange contract transfers tokens directly between wallets.</span>
+        <span class="lang-zh">Operator驗證簽名、檢查餘額、驗證tick size合規性、即時matching可成交orders，然後將matched trades提交到鏈上做atomic settlement。未成交orders留喺book上面直到fill或取消。<span class="text-white">你永遠唔使放棄資金控制權</span> — Exchange contract直接喺錢包之間轉移tokens。</span>
       </p>
 
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Order Types</span><span class="lang-zh">訂單類型</span>
+      </h3>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Type</span><span class="lang-zh">類型</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Behavior</span><span class="lang-zh">行為</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">GTC</td>
+              <td class="py-3 px-2"><span class="lang-en">Good-Til-Cancelled — rests on book until filled or cancelled</span><span class="lang-zh">Good-Til-Cancelled — 留喺book直到fill或取消</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">GTD</td>
+              <td class="py-3 px-2"><span class="lang-en">Good-Til-Date — auto-expires at specified timestamp</span><span class="lang-zh">Good-Til-Date — 喺指定時間戳自動到期</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">FOK</td>
+              <td class="py-3 px-2"><span class="lang-en">Fill-Or-Kill — fill entirely and immediately, or cancel</span><span class="lang-zh">Fill-Or-Kill — 即時全部fill，否則取消</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">FAK</td>
+              <td class="py-3 px-2"><span class="lang-en">Fill-And-Kill — fill what's available now, cancel the rest</span><span class="lang-zh">Fill-And-Kill — 即時fill可用部分，取消剩餘</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">Tick sizes: <code>0.1</code>, <code>0.01</code>, <code>0.001</code>, or <code>0.0001</code> — each market has a specific tick size. Orders that don't conform are rejected. Tick size can change dynamically when price moves above 0.96 or below 0.04.</span>
+        <span class="lang-zh">Tick sizes：<code>0.1</code>、<code>0.01</code>、<code>0.001</code>或<code>0.0001</code> — 每個market有特定嘅tick size。唔符合嘅orders會被reject。價格去到0.96以上或0.04以下時tick size可以動態改變。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Conditional Token Framework -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Conditional Token Framework — How Tokens Are Created</span><span class="lang-zh">Conditional Token Framework — Token點樣創建</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Built on the <span class="text-white">Gnosis Conditional Token Framework</span> — an open standard that tokenizes outcomes as ERC-1155 tokens on Polygon. Every YES/NO pair is backed by exactly <span class="text-white">$1.00 USDC.e</span> locked in the CTF contract. Full collateralization, always.</span>
+        <span class="lang-zh">建基於<span class="text-white">Gnosis Conditional Token Framework</span> — 一個開放標準，將結果代幣化為Polygon上嘅ERC-1155 tokens。每對YES/NO都由精確嘅<span class="text-white">$1.00 USDC.e</span>鎖定喺CTF contract入面支撐。永遠全額抵押。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Three core operations:</span>
+        <span class="lang-zh">三個核心操作：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Split</span> — deposit $1 USDC.e → receive 1 YES + 1 NO token</span><span class="lang-zh"><span class="text-white">Split</span> — 存入$1 USDC.e → 收到1個YES + 1個NO token</span></li>
+        <li><span class="lang-en"><span class="text-white">Merge</span> — return 1 YES + 1 NO → receive $1 USDC.e back</span><span class="lang-zh"><span class="text-white">Merge</span> — 交還1個YES + 1個NO → 取回$1 USDC.e</span></li>
+        <li><span class="lang-en"><span class="text-white">Redeem</span> — after resolution, winning tokens redeem for $1 each (losing tokens = worthless)</span><span class="lang-zh"><span class="text-white">Redeem</span> — resolution之後，贏嘅tokens兌換$1（輸嘅tokens = 冇價值）</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">How minting works in practice:</span> Bettor X wants YES at $0.60, Bettor Y wants NO at $0.40. Combined = $1.00 locked as collateral. 1 YES token minted to X, 1 NO token minted to Y. The CLOB handles this matching automatically.</span>
+        <span class="lang-zh"><span class="text-white font-medium">實際minting運作：</span>Bettor X想以$0.60買YES，Bettor Y想以$0.40買NO。合計 = $1.00鎖定做collateral。1個YES token mint畀X，1個NO token mint畀Y。CLOB自動處理matching。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- UMA Oracle -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Resolution: UMA Optimistic Oracle</span><span class="lang-zh">結算：UMA Optimistic Oracle</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">When a market's event concludes, resolution happens through UMA's <span class="text-white">three-layer optimistic oracle</span>:</span>
+        <span class="lang-zh">當market嘅事件結束時，resolution通過UMA嘅<span class="text-white">三層optimistic oracle</span>進行：</span>
+      </p>
+
+      <div class="space-y-6 mt-4">
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">1</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">Proposal</span><span class="lang-zh">提案</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">Anyone posts an outcome + <span class="text-white">$750 USDC.e bond</span>. This starts the clock.</span><span class="lang-zh">任何人提交結果 + <span class="text-white">$750 USDC.e���證金</span>。時鐘開始計時。</span></p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">2</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">Challenge Period (2 hours)</span><span class="lang-zh">挑戰期（2小時）</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">Anyone can dispute by posting a counter-bond of $750. If no dispute, the proposal auto-accepts. ~98.5% of markets resolve here without escalation.</span><span class="lang-zh">任何人可以提交$750反保證金嚟dispute。如果冇dispute，proposal自動接受。~98.5%嘅markets喺呢度resolve，唔使升級。</span></p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">3</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">DVM Vote (if disputed)</span><span class="lang-zh">DVM投票（如有爭議）</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">First dispute: market resets, new request issued. Second dispute: escalates to UMA <span class="text-white">Data Verification Mechanism</span> — token holders vote over ~48 hours. Winner gets their bond back + half the loser's bond.</span><span class="lang-zh">第一次dispute：market重置，發出新request。第二次dispute：升級到UMA <span class="text-white">Data Verification Mechanism</span> — token holders投票，約48小時。贏家攞返保證金 + 輸家保證金嘅一半。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Edge cases:</span> If neither YES nor NO is appropriate, a <span class="text-white">50/50 resolution</span> makes each token redeem for $0.50. "Too Early" proposals (before event concludes) automatically lose their bond. Polymarket is non-custodial and <span class="text-white">cannot alter or reverse</span> resolutions once finalized by UMA.</span>
+        <span class="lang-zh"><span class="text-white font-medium">邊緣情況：</span>如果YES同NO都唔啱，<span class="text-white">50/50 resolution</span>令每個token兌換$0.50。「Too Early」嘅提案（事件未結束前提交）自動輸保證金。Polymarket係non-custodial，UMA finalize之後<span class="text-white">唔能更改或逆轉</span>resolution。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Multi-Outcome Markets -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Multi-Outcome (Negative Risk) Markets</span><span class="lang-zh">多結果（Negative Risk）市場</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Not all markets are binary. <span class="text-white">Negative risk markets</span> are mutually exclusive multi-outcome events — e.g., "Who wins the election?" with 5 candidates. Each outcome has its own binary market, but <span class="text-white">only one can resolve YES</span>; all others resolve NO. YES prices across all outcomes should approximately sum to $1.00.</span>
+        <span class="lang-zh">唔係所有market都係binary。<span class="text-white">Negative risk markets</span>係互斥嘅多結果事件 — 例如「邊個贏選舉？」有5個候選人。每個結果有自己嘅binary market，但<span class="text-white">只有一個會resolve YES</span>；其他全部resolve NO。所有結果嘅YES價格加埋應該約等於$1.00。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Key mechanic:</span> A NO share in any market can be <span class="text-white">atomically converted</span> into 1 YES share in every other market via the Neg Risk Adapter contract. Example: holding 1 NO on "0 rate cuts" = holding 1 YES on each of {1, 2, 3, ..., 8+} rate cuts. This creates arbitrage-free pricing across all outcomes.</span>
+        <span class="lang-zh"><span class="text-white font-medium">關鍵機制：</span>任何market嘅NO share可以通過Neg Risk Adapter contract<span class="text-white">原子轉換</span>為其他所有market嘅1個YES share。例子：持有1個「0次減息」NO = 持有{1、2、3、...、8+}次減息嘅各1個YES。呢個創建咗跨所有結果嘅無套利定價。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Fee Structure -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Fee Structure</span><span class="lang-zh">費用結構</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white">Makers pay zero fees.</span> Only takers pay. Fee formula: <code>fee = shares × feeRate × p × (1-p)</code> — fees peak at 50% probability and decrease toward both extremes. A trade at $0.30 costs the same fee as one at $0.70.</span>
+        <span class="lang-zh"><span class="text-white">Maker零手續費。</span>只有taker付費。費用公式：<code>fee = shares × feeRate × p × (1-p)</code> — 費用喺50%概率時最高，向兩個極端遞減。以$0.30交易嘅費用同以$0.70交易嘅一樣。</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2 mt-4">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Category</span><span class="lang-zh">類別</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Taker Fee Rate</span><span class="lang-zh">Taker費率</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Crypto</td>
+              <td class="py-3 px-2">7.2%</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Finance / Politics / Tech</span><span class="lang-zh">金融 / 政治 / 科技</span></td>
+              <td class="py-3 px-2">4%</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Economics / Culture</span><span class="lang-zh">經濟 / 文化</span></td>
+              <td class="py-3 px-2">5%</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Sports</td>
+              <td class="py-3 px-2">3%</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Geopolitics</span><span class="lang-zh">地緣政治</span></td>
+              <td class="py-3 px-2 text-green-400"><span class="lang-en">Free (0%)</span><span class="lang-zh">免費（0%）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Maker rebates:</span> 100% of collected taker fees are redistributed daily to market makers, proportional to their share of executed maker liquidity in each market. Separate <span class="text-white">liquidity rewards program</span> pays additional USDC to resting limit orders using quadratic scoring — orders closer to the midpoint earn more.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Maker返利：</span>100%收取到嘅taker費用每日按比例分配畀market makers。另外嘅<span class="text-white">流動性獎勵計劃</span>用quadratic scoring向resting limit orders額外派USDC — 越接近midpoint嘅orders賺越多。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Available Markets -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Available Markets</span><span class="lang-zh">可交易市場</span>
       </h2>
 
       <p>
-        <span class="lang-en">The market coverage is broad. Macro and policy markets track Fed rate decisions (updating faster than CME FedWatch), Trump executive orders across tariffs, crypto regulation, and immigration, and geopolitical outcomes from election results to diplomatic deals. Sports markets generate $120 million per day in volume across NBA, NFL, and soccer. Culture markets cover the Oscars, Grammy Awards, and celebrity events. The fastest-growing category is AI, with 535-plus active markets covering model rankings, benchmark results, and company valuations.</span>
-        <span class="lang-zh">市場覆蓋範圍廣泛。宏觀和政策市場追蹤Fed利率決定（更新速度比CME FedWatch更快）、Trump行政命令涵蓋關稅、加密監管和移民政策，以及從選舉結果到外交協議嘅地緣政治結果。體育市場每日產生$1.2億交易量，涵蓋NBA、NFL和足球。文化市場覆蓋奧斯卡、Grammy獎和名人事件。增長最快嘅類別係AI，有535個以上活躍市場，覆蓋模型排名、基準測試結果和公司估值。</span>
+        <span class="lang-en">Market coverage is broad and growing. Macro markets track Fed rate decisions (updating faster than CME FedWatch), Trump executive orders, and geopolitical outcomes. Sports generates ~$120M daily across NBA, NFL, soccer. The fastest-growing category is AI with 535+ active markets. Culture covers Oscars, Grammys, celebrity events.</span>
+        <span class="lang-zh">市場覆蓋範圍廣泛且持續增長。宏觀市場追蹤Fed利率決定（更新速度比CME FedWatch更快）、Trump行政命令同地緣政治結果。體育每日~$1.2億交易量，覆蓋NBA、NFL、足球。增長最快嘅類別係AI，有535+活躍市場。文化覆蓋奧斯卡、Grammy、名人事件。</span>
       </p>
 
+      <!-- ============================================ -->
+      <!-- API & Programmatic Trading -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">API & Programmatic Trading</span><span class="lang-zh">API同程序化交易</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">A significant share of Polymarket volume comes from algorithmic traders. The platform provides three APIs:</span>
+        <span class="lang-zh">Polymarket嘅交易量有相當部分嚟自algo traders。平台提供三個API：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium">API</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">CLOB API</td>
+              <td class="py-3 px-2"><span class="lang-en">Trading, orders, order book depth</span><span class="lang-zh">交易、訂單、order book深度</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Gamma API</td>
+              <td class="py-3 px-2"><span class="lang-en">Market discovery, metadata, events, search</span><span class="lang-zh">市場發現、metadata、事件、搜索</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">Data API</td>
+              <td class="py-3 px-2"><span class="lang-en">Trades, positions, analytics</span><span class="lang-zh">交易記錄、倉位、分析</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">WebSocket channels available for real-time order book updates, trade events, and personal order status. SDKs in <span class="text-white">Python, TypeScript, Rust, and Go</span>. Authentication via EIP-712 signatures. Rate limits generous: 15,000 req/10s general, 3,500 req/10s for order submission.</span>
+        <span class="lang-zh">WebSocket channels提供實時order book更新、trade events同個人order狀態。SDK有<span class="text-white">Python、TypeScript、Rust同Go</span>。認證通過EIP-712 signatures。Rate limits寬鬆：一般15,000 req/10s，下單3,500 req/10s。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- CTF Exchange V2 -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">CTF Exchange V2 (April 2026)</span><span class="lang-zh">CTF Exchange V2（2026年4月）</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Announced April 6, 2026 — the biggest infrastructure upgrade to date. Key changes:</span>
+        <span class="lang-zh">2026年4月6日公佈 — 迄今最大嘅基礎設施升級。主要變化：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Polymarket USD</span> — new wrapped stablecoin (1:1 USDC backed) replaces USDC.e as collateral</span><span class="lang-zh"><span class="text-white">Polymarket USD</span> — 新wrapped穩定幣（1:1 USDC支撐）取代USDC.e做collateral</span></li>
+        <li><span class="lang-en"><span class="text-white">Simplified order struct</span> — optimized for gas efficiency</span><span class="lang-zh"><span class="text-white">簡化訂單結構</span> — 優化gas效率</span></li>
+        <li><span class="lang-en"><span class="text-white">EIP-1271 support</span> — smart contract wallets and account abstraction</span><span class="lang-zh"><span class="text-white">EIP-1271支援</span> — 智能合約錢包同account abstraction</span></li>
+        <li><span class="lang-en"><span class="text-white">Builder codes</span> — on-chain order attribution for third-party integrators</span><span class="lang-zh"><span class="text-white">Builder codes</span> — 鏈上訂單歸屬，畀第三方整合者</span></li>
+      </ul>
+
+      <!-- ============================================ -->
+      <!-- Regulatory -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Regulatory Landscape</span><span class="lang-zh">監管格局</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Date</span><span class="lang-zh">日期</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Event</span><span class="lang-zh">事件</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">2022</td>
+              <td class="py-3 px-2"><span class="lang-en">$1.4M CFTC settlement — agreed to cease US operations</span><span class="lang-zh">$140萬CFTC和解 — 同意停止美國業務</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Jul 2025</td>
+              <td class="py-3 px-2"><span class="lang-en">DOJ and CFTC formally ended investigations</span><span class="lang-zh">DOJ同CFTC正式結束調查</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Oct 2025</td>
+              <td class="py-3 px-2"><span class="lang-en">ICE $1B investment (~$9B pre-money valuation)</span><span class="lang-zh">ICE $10億投資（~$90億pre-money估值）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white">Nov 2025</td>
+              <td class="py-3 px-2"><span class="lang-en">CFTC designated Polymarket US (QCX LLC) as regulated contract market</span><span class="lang-zh">CFTC將Polymarket US（QCX LLC）指定為受監管合約市場</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white">Mar 2026</td>
+              <td class="py-3 px-2"><span class="lang-en">ICE additional $600M investment (total ~$2B)</span><span class="lang-zh">ICE額外$6億投資（總計~$20億）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Geographic access:</span> Fully blocked in 33+ countries including US (international site), UK, France, Germany. Close-only in Singapore, Poland, Thailand, Taiwan. <span class="text-white">Hong Kong: fully accessible</span> — no restrictions. Polymarket US (<code>polymarket.us</code>) operates separately as a CFTC-regulated entity for US residents.</span>
+        <span class="lang-zh"><span class="text-white font-medium">地理限制：</span>33+國家完全封鎖，包括美國（國際站）、英國、法國、德國。新加坡、波蘭、泰國、台灣只能平倉。<span class="text-white">香港：完全可用</span> — 冇限制。Polymarket US（<code>polymarket.us</code>）作為CFTC監管實體獨立運營，服務美國居民。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Why Finance Professionals -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Why This Matters for Finance Professionals</span>
         <span class="lang-zh">點解金融從業者要關注</span>
       </h2>
 
       <p>
-        <span class="lang-en">The most important validation came from the 2024 US election. Polymarket's pricing consistently outperformed every major poll in predicting the final outcome. For anyone who has sat through a morning meeting watching analysts debate probability estimates based on survey data, this is a paradigm shift: a market where the price <em>is</em> the probability, updated in real-time, with real money enforcing accuracy.</span>
-        <span class="lang-zh">最重要嘅驗證來自2024年美國大選。Polymarket嘅定價在預測最終結果方面持續跑贏所有主流民調。對於任何曾經坐喺朝會入面睇分析師根據調查數據辯論概率估計嘅人嚟講，呢個係一個範式轉變：一個市場入面，價格<em>就係</em>概率，實時更新，真金白銀確保準確性。</span>
+        <span class="lang-en">Prediction market prices function as a <span class="text-white">real-time probability feed</span>. Market-implied probabilities for Fed rate decisions, geopolitical outcomes, and policy changes update faster and more accurately than traditional research reports. If your book is long rates, you can buy "Fed holds rates" contracts as a hedge — the binary payoff structure makes risk/reward simple to calculate.</span>
+        <span class="lang-zh">預測市場價格充當<span class="text-white">實時概率feed</span>。Fed利率決定、地緣政治結果和政策變動嘅market implied probabilities比傳統研究報告更新更快、更準確。如果你嘅倉位做多利率，你可以買「Fed維持利率」合約作為對沖 — binary payoff結構令風險/回報計算簡單。</span>
       </p>
 
       <p>
-        <span class="lang-en">ICE — the Intercontinental Exchange, parent company of the NYSE — invested $600 million directly into Polymarket. The signal is unambiguous: traditional exchange infrastructure operators see prediction markets as a next-generation information market with real value alongside stock markets. When the NYSE's parent company puts $600 million behind a platform, the institutional legitimacy question is settled.</span>
-        <span class="lang-zh">ICE — Intercontinental Exchange，NYSE嘅母公司 — 直接投資$6億入Polymarket。信號毫不含糊：傳統交易所基礎設施運營商認為預測市場係與股票市場並駕齊驅嘅下一代信息市場。當NYSE嘅母公司投放$6億入一個平台，機構合法性嘅問題已經解決。</span>
+        <span class="lang-en">ICE — parent company of NYSE — investing ~$2 billion signals unambiguously: traditional exchange operators see prediction markets as a next-generation information market. When the NYSE's parent company commits this level of capital, the institutional legitimacy question is settled.</span>
+        <span class="lang-zh">ICE — NYSE嘅母公司 — 投資~$20億嘅信號毫不含糊：傳統交易所運營商認為預測市場係下一代信息市場。當NYSE母公司投入呢個級別嘅資金，機構合法性嘅問題已經解決。</span>
       </p>
 
-      <p>
-        <span class="lang-en">For practical use, prediction market prices function as a real-time probability feed. Market-implied probabilities for Fed rate decisions, geopolitical outcomes, and policy changes update faster and more accurately than traditional research reports. If your book is long rates, you can buy "Fed holds rates" contracts as a hedge — the binary payoff structure makes risk/reward simple to calculate. Hong Kong has not banned Polymarket (unlike Singapore), and as an information discovery tool, checking market-implied probabilities is faster and more accurate than reading ten analyst reports.</span>
-        <span class="lang-zh">就實際用途而言，預測市場價格充當實時概率feed。Fed利率決定、地緣政治結果和政策變動嘅market implied probabilities比傳統研究報告更新更快、更準確。如果你嘅倉位做多利率，你可以買「Fed維持利率」合約作為對沖 — binary payoff結構令風險/回報計算簡單。香港冇禁止Polymarket（新加坡就禁咗），作為信息發現工具，睇market implied probability比讀十份分析師報告更快、更準。</span>
-      </p>
-
+      <!-- ============================================ -->
+      <!-- Risks -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Risks</span><span class="lang-zh">風險</span>
       </h2>
 
-      <p>
-        <span class="lang-en">Polymarket is not regulated by the SFC. There is no deposit protection and no investor recourse. Disputes over event outcomes can lead to delayed or contested resolution. Niche markets may have thin orderbooks, resulting in slippage on larger positions. And because settlement happens onchain, smart contract bugs could theoretically affect funds — though the platform has operated without major incidents since launch.</span>
-        <span class="lang-zh">Polymarket唔受SFC監管。冇存款保障，冇投資者追索權。事件結果嘅爭議可能導致延遲或有爭議嘅結算。冷門市場可能orderbook較薄，大額倉位會有滑點。而且因為結算喺鏈上進行，智能合約漏洞理論上可能影響資金 — 不過平台自推出以嚟冇出過重大事故。</span>
-      </p>
+      <ul class="list-disc pl-6 space-y-3">
+        <li><span class="lang-en"><span class="text-white">Not regulated by SFC</span> — no deposit protection, no investor recourse in Hong Kong</span><span class="lang-zh"><span class="text-white">唔受SFC監管</span> — 香港冇存款保障，冇投資者追索權</span></li>
+        <li><span class="lang-en"><span class="text-white">Resolution disputes</span> — UMA oracle can take 4-6 days to resolve disputed markets. During this time, your capital is locked</span><span class="lang-zh"><span class="text-white">Resolution爭議</span> — UMA oracle可能需要4-6日resolve有爭議嘅markets。期間你嘅資金被鎖定</span></li>
+        <li><span class="lang-en"><span class="text-white">Thin liquidity on niche markets</span> — large positions in low-volume markets will face significant slippage</span><span class="lang-zh"><span class="text-white">冷門市場流動性薄</span> — 低成交量market嘅大額倉位會有顯著滑點</span></li>
+        <li><span class="lang-en"><span class="text-white">Smart contract risk</span> — settlement on Polygon via CTF contracts. No major incidents to date, but risk is non-zero</span><span class="lang-zh"><span class="text-white">智能合約風險</span> — 通過Polygon上嘅CTF contracts結算。至今冇重大事故，但風險唔係零</span></li>
+        <li><span class="lang-en"><span class="text-white">Volume double-counting</span> — Paradigm research (Dec 2025) showed most analytics dashboards double-count Polymarket volume due to on-chain data complexity. Reported figures may be inflated</span><span class="lang-zh"><span class="text-white">交易量重複計算</span> — Paradigm研究（2025年12月）顯示大部分分析dashboard因鏈上數據複雜性而重複計算Polymarket交易量。報告數字可能被誇大</span></li>
+        <li><span class="lang-en"><span class="text-white">Hybrid architecture trust assumption</span> — order matching is centralized. You trust the operator to match fairly. Settlement is on-chain, but execution quality depends on the off-chain matching engine</span><span class="lang-zh"><span class="text-white">混合架構信任假設</span> — order matching係中心化嘅。你信任operator公平matching。Settlement係on-chain，但execution quality取決於off-chain matching engine</span></li>
+      </ul>
 
+      <!-- ============================================ -->
+      <!-- Getting Started -->
+      <!-- ============================================ -->
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">Getting Started</span><span class="lang-zh">如何開始</span>
       </h2>
 
       <p>
-        <span class="lang-en">Set up an EVM wallet (MetaMask or similar) on the Polygon network, fund it with USDC, and connect to Polymarket. Start with macro and policy markets you understand well — Fed rate decisions, geopolitical events, or sector-specific outcomes where you have an information advantage. Buy YES or NO shares; your maximum loss is the price paid per share.</span>
-        <span class="lang-zh">在Polygon網絡上設置EVM錢包（MetaMask或類似），充值USDC，然後連接到Polymarket。從你熟悉嘅宏觀和政策市場開始 — Fed利率決定、地緣政治事件，或你有信息優勢嘅行業特定結果。買YES或NO份額；你嘅最大損失係每份支付嘅價格。</span>
+        <span class="lang-en">Set up an EVM wallet (MetaMask or similar) on Polygon, fund it with USDC, and connect to Polymarket. Start with macro markets you understand — Fed rate decisions, geopolitical events, or sector-specific outcomes where you have an information advantage. Buy YES or NO shares; your maximum loss is the price paid per share.</span>
+        <span class="lang-zh">喺Polygon上設置EVM錢包（MetaMask或類似），充值USDC，連接到Polymarket。從你熟悉嘅宏觀市場開始 — Fed利率決定、地緣政治事件，或你有信息優勢嘅行業特定結果。買YES或NO份額；最大損失係每份支付嘅價格。</span>
       </p>
+
+      <!-- ============================================ -->
+      <!-- Sources -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Sources</span><span class="lang-zh">資料來源</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2 text-sm">
+        <li><a href="https://docs.polymarket.com" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Polymarket Official Documentation</a></li>
+        <li><a href="https://help.polymarket.com" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">Polymarket Help Center</a></li>
+        <li><a href="https://github.com/Polymarket/ctf-exchange" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">CTF Exchange — GitHub</a></li>
+        <li><a href="https://github.com/Polymarket/uma-ctf-adapter" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">UMA CTF Adapter — GitHub</a></li>
+        <li><a href="https://docs.uma.xyz/protocol-overview/how-does-umas-oracle-work" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">UMA Oracle Documentation</a></li>
+        <li><a href="https://ir.theice.com/press/news-details/2026/Intercontinental-Exchange-Announces-New-600-Million-Investment-in-Polymarket/default.aspx" class="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener">ICE $600M Investment Press Release</a></li>
+      </ul>
     </div>
 
     <!-- CTA -->
