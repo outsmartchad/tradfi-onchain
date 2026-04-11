@@ -1,0 +1,166 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="HIP-2: Hyperliquidity — Hyperliquid">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/hyperliquid`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Hyperliquid Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">HIP-2</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Hyperliquidity</span><span class="lang-zh">超流動性</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Protocol-level automated market making built into the consensus layer. Not a bot, not a service — part of the block transition logic itself. Every new token gets instant liquidity with zero maintenance.</span>
+      <span class="lang-zh">Protocol層面嘅自動做市，直接built into共識層。唔係bot，唔係服務 — 係block transition logic本身嘅一部分。每個新token即時獲得流動性，完全唔需要維護。</span>
+    </p>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">The Cold-Start Problem</span><span class="lang-zh">冷啟動問題</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Every new token faces the same chicken-and-egg problem: traders won't trade without liquidity, and liquidity providers won't provide without traders. On Ethereum, you solve this by manually creating a Uniswap pool and depositing capital. On Solana, PumpFun uses a bonding curve. Both require the deployer to actively manage liquidity.</span>
+        <span class="lang-zh">每個新token都面對同一個雞同蛋嘅問題：冇流動性trader唔會交易，冇trader流動性提供者唔會提供。喺Ethereum，你通過手動創建Uniswap pool同存入資金嚟解決。喺Solana，PumpFun用bonding curve。兩者都需要deployer主動管理流動性。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">HIP-2 solves this at the protocol level. When a HIP-1 token is deployed, the Hyperliquidity strategy activates automatically as part of HyperCore's block transition logic. It's not a separate service or smart contract — it runs inside the consensus mechanism itself, with the same security guarantees as the order book.</span>
+        <span class="lang-zh">HIP-2喺protocol層面解決呢個問題。當HIP-1 token被deploy，Hyperliquidity策略作為HyperCore block transition logic嘅一部分自動啟動。佢唔係獨立服務或智能合約 — 係喺共識機制本身內運行，具有同order book相同嘅安全保障。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How It Works</span><span class="lang-zh">點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The deployer configures five parameters at launch:</span>
+        <span class="lang-zh">Deployer喺launch時配置五個參數：</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Parameter</span><span class="lang-zh">參數</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Purpose</span><span class="lang-zh">用途</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">spot</td>
+              <td class="py-3 px-2"><span class="lang-en">The asset paired with USDC</span><span class="lang-zh">同USDC配對嘅資產</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">startPx</td>
+              <td class="py-3 px-2"><span class="lang-en">Starting price for the range</span><span class="lang-zh">價格範圍嘅起始價</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">nOrders</td>
+              <td class="py-3 px-2"><span class="lang-en">Number of orders in the range</span><span class="lang-zh">價格範圍內嘅order數量</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">orderSz</td>
+              <td class="py-3 px-2"><span class="lang-en">Individual order size</span><span class="lang-zh">每個order嘅大小</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white font-mono text-xs">nSeededLevels</td>
+              <td class="py-3 px-2"><span class="lang-en">Bid levels pre-funded with USDC by deployer</span><span class="lang-zh">Deployer用USDC預先資助嘅bid levels</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">The Pricing Formula</span><span class="lang-zh">定價公式</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Each successive price level follows a fixed geometric progression:</span>
+        <span class="lang-zh">每個連續價格level遵循固定嘅幾何級數：</span>
+      </p>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-cyan-400">
+        {'px_i = round(px_{i-1} × 1.003)'}
+      </div>
+
+      <p>
+        <span class="lang-en">This means each level is <span class="text-white font-medium">0.3% apart</span>. The system updates every block (minimum 3-second intervals):</span>
+        <span class="lang-zh">即係每個level相隔<span class="text-white font-medium">0.3%</span>。系統每個block更新（最少3秒間隔）：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en">Targets full ask orders based on remaining token balance</span><span class="lang-zh">根據剩餘token餘額設定完整ask orders</span></li>
+        <li><span class="lang-en">When a tranche fills completely, converts proceeds to new orders on the opposite side</span><span class="lang-zh">當一個tranche完全成交，將收益轉換為對面嘅新orders</span></li>
+        <li><span class="lang-en">Maintains <span class="text-white">0.3% spread every 3 seconds</span> with zero user maintenance</span><span class="lang-zh">維持<span class="text-white">每3秒0.3% spread</span>，完全唔需要用戶維護</span></li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Seeded Levels</span><span class="lang-zh">預注資Levels</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The <code>nSeededLevels</code> parameter determines how many bid levels the deployer pre-funds with USDC. Each additional seeded level costs <code>px × sz</code> in USDC. This is where the deployer puts real money — it creates immediate buy-side depth so early sellers can exit. Without seeded levels, the order book would be all asks and no bids.</span>
+        <span class="lang-zh"><code>nSeededLevels</code>參數決定deployer用USDC預先資助幾多個bid levels。每個額外嘅seeded level成本為<code>px × sz</code>嘅USDC。呢個係deployer投入真金白銀嘅地方 — 創建即時嘅buy-side深度，令早期賣家可以退出。冇seeded levels，order book會全部係asks冇bids。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">HIP-2 vs Uniswap AMM</span><span class="lang-zh">HIP-2同Uniswap AMM比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">HIP-2</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Uniswap v3</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Infrastructure</span><span class="lang-zh">基礎設施</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Native order book</span><span class="lang-zh">原生order book</span></td>
+              <td class="py-3 px-2"><span class="lang-en">AMM pool (x*y=k)</span><span class="lang-zh">AMM池（x*y=k）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Limit orders</span><span class="lang-zh">限價單</span></td>
+              <td class="py-3 px-2 text-white">✓ <span class="lang-en">alongside auto liquidity</span><span class="lang-zh">同自動流動性並存</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Not native</span><span class="lang-zh">非原生</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Maintenance</span><span class="lang-zh">維護</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Zero — protocol handles it</span><span class="lang-zh">零 — protocol處理</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Manual rebalancing</span><span class="lang-zh">手動rebalancing</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Execution</span><span class="lang-zh">執行</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Consensus-level (3s blocks)</span><span class="lang-zh">共識層級（3秒blocks）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Smart contract</span><span class="lang-zh">智能合約</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">MEV exposure</span><span class="lang-zh">MEV風險</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Minimal (validator-level)</span><span class="lang-zh">極低（validator層面）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">High (sandwich attacks)</span><span class="lang-zh">高（三明治攻擊）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">The key insight: HIP-2 gives you Uniswap-like automated liquidity <span class="text-white">on an order book</span>. This means active market makers can place their own limit orders alongside the automated strategy, creating organic depth that compounds with the protocol-guaranteed baseline. Uniswap pools don't allow this — you're either a passive LP or nothing.</span>
+        <span class="lang-zh">關鍵洞察：HIP-2俾你Uniswap式嘅自動流動性，但係<span class="text-white">喺order book上</span>。即係active market makers可以喺automated strategy旁邊放自己嘅limit orders，創建同protocol保證嘅baseline複合嘅organic depth。Uniswap pools做唔到呢個 — 你只能做passive LP或者乜都唔做。</span>
+      </p>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/hyperliquid/hip-1`} class="text-zinc-500 hover:text-white transition-colors text-sm">← HIP-1: Token Standard</a>
+      <a href={`${base}/products/hyperliquid/hip-3`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">HIP-3: Builder-Deployed Perps →</a>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,247 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="HIP-3: Builder-Deployed Perpetuals — Hyperliquid">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/hyperliquid`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Hyperliquid Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">HIP-3</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Builder-Deployed Perpetuals</span><span class="lang-zh">Builder部署嘅永續合約</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Stake 500K HYPE (~$25M) and launch your own perp exchange — stocks, commodities, anything with a price feed. Live since October 2025, now handling 35%+ of all Hyperliquid volume with $1.43B in open interest.</span>
+      <span class="lang-zh">Stake 500K HYPE（~$25M）就可以launch自己嘅perp exchange — 股票、商品、任何有price feed嘅資產。2025年10月上線，而家已經處理Hyperliquid 35%+嘅總交易量，未平倉量$1.43B。</span>
+    </p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12">
+      <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+        <p class="text-2xl font-bold text-white">35%+</p>
+        <p class="text-xs text-zinc-500 mt-1"><span class="lang-en">of HL volume</span><span class="lang-zh">佔HL交易量</span></p>
+      </div>
+      <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+        <p class="text-2xl font-bold text-white">$1.43B</p>
+        <p class="text-xs text-zinc-500 mt-1"><span class="lang-en">OI (ATH Mar 2026)</span><span class="lang-zh">OI（2026年3月ATH）</span></p>
+      </div>
+      <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+        <p class="text-2xl font-bold text-white">28</p>
+        <p class="text-xs text-zinc-500 mt-1"><span class="lang-en">Equity tickers</span><span class="lang-zh">股票tickers</span></p>
+      </div>
+      <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+        <p class="text-2xl font-bold text-white">500K</p>
+        <p class="text-xs text-zinc-500 mt-1"><span class="lang-en">HYPE stake required</span><span class="lang-zh">需要質押HYPE</span></p>
+      </div>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Deployment Process</span><span class="lang-zh">部署流程</span>
+      </h2>
+
+      <div class="space-y-4">
+        <div class="flex gap-4 items-start">
+          <span class="text-cyan-400 font-bold text-lg mt-0.5">1</span>
+          <div><span class="lang-en"><span class="text-white font-medium">Stake 500K HYPE</span> (~$25M). Maintained for 30 days after all markets halted. Excess above requirement can be unstaked.</span><span class="lang-zh"><span class="text-white font-medium">Stake 500K HYPE</span>（~$25M）。所有市場停止後保持30日。超出要求嘅部分可以unstake。</span></div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="text-cyan-400 font-bold text-lg mt-0.5">2</span>
+          <div><span class="lang-en"><span class="text-white font-medium">First 3 assets deploy free</span> — no auction needed. DEX name: 2-4 characters.</span><span class="lang-zh"><span class="text-white font-medium">前3個資產免費deploy</span> — 唔需要auction。DEX名稱：2-4個字元。</span></div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="text-cyan-400 font-bold text-lg mt-0.5">3</span>
+          <div><span class="lang-en"><span class="text-white font-medium">Additional assets</span> require Dutch auction participation (shared across all HIP-3 deployers, starting at 500 HYPE minimum).</span><span class="lang-zh"><span class="text-white font-medium">額外資產</span>需要Dutch auction（所有HIP-3 deployers共享，起步500 HYPE）。</span></div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <span class="text-cyan-400 font-bold text-lg mt-0.5">4</span>
+          <div><span class="lang-en">Each deployer gets <span class="text-white font-medium">7 reserve deployments</span> — bypass auction timers, pay current auction price.</span><span class="lang-zh">每個deployer獲得<span class="text-white font-medium">7個reserve deployments</span> — bypass auction timers，支付當前auction價格。</span></div>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Oracle System</span><span class="lang-zh">預言機系統</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Deployers control their own oracle feeds. This is both the power and the risk of HIP-3. The protocol enforces hard constraints:</span>
+        <span class="lang-zh">Deployers控制自己嘅oracle feeds。呢個既係HIP-3嘅力量又係風險。Protocol強制執行硬約束：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Mark price clamped</span>: max 1% move from previous mark price per update</span><span class="lang-zh"><span class="text-white">Mark price限制</span>：每次更新最多從上一個mark price移動1%</span></li>
+        <li><span class="lang-en"><span class="text-white">Minimum interval</span>: 2.5 seconds between oracle updates</span><span class="lang-zh"><span class="text-white">最小間隔</span>：oracle更新之間2.5秒</span></li>
+        <li><span class="lang-en"><span class="text-white">External reference required</span>: <code>externalPerpPx</code> must be set — validators use it to detect manipulation</span><span class="lang-zh"><span class="text-white">需要External reference</span>：必須設定<code>externalPerpPx</code> — validators用嚟檢測操縱</span></li>
+        <li><span class="lang-en"><span class="text-white">50% daily move trigger</span>: if external price moves >50% from start of day, validators review for slashing</span><span class="lang-zh"><span class="text-white">50%日移動觸發</span>：如果external price從當日開始移動>50%，validators審查是否slashing</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">Oracle guidance from the docs: markets require "a well-defined underlying asset or data feed which is difficult to manipulate and has underlying economic significance." Most price indices are explicitly noted as unsuitable.</span>
+        <span class="lang-zh">文檔中嘅oracle指引：市場需要「一個定義明確、難以操縱且具有底層經濟意義嘅資產或數據feed」。大部分price indices被明確標註為唔適合。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Funding Rate Formula</span><span class="lang-zh">資金費率公式</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">HIP-3 perps use a more responsive premium formula than native Hyperliquid perps:</span>
+        <span class="lang-zh">HIP-3 perps使用比原生Hyperliquid perps更靈敏嘅premium公式：</span>
+      </p>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-cyan-400">
+        premium = (0.5 × (impact_bid_px + impact_ask_px) / oracle_px) - 1
+      </div>
+
+      <p>
+        <span class="lang-en">Deployers configure two knobs: <span class="text-white">funding multipliers</span> (0 to 10, controls responsiveness) and <span class="text-white">8-hour interest rates</span> (-0.01 to 0.01). Both feed into the standard Hyperliquid funding calculation.</span>
+        <span class="lang-zh">Deployers配置兩個旋鈕：<span class="text-white">funding multipliers</span>（0到10，控制靈敏度）同<span class="text-white">8小時利率</span>（-0.01到0.01）。兩者都輸入標準Hyperliquid funding計算。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Structure</span><span class="lang-zh">費用結構</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Component</span><span class="lang-zh">組成</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Detail</span><span class="lang-zh">詳情</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Deployer share</span><span class="lang-zh">Deployer份額</span></td>
+              <td class="py-3 px-2">50%</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Protocol share</span><span class="lang-zh">Protocol份額</span></td>
+              <td class="py-3 px-2"><span class="lang-en">50% (97% used for HYPE buybacks)</span><span class="lang-zh">50%（97%用於HYPE回購）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white"><span class="lang-en">Base rate</span><span class="lang-zh">基本費率</span></td>
+              <td class="py-3 px-2"><span class="lang-en">3 bps maker / 9 bps taker (2x native HL)</span><span class="lang-zh">3 bps maker / 9 bps taker（原生HL嘅2倍）</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Fee scale adjustment</span><span class="lang-zh">費率調整</span></td>
+              <td class="py-3 px-2"><span class="lang-en">0-3x range, one change per 30 days</span><span class="lang-zh">0-3倍範圍，每30日可調整一次</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Revenue benchmark:</span> The XYZ100 index deployer earned over $100K in fees in under 2 weeks at $80M daily volume. At that rate, annual revenue ≈ $2.6M on a $25M stake — roughly 8% yield before HYPE appreciation.</span>
+        <span class="lang-zh"><span class="text-white font-medium">收入基準：</span>XYZ100 index deployer喺$80M日交易量下兩週內賺取超過$100K fee。按呢個速度，年收入≈$260萬，基於$25M stake — 大約8% yield（HYPE升值前）。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Slashing</span><span class="lang-zh">罰沒機制</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Severity</span><span class="lang-zh">嚴重程度</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Trigger</span><span class="lang-zh">觸發條件</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Max slash</span><span class="lang-zh">最高罰沒</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-red-400"><span class="lang-en">Critical</span><span class="lang-zh">嚴重</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Invalid state transitions, prolonged downtime</span><span class="lang-zh">無效狀態轉換、長時間停機</span></td>
+              <td class="py-3 px-2 text-white font-bold">100%</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-yellow-400"><span class="lang-en">Major</span><span class="lang-zh">重大</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Brief downtime</span><span class="lang-zh">短暫停機</span></td>
+              <td class="py-3 px-2 text-white font-bold">50%</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-400"><span class="lang-en">Minor</span><span class="lang-zh">輕微</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Network degradation</span><span class="lang-zh">網絡性能下降</span></td>
+              <td class="py-3 px-2 text-white font-bold">20%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">Slashed HYPE is <span class="text-white">burned</span>, not redistributed. Slashing applies even during the 7-day unstaking queue. Normal operation bugs unrelated to deployer inputs are exempt.</span>
+        <span class="lang-zh">被罰沒嘅HYPE會被<span class="text-white">銷毀</span>，唔會重新分配。即使喺7日unstaking隊列期間，slashing仍然適用。同deployer輸入無關嘅正常操作bugs唔受影響。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Live Markets</span><span class="lang-zh">已上線市場</span>
+      </h2>
+
+      <h3 class="text-lg font-bold text-white mt-8 mb-4">
+        <span class="lang-en">TradeXYZ (>90% of HIP-3 OI)</span><span class="lang-zh">TradeXYZ（>90% HIP-3 OI）</span>
+      </h3>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Equities (28 tickers, 24/7):</span> AAPL, AMD, AMZN, BABA, COIN, CRCL, CRWV, GOOGL, HOOD, HYUNDAI, INTC, META, MSFT, MSTR, MU, NFLX, NVDA, ORCL, PLTR, RIVN, SKHX, SMSN, SNDK, TSM, TSLA, URNM, USAR, XYZ100 (synthetic index).</span>
+        <span class="lang-zh"><span class="text-white font-medium">股票（28隻tickers，24/7）：</span>AAPL、AMD、AMZN、BABA、COIN、CRCL、CRWV、GOOGL、HOOD、HYUNDAI、INTC、META、MSFT、MSTR、MU、NFLX、NVDA、ORCL、PLTR、RIVN、SKHX、SMSN、SNDK、TSM、TSLA、URNM、USAR、XYZ100（合成指數）。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Commodities:</span> WTI Crude Oil (CL), Brent Oil (BRENTOIL), Natural Gas, Gold (XAU), Silver (XAG), Corn, Wheat, plus a composite USOIL index.</span>
+        <span class="lang-zh"><span class="text-white font-medium">商品：</span>WTI原油（CL）、布倫特原油（BRENTOIL）、天然氣、黃金（XAU）、白銀（XAG）、粟米、小麥，加上一個複合型USOIL指數。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Pre-IPO:</span> SpaceX, OpenAI, Anthropic, Cursor, Stripe — settling against latest funding round or IPO price.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Pre-IPO：</span>SpaceX、OpenAI、Anthropic、Cursor、Stripe — 以最新融資輪或IPO價格結算。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-8 mb-4">
+        <span class="lang-en">Other Deployers</span><span class="lang-zh">其他Deployers</span>
+      </h3>
+
+      <p>
+        <span class="lang-en"><span class="text-white">Felix Protocol</span> — launched TSLA perp using HyperStone/RedStone oracle layer. <span class="text-white">Ventuals</span> — launched SPACEX perp. <span class="text-white">S&P Dow Jones Indices</span> — officially licensed their brand for the first onchain S&P 500 perpetual contract.</span>
+        <span class="lang-zh"><span class="text-white">Felix Protocol</span> — 用HyperStone/RedStone oracle層launch TSLA perp。<span class="text-white">Ventuals</span> — launch SPACEX perp。<span class="text-white">S&P Dow Jones Indices</span> — 正式授權品牌用於第一個鏈上S&P 500永續合約。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Distribution</span><span class="lang-zh">分發渠道</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">MetaMask Perps</span> — native integration, all 28 equity tickers accessible from 30M+ MetaMask wallets. <span class="text-white font-medium">trade.xyz</span> — dedicated frontend for equity + commodity perps (same Hyperliquid wallet and USDC balance). HIP-3 markets do <span class="text-white">NOT</span> appear on the main app.hyperliquid.xyz interface.</span>
+        <span class="lang-zh"><span class="text-white font-medium">MetaMask Perps</span> — 原生整合，30M+ MetaMask錢包可訪問所有28隻股票ticker。<span class="text-white font-medium">trade.xyz</span> — 股票 + 商品perps嘅專用前端（同一個Hyperliquid錢包同USDC餘額）。HIP-3市場<span class="text-white">唔會</span>顯示喺主app.hyperliquid.xyz介面上。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Important Limitations</span><span class="lang-zh">重要限制</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Isolated margin only</span> — cross-margin planned but not yet available. Enabling cross-margin on an asset is irreversible.</span><span class="lang-zh"><span class="text-white">只有Isolated margin</span> — cross-margin計劃中但尚未推出。資產嘅cross-margin啟用係不可逆嘅。</span></li>
+        <li><span class="lang-en"><span class="text-white">No HLP backstop</span> — Hyperliquid's own liquidity pool does NOT market-make HIP-3 markets. Deployers must attract their own MMs.</span><span class="lang-zh"><span class="text-white">冇HLP支持</span> — Hyperliquid自己嘅liquidity pool唔會為HIP-3市場做市。Deployers必須自己吸引MMs。</span></li>
+        <li><span class="lang-en"><span class="text-white">Deployer trust</span> — you trust the deployer's oracle, margin settings, and operational competence, not just Hyperliquid core.</span><span class="lang-zh"><span class="text-white">Deployer信任</span> — 你信嘅係deployer嘅oracle、margin設定同運營能力，唔單止Hyperliquid core。</span></li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Why dYdX Failed Where Hyperliquid Succeeded</span><span class="lang-zh">點解dYdX失敗而Hyperliquid成功</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">dYdX launched permissionless perps in 2024. Their Tesla xStock does $4K daily volume. Hyperliquid's TSLA does $26M+. The difference isn't technology — it's distribution. Hyperliquid has 44,000 daily active users, $200M+ daily spot volume, and MetaMask integration reaching 30M wallets. You can build the best perp infra in the world, but without users already on the platform, no one trades your new markets.</span>
+        <span class="lang-zh">dYdX喺2024年推出permissionless perps。佢哋嘅Tesla xStock日交易量$4K。Hyperliquid嘅TSLA係$26M+。差別唔係技術 — 係distribution。Hyperliquid有44,000日活用戶、$200M+日現貨交易量、同MetaMask整合覆蓋30M錢包。你可以build世界上最好嘅perp infra，但如果platform上冇用戶，冇人會交易你嘅新市場。</span>
+      </p>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/hyperliquid/hip-2`} class="text-zinc-500 hover:text-white transition-colors text-sm">← HIP-2: Hyperliquidity</a>
+      <a href={`${base}/products/hyperliquid/hip-4`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">HIP-4: Prediction Markets →</a>
+    </div>
+  </article>
+</Layout>

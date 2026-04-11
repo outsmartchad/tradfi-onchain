@@ -1,0 +1,249 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="HIP-4: Outcome Trading (Prediction Markets) — Hyperliquid">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/hyperliquid`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Hyperliquid Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">HIP-4</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Outcome Trading</span><span class="lang-zh">結果交易</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Prediction markets on a real order book, co-designed with Kalshi (CFTC-regulated). Fully collateralized binary contracts — no leverage, no liquidation risk. The killer feature: composability with perps and spot in the same account. Currently on testnet.</span>
+      <span class="lang-zh">喺真正order book上嘅預測市場，同Kalshi（CFTC監管）共同設計。全額抵押嘅二元合約 — 冇leverage、冇liquidation risk。殺手級功能：同perps同spot喺同一個account入面嘅composability。目前喺testnet上。</span>
+    </p>
+
+    <!-- Status banner -->
+    <div class="border border-yellow-800/50 bg-yellow-950/20 rounded-lg p-4 mb-12">
+      <p class="text-yellow-400 text-sm font-medium">
+        <span class="lang-en">⚠ Status: Testnet (live since Feb 2, 2026). Mainnet date not confirmed. Official docs have not published a complete HIP-4 spec yet. Some details below come from third-party analysis and the Hyperliquid team's public announcements.</span>
+        <span class="lang-zh">⚠ 狀態：Testnet（2026年2月2日起live）。Mainnet日期未確認。官方docs仲未發布完整HIP-4 spec。以下部分詳情嚟自第三方分析同Hyperliquid團隊嘅公開公告。</span>
+      </p>
+    </div>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">What Are Outcome Contracts</span><span class="lang-zh">咩係結果合約</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Binary financial instruments that settle at <span class="text-white">0</span> or <span class="text-white">1</span> based on whether a real-world event occurs. The price between 0.001 and 0.999 represents the market's implied probability. They trade on Hyperliquid's native order book (CLOB) — not an AMM.</span>
+        <span class="lang-zh">二元金融工具，根據真實世界事件是否發生而settle at <span class="text-white">0</span>或<span class="text-white">1</span>。0.001到0.999之間嘅價格代表市場嘅implied probability。喺Hyperliquid嘅native order book（CLOB）上交易 — 唔係AMM。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Payoff Structure</span><span class="lang-zh">收益結構</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-green-800/50 bg-green-950/20 rounded-lg p-6">
+          <p class="text-green-400 font-medium mb-3"><span class="lang-en">Buy YES at 0.40</span><span class="lang-zh">以0.40買YES</span></p>
+          <p class="text-zinc-400 text-sm"><span class="lang-en">Deposit: <span class="text-white">0.40 USDH</span></span><span class="lang-zh">存入：<span class="text-white">0.40 USDH</span></span></p>
+          <p class="text-green-400 text-sm mt-2"><span class="lang-en">Event occurs → profit <span class="text-white font-bold">0.60</span></span><span class="lang-zh">事件發生 → 賺<span class="text-white font-bold">0.60</span></span></p>
+          <p class="text-red-400 text-sm"><span class="lang-en">Event doesn't → lose <span class="text-white font-bold">0.40</span></span><span class="lang-zh">事件唔發生 → 蝕<span class="text-white font-bold">0.40</span></span></p>
+        </div>
+        <div class="border border-red-800/50 bg-red-950/20 rounded-lg p-6">
+          <p class="text-red-400 font-medium mb-3"><span class="lang-en">Buy NO at 0.40</span><span class="lang-zh">以0.40買NO</span></p>
+          <p class="text-zinc-400 text-sm"><span class="lang-en">Deposit: <span class="text-white">0.40 USDH</span></span><span class="lang-zh">存入：<span class="text-white">0.40 USDH</span></span></p>
+          <p class="text-green-400 text-sm mt-2"><span class="lang-en">Event doesn't → profit <span class="text-white font-bold">0.60</span></span><span class="lang-zh">事件唔發生 → 賺<span class="text-white font-bold">0.60</span></span></p>
+          <p class="text-red-400 text-sm"><span class="lang-en">Event occurs → lose <span class="text-white font-bold">0.40</span></span><span class="lang-zh">事件發生 → 蝕<span class="text-white font-bold">0.40</span></span></p>
+        </div>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white">No leverage. No liquidation risk.</span> Fully collateralized — you deposit exactly what you can lose. All settlement in USDH, Hyperliquid's native stablecoin.</span>
+        <span class="lang-zh"><span class="text-white">冇Leverage。冇Liquidation risk。</span>全額抵押 — 你存入嘅就係你可以蝕嘅最大金額。所有settlement用USDH，Hyperliquid嘅native stablecoin。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Market Lifecycle</span><span class="lang-zh">市場生命週期</span>
+      </h2>
+
+      <div class="space-y-6">
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">1</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">Deployment</span><span class="lang-zh">部署</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">Builder defines the event schema: title, resolution timestamp, oracle source, authorized oracle updater address. Optional: challenge window for disputes, additional fee share (up to 50%).</span><span class="lang-zh">Builder定義event schema：標題、結算時間戳、oracle來源、授權oracle更新者地址。可選：爭議嘅challenge window、額外fee share（最高50%）。</span></p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">2</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">Opening Auction (~15 min)</span><span class="lang-zh">開盤拍賣（~15分鐘）</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">Single-price clearing auction. Orders accumulate without execution. Engine calculates the clearing price that maximizes matched volume. All matched orders fill at the same price. Unfilled orders carry forward to continuous trading.</span><span class="lang-zh">單一價格清算拍賣。Orders累積唔即時執行。引擎計算最大化matched volume嘅clearing price。所有matched orders以相同價格成交。未成交orders帶入連續交易。</span></p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">3</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">Continuous Trading</span><span class="lang-zh">連續交易</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">Standard price-time priority order book (CLOB). Limit and market orders. Prices bounded between 0.001 and 0.999.</span><span class="lang-zh">標準price-time priority order book（CLOB）。限價單同市價單。價格限制喺0.001到0.999之間。</span></p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-8 h-8 rounded-full bg-cyan-950 border border-cyan-800 flex items-center justify-center text-cyan-400 font-bold text-sm flex-shrink-0">4</div>
+          <div>
+            <p class="text-white font-medium mb-1"><span class="lang-en">Settlement</span><span class="lang-zh">結算</span></p>
+            <p class="text-zinc-400 text-sm"><span class="lang-en">Oracle posts binary outcome (0 or 1). Trading halts. Open orders cancelled. All positions auto-settle to final PnL in USDH. Optional challenge window before settlement finalized. Market slot recycles for next event.</span><span class="lang-zh">Oracle發布二元結果（0或1）。交易停止。未成交orders取消。所有positions自動結算為最終PnL（USDH）。可選嘅challenge window喺settlement最終確認前。Market slot可recycle用於下一個event。</span></p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Why Not Use Perpetuals for Prediction Markets?</span><span class="lang-zh">點解唔用永續合約做預測市場？</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Perps would create a <span class="text-white">50+ minute arbitrage window</span> during event resolution. With a 1% tick constraint, the price can only converge to the final value at 1% per tick, creating extended periods of known-incorrect pricing that sophisticated traders would exploit. Binary settlement (instant jump to 0 or 1) eliminates this entirely.</span>
+        <span class="lang-zh">永續合約會喺事件結算期間創建<span class="text-white">50+分鐘嘅套利窗口</span>。由於1% tick限制，價格只能以每tick 1%嘅速度收斂到最終值，造成長時間嘅已知錯誤定價，sophisticated traders會利用呢個。二元結算（即時跳到0或1）完全消除呢個問題。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">The Kalshi Partnership</span><span class="lang-zh">Kalshi合作關係</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Kalshi's head of crypto co-authored the HIP-4 proposal.</span> Kalshi is the only CFTC-regulated prediction market in the US, operating event contracts on elections, economics, and more. In March 2026, they announced an official partnership with Hyperliquid to launch on-chain prediction markets.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Kalshi嘅head of crypto直接co-author咗HIP-4 proposal。</span>Kalshi係美國唯一CFTC監管嘅預測市場，運營選舉、經濟等event contracts。2026年3月，佢哋宣佈同Hyperliquid正式合作推出鏈上預測市場。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">This bridges two worlds: Kalshi's regulatory credibility and market design expertise with Hyperliquid's on-chain infrastructure and existing user base. However, regulatory risks remain — in January 2026, a Massachusetts court issued an injunction against Kalshi over sports betting contracts.</span>
+        <span class="lang-zh">呢個橋接咗兩個世界：Kalshi嘅監管公信力同市場設計專業，加上Hyperliquid嘅鏈上基礎設施同現有用戶群。但監管風險仍然存在 — 2026年1月，Massachusetts法院就sports betting contracts對Kalshi發出禁令。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Composability — Why This Is Different</span><span class="lang-zh">可組合性 — 點解呢個唔同</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">This is the structural advantage no competitor can match. On Hyperliquid, prediction markets are planned to live in the <span class="text-white">same trading account</span> as perps and spot. Shared collateral, automatic risk offsetting, no cross-platform fund transfers.</span>
+        <span class="lang-zh">呢個係冇競爭者可以匹配嘅結構性優勢。喺Hyperliquid上，prediction markets計劃同perps同spot喺<span class="text-white">同一個trading account</span>入面。共用collateral，自動risk offsetting，唔需要跨平台搬錢。</span>
+      </p>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-6 mt-4">
+        <p class="text-white font-medium mb-3"><span class="lang-en">Example: NVDA Earnings Trade</span><span class="lang-zh">例子：NVDA業績交易</span></p>
+        <p class="text-zinc-400 text-sm mb-4"><span class="lang-en">You believe NVDA will beat earnings consensus. In one Hyperliquid account, simultaneously:</span><span class="lang-zh">你覺得NVDA業績會beat consensus。喺一個Hyperliquid account入面，同時：</span></p>
+        <div class="space-y-2 text-sm">
+          <p><span class="text-cyan-400">①</span> <span class="lang-en">Buy <span class="text-white">"NVDA beats earnings" YES</span> contract at 0.55</span><span class="lang-zh">以0.55買<span class="text-white">「NVDA beats earnings」YES</span> contract</span></p>
+          <p><span class="text-cyan-400">②</span> <span class="lang-en">Long <span class="text-white">NVDA perp</span> 5x to capture post-earnings rally</span><span class="lang-zh">Long <span class="text-white">NVDA perp</span> 5x捕捉業績後反彈</span></p>
+          <p><span class="text-cyan-400">③</span> <span class="lang-en">Short <span class="text-white">QQQ perp</span> as a market hedge</span><span class="lang-zh">Short <span class="text-white">QQQ perp</span>做市場hedge</span></p>
+        </div>
+        <p class="text-zinc-500 text-sm mt-4"><span class="lang-en">All three positions share collateral and risk is calculated automatically. Today this requires Polymarket + Hyperliquid + another perp DEX — three platforms, three sets of capital, three withdrawal windows.</span><span class="lang-zh">三個positions共用collateral，risk自動計算。今日做呢個需要Polymarket + Hyperliquid + 另一個perp DEX — 三個平台、三筆資金、三個提款窗口。</span></p>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Potential Market Categories</span><span class="lang-zh">潛在市場類別</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Macro & Economics</span><span class="lang-zh">宏觀同經濟</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">Fed rate decisions, CPI prints, GDP releases, unemployment data</span><span class="lang-zh">Fed利率決策、CPI數據、GDP發布、失業數據</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Earnings & Corporate</span><span class="lang-zh">業績同企業事件</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">Earnings beats/misses, M&A completion, IPO pricing</span><span class="lang-zh">業績beat/miss、M&A完成、IPO定價</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Crypto Milestones</span><span class="lang-zh">加密里程碑</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">BTC above $X by date, ETF approvals, protocol upgrades</span><span class="lang-zh">BTC喺某日前超過$X、ETF批准、protocol升級</span></p>
+        </div>
+        <div class="border border-zinc-800 bg-zinc-900/40 rounded-lg p-4">
+          <p class="text-white font-medium text-sm mb-2"><span class="lang-en">Geopolitics & Elections</span><span class="lang-zh">地緣政治同選舉</span></p>
+          <p class="text-zinc-500 text-xs"><span class="lang-en">Election outcomes, policy decisions, trade agreements</span><span class="lang-zh">選舉結果、政策決定、貿易協議</span></p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">HIP-4 vs Polymarket vs Kalshi</span><span class="lang-zh">HIP-4同Polymarket同Kalshi比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">HIP-4</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Polymarket</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">Kalshi</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Matching</span><span class="lang-zh">撮合</span></td>
+              <td class="py-3 px-2 text-white">Native CLOB</td>
+              <td class="py-3 px-2">AMM</td>
+              <td class="py-3 px-2"><span class="lang-en">Centralized</span><span class="lang-zh">中心化</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Composability</span><span class="lang-zh">可組合性</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Perps + spot + prediction (planned)</span><span class="lang-zh">永續+現貨+預測（計劃中）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Prediction only</span><span class="lang-zh">僅預測</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Prediction only</span><span class="lang-zh">僅預測</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Collateral</span><span class="lang-zh">抵押品</span></td>
+              <td class="py-3 px-2 text-white">USDH</td>
+              <td class="py-3 px-2">USDC</td>
+              <td class="py-3 px-2">USD</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">On-chain</span><span class="lang-zh">鏈上</span></td>
+              <td class="py-3 px-2 text-white">✓ (HyperCore)</td>
+              <td class="py-3 px-2">✓ (Polygon)</td>
+              <td class="py-3 px-2">✗</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Regulation</span><span class="lang-zh">監管</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None (Kalshi co-design)</span><span class="lang-zh">無（Kalshi共同設計）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Offshore</span><span class="lang-zh">離岸</span></td>
+              <td class="py-3 px-2">CFTC</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Status</span><span class="lang-zh">狀態</span></td>
+              <td class="py-3 px-2 text-yellow-400">Testnet</td>
+              <td class="py-3 px-2 text-green-400">Live</td>
+              <td class="py-3 px-2 text-green-400">Live</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Timeline</span><span class="lang-zh">時間線</span>
+      </h2>
+
+      <div class="space-y-3">
+        <div class="flex gap-4 items-center">
+          <span class="text-cyan-400 text-sm font-mono w-24 flex-shrink-0">Feb 2, 2026</span>
+          <span class="text-zinc-400 text-sm"><span class="lang-en">HIP-4 announced + testnet launch</span><span class="lang-zh">HIP-4公佈 + testnet上線</span></span>
+        </div>
+        <div class="flex gap-4 items-center">
+          <span class="text-cyan-400 text-sm font-mono w-24 flex-shrink-0">Mar 2026</span>
+          <span class="text-zinc-400 text-sm"><span class="lang-en">Kalshi partnership announced</span><span class="lang-zh">Kalshi合作宣佈</span></span>
+        </div>
+        <div class="flex gap-4 items-center">
+          <span class="text-yellow-400 text-sm font-mono w-24 flex-shrink-0">TBD</span>
+          <span class="text-zinc-400 text-sm"><span class="lang-en">Mainnet — "when technical work is complete"</span><span class="lang-zh">Mainnet — 「technical work完成之後」</span></span>
+        </div>
+        <div class="flex gap-4 items-center">
+          <span class="text-zinc-500 text-sm font-mono w-24 flex-shrink-0">TBD</span>
+          <span class="text-zinc-400 text-sm"><span class="lang-en">Phase 2: permissionless builder deployment</span><span class="lang-zh">第二階段：permissionless builder deployment</span></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/hyperliquid/hip-3`} class="text-zinc-500 hover:text-white transition-colors text-sm">← HIP-3: Builder-Deployed Perps</a>
+      <a href={`${base}/products/hyperliquid`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm"><span class="lang-en">Back to Overview</span><span class="lang-zh">返回概覽</span> →</a>
+    </div>
+  </article>
+</Layout>

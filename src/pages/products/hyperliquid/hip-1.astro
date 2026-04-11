@@ -1,0 +1,163 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const base = '/tradfi-onchain';
+---
+
+<Layout title="HIP-1: Native Token Standard — Hyperliquid">
+  <article class="max-w-3xl mx-auto px-6 pt-24 pb-24">
+    <a href={`${base}/products/hyperliquid`} class="text-zinc-500 text-sm hover:text-cyan-400 transition-colors">← Hyperliquid Overview</a>
+
+    <p class="text-cyan-400 text-sm font-medium tracking-wider uppercase mb-4 mt-8">HIP-1</p>
+    <h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+      <span class="lang-en">Native Token Standard</span><span class="lang-zh">原生代幣標準</span>
+    </h1>
+    <p class="text-lg text-zinc-400 mb-10 leading-relaxed">
+      <span class="lang-en">Every token on Hyperliquid gets a real order book — not an AMM pool. Launching one requires winning an auction, not clicking a button. This is anti-PumpFun by design.</span>
+      <span class="lang-zh">每個Hyperliquid上嘅token都有一個真正嘅order book — 唔係AMM pool。Launch一個token需要贏得auction，唔係㩒個掣。呢個設計係anti-PumpFun。</span>
+    </p>
+
+    <div class="prose prose-invert prose-zinc max-w-none text-zinc-400 text-[15px] leading-relaxed space-y-6">
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How Token Deployment Works</span><span class="lang-zh">Token部署點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Deploying a HIP-1 token is a multi-step process with real economic cost. The deployer specifies:</span>
+        <span class="lang-zh">部署HIP-1 token係一個有真正經濟成本嘅多步驟過程。Deployer需要指定：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Name</span> — up to 6 characters, no uniqueness requirement</span><span class="lang-zh"><span class="text-white">名稱</span> — 最多6個字元，唔需要唯一</span></li>
+        <li><span class="lang-en"><span class="text-white">weiDecimals</span> — conversion rate from minimal units to human-readable format</span><span class="lang-zh"><span class="text-white">weiDecimals</span> — 最小單位到人類可讀格式嘅轉換率</span></li>
+        <li><span class="lang-en"><span class="text-white">szDecimals</span> — minimum tradable decimals on spot order books (must satisfy <code>szDecimals + 5 ≤ weiDecimals</code>)</span><span class="lang-zh"><span class="text-white">szDecimals</span> — 現貨order book嘅最小可交易小數位（必須滿足 <code>szDecimals + 5 ≤ weiDecimals</code>）</span></li>
+        <li><span class="lang-en"><span class="text-white">maxSupply</span> — initial and maximum supply (can only decrease through fees/burns)</span><span class="lang-zh"><span class="text-white">maxSupply</span> — 初始同最大供應量（只能通過fees/burns減少）</span></li>
+        <li><span class="lang-en"><span class="text-white">initialWei</span> — optional genesis balances for treasuries or bridge mints</span><span class="lang-zh"><span class="text-white">initialWei</span> — 可選嘅genesis餘額，用於treasury或bridge mint</span></li>
+        <li><span class="lang-en"><span class="text-white">anchorTokenWei</span> — existing HIP-1 tokens can receive proportional genesis allocations (airdrop mechanism)</span><span class="lang-zh"><span class="text-white">anchorTokenWei</span> — 現有HIP-1 token可以按比例獲得genesis分配（airdrop機制）</span></li>
+        <li><span class="lang-en"><span class="text-white">hyperliquidityInit</span> — parameters for HIP-2 USDC spot pair initialization</span><span class="lang-zh"><span class="text-white">hyperliquidityInit</span> — HIP-2 USDC現貨對嘅初始化參數</span></li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">The Dutch Auction</span><span class="lang-zh">荷蘭式拍賣</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Token deployment operates through a <span class="text-white font-medium">31-hour Dutch auction</span>. The gas price decreases linearly from an initial price down to 500 HYPE (~$12,500). Rules:</span>
+        <span class="lang-zh">Token部署通過一個<span class="text-white font-medium">31小時荷蘭式拍賣</span>進行。Gas價格從初始價格線性遞減到500 HYPE（~$12,500）。規則：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en">If the previous auction <span class="text-white">failed</span>: initial price = 500 HYPE</span><span class="lang-zh">如果上一次拍賣<span class="text-white">失敗</span>：初始價格 = 500 HYPE</span></li>
+        <li><span class="lang-en">If the previous auction <span class="text-white">succeeded</span>: initial price = 2x the last winning gas price</span><span class="lang-zh">如果上一次拍賣<span class="text-white">成功</span>：初始價格 = 上次中標gas價格嘅2倍</span></li>
+        <li><span class="lang-en">Gas <span class="text-white">cannot be refunded</span> if the deployment gets stuck — test on testnet first</span><span class="lang-zh">如果部署卡住，Gas<span class="text-white">唔能夠退還</span> — 先喺testnet測試</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">This auction mechanism is the core of HIP-1's design philosophy: <span class="text-white">high barrier to entry creates high signal</span>. Every token that makes it through the auction represents a meaningful economic commitment, unlike PumpFun where anyone can launch a token for ~$2.</span>
+        <span class="lang-zh">呢個拍賣機制係HIP-1設計理念嘅核心：<span class="text-white">高門檻創造高信號</span>。每個通過拍賣嘅token都代表有意義嘅經濟承諾，唔似PumpFun任何人用~$2就可以launch一個token。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Fee Structure & Distribution</span><span class="lang-zh">費用結構同分配</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Fee Type</span><span class="lang-zh">費用類型</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Destination</span><span class="lang-zh">去向</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2"><span class="lang-en">Non-USDC fees (base token)</span><span class="lang-zh">Non-USDC費用（base token）</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">100% to deployer (default)</span><span class="lang-zh">100%歸deployer（默認）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2"><span class="lang-en">Unclaimed base token fees</span><span class="lang-zh">未領取嘅base token費用</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Burned</span><span class="lang-zh">銷毀</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2"><span class="lang-en">Quote token (USDC) fees</span><span class="lang-zh">Quote token（USDC）費用</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Assistance Fund</span><span class="lang-zh">援助基金</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en">Deployers can adjust their fee share <span class="text-white">downward only</span> — once reduced, it can't be raised back. This prevents bait-and-switch dynamics.</span>
+        <span class="lang-zh">Deployers只能將fee share<span class="text-white">向下調整</span> — 一旦降低，唔能夠提高返。呢個防止bait-and-switch。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Anchor Token Airdrops</span><span class="lang-zh">Anchor Token空投</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">A unique feature: new tokens can airdrop to holders of an existing HIP-1 token. Using <code>anchorTokenWei</code>, deployers specify proportional allocations. Holders must own at least 0.0001% of the anchor token's max supply to qualify. This creates a native on-chain airdrop mechanism without snapshot tooling or Merkle trees.</span>
+        <span class="lang-zh">一個獨特功能：新token可以空投畀現有HIP-1 token嘅持有者。使用<code>anchorTokenWei</code>，deployers指定按比例分配。持有者必須擁有至少anchor token最大供應量嘅0.0001%先有資格。呢個創建咗一個native鏈上空投機制，唔需要snapshot工具或Merkle trees。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Spot Dust Clearing</span><span class="lang-zh">現貨碎幣清理</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Daily at 00:00 UTC, balances under 1 lot size with notional value ≤ $1 are automatically aggregated and market-sold. Proceeds redistribute proportionally to affected users. Clearing pauses if the book is one-sided or dust impact exceeds thresholds ($10,000 for PURR, $3,000 for others). This keeps accounts clean without manual intervention.</span>
+        <span class="lang-zh">每日00:00 UTC，低於1 lot size且名義價值≤$1嘅餘額自動匯總並市價賣出。收益按比例重新分配畀受影響嘅用戶。如果order book只有單邊或dust影響超過閾值（PURR為$10,000，其他為$3,000），清理暫停。呢個保持賬戶清潔，唔需要手動介入。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">HIP-1 vs Other Token Standards</span><span class="lang-zh">HIP-1同其他代幣標準比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-white font-medium">HIP-1</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">ERC-20</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">SPL Token</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Launch cost</span><span class="lang-zh">發行成本</span></td>
+              <td class="py-3 px-2 text-white">~$12,500+ (auction)</td>
+              <td class="py-3 px-2">~$50 (gas)</td>
+              <td class="py-3 px-2">~$2 (PumpFun)</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Native trading</span><span class="lang-zh">原生交易</span></td>
+              <td class="py-3 px-2 text-white"><span class="lang-en">Order book (built-in)</span><span class="lang-zh">Order book（內建）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Requires DEX</span><span class="lang-zh">需要DEX</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Requires DEX</span><span class="lang-zh">需要DEX</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Liquidity bootstrap</span><span class="lang-zh">流動性引導</span></td>
+              <td class="py-3 px-2 text-white">HIP-2 (protocol-level)</td>
+              <td class="py-3 px-2"><span class="lang-en">Manual LP</span><span class="lang-zh">手動LP</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Bonding curve</span><span class="lang-zh">聯合曲線</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Fee to deployer</span><span class="lang-zh">費用歸deployer</span></td>
+              <td class="py-3 px-2 text-white">100%</td>
+              <td class="py-3 px-2">0%</td>
+              <td class="py-3 px-2">0%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Nav -->
+    <div class="mt-16 flex justify-between">
+      <a href={`${base}/products/hyperliquid`} class="text-zinc-500 hover:text-white transition-colors text-sm">← Overview</a>
+      <a href={`${base}/products/hyperliquid/hip-2`} class="text-cyan-400 hover:text-cyan-300 transition-colors text-sm">HIP-2: Hyperliquidity →</a>
+    </div>
+  </article>
+</Layout>
