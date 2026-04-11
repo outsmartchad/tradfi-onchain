@@ -155,6 +155,102 @@ const base = '/tradfi-onchain';
         <span class="lang-zh">重點係：HIP-2俾你Uniswap式嘅自動流動性，但係跑喺<span class="text-white">真正嘅order book上</span>。即係專業做市商可以喺自動策略旁邊放自己嘅limit orders，兩種流動性疊加。Uniswap做唔到 — 你要嘛做passive LP，要嘛企喺度睇。</span>
       </p>
 
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Seeded Levels — A Concrete Example</span><span class="lang-zh">預注資Levels — 實際例子</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Let's walk through real numbers. A deployer launches a token with these parameters:</span>
+        <span class="lang-zh">用實際數字行一次。Deployer用以下參數launch一個token：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><code>startPx</code> = <span class="text-white">0.01 USDC</span></li>
+        <li><code>nOrders</code> = <span class="text-white">100</span></li>
+        <li><code>orderSz</code> = <span class="text-white">10,000 tokens</span></li>
+        <li><code>nSeededLevels</code> = <span class="text-white">5</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">Each level is 0.3% apart, so the 5 seeded bid levels sit at:</span>
+        <span class="lang-zh">每個level相隔0.3%，所以5個預注資bid levels嘅價位係：</span>
+      </p>
+
+      <div class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-cyan-400">
+        0.01000 → 0.01003 → 0.01006 → 0.01009 → 0.01012
+      </div>
+
+      <p>
+        <span class="lang-en">The USDC cost for these 5 seeded levels: <span class="text-white">(0.01 + 0.01003 + 0.01006 + 0.01009 + 0.01012) × 10,000 = ~$503</span>. That's all the deployer pays in USDC — the ask side is automatically filled with the deployer's tokens across all 100 levels.</span>
+        <span class="lang-zh">呢5個seeded levels嘅USDC成本：<span class="text-white">(0.01 + 0.01003 + 0.01006 + 0.01009 + 0.01012) × 10,000 ≈ $503</span>。Deployer淨係使呢啲USDC — ask side自動用deployer嘅token填滿所有100個levels。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Result: from block 1, there's a <span class="text-white">two-sided order book</span>. Someone can buy (hitting the asks) or sell (hitting the seeded bids) immediately. No waiting for external LPs.</span>
+        <span class="lang-zh">結果：由第1個block開始，就有<span class="text-white">雙邊order book</span>。任何人即刻可以買（打ask）或者賣（打seeded bid）。唔使等外部LP。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">What Happens When One Side Runs Out</span><span class="lang-zh">一邊用晒會點</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">If all tokens are bought (ask side empty): the strategy now holds only USDC. It places bids across the entire range and waits for sellers to come back. The book becomes all bids, no asks.</span>
+        <span class="lang-zh">如果所有token俾人買晒（ask side清空）：策略得返USDC。佢會喺成個範圍擺bid，等賣家返嚟。Book變成全部bids，冇asks。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">If all USDC is spent (bid side empty): the strategy holds only tokens. It places asks across the range and waits for buyers. The book becomes all asks, no bids.</span>
+        <span class="lang-zh">如果所有USDC使晒（bid side清空）：策略得返tokens。佢會喺成個範圍擺ask，等買家嚟。Book變成全部asks，冇bids。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The strategy <span class="text-white">never stops</span> — it always places whatever balance it has on whichever side has inventory. This is fundamentally different from AMMs where impermanent loss accumulates silently. Here, you can see exactly what the strategy holds and what it's quoting at every moment.</span>
+        <span class="lang-zh">策略<span class="text-white">永遠唔會停</span> — 有幾多balance就擺喺有貨嗰邊。呢個同AMM根本上唔同：AMM嘅impermanent loss係靜靜雞累積，你睇唔到。呢度你每一刻都睇到策略揸住咩、quote緊咩價。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Limitations</span><span class="lang-zh">局限性</span>
+      </h2>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          <span class="lang-en"><span class="text-white">USDC pairs only</span> — you can't bootstrap liquidity for TOKEN/SOL or TOKEN/ETH pairs. Every HIP-2 market is quoted against USDC.</span>
+          <span class="lang-zh"><span class="text-white">只支援USDC配對</span> — 唔可以幫TOKEN/SOL或者TOKEN/ETH做流動性。每個HIP-2市場都係以USDC報價。</span>
+        </li>
+        <li>
+          <span class="lang-en"><span class="text-white">Parameters are permanent</span> — HIP-2 parameters are set at deployment and cannot be changed after launch. If you set the wrong startPx or nOrders, there's no undo.</span>
+          <span class="lang-zh"><span class="text-white">參數永久固定</span> — HIP-2參數喺deploy時設定，launch之後改唔到。如果startPx或者nOrders設錯咗，冇得翻轉。</span>
+        </li>
+        <li>
+          <span class="lang-en"><span class="text-white">Fixed 0.3% spacing</span> — deployers can't customize the spread width between levels. This works for most tokens but isn't suitable for assets that need tighter spreads (like stablecoins or high-liquidity assets).</span>
+          <span class="lang-zh"><span class="text-white">固定0.3%間距</span> — deployer唔可以自定義levels之間嘅spread寬度。大部分token都冇問題，但對需要窄spread嘅資產（如stablecoins或高流動性資產）就唔夠用。</span>
+        </li>
+        <li>
+          <span class="lang-en"><span class="text-white">Deployer as buyer of last resort</span> — seeded USDC can run out if there's heavy one-directional selling pressure. In that scenario, the deployer's USDC is fully spent absorbing sells, and the bid side goes empty until new buyers arrive.</span>
+          <span class="lang-zh"><span class="text-white">Deployer變最後買家</span> — 如果有大量單方向拋售壓力，seeded USDC可以用完。到時deployer嘅USDC全部用咗吸收賣盤，bid side會清空直到新買家出現。</span>
+        </li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Impact: With vs Without HIP-2</span><span class="lang-zh">影響：有HIP-2同冇HIP-2</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white">Without HIP-2</span> (like most ERC-20 tokens): a token launches into an empty order book. Someone has to manually create a liquidity pool and deposit capital. First buyers face zero liquidity and massive slippage. The first few hours are a chaotic scramble where the deployer either front-runs their own launch or hopes a third party LPs for them.</span>
+        <span class="lang-zh"><span class="text-white">冇HIP-2</span>（好似大部分ERC-20 tokens）：token launch落去空嘅order book。要有人手動開pool入錢。第一批買家面對零流動性同巨大滑點。頭幾個鐘係混亂嘅搶跑期，deployer要嘛自己front-run，要嘛祈禱有第三方幫佢做LP。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white">With HIP-2</span>: from the very first block, there's a two-sided book with defined spread. Any user can buy or sell immediately at known prices. No manual intervention, no third-party dependency, no chaotic launch window.</span>
+        <span class="lang-zh"><span class="text-white">有HIP-2</span>：由第一個block開始，就有雙邊book同固定spread。任何用戶即刻可以喺已知價格買賣。唔使人手干預、唔依賴第三方、冇混亂嘅launch窗口。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The practical result: HIP-1 tokens on Hyperliquid have <span class="text-white">higher day-1 trading quality</span> than 99% of new token launches on any chain. The liquidity isn't deeper than a well-funded Uniswap pool — but it's there from second zero, requires no maintenance, and can't be rug-pulled away.</span>
+        <span class="lang-zh">實際結果：Hyperliquid上嘅HIP-1 tokens嘅<span class="text-white">第一日交易質素</span>高過任何鏈上99%嘅新token launch。流動性未必深過資金充足嘅Uniswap pool — 但佢從第零秒就存在、唔使維護、亦冇辦法rug pull走。</span>
+      </p>
+
     </div>
 
     <!-- Nav -->

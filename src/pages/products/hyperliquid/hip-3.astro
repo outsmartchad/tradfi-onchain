@@ -83,6 +83,25 @@ const base = '/tradfi-onchain';
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Oracle Infrastructure: HyperStone & RedStone</span><span class="lang-zh">Oracle基礎設施：HyperStone & RedStone</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">HIP-3 deployers can't just manually push prices — they need robust external oracle infrastructure that runs 24/7 with millisecond reliability. <span class="text-white font-medium">The oracle is the single most critical piece of infra for a HIP-3 deployer</span> — a bad oracle means slashing, potentially up to 100% of your 500K HYPE stake.</span>
+        <span class="lang-zh">HIP-3 deployers唔可以手動push價格 — 佢哋需要穩健嘅外部oracle基礎設施，24/7以毫秒級可靠性運行。<span class="text-white font-medium">Oracle係HIP-3 deployer最關鍵嘅基礎設施</span> — 一個差嘅oracle意味住slashing，最高可以罰沒你500K HYPE stake嘅100%。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">RedStone</span> developed <span class="text-white">HyperStone</span> specifically for HIP-3: a modular oracle layer purpose-built for tokenized stocks and RWA perpetuals. HyperStone provides millisecond-level price feeds for equity perps, handling the unique challenges of 24/7 crypto markets trading TradFi assets that only have market hours.</span>
+        <span class="lang-zh"><span class="text-white font-medium">RedStone</span>專門為HIP-3開發咗<span class="text-white">HyperStone</span>：一個為代幣化股票同RWA永續合約而設嘅模組化oracle層。HyperStone為股票perps提供毫秒級price feeds，處理24/7 crypto市場交易只有市場時段嘅TradFi資產嘅獨特挑戰。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Felix Protocol</span> used HyperStone for their TSLA perp launch — the first real-world deployment of this oracle stack. Other oracle options exist (Pyth, custom feeds), but HyperStone is the purpose-built solution for HIP-3 equity deployers. For deployers considering HIP-3, oracle selection should be the first infrastructure decision, not an afterthought.</span>
+        <span class="lang-zh"><span class="text-white font-medium">Felix Protocol</span>喺佢哋嘅TSLA perp launch用咗HyperStone — 呢個oracle stack嘅第一個真實部署。其他oracle選項存在（Pyth、自訂feeds），但HyperStone係專門為HIP-3股票deployers打造嘅方案。對於考慮HIP-3嘅deployers，oracle選擇應該係第一個基礎設施決策，唔係事後補救。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
         <span class="lang-en">Funding Rate Formula</span><span class="lang-zh">資金費率公式</span>
       </h2>
 
@@ -136,6 +155,73 @@ const base = '/tradfi-onchain';
       <p class="mt-4">
         <span class="lang-en"><span class="text-white font-medium">Revenue benchmark:</span> The XYZ100 index deployer earned over $100K in fees in under 2 weeks at $80M daily volume. At that rate, annual revenue ≈ $2.6M on a $25M stake — roughly 8% yield before HYPE appreciation.</span>
         <span class="lang-zh"><span class="text-white font-medium">收入基準：</span>XYZ100 index deployer喺$80M日交易量下兩週內賺取超過$100K fee。按呢個速度，年收入≈$260萬，基於$25M stake — 大約8% yield（HYPE升值前）。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Deployer API: How to Actually Build on HIP-3</span><span class="lang-zh">Deployer API：點樣喺HIP-3上面Build</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Beyond staking and oracle setup, deployers interact with HIP-3 through a set of <span class="text-white font-medium">signed API actions</span>. These are the day-to-day tools for running your perp exchange. All lists of tuples must be lexicographically sorted before signing.</span>
+        <span class="lang-zh">除咗staking同oracle設置之外，deployers通過一組<span class="text-white font-medium">簽名API actions</span>同HIP-3互動。呢啲係運營你嘅perp exchange嘅日常工具。所有tuples列表喺簽名前必須按字典序排列。</span>
+      </p>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Action</span><span class="lang-zh">操作</span></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">What it does</span><span class="lang-zh">功能</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">registerAsset2</td>
+              <td class="py-3 px-2"><span class="lang-en">Initialize your DEX + register first asset (2-4 char DEX name)</span><span class="lang-zh">初始化你嘅DEX + 註冊第一個資產（2-4字元DEX名稱）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setOracle</td>
+              <td class="py-3 px-2"><span class="lang-en">Push prices every 2.5s+ (mark prices clamped 1%, external reference required)</span><span class="lang-zh">每2.5秒+推送價格（mark price限制1%，需要external reference）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setFundingMultipliers</td>
+              <td class="py-3 px-2"><span class="lang-en">Tune funding rate responsiveness (0-10 range)</span><span class="lang-zh">調整funding rate靈敏度（0-10範圍）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setFundingInterestRates</td>
+              <td class="py-3 px-2"><span class="lang-en">Set 8-hour interest rates (-0.01 to 0.01)</span><span class="lang-zh">設定8小時利率（-0.01到0.01）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">haltTrading</td>
+              <td class="py-3 px-2"><span class="lang-en">Stop trading + settle positions (can resume later for dated contracts)</span><span class="lang-zh">停止交易 + 結算倉位（可以為到期合約之後恢復）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setMarginTableIds</td>
+              <td class="py-3 px-2"><span class="lang-en">Configure leverage tiers (max 3 tiers per table)</span><span class="lang-zh">配置槓桿分層（每個table最多3個tier）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setFeeRecipient</td>
+              <td class="py-3 px-2"><span class="lang-en">Where your 50% fee share goes</span><span class="lang-zh">你嘅50% fee份額去邊</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setOpenInterestCaps</td>
+              <td class="py-3 px-2"><span class="lang-en">Minimum max(1M, 50% current OI)</span><span class="lang-zh">最低為max(1M, 當前OI嘅50%)</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setSubDeployers</td>
+              <td class="py-3 px-2"><span class="lang-en">Delegate permissions to team members</span><span class="lang-zh">委派權限畀團隊成員</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-white font-mono text-xs">setPerpAnnotation</td>
+              <td class="py-3 px-2"><span class="lang-en">Add display metadata (category max 15 chars, description max 400 chars)</span><span class="lang-zh">新增顯示metadata（category最多15字元，description最多400字元）</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mt-4">
+        <span class="lang-en"><span class="text-white font-medium">Rate-limited actions:</span> <code>setFeeScale</code> (0-3x range) and <code>setGrowthModes</code> are restricted to <span class="text-white">one change per 30 days</span>. Plan your fee strategy before deploying — you can't iterate quickly on these.</span>
+        <span class="lang-zh"><span class="text-white font-medium">限速操作：</span><code>setFeeScale</code>（0-3倍範圍）同<code>setGrowthModes</code>限制為<span class="text-white">每30日只可以改一次</span>。部署前規劃好你嘅fee策略 — 呢啲唔可以快速迭代。</span>
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
@@ -226,6 +312,44 @@ const base = '/tradfi-onchain';
         <li><span class="lang-en"><span class="text-white">No HLP backstop</span> — Hyperliquid's own liquidity pool does NOT market-make HIP-3 markets. Deployers must attract their own MMs.</span><span class="lang-zh"><span class="text-white">冇HLP支持</span> — Hyperliquid自己嘅liquidity pool唔會為HIP-3市場做市。Deployers必須自己吸引MMs。</span></li>
         <li><span class="lang-en"><span class="text-white">Deployer trust</span> — you trust the deployer's oracle, margin settings, and operational competence, not just Hyperliquid core.</span><span class="lang-zh"><span class="text-white">Deployer信任</span> — 你信嘅係deployer嘅oracle、margin設定同運營能力，唔單止Hyperliquid core。</span></li>
       </ul>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Settlement & Market Recycling</span><span class="lang-zh">結算同市場回收</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The <code>haltTrading</code> action isn't just an emergency stop — it's a <span class="text-white font-medium">full lifecycle tool</span>. When a market is halted, all open orders are cancelled and positions settle to current mark price.</span>
+        <span class="lang-zh"><code>haltTrading</code>唔只係緊急停止 — 佢係一個<span class="text-white font-medium">完整嘅生命週期工具</span>。當市場被暫停時，所有open orders被取消，倉位以當前mark price結算。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Critical detail:</span> halted markets <span class="text-white">CAN be resumed</span> — the asset gets recycled. This enables dated/expiring contracts without needing to pay new auction fees each time. A deployer can run weekly oil futures — halt Friday, settle all positions, resume Monday with a fresh orderbook.</span>
+        <span class="lang-zh"><span class="text-white font-medium">關鍵細節：</span>暫停嘅市場<span class="text-white">可以恢復</span> — 資產會被回收。呢個功能令到期合約唔使每次都支付新嘅auction費用。Deployer可以run每週嘅石油期貨 — 星期五暫停，結算所有倉位，星期一用全新orderbook恢復。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Once <span class="text-white">ALL</span> assets on a deployer's DEX are halted and settled, the deployer's stake becomes eligible for unstaking (subject to the 30-day hold period). This is the only way to exit — you can't unstake while any market is still live.</span>
+        <span class="lang-zh">一旦deployer嘅DEX上<span class="text-white">所有</span>資產都暫停同結算咗，deployer嘅stake就符合unstaking資格（受30日持有期限制）。呢個係唯一嘅退出方式 — 任何市場仲live緊都唔可以unstake。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Cross-Margin: The Path Forward</span><span class="lang-zh">Cross-Margin：前路</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Currently HIP-3 markets are <span class="text-white">isolated margin only</span> — cross-margin is the most requested feature. Why it matters: cross-margin dramatically improves capital efficiency for traders, letting them use one collateral pool for all HIP-3 positions instead of locking up separate margin per market.</span>
+        <span class="lang-zh">目前HIP-3市場只有<span class="text-white">isolated margin</span> — cross-margin係最多人要求嘅功能。點解重要：cross-margin大幅提升trader嘅資本效率，令佢哋可以用一個collateral pool覆蓋所有HIP-3倉位，唔使每個市場鎖定獨立margin。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Enabling cross-margin on an asset is IRREVERSIBLE</span> — can't go back to isolated. Validators enforce strict eligibility criteria: sufficient observable liquidity, reliable external oracle, and manipulation resistance. There's also a monthly frequency check: if an asset has >50% daily moves more than once per month, it's ineligible for cross-margin.</span>
+        <span class="lang-zh"><span class="text-white font-medium">資產啟用cross-margin係不可逆嘅</span> — 唔可以返返去isolated。Validators強制執行嚴格嘅資格標準：足夠嘅可觀察流動性、可靠嘅external oracle、同抗操縱能力。仲有月度頻率檢查：如果一個資產每月超過一次出現>50%日波動，就唔符合cross-margin資格。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">TradeXYZ</span> recently enabled cross-margin across silver, gold, and S&P 500 — the first deployer to achieve this milestone. This signals growing confidence from validators in HIP-3 market quality and sets the template for other deployers to follow.</span>
+        <span class="lang-zh"><span class="text-white font-medium">TradeXYZ</span>最近喺白銀、黃金同S&P 500上啟用咗cross-margin — 第一個達到呢個里程碑嘅deployer。呢個信號表明validators對HIP-3市場質量嘅信心增長，亦為其他deployers樹立咗模板。</span>
+      </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
         <span class="lang-en">EaaS: Lowering the $25M Barrier</span><span class="lang-zh">EaaS：降低$25M門檻</span>

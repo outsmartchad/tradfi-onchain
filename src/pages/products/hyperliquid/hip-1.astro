@@ -110,6 +110,124 @@ const base = '/tradfi-onchain';
       </p>
 
       <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">How the Spot Order Book Works</span><span class="lang-zh">現貨Order Book點樣運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Every HIP-1 token automatically gets a <span class="text-white font-medium">USDC spot order book</span> — no external DEX, no AMM pool, no liquidity bootstrapping needed. The order book is native to the L1.</span>
+        <span class="lang-zh">每個HIP-1 token都自動獲得一個<span class="text-white font-medium">USDC現貨order book</span> — 唔需要外部DEX，唔需要AMM pool，唔需要引導流動性。Order book係L1原生嘅。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Two decimal parameters control precision:</span>
+        <span class="lang-zh">兩個小數位參數控制精度：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">weiDecimals</span> — internal precision. This is how many decimal places the chain uses to store balances (like wei for ETH).</span><span class="lang-zh"><span class="text-white">weiDecimals</span> — 內部精度。鏈用幾多個小數位嚟儲存餘額（好似ETH嘅wei咁）。</span></li>
+        <li><span class="lang-en"><span class="text-white">szDecimals</span> — minimum tradable unit on the order book. This is the smallest increment you can place an order for.</span><span class="lang-zh"><span class="text-white">szDecimals</span> — order book上嘅最小可交易單位。你可以落單嘅最細粒度。</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">The constraint <code>szDecimals + 5 ≤ weiDecimals</code> ensures there's always enough internal precision to handle dust and rounding from order book operations. Without this gap, rounding errors would accumulate.</span>
+        <span class="lang-zh">約束條件 <code>szDecimals + 5 ≤ weiDecimals</code> 確保內部精度永遠足夠處理order book操作產生嘅碎幣同捨入。冇呢個差距嘅話，捨入誤差會越積越大。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Order mechanics:</span>
+        <span class="lang-zh">落單機制：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Order size in wei</span> = <code>sz × 10^(weiDecimalsBase − szDecimalsBase)</code></span><span class="lang-zh"><span class="text-white">以wei計嘅訂單大小</span> = <code>sz × 10^(weiDecimalsBase − szDecimalsBase)</code></span></li>
+        <li><span class="lang-en"><span class="text-white">Order value in quote wei</span> = <code>px × sz × 10^(weiDecimalsQuote − szDecimalsQuote)</code></span><span class="lang-zh"><span class="text-white">以quote wei計嘅訂單價值</span> = <code>px × sz × 10^(weiDecimalsQuote − szDecimalsQuote)</code></span></li>
+        <li><span class="lang-en">Quote token is always <span class="text-white">Spot USDC</span> (szDecimals = weiDecimals = 8)</span><span class="lang-zh">Quote token永遠係<span class="text-white">Spot USDC</span>（szDecimals = weiDecimals = 8）</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">Native spot and perps share <span class="text-white">identical volume-based fee schedules</span> — no separate fee tiers for spot vs derivatives. Your trading volume across both markets counts toward the same fee tier.</span>
+        <span class="lang-zh">原生現貨同永續合約共享<span class="text-white">同一套基於交易量嘅費率</span> — 唔會因為現貨定衍生品而收唔同費用。你喺兩個市場嘅交易量會計入同一個費率等級。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Anchor Token Airdrop — How It Works</span><span class="lang-zh">Anchor Token空投 — 詳細運作</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The <code>anchorTokenWei</code> parameter lets deployers distribute new tokens proportionally to holders of an existing HIP-1 token — no snapshot tooling, no Merkle trees, no claim contracts. It's all handled at the protocol level during token creation.</span>
+        <span class="lang-zh"><code>anchorTokenWei</code> 參數畀deployers可以按比例將新token分派畀現有HIP-1 token嘅持有者 — 唔使snapshot工具，唔使Merkle trees，唔使claim合約。全部喺token創建時由協議層處理。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Eligibility rules:</span>
+        <span class="lang-zh">資格規則：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en">Holders must hold at least <span class="text-white">0.0001%</span> of the anchor token's <code>maxSupply</code> to qualify</span><span class="lang-zh">持有者必須持有至少anchor token <code>maxSupply</code> 嘅<span class="text-white">0.0001%</span>先有資格</span></li>
+        <li><span class="lang-en">Distribution is proportional to <code>(balance − 1e-6 × anchorTokenMaxSupply)</code></span><span class="lang-zh">分配比例按照 <code>(balance − 1e-6 × anchorTokenMaxSupply)</code> 計算</span></li>
+        <li><span class="lang-en">The subtraction prevents dust holders from diluting real holders' allocations</span><span class="lang-zh">減去嗰部分防止碎幣持有者攤薄真正持有者嘅分配</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">Concrete example:</span> Say PURR has a <code>maxSupply</code> of 1 billion. You hold 10 million PURR (1% of max supply). A new token launches with <code>anchorTokenWei</code> set to airdrop to PURR holders. You'd receive 1% of the new token's <code>anchorTokenWei</code> allocation — directly into your wallet at genesis, no claim needed.</span>
+        <span class="lang-zh"><span class="text-white font-medium">實例：</span>假設PURR嘅 <code>maxSupply</code> 係10億。你持有1,000萬個PURR（最大供應量嘅1%）。一個新token launch時設定咗 <code>anchorTokenWei</code> 空投畀PURR持有者。你會收到新token <code>anchorTokenWei</code> 分配嘅1% — 直接喺genesis時入你錢包，唔使claim。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">This creates a <span class="text-white">native airdrop pipeline</span> built into the token standard itself — a fundamentally different approach from EVM airdrops that require off-chain snapshots, Merkle proof generation, and separate claim contracts.</span>
+        <span class="lang-zh">呢個機制喺token標準入面建立咗一個<span class="text-white">原生空投管道</span> — 同EVM嗰套需要鏈下snapshot、生成Merkle proof、另外部署claim合約嘅做法完全唔同。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">From HIP-1 to HIP-2: The Full Launch Flow</span><span class="lang-zh">由HIP-1到HIP-2：完整Launch流程</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">The end-to-end flow from auction to live trading:</span>
+        <span class="lang-zh">由拍賣到正式交易嘅完整流程：</span>
+      </p>
+
+      <ol class="list-decimal pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Win the Dutch auction</span> — pay HYPE gas to secure a token deployment slot</span><span class="lang-zh"><span class="text-white">贏得荷蘭式拍賣</span> — 支付HYPE gas嚟獲得token部署名額</span></li>
+        <li><span class="lang-en"><span class="text-white">Token created</span> — on-chain with your specified parameters (name, supply, decimals, initial balances)</span><span class="lang-zh"><span class="text-white">Token創建</span> — 喺鏈上按你設定嘅參數生成（名稱、供應量、小數位、初始餘額）</span></li>
+        <li><span class="lang-en"><span class="text-white">USDC spot order book goes live</span> — native order book, ready for limit and market orders</span><span class="lang-zh"><span class="text-white">USDC現貨order book上線</span> — 原生order book，可以落限價單同市價單</span></li>
+        <li><span class="lang-en"><span class="text-white">HIP-2 Hyperliquidity activates</span> — if <code>hyperliquidityInit</code> was set, automated market-making kicks in immediately</span><span class="lang-zh"><span class="text-white">HIP-2 Hyperliquidity啟動</span> — 如果設定咗 <code>hyperliquidityInit</code>，自動做市即刻開始</span></li>
+        <li><span class="lang-en"><span class="text-white">Deployer's seeded USDC provides initial depth</span> — buy-side liquidity from the deployer's commitment</span><span class="lang-zh"><span class="text-white">Deployer注入嘅USDC提供初始深度</span> — 買方流動性來自deployer嘅資金承諾</span></li>
+        <li><span class="lang-en"><span class="text-white">Trading begins</span> — automated HIP-2 liquidity and organic orders coexist on the same order book</span><span class="lang-zh"><span class="text-white">交易開始</span> — HIP-2自動流動性同有機訂單喺同一個order book上共存</span></li>
+      </ol>
+
+      <p>
+        <span class="lang-en">The whole process is <span class="text-white font-medium">permissionless and takes one transaction</span> after winning the auction. No governance vote, no whitelisting, no liquidity provider coordination.</span>
+        <span class="lang-zh">成個過程<span class="text-white font-medium">無需許可，贏完拍賣之後一個交易搞掂</span>。唔使governance投票，唔使白名單，唔使協調流動性提供者。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
+        <span class="lang-en">Real Examples: HYPE and PURR</span><span class="lang-zh">實際例子：HYPE同PURR</span>
+      </h2>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">HYPE</span> is the native token of Hyperliquid — the first HIP-1 token. It serves as:</span>
+        <span class="lang-zh"><span class="text-white font-medium">HYPE</span> 係Hyperliquid嘅原生token — 第一個HIP-1 token。佢嘅用途包括：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en">Staking token for validator security</span><span class="lang-zh">驗證者安全嘅質押token</span></li>
+        <li><span class="lang-en">Gas token for Dutch auctions (deployer bonds)</span><span class="lang-zh">荷蘭式拍賣嘅gas token（deployer保證金）</span></li>
+        <li><span class="lang-en">The benchmark for auction pricing (initial price denominated in HYPE)</span><span class="lang-zh">拍賣定價嘅基準（初始價格以HYPE計價）</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en"><span class="text-white font-medium">PURR</span> is a community memecoin — one of the first HIP-1 launches. It's become the de facto <span class="text-white">anchor token</span> for subsequent airdrops, meaning PURR holders regularly receive genesis allocations of new tokens. This makes PURR function like a "meta-token" — holding it gives you exposure to the entire HIP-1 ecosystem.</span>
+        <span class="lang-zh"><span class="text-white font-medium">PURR</span> 係一個社區memecoin — 最早期嘅HIP-1 launch之一。佢已經變成後續空投嘅事實<span class="text-white">anchor token</span>，意味住PURR持有者會定期收到新token嘅genesis分配。令PURR變成一個「meta-token」 — 持有佢就等於exposure成個HIP-1生態。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Both HYPE and PURR demonstrate the full HIP-1 + HIP-2 pipeline working in production — from auction to order book to automated liquidity to organic trading, all on a single L1.</span>
+        <span class="lang-zh">HYPE同PURR都證明咗完整嘅HIP-1 + HIP-2管道喺生產環境中運作 — 由拍賣到order book到自動流動性到有機交易，全部喺同一個L1上面。</span>
+      </p>
+
+      <h2 class="text-2xl font-bold text-white mt-12 mb-6">
         <span class="lang-en">HIP-1 vs Other Token Standards</span><span class="lang-zh">HIP-1同其他代幣標準比較</span>
       </h2>
 
