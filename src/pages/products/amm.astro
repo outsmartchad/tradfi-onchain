@@ -85,6 +85,225 @@ const base = '/tradfi-onchain';
         <span class="lang-zh"><span class="text-white font-medium">3. 發行代幣 — 無需許可嘅IPO。</span>PumpFun同Raydium LaunchLab等平台俾任何人幾秒之內launch一隻代幣。Bonding curve定價：早期買家price低，越多人買price越高。到一定market cap，代幣自動migrate去AMM池變成fully tradeable嘅market。本質上就係permissionless IPO — 冇underwriter、冇招股書、冇鎖定期。每日launch幾千隻。99%係垃圾，但呢個基礎設施本身係一個基本金融原語：唔使批准嘅資本形成。</span>
       </p>
 
+      <!-- ============================================ -->
+      <!-- Uniswap Versions -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Uniswap: The Evolution of AMM Design</span><span class="lang-zh">Uniswap：AMM設計嘅演進</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Uniswap invented the modern AMM and has iterated through four major versions, each solving a specific problem. Understanding the progression explains why Solana AMMs look the way they do — they're all building on ideas Uniswap pioneered.</span>
+        <span class="lang-zh">Uniswap發明咗現代AMM，經歷咗四個主要版本，每個版本解決一個特定問題。理解呢個演進就會明白點解Solana嘅AMM係咁設計 — 全部都係建基於Uniswap開創嘅概念。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Uniswap v2 — The Original x·y=k</span><span class="lang-zh">Uniswap v2 — 最初嘅 x·y=k</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">The model described above. You deposit equal value of two tokens, and the formula handles pricing. Simple, elegant, but inefficient: your liquidity is spread across the entire price range from 0 to infinity. If ETH trades at $3,000, most of your capital sits in ranges (like $0–$100 or $50,000+) where no trades ever happen. <span class="text-white">Result: ~0.5% of deposited capital is actively used at any time.</span></span>
+        <span class="lang-zh">即係上面講嘅模型。你存入等值嘅兩隻token，公式負責定價。簡單、優雅，但效率低：你嘅流動性分散喺由0到無限嘅整個價格範圍。如果ETH交易價$3,000，你大部分資金坐喺啲永遠唔會有交易嘅範圍（好似$0–$100或$50,000+）。<span class="text-white">結果：任何時候只有~0.5%嘅存入資本被用到。</span></span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Uniswap v3 — Concentrated Liquidity</span><span class="lang-zh">Uniswap v3 — 集中流動性</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">The big breakthrough (2021). Instead of spreading liquidity across all prices, LPs choose a <span class="text-white font-medium">specific price range</span> to deploy their capital. If you think ETH will trade between $2,800 and $3,200, you only provide liquidity in that range — same capital, but up to <span class="text-white">4,000x more capital efficient</span> than v2.</span>
+        <span class="lang-zh">2021年嘅重大突破。唔再將流動性分散喺所有價格，LP揀一個<span class="text-white font-medium">特定價格範圍</span>嚟deploy資金。如果你覺得ETH會喺$2,800到$3,200之間交易，你只喺呢個範圍提供流動性 — 同樣嘅資金，但資本效率最高<span class="text-white">提升4,000倍</span>。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The tradeoff: active management. If price moves out of your range, your position stops earning fees and becomes 100% one token (impermanent loss maximized). Professional LPs constantly adjust their ranges — this is essentially running a market-making strategy, not passive income.</span>
+        <span class="lang-zh">代價係：要主動管理。如果價格離開你嘅範圍，你嘅position停止賺fee，變成100%單一token（無常損失最大化）。專業LP要不停調整範圍 — 本質上係跑一個做市策略，唔係被動收入。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Uniswap v4 — Hooks & Custom Logic</span><span class="lang-zh">Uniswap v4 — Hooks同自定義邏輯</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Released 2024. Uniswap v4 introduces <span class="text-white font-medium">"hooks"</span> — custom code that runs before or after swaps, liquidity changes, or pool creation. This turns Uniswap from a fixed protocol into a <span class="text-white">programmable liquidity platform</span>. Examples of what hooks enable:</span>
+        <span class="lang-zh">2024年推出。Uniswap v4引入<span class="text-white font-medium">「hooks」</span>— 喺swap、流動性變更或pool creation之前或之後運行嘅自定義代碼。將Uniswap由一個固定protocol變成<span class="text-white">可編程嘅流動性平台</span>。Hooks可以做到嘅例子：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Dynamic fees</span> — adjust fee rate based on volatility (higher fees during volatile periods)</span><span class="lang-zh"><span class="text-white">動態費率</span> — 根據波動性調整費率（波動大時收更高費用）</span></li>
+        <li><span class="lang-en"><span class="text-white">TWAMM</span> — time-weighted average market maker for large orders that execute gradually over time</span><span class="lang-zh"><span class="text-white">TWAMM</span> — 時間加權平均做市商，大單隨時間逐步執行</span></li>
+        <li><span class="lang-en"><span class="text-white">Limit orders</span> — onchain limit orders that execute when price hits your target</span><span class="lang-zh"><span class="text-white">限價單</span> — 價格到你嘅目標就自動執行嘅鏈上限價單</span></li>
+        <li><span class="lang-en"><span class="text-white">KYC/compliance</span> — restrict pool access to verified addresses</span><span class="lang-zh"><span class="text-white">KYC/合規</span> — 限制pool只畀已驗證地址使用</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">v4 also uses a "singleton" architecture — all pools live in one contract, dramatically reducing gas costs for multi-hop swaps. For finance professionals: v4 is essentially Uniswap becoming an <span class="text-white">exchange platform</span> rather than an exchange, similar to what Hyperliquid did with HIP-3.</span>
+        <span class="lang-zh">v4仲用「singleton」架構 — 所有pools住喺同一個contract入面，大幅降低multi-hop swap嘅gas成本。對金融從業者嚟講：v4本質上係Uniswap由一間交易所變成一個<span class="text-white">交易所平台</span>，類似Hyperliquid用HIP-3做嘅嘢。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Solana AMM Landscape -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">Solana: A Different AMM Ecosystem</span><span class="lang-zh">Solana：唔同嘅AMM生態</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">Solana's low fees and fast blocks (400ms) enable AMM designs that aren't practical on Ethereum. The result is a richer variety of AMM types, each optimized for different use cases. Here are the major ones:</span>
+        <span class="lang-zh">Solana嘅低費用同快速出塊（400ms）令到喺Ethereum上唔實際嘅AMM設計變得可行。結果係更豐富嘅AMM類型，每種針對唔同用途優化。以下係主要嘅幾種：</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">PumpFun — Bonding Curve AMM (Token Launches)</span><span class="lang-zh">PumpFun — 聯合曲線AMM（Token Launch專用）</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">PumpFun isn't a general-purpose AMM — it's a <span class="text-white font-medium">token launch platform</span> with a built-in bonding curve. Anyone pays ~$2 to create a token. The bonding curve acts as the initial AMM: early buyers get low prices, each subsequent buy pushes the price up along a fixed curve. When the bonding curve fills (hits ~$69K market cap), the token automatically "graduates" and migrates to PumpSwap (PumpFun's own AMM) or previously to Raydium.</span>
+        <span class="lang-zh">PumpFun唔係通用AMM — 係一個<span class="text-white font-medium">token launch平台</span>，內建bonding curve。任何人用~$2就可以開一隻幣。Bonding curve充當初始AMM：早期買家price低，每次買入沿固定曲線推高價格。當bonding curve填滿（到~$69K market cap），token自動「畢業」並migrate去PumpSwap（PumpFun自己嘅AMM）或者之前係去Raydium。</span>
+      </p>
+
+      <p>
+        <span class="lang-en"><span class="text-white">Key numbers:</span> Over 10 million tokens launched on PumpFun since 2024. ~1-2% survive past the first week. The platform generates significant fee revenue — the launch mechanism itself is the product. Creator fees (coin creator fee) were introduced in 2026, letting deployers earn from trading on their token.</span>
+        <span class="lang-zh"><span class="text-white">關鍵數字：</span>自2024年起PumpFun上launch咗超過1000萬隻token。大約1-2%撐過第一個禮拜。平台產生可觀嘅fee收入 — launch機制本身就係產品。2026年推出creator fees（幣creator費用），令deployer可以從佢哋嘅token交易中賺錢。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Meteora DAMM (Dynamic AMM) — Fee-Optimized Pools</span><span class="lang-zh">Meteora DAMM（Dynamic AMM）— 費率優化池</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Meteora's DAMM (now in v2) is a constant-product AMM like Uniswap v2, but with <span class="text-white font-medium">dynamic fee schedules</span> that make it uniquely suited for LP fee capture. Key features:</span>
+        <span class="lang-zh">Meteora嘅DAMM（而家係v2）係類似Uniswap v2嘅恆定乘積AMM，但加咗<span class="text-white font-medium">動態費率schedule</span>，令佢特別適合LP捕捉fee。主要特點：</span>
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li><span class="lang-en"><span class="text-white">Time-decaying fees</span> — pool can start at 99% fee and decay linearly to 10% over 24 hours. Early traders pay massive fees; LPs who are first to provide liquidity earn the most.</span><span class="lang-zh"><span class="text-white">時間衰減費率</span> — pool可以由99%開始，24小時內線性衰減到10%。早期trader付巨額費用；最早提供流動性嘅LP賺最多。</span></li>
+        <li><span class="lang-en"><span class="text-white">Collect-fee-mode</span> — fees can be collected only in SOL (Token B), making LP returns predictable in SOL terms regardless of the base token's price action.</span><span class="lang-zh"><span class="text-white">收費模式</span> — 可以設定只收SOL（Token B）fee，令LP回報喺SOL計價下可預測，唔受base token價格波動影響。</span></li>
+        <li><span class="lang-en"><span class="text-white">Permanent lock</span> — liquidity can be permanently locked, creating trust for traders that the pool won't be rug-pulled.</span><span class="lang-zh"><span class="text-white">永久鎖定</span> — 流動性可以永久鎖定，令trader信任個pool唔會被rug pull。</span></li>
+      </ul>
+
+      <p>
+        <span class="lang-en">DAMM v2 is where most of the LP fee-capture strategy in Solana DeFi operates. When a new memecoin launches and generates high trading volume, LPs race to create high-fee DAMM v2 pools to capture fees from aggregator-routed trades.</span>
+        <span class="lang-zh">DAMM v2係Solana DeFi入面大部分LP fee-capture策略嘅運作地。當一隻新memecoin launch並產生高交易量，LP爭住開高fee嘅DAMM v2 pool嚟捕捉aggregator路由嘅交易費用。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">CLMM — Concentrated Liquidity (Raydium, Orca)</span><span class="lang-zh">CLMM — 集中流動性（Raydium、Orca）</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Solana's version of Uniswap v3. <span class="text-white font-medium">Raydium CLMM</span> and <span class="text-white font-medium">Orca Whirlpools</span> both implement concentrated liquidity — LPs choose specific price ranges to deploy capital, dramatically improving capital efficiency.</span>
+        <span class="lang-zh">Solana版本嘅Uniswap v3。<span class="text-white font-medium">Raydium CLMM</span>同<span class="text-white font-medium">Orca Whirlpools</span>都實現咗concentrated liquidity — LP揀特定價格範圍deploy資金，大幅提升資本效率。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">The advantage over Ethereum CLMMs: Solana's 400ms block times and near-zero fees make range adjustments practical. On Ethereum, adjusting your LP range costs $5–50 in gas, making frequent rebalancing expensive. On Solana, it costs fractions of a cent. This means active LP management strategies that are prohibitively expensive on Ethereum are viable on Solana.</span>
+        <span class="lang-zh">相比Ethereum CLMMs嘅優勢：Solana嘅400ms出塊時間同接近零嘅費用令調整range變得實際。喺Ethereum，調整LP range要$5–50 gas費，頻繁rebalancing好貴。喺Solana，只需幾分錢嘅零頭。即係喺Ethereum上成本高到唔實際嘅active LP管理策略，喺Solana上行得通。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Orca also introduced <span class="text-white">adaptive fee pools</span> — the fee rate automatically adjusts based on market conditions, similar to what Uniswap v4 hooks can do but built natively into the protocol.</span>
+        <span class="lang-zh">Orca仲推出咗<span class="text-white">自適應費率pool</span> — 費率根據市場條件自動調整，類似Uniswap v4 hooks可以做嘅嘢，但原生built into protocol。</span>
+      </p>
+
+      <h3 class="text-lg font-bold text-white mt-10 mb-4">
+        <span class="lang-en">Meteora DLMM — Discretized Liquidity (Bin-Based)</span><span class="lang-zh">Meteora DLMM — 離散化流動性（基於Bin）</span>
+      </h3>
+
+      <p>
+        <span class="lang-en">Meteora's DLMM (Discretized Liquidity Market Maker) takes a different approach to concentrated liquidity. Instead of continuous price ranges (like Uniswap v3 / Raydium CLMM), DLMM divides the price space into discrete <span class="text-white font-medium">"bins"</span>. Each bin holds liquidity at a specific price point, and LPs can distribute their capital across any combination of bins.</span>
+        <span class="lang-zh">Meteora嘅DLMM（離散化流動性做市商）用唔同嘅方式做concentrated liquidity。唔同於連續價格範圍（好似Uniswap v3 / Raydium CLMM），DLMM將價格空間分成離散嘅<span class="text-white font-medium">「bins」</span>。每個bin喺特定價格點持有流動性，LP可以將資金分配到任何bin嘅組合。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">Key difference from CLMM: in a CLMM, only one LP position is active at a time (the one whose range contains the current price). In DLMM, <span class="text-white">only the active bin trades</span> — this means zero slippage within a bin (fixed price until the bin's liquidity is consumed), then price jumps to the next bin. This creates a step-function price curve rather than a smooth curve.</span>
+        <span class="lang-zh">同CLMM嘅關鍵分別：喺CLMM入面，同一時間只有一個LP position活躍（包含當前價格嘅嗰個range）。喺DLMM，<span class="text-white">只有active bin交易</span> — 即係一個bin入面零滑點（固定價格直到bin嘅流動性用完），然後價格跳去下一個bin。呢個創建嘅係階梯式價格曲線而唔係smooth曲線。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">DLMM is particularly popular for volatile token pairs where LPs want precise control over their exposure at each price level. The bin-based system also makes it easier to implement strategies like one-sided liquidity (providing only sell-side at higher prices).</span>
+        <span class="lang-zh">DLMM特別受歡迎嘅場景係波動大嘅token pair，LP想精確控制每個價格水平嘅exposure。Bin-based系統仲令實現策略變得更容易，好似單邊流動性（只喺更高價格提供賣盤）。</span>
+      </p>
+
+      <!-- ============================================ -->
+      <!-- Comparison Table -->
+      <!-- ============================================ -->
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">AMM Types Comparison</span><span class="lang-zh">AMM類型比較</span>
+      </h2>
+
+      <div class="overflow-x-auto -mx-2">
+        <table class="w-full text-sm text-left border-collapse">
+          <thead>
+            <tr class="border-b border-zinc-800">
+              <th class="py-3 px-2 text-zinc-400 font-medium"></th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">x·y=k</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">CLMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium">DLMM</th>
+              <th class="py-3 px-2 text-zinc-400 font-medium"><span class="lang-en">Bonding Curve</span><span class="lang-zh">聯合曲線</span></th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Examples</span><span class="lang-zh">例子</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Uni v2, Meteora DAMM, Raydium CPMM</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Uni v3, Raydium CLMM, Orca Whirlpools</span></td>
+              <td class="py-3 px-2">Meteora DLMM</td>
+              <td class="py-3 px-2">PumpFun</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Price range</span><span class="lang-zh">價格範圍</span></td>
+              <td class="py-3 px-2">0 → ∞</td>
+              <td class="py-3 px-2"><span class="lang-en">Custom range</span><span class="lang-zh">自定義範圍</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Discrete bins</span><span class="lang-zh">離散bins</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Fixed curve</span><span class="lang-zh">固定曲線</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Capital efficiency</span><span class="lang-zh">資本效率</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Low (~0.5%)</span><span class="lang-zh">低（~0.5%）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">High (up to 4000x)</span><span class="lang-zh">高（最高4000倍）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">High (per-bin)</span><span class="lang-zh">高（逐bin）</span></td>
+              <td class="py-3 px-2">N/A</td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Management</span><span class="lang-zh">管理</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Passive</span><span class="lang-zh">被動</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Active (rebalance)</span><span class="lang-zh">主動（rebalance）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Active (bin mgmt)</span><span class="lang-zh">主動（bin管理）</span></td>
+              <td class="py-3 px-2"><span class="lang-en">None (one-way)</span><span class="lang-zh">無（單向）</span></td>
+            </tr>
+            <tr class="border-b border-zinc-800/50">
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Slippage</span><span class="lang-zh">滑點</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Smooth curve</span><span class="lang-zh">平滑曲線</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Low in range</span><span class="lang-zh">範圍內低</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Zero within bin</span><span class="lang-zh">Bin內零</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Predictable curve</span><span class="lang-zh">可預測曲線</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 px-2 text-zinc-500"><span class="lang-en">Best for</span><span class="lang-zh">最適合</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Long-tail tokens</span><span class="lang-zh">長尾token</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Major pairs</span><span class="lang-zh">主流幣對</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Volatile pairs</span><span class="lang-zh">高波動幣對</span></td>
+              <td class="py-3 px-2"><span class="lang-en">Token launches</span><span class="lang-zh">Token launch</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold text-white mt-16 mb-6">
+        <span class="lang-en">How Aggregators Tie It All Together</span><span class="lang-zh">聚合器點樣將全部串連</span>
+      </h2>
+
+      <p>
+        <span class="lang-en">With dozens of AMM types and thousands of pools, no trader manually checks each one. <span class="text-white font-medium">Jupiter</span> (Solana) and <span class="text-white font-medium">1inch</span> (Ethereum) are aggregators that automatically split your trade across multiple pools and AMM types to find the best price. A single $10,000 swap might route 40% through a Raydium CLMM pool, 35% through a Meteora DAMM v2 pool, and 25% through an Orca Whirlpool — all in one transaction, all in under a second on Solana.</span>
+        <span class="lang-zh">有幾十種AMM類型同數千個pool，冇trader會逐個check。<span class="text-white font-medium">Jupiter</span>（Solana）同<span class="text-white font-medium">1inch</span>（Ethereum）係聚合器，自動將你嘅trade分拆去多個pool同AMM類型搵最好price。一筆$10,000嘅swap可能40%走Raydium CLMM pool、35%走Meteora DAMM v2 pool、25%走Orca Whirlpool — 全部喺一個transaction入面，Solana上唔使一秒。</span>
+      </p>
+
+      <p>
+        <span class="lang-en">This is why LP fee capture works: aggregators route trades to whichever pool offers the best price, which often means the pool with the deepest liquidity. If you're the first LP on a new token with a high-fee DAMM v2 pool, aggregators will route traffic to you — and you earn the fees.</span>
+        <span class="lang-zh">呢個就係點解LP fee capture行得通：聚合器將trade路由去邊個pool有最好price，通常即係流動性最深嘅pool。如果你係新token上第一個開高fee DAMM v2 pool嘅LP，聚合器會將流量路由畀你 — 你就賺到fee。</span>
+      </p>
+
       <h2 class="text-2xl font-bold text-white mt-16 mb-6">
         <span class="lang-en">TradFi Comparison</span><span class="lang-zh">同傳統金融比較</span>
       </h2>
